@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations, useLocale } from "next-intl";
 import {
   ArrowRightIcon,
   ArrowLeftIcon,
@@ -112,182 +113,6 @@ interface OnboardingStep {
   content: StepContent;
 }
 
-const onboardingSteps: OnboardingStep[] = [
-  {
-    id: 1,
-    title: "Connect Your Store",
-    description: "Simply connect your Sala store in seconds",
-    duration: 3500,
-    content: {
-      type: "store-connect",
-      storeName: "Urban Threads Boutique",
-      progress: 0,
-    },
-  },
-  {
-    id: 2,
-    title: "AI Analysis Begins",
-    description: "WOW AI analyzes your store data and identifies opportunities",
-    duration: 4500,
-    content: {
-      type: "analysis",
-      items: [
-        "Analyzing 1,247 products...",
-        "Processing sales data...",
-        "Identifying trends...",
-        "Setting up AI agents...",
-      ],
-    },
-  },
-  {
-    id: 3,
-    title: "Meet Your AI Agents",
-    description: "Your specialized AI team is ready to work",
-    duration: 5000,
-    content: {
-      type: "agents-intro",
-      agents: [
-        {
-          name: "Finance Agent",
-          status: "active",
-          icon: <DollarSignIcon className="h-5 w-5" />,
-        },
-        {
-          name: "Inventory Agent",
-          status: "active",
-          icon: <PackageIcon className="h-5 w-5" />,
-        },
-        {
-          name: "Pricing Agent",
-          status: "active",
-          icon: <TagIcon className="h-5 w-5" />,
-        },
-        {
-          name: "Logistics Agent",
-          status: "active",
-          icon: <TruckIcon className="h-5 w-5" />,
-        },
-        {
-          name: "Promotions Agent",
-          status: "active",
-          icon: <ZapIcon className="h-5 w-5" />,
-        },
-      ],
-    },
-  },
-  {
-    id: 4,
-    title: "First Insights Generated",
-    description: "Your daily insights are ready",
-    duration: 4500,
-    content: {
-      type: "insights",
-      insights: [
-        {
-          title: "Inventory Alert: Bestsellers Running Low",
-          urgency: "high",
-          message: "5 top products need immediate restock",
-        },
-        {
-          title: "Pricing Opportunity Detected",
-          urgency: "medium",
-          message: "Increase margins on 12 products by 8%",
-        },
-        {
-          title: "Seasonal Trend Analysis",
-          urgency: "low",
-          message: "Winter collection performing 23% above forecast",
-        },
-      ],
-    },
-  },
-  {
-    id: 5,
-    title: "Chat with Your Data",
-    description: "Ask anything about your store in natural language",
-    duration: 6000,
-    content: {
-      type: "chat-demo",
-      messages: [
-        {
-          type: "user",
-          text: "What are my best performing products this month?",
-        },
-        {
-          type: "ai",
-          text: "Your top 3 products are:\n1. Winter Parka ($2,340 revenue)\n2. Cozy Sweater ($1,890 revenue)\n3. Thermal Leggings ($1,650 revenue)\n\nWinter Parka has a 34% profit margin and is trending up 23% vs last month.",
-        },
-        { type: "user", text: "Should I increase the price of Winter Parka?" },
-        {
-          type: "ai",
-          text: "Yes! Based on demand trends and competitor analysis, you can increase the price by 12-15% without affecting sales. This could boost monthly profit by $280.",
-        },
-      ],
-    },
-  },
-  {
-    id: 6,
-    title: "Automated Actions",
-    description: "Watch AI agents take action automatically",
-    duration: 4500,
-    content: {
-      type: "actions",
-      actions: [
-        {
-          agent: "Inventory",
-          action: "Reordered 50 Winter Parkas from supplier",
-          status: "completed",
-        },
-        {
-          agent: "Pricing",
-          action: "Updated 3 product prices based on market analysis",
-          status: "completed",
-        },
-        {
-          agent: "Promotions",
-          action: "Created flash sale for slow-moving summer items",
-          status: "in-progress",
-        },
-      ],
-    },
-  },
-  {
-    id: 7,
-    title: "Results Dashboard",
-    description: "See the immediate impact on your business",
-    duration: 5000,
-    content: {
-      type: "results",
-      metrics: [
-        {
-          label: "Revenue Increase",
-          value: "+18%",
-          trend: "up",
-          color: "text-green-600",
-        },
-        {
-          label: "Time Saved",
-          value: "12hrs/week",
-          trend: "neutral",
-          color: "text-blue-600",
-        },
-        {
-          label: "Profit Margin",
-          value: "+3.2%",
-          trend: "up",
-          color: "text-purple-600",
-        },
-        {
-          label: "Inventory Efficiency",
-          value: "+24%",
-          trend: "up",
-          color: "text-orange-600",
-        },
-      ],
-    },
-  },
-];
-
 const ProgressIndicator = ({
   currentStep,
   totalSteps,
@@ -315,11 +140,13 @@ const ProgressIndicator = ({
 );
 
 const StoreConnectStep = ({
-  content,
   isActive,
+  t,
 }: {
   content: StoreConnectContent;
   isActive: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  t: any;
 }) => {
   const [progress, setProgress] = useState(0);
 
@@ -344,15 +171,17 @@ const StoreConnectStep = ({
         <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white">
           <ShoppingCartIcon className="h-8 w-8" />
         </div>
-        <CardTitle className="text-xl">{content.storeName}</CardTitle>
+        <CardTitle className="text-xl">
+          {t("onboarding.connectStore.storeName")}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           <Progress value={progress} className="h-3" />
           <div className="text-center text-sm text-gray-600">
             {progress < 100
-              ? "Connecting to Sala..."
-              : "Connected successfully!"}
+              ? t("onboarding.connectStore.connecting")
+              : t("onboarding.connectStore.connected")}
           </div>
           {progress === 100 && (
             <motion.div
@@ -361,7 +190,9 @@ const StoreConnectStep = ({
               className="flex items-center justify-center gap-2 text-green-600"
             >
               <CheckCircleIcon className="h-5 w-5" />
-              <span className="font-semibold">Store Connected</span>
+              <span className="font-semibold">
+                {t("onboarding.connectStore.storeConnected")}
+              </span>
             </motion.div>
           )}
         </div>
@@ -373,9 +204,12 @@ const StoreConnectStep = ({
 const AnalysisStep = ({
   content,
   isActive,
+  t,
 }: {
   content: AnalysisContent;
   isActive: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  t: any;
 }) => {
   const [currentItem, setCurrentItem] = useState(0);
 
@@ -398,7 +232,9 @@ const AnalysisStep = ({
         >
           <BrainIcon className="h-8 w-8" />
         </motion.div>
-        <CardTitle className="text-xl">AI Analysis in Progress</CardTitle>
+        <CardTitle className="text-xl">
+          {t("onboarding.analysis.title")}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-3">
@@ -431,11 +267,18 @@ const AnalysisStep = ({
   );
 };
 
-const AgentsIntroStep = ({ content }: { content: AgentsIntroContent }) => (
+const AgentsIntroStep = ({
+  content,
+  t,
+}: {
+  content: AgentsIntroContent;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  t: any;
+}) => (
   <div className="max-w-2xl mx-auto">
     <div className="text-center mb-8">
       <h3 className="text-2xl font-bold text-gray-800 mb-4">
-        Meet Your AI Team
+        {t("onboarding.agents.meetYourTeam")}
       </h3>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -475,11 +318,18 @@ const AgentsIntroStep = ({ content }: { content: AgentsIntroContent }) => (
   </div>
 );
 
-const InsightsStep = ({ content }: { content: InsightsContent }) => (
+const InsightsStep = ({
+  content,
+  t,
+}: {
+  content: InsightsContent;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  t: any;
+}) => (
   <div className="max-w-2xl mx-auto">
     <div className="text-center mb-8">
       <h3 className="text-2xl font-bold text-gray-800 mb-4">
-        Your First Insights
+        {t("onboarding.insights.yourFirstInsights")}
       </h3>
     </div>
     <div className="space-y-4">
@@ -495,16 +345,18 @@ const InsightsStep = ({ content }: { content: InsightsContent }) => (
               <div className="flex items-start gap-3">
                 <div
                   className={`p-2 rounded-lg ${
-                    insight.urgency === "high"
+                    insight.urgency === "high" || insight.urgency === "عالية"
                       ? "bg-red-100 text-red-600"
-                      : insight.urgency === "medium"
+                      : insight.urgency === "medium" ||
+                          insight.urgency === "متوسطة"
                         ? "bg-yellow-100 text-yellow-600"
                         : "bg-blue-100 text-blue-600"
                   }`}
                 >
-                  {insight.urgency === "high" ? (
+                  {insight.urgency === "high" || insight.urgency === "عالية" ? (
                     <AlertTriangleIcon className="h-5 w-5" />
-                  ) : insight.urgency === "medium" ? (
+                  ) : insight.urgency === "medium" ||
+                    insight.urgency === "متوسطة" ? (
                     <ClockIcon className="h-5 w-5" />
                   ) : (
                     <ChartColumnIncreasingIcon className="h-5 w-5" />
@@ -525,7 +377,14 @@ const InsightsStep = ({ content }: { content: InsightsContent }) => (
   </div>
 );
 
-const ChatDemoStep = ({ content }: { content: ChatDemoContent }) => {
+const ChatDemoStep = ({
+  content,
+  t,
+}: {
+  content: ChatDemoContent;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  t: any;
+}) => {
   const [visibleMessages, setVisibleMessages] = useState(0);
 
   useEffect(() => {
@@ -545,16 +404,18 @@ const ChatDemoStep = ({ content }: { content: ChatDemoContent }) => {
     <div className="max-w-2xl mx-auto">
       <div className="text-center mb-8">
         <h3 className="text-2xl font-bold text-gray-800 mb-4">
-          Chat with Your Data
+          {t("onboarding.chat.chatWithData")}
         </h3>
       </div>
       <Card className="bg-white/80">
         <CardHeader>
           <div className="flex items-center gap-2">
             <MessageCirclePlusIcon className="h-5 w-5 text-purple-600" />
-            <span className="font-semibold">AI Assistant</span>
+            <span className="font-semibold">
+              {t("onboarding.chat.chatWithData")}
+            </span>
             <Badge variant="secondary" className="ml-auto">
-              Online
+              {t("onboarding.chat.online")}
             </Badge>
           </div>
         </CardHeader>
@@ -601,11 +462,18 @@ const ChatDemoStep = ({ content }: { content: ChatDemoContent }) => {
   );
 };
 
-const ActionsStep = ({ content }: { content: ActionsContent }) => (
+const ActionsStep = ({
+  content,
+  t,
+}: {
+  content: ActionsContent;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  t: any;
+}) => (
   <div className="max-w-2xl mx-auto">
     <div className="text-center mb-8">
       <h3 className="text-2xl font-bold text-gray-800 mb-4">
-        AI Agents Taking Action
+        {t("onboarding.actions.agentsTakingAction")}
       </h3>
     </div>
     <div className="space-y-4">
@@ -624,16 +492,22 @@ const ActionsStep = ({ content }: { content: ActionsContent }) => (
                 </div>
                 <div className="flex-1">
                   <div className="font-semibold text-gray-800">
-                    {action.agent} Agent
+                    {action.agent}{" "}
+                    {t("onboarding.agents.financeAgent").includes("وكيل")
+                      ? "وكيل"
+                      : "Agent"}
                   </div>
                   <div className="text-sm text-gray-600">{action.action}</div>
                 </div>
                 <Badge
                   variant={
-                    action.status === "completed" ? "default" : "secondary"
+                    action.status === "completed" || action.status === "مكتمل"
+                      ? "default"
+                      : "secondary"
                   }
                 >
-                  {action.status === "completed" ? (
+                  {action.status === "completed" ||
+                  action.status === "مكتمل" ? (
                     <CheckCircleIcon className="h-4 w-4 mr-1" />
                   ) : null}
                   {action.status}
@@ -647,15 +521,20 @@ const ActionsStep = ({ content }: { content: ActionsContent }) => (
   </div>
 );
 
-const ResultsStep = ({ content }: { content: ResultsContent }) => (
+const ResultsStep = ({
+  content,
+  t,
+}: {
+  content: ResultsContent;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  t: any;
+}) => (
   <div className="max-w-2xl mx-auto">
     <div className="text-center mb-8">
       <h3 className="text-2xl font-bold text-gray-800 mb-4">
-        Immediate Results
+        {t("onboarding.results.immediateResults")}
       </h3>
-      <p className="text-gray-600">
-        See the impact on your business in just 24 hours
-      </p>
+      <p className="text-gray-600">{t("onboarding.results.seeImpact")}</p>
     </div>
     <div className="grid grid-cols-2 gap-4">
       {content.metrics.map((metric: Metric, index: number) => (
@@ -685,6 +564,208 @@ const ResultsStep = ({ content }: { content: ResultsContent }) => (
 export default function OnboardingPage() {
   const [currentStep, setCurrentStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const t = useTranslations();
+  const locale = useLocale();
+
+  const onboardingSteps: OnboardingStep[] = [
+    {
+      id: 1,
+      title: t("onboarding.connectStore.title"),
+      description: t("onboarding.connectStore.description"),
+      duration: 3500,
+      content: {
+        type: "store-connect",
+        storeName: t("onboarding.connectStore.storeName"),
+        progress: 0,
+      },
+    },
+    {
+      id: 2,
+      title: t("onboarding.analysis.title"),
+      description: t("onboarding.analysis.description"),
+      duration: 4500,
+      content: {
+        type: "analysis",
+        items: [
+          t("onboarding.analysis.analyzing", { count: "1,247" }),
+          t("onboarding.analysis.processing"),
+          t("onboarding.analysis.identifying"),
+          t("onboarding.analysis.setting"),
+        ],
+      },
+    },
+    {
+      id: 3,
+      title: t("onboarding.agents.title"),
+      description: t("onboarding.agents.description"),
+      duration: 5000,
+      content: {
+        type: "agents-intro",
+        agents: [
+          {
+            name: t("onboarding.agents.financeAgent"),
+            status: t("onboarding.agents.active"),
+            icon: <DollarSignIcon className="h-5 w-5" />,
+          },
+          {
+            name: t("onboarding.agents.inventoryAgent"),
+            status: t("onboarding.agents.active"),
+            icon: <PackageIcon className="h-5 w-5" />,
+          },
+          {
+            name: t("onboarding.agents.pricingAgent"),
+            status: t("onboarding.agents.active"),
+            icon: <TagIcon className="h-5 w-5" />,
+          },
+          {
+            name: t("onboarding.agents.logisticsAgent"),
+            status: t("onboarding.agents.active"),
+            icon: <TruckIcon className="h-5 w-5" />,
+          },
+          {
+            name: t("onboarding.agents.promotionsAgent"),
+            status: t("onboarding.agents.active"),
+            icon: <ZapIcon className="h-5 w-5" />,
+          },
+        ],
+      },
+    },
+    {
+      id: 4,
+      title: t("onboarding.insights.title"),
+      description: t("onboarding.insights.description"),
+      duration: 4500,
+      content: {
+        type: "insights",
+        insights: [
+          {
+            title: t("onboarding.insights.inventoryAlert"),
+            urgency: locale === "ar" ? "عالية" : "high",
+            message: t("onboarding.insights.inventoryAlertMsg"),
+          },
+          {
+            title: t("onboarding.insights.pricingOpportunity"),
+            urgency: locale === "ar" ? "متوسطة" : "medium",
+            message: t("onboarding.insights.pricingOpportunityMsg"),
+          },
+          {
+            title: t("onboarding.insights.seasonalTrend"),
+            urgency: locale === "ar" ? "منخفضة" : "low",
+            message: t("onboarding.insights.seasonalTrendMsg"),
+          },
+        ],
+      },
+    },
+    {
+      id: 5,
+      title: t("onboarding.chat.title"),
+      description: t("onboarding.chat.description"),
+      duration: 6000,
+      content: {
+        type: "chat-demo",
+        messages: [
+          {
+            type: "user",
+            text:
+              locale === "ar"
+                ? "ما هي أفضل منتجاتي هذا الشهر؟"
+                : "What are my best performing products this month?",
+          },
+          {
+            type: "ai",
+            text:
+              locale === "ar"
+                ? "أفضل ٣ منتجات لك هي:\n١. سترة شتوية (٢،٣٤٠ ريال إيرادات)\n٢. كنزة دافئة (١،٨٩٠ ريال إيرادات)\n٣. طماق حراري (١،٦٥٠ ريال إيرادات)\n\nالسترة الشتوية لها هامش ربح ٣٤٪ وترتفع بنسبة ٢٣٪ مقارنة بالشهر الماضي."
+                : "Your top 3 products are:\n1. Winter Parka ($2,340 revenue)\n2. Cozy Sweater ($1,890 revenue)\n3. Thermal Leggings ($1,650 revenue)\n\nWinter Parka has a 34% profit margin and is trending up 23% vs last month.",
+          },
+          {
+            type: "user",
+            text:
+              locale === "ar"
+                ? "هل يجب أن أزيد سعر السترة الشتوية؟"
+                : "Should I increase the price of Winter Parka?",
+          },
+          {
+            type: "ai",
+            text:
+              locale === "ar"
+                ? "نعم! بناءً على اتجاهات الطلب وتحليل المنافسين، يمكنك زيادة السعر بنسبة ١٢-١٥٪ دون التأثير على المبيعات. هذا يمكن أن يزيد الربح الشهري بمقدار ٢٨٠ ريال."
+                : "Yes! Based on demand trends and competitor analysis, you can increase the price by 12-15% without affecting sales. This could boost monthly profit by $280.",
+          },
+        ],
+      },
+    },
+    {
+      id: 6,
+      title: t("onboarding.actions.title"),
+      description: t("onboarding.actions.description"),
+      duration: 4500,
+      content: {
+        type: "actions",
+        actions: [
+          {
+            agent: locale === "ar" ? "المخزون" : "Inventory",
+            action:
+              locale === "ar"
+                ? "أعاد طلب ٥٠ سترة شتوية من المورد"
+                : "Reordered 50 Winter Parkas from supplier",
+            status: locale === "ar" ? "مكتمل" : "completed",
+          },
+          {
+            agent: locale === "ar" ? "التسعير" : "Pricing",
+            action:
+              locale === "ar"
+                ? "حدّث أسعار ٣ منتجات بناءً على تحليل السوق"
+                : "Updated 3 product prices based on market analysis",
+            status: locale === "ar" ? "مكتمل" : "completed",
+          },
+          {
+            agent: locale === "ar" ? "العروض الترويجية" : "Promotions",
+            action:
+              locale === "ar"
+                ? "أنشأ تخفيض سريع للمنتجات الصيفية بطيئة الحركة"
+                : "Created flash sale for slow-moving summer items",
+            status: locale === "ar" ? "قيد التنفيذ" : "in-progress",
+          },
+        ],
+      },
+    },
+    {
+      id: 7,
+      title: t("onboarding.results.title"),
+      description: t("onboarding.results.description"),
+      duration: 5000,
+      content: {
+        type: "results",
+        metrics: [
+          {
+            label: t("onboarding.results.revenueIncrease"),
+            value: locale === "ar" ? "+١٨٪" : "+18%",
+            trend: "up",
+            color: "text-green-600",
+          },
+          {
+            label: t("onboarding.results.timeSaved"),
+            value: locale === "ar" ? "١٢ساعة/أسبوع" : "12hrs/week",
+            trend: "neutral",
+            color: "text-blue-600",
+          },
+          {
+            label: t("onboarding.results.profitMargin"),
+            value: locale === "ar" ? "+٣.٢٪" : "+3.2%",
+            trend: "up",
+            color: "text-purple-600",
+          },
+          {
+            label: t("onboarding.results.inventoryEfficiency"),
+            value: locale === "ar" ? "+٢٤٪" : "+24%",
+            trend: "up",
+            color: "text-orange-600",
+          },
+        ],
+      },
+    },
+  ];
 
   useEffect(() => {
     if (isPlaying && currentStep < onboardingSteps.length - 1) {
@@ -694,7 +775,7 @@ export default function OnboardingPage() {
 
       return () => clearTimeout(timer);
     }
-  }, [currentStep, isPlaying]);
+  }, [currentStep, isPlaying, onboardingSteps]);
 
   const nextStep = () => {
     if (currentStep < onboardingSteps.length - 1) {
@@ -711,19 +792,23 @@ export default function OnboardingPage() {
   const renderStepContent = (step: OnboardingStep) => {
     switch (step.content.type) {
       case "store-connect":
-        return <StoreConnectStep content={step.content} isActive={isPlaying} />;
+        return (
+          <StoreConnectStep content={step.content} isActive={isPlaying} t={t} />
+        );
       case "analysis":
-        return <AnalysisStep content={step.content} isActive={isPlaying} />;
+        return (
+          <AnalysisStep content={step.content} isActive={isPlaying} t={t} />
+        );
       case "agents-intro":
-        return <AgentsIntroStep content={step.content} />;
+        return <AgentsIntroStep content={step.content} t={t} />;
       case "insights":
-        return <InsightsStep content={step.content} />;
+        return <InsightsStep content={step.content} t={t} />;
       case "chat-demo":
-        return <ChatDemoStep content={step.content} />;
+        return <ChatDemoStep content={step.content} t={t} />;
       case "actions":
-        return <ActionsStep content={step.content} />;
+        return <ActionsStep content={step.content} t={t} />;
       case "results":
-        return <ResultsStep content={step.content} />;
+        return <ResultsStep content={step.content} t={t} />;
       default:
         return null;
     }
@@ -734,32 +819,33 @@ export default function OnboardingPage() {
       {/* Modal Header */}
       <div className="flex items-center justify-between p-4 bg-white/80 backdrop-blur-sm border-b border-gray-200">
         <div className="flex items-center gap-3">
-          <Link href="/">
+          <Link href={`/${locale}`}>
             <Button
               variant="ghost"
               size="sm"
               className="flex items-center gap-2"
             >
               <ArrowLeftIcon className="h-4 w-4" />
-              <span className="hidden sm:inline">Exit Demo</span>
+              <span className="hidden sm:inline">{t("nav.exitDemo")}</span>
             </Button>
           </Link>
           <div className="flex items-center gap-2">
             <SparklesIcon className="h-5 w-5 text-purple-600" />
-            <span className="font-bold text-gray-800">WOW AI Demo</span>
+            <span className="font-bold text-gray-800">
+              {t("onboarding.title")}
+            </span>
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <Link href="/sign-up">
-            <Button
-              size="sm"
-              className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
-            >
-              <StarIcon className="mr-1 h-4 w-4" />
-              <span className="hidden sm:inline">Start Free Trial</span>
-              <span className="sm:hidden">Sign Up</span>
-            </Button>
-          </Link>
+          <Button
+            size="sm"
+            className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+            onClick={() => window.open("https://getwow.ai", "_blank")}
+          >
+            <StarIcon className="mr-1 h-4 w-4" />
+            <span className="hidden sm:inline">{t("nav.startFreeTrial")}</span>
+            <span className="sm:hidden">{t("nav.signUp")}</span>
+          </Button>
         </div>
       </div>
 
@@ -822,7 +908,7 @@ export default function OnboardingPage() {
             size="sm"
           >
             <ArrowLeftIcon className="h-4 w-4" />
-            <span className="hidden sm:inline">Previous</span>
+            <span className="hidden sm:inline">{t("onboarding.previous")}</span>
           </Button>
 
           <div className="flex items-center gap-3">
@@ -832,10 +918,11 @@ export default function OnboardingPage() {
               className="flex items-center gap-2"
               size="sm"
             >
-              {isPlaying ? "Pause" : "Play"}
+              {isPlaying ? t("onboarding.pause") : t("onboarding.play")}
             </Button>
             <span className="text-sm text-gray-500">
-              {currentStep + 1} of {onboardingSteps.length}
+              {currentStep + 1} {locale === "ar" ? "من" : "of"}{" "}
+              {onboardingSteps.length}
             </span>
           </div>
 
@@ -845,20 +932,21 @@ export default function OnboardingPage() {
               className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600"
               size="sm"
             >
-              <span className="hidden sm:inline">Next</span>
+              <span className="hidden sm:inline">{t("onboarding.next")}</span>
               <ArrowRightIcon className="h-4 w-4" />
             </Button>
           ) : (
-            <Link href="/sign-up">
-              <Button
-                className="flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
-                size="sm"
-              >
-                <StarIcon className="h-4 w-4" />
-                <span className="hidden sm:inline">Get Started</span>
-                <span className="sm:hidden">Start</span>
-              </Button>
-            </Link>
+            <Button
+              className="flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+              size="sm"
+              onClick={() => window.open("https://getwow.ai", "_blank")}
+            >
+              <StarIcon className="h-4 w-4" />
+              <span className="hidden sm:inline">
+                {t("onboarding.getStarted")}
+              </span>
+              <span className="sm:hidden">{t("common.start")}</span>
+            </Button>
           )}
         </div>
       </div>
@@ -879,30 +967,34 @@ export default function OnboardingPage() {
           >
             <SparklesIcon className="h-12 w-12 text-purple-600 mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
-              Ready to Transform Your Store?
+              {t("onboarding.finalCta.title")}
             </h3>
             <p className="text-gray-600 mb-6">
-              Join thousands of store owners experiencing the WOW factor.
+              {t("onboarding.finalCta.description")}
             </p>
             <div className="space-y-3">
-              <Link href="/sign-up" className="block">
+              <Button
+                size="lg"
+                className="w-full text-lg bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+                onClick={() => window.open("https://getwow.ai", "_blank")}
+              >
+                <SparklesIcon className="mr-2 h-5 w-5" />
+                {t("onboarding.finalCta.startFreeTrial")}
+              </Button>
+              <div className="flex gap-2">
                 <Button
                   size="lg"
-                  className="w-full text-lg bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+                  variant="outline"
+                  className="flex-1"
+                  onClick={() =>
+                    window.open("https://getwow.ai/login", "_blank")
+                  }
                 >
-                  <SparklesIcon className="mr-2 h-5 w-5" />
-                  Start Free Trial
+                  {t("onboarding.finalCta.login")}
                 </Button>
-              </Link>
-              <div className="flex gap-2">
-                <Link href="/sign-in" className="flex-1">
-                  <Button size="lg" variant="outline" className="w-full">
-                    Login
-                  </Button>
-                </Link>
-                <Link href="/" className="flex-1">
+                <Link href={`/${locale}`} className="flex-1">
                   <Button size="lg" variant="ghost" className="w-full">
-                    Exit Demo
+                    {t("onboarding.finalCta.exitDemo")}
                   </Button>
                 </Link>
               </div>

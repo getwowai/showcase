@@ -1,0 +1,166 @@
+{
+  "nav": {
+    "exitDemo": "Exit Demo",
+    "signUp": "Sign Up",
+    "login": "Login",
+    "startFreeTrial": "Start Free Trial"
+  },
+  "homepage": {
+    "title": "WOW AI",
+    "subtitle": "Your AI-Powered Sala Co-Pilot",
+    "description": "Transform your e-commerce business with intelligent AI agents that work 24/7 to optimize your operations, boost profits, and provide instant insights.",
+    "seeItInAction": "See It In Action",
+    "signUpForWowAi": "Sign Up for WOW AI",
+    "powerfullAiAgents": "Powerful AI Agents at Your Service",
+    "powerfullAiAgentsDesc": "Each agent specializes in a different aspect of your business, working together to optimize your entire operation.",
+    "whyStoreOwnersLove": "Why Store Owners Love WOW AI",
+    "increaseRevenue": "Increase Revenue",
+    "increaseRevenueDesc": "Our AI agents identify opportunities to boost sales, optimize pricing, and create targeted promotions that drive results.",
+    "saveTime": "Save Time",
+    "saveTimeDesc": "Automate repetitive tasks and get instant insights. Focus on growing your business while AI handles the heavy lifting.",
+    "makeBetterDecisions": "Make Better Decisions",
+    "makeBetterDecisionsDesc": "Get data-driven recommendations and insights that help you make smarter business decisions with confidence.",
+    "trustedByEcommerceLeaders": "Trusted by E-commerce Leaders",
+    "readyToTransform": "Ready to Transform Your Store?",
+    "readyToTransformDesc": "Join thousands of store owners who have already experienced the WOW factor. See how fast you can get started.",
+    "experienceTheMagic": "Experience the Magic",
+    "freeTrialBadge": "Free 14-day trial",
+    "noCreditCardBadge": "No credit card required",
+    "setupInMinutesBadge": "Setup in 2 minutes"
+  },
+  "features": {
+    "aiChatAssistant": {
+      "title": "AI Chat Assistant",
+      "description": "Get instant answers about your business"
+    },
+    "dailyInsights": {
+      "title": "Daily Insights",
+      "description": "Smart business intelligence delivered daily"
+    },
+    "liveAgentIntelligence": {
+      "title": "Live Agent Intelligence Center",
+      "description": "5 AI agents optimizing your business 24/7"
+    },
+    "smartInventory": {
+      "title": "Smart Inventory",
+      "description": "Automated restocking and demand prediction"
+    },
+    "profitOptimizer": {
+      "title": "Profit Optimizer",
+      "description": "AI-powered margin and pricing optimization"
+    },
+    "smartPromotions": {
+      "title": "Smart Promotions",
+      "description": "AI creates and optimizes promotional campaigns"
+    }
+  },
+  "testimonials": {
+    "sarahChen": {
+      "name": "Sarah Chen",
+      "role": "E-commerce Manager",
+      "company": "Urban Threads",
+      "quote": "WOW AI transformed how we manage our store. The insights are incredible."
+    },
+    "marcusRodriguez": {
+      "name": "Marcus Rodriguez",
+      "role": "Store Owner",
+      "company": "Tech Haven",
+      "quote": "I save 10+ hours per week with the automated agents. Game changer."
+    },
+    "emilyDavis": {
+      "name": "Emily Davis",
+      "role": "Operations Director",
+      "company": "Fashion Forward",
+      "quote": "The pricing agent increased our margins by 15% in just 2 months."
+    }
+  },
+  "onboarding": {
+    "title": "WOW AI Demo",
+    "getStarted": "Get Started",
+    "next": "Next",
+    "previous": "Previous",
+    "pause": "Pause",
+    "play": "Play",
+    "step": "Step {current} of {total}",
+    "connectStore": {
+      "title": "Connect Your Store",
+      "description": "Simply connect your Sala store in seconds",
+      "storeName": "Urban Threads Boutique",
+      "connecting": "Connecting to Sala...",
+      "connected": "Connected successfully!",
+      "storeConnected": "Store Connected"
+    },
+    "analysis": {
+      "title": "AI Analysis Begins",
+      "description": "WOW AI analyzes your store data and identifies opportunities",
+      "analyzing": "Analyzing {count} products...",
+      "processing": "Processing sales data...",
+      "identifying": "Identifying trends...",
+      "setting": "Setting up AI agents..."
+    },
+    "agents": {
+      "title": "Meet Your AI Agents",
+      "description": "Your specialized AI team is ready to work",
+      "meetYourTeam": "Meet Your AI Team",
+      "financeAgent": "Finance Agent",
+      "inventoryAgent": "Inventory Agent",
+      "pricingAgent": "Pricing Agent",
+      "logisticsAgent": "Logistics Agent",
+      "promotionsAgent": "Promotions Agent",
+      "active": "active"
+    },
+    "insights": {
+      "title": "First Insights Generated",
+      "description": "Your daily insights are ready",
+      "yourFirstInsights": "Your First Insights",
+      "inventoryAlert": "Inventory Alert: Bestsellers Running Low",
+      "inventoryAlertMsg": "5 top products need immediate restock",
+      "pricingOpportunity": "Pricing Opportunity Detected",
+      "pricingOpportunityMsg": "Increase margins on 12 products by 8%",
+      "seasonalTrend": "Seasonal Trend Analysis",
+      "seasonalTrendMsg": "Winter collection performing 23% above forecast"
+    },
+    "chat": {
+      "title": "Chat with Your Data",
+      "description": "Ask anything about your store in natural language",
+      "chatWithData": "Chat with Your Data",
+      "online": "Online"
+    },
+    "actions": {
+      "title": "Automated Actions",
+      "description": "Watch AI agents take action automatically",
+      "agentsTakingAction": "AI Agents Taking Action",
+      "completed": "completed",
+      "inProgress": "in-progress"
+    },
+    "results": {
+      "title": "Results Dashboard",
+      "description": "See the immediate impact on your business",
+      "immediateResults": "Immediate Results",
+      "seeImpact": "See the impact on your business in just 24 hours",
+      "revenueIncrease": "Revenue Increase",
+      "timeSaved": "Time Saved",
+      "profitMargin": "Profit Margin",
+      "inventoryEfficiency": "Inventory Efficiency"
+    },
+    "finalCta": {
+      "title": "Ready to Transform Your Store?",
+      "description": "Join thousands of store owners experiencing the WOW factor.",
+      "startFreeTrial": "Start Free Trial",
+      "login": "Login",
+      "exitDemo": "Exit Demo"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "close": "Close",
+    "open": "Open",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit"
+  }
+}
