@@ -1,0 +1,115 @@
+# WOW AI Showcase Website
+
+This is the marketing/showcase website for WOW AI - your AI-powered Sala Co-Pilot.
+
+## Overview
+
+This Next.js application serves as the public-facing website that showcases the features and capabilities of WOW AI. It includes:
+
+- **Landing Page**: Interactive marketing page with feature demonstrations
+- **Onboarding Demo**: Step-by-step interactive demonstration of the WOW AI experience
+- **Call-to-Actions**: Links to the main WOW AI application for user signup
+
+## Features
+
+- 🎨 Beautiful, modern UI with animations using Framer Motion
+- 📱 Fully responsive design
+- 🚀 Interactive onboarding demo showing AI agents in action
+- 💫 Live feature demonstrations with real-time animations
+- 🎯 Clear call-to-actions to drive user engagement
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or pnpm
+
+### Installation
+
+```bash
+# Install dependencies
+npm install
+# or
+pnpm install
+```
+
+### Development
+
+```bash
+# Run the development server
+npm run dev
+# or
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the showcase website.
+
+### Building for Production
+
+```bash
+# Build the application
+npm run build
+# or
+pnpm build
+
+# Start the production server
+npm start
+# or
+pnpm start
+```
+
+## Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout (simplified, no auth)
+│   ├── page.tsx           # Landing page with feature demos
+│   ├── onboarding/
+│   │   └── page.tsx       # Interactive onboarding demo
+│   ├── globals.css        # Global styles
+│   └── favicon.ico        # App icon
+├── components/
+│   ├── ui/                # Reusable UI components
+│   │   ├── button.tsx
+│   │   ├── card.tsx
+│   │   ├── badge.tsx
+│   │   └── progress.tsx
+│   └── lib/
+│       └── utils.ts       # Utility functions
+└── shared/
+    └── utils.ts           # Shared utilities
+```
+
+## Key Differences from Main App
+
+This showcase website is intentionally simplified compared to the main WOW AI application:
+
+- **No Authentication**: No Clerk auth integration - purely public-facing
+- **No Backend Integration**: Static demonstrations rather than real data
+- **Focused Content**: Only marketing and demo content
+- **External Links**: Directs users to the main application for signup/login
+
+## Technologies Used
+
+- **Framework**: Next.js 15 with App Router
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **UI Components**: Custom components built with Radix UI primitives
+- **Icons**: Lucide React
+- **TypeScript**: Full type safety
+
+## Deployment
+
+This app can be deployed to any platform that supports Next.js, such as:
+
+- Vercel (recommended)
+- Netlify
+- AWS Amplify
+- Railway
+- DigitalOcean App Platform
+
+## License
+
+Private repository - all rights reserved.
