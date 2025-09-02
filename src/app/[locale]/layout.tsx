@@ -37,6 +37,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${t("title")} - ${t("subtitle")}`,
     description: t("description"),
+    icons: {
+      icon: "/favicon.ico",
+    },
   };
 }
 
@@ -51,7 +54,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   // Providing all messages to the client
   // side is the easiest way to get started
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
 
   return (
     <html
@@ -62,7 +65,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} ${notoSansArabic.variable} antialiased ${locale === "ar" ? "font-arabic" : ""}`}
       >
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={messages} locale={locale}>
           {children}
         </NextIntlClientProvider>
       </body>
