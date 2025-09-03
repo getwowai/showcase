@@ -22,11 +22,11 @@
     "makeBetterDecisionsDesc": "احصل على توصيات ذكية ورؤى تعتمد على البيانات لمساعدتك في اتخاذ قرارات تجارية واثقة.",
     "trustedByEcommerceLeaders": "موثوق من قادة التجارة الإلكترونية",
     "readyToTransform": "هل أنت مستعد لتحويل متجرك؟",
-    "readyToTransformDesc": "انضم إلى الآلاف من أصحاب المتاجر الذين جربوا تأثير WOW. اكتشف مدى سرعة البدء.",
+    "readyToTransformDesc": "انضم إلى أصحاب المتاجر الذين جربوا تأثير WOW. اكتشف مدى سرعة البدء.",
     "experienceTheMagic": "اختبر السحر",
     "freeTrialBadge": "تجربة مجانية لمدة 14 يومًا",
     "noCreditCardBadge": "لا حاجة لبطاقة ائتمان",
-    "setupInMinutesBadge": "إعداد في دقيقتين"
+    "setupInMinutesBadge": "إعداد في دقائق"
   },
   "features": {
     "aiChatAssistant": {
@@ -145,7 +145,7 @@
     },
     "finalCta": {
       "title": "هل أنت مستعد لتحويل متجرك؟",
-      "description": "انضم إلى الآلاف من أصحاب المتاجر الذين يشعرون بتأثير WOW.",
+      "description": "انضم إلى أصحاب المتاجر الذين يشعرون بتأثير WOW.",
       "startFreeTrial": "ابدأ الفترة التجريبية المجانية",
       "login": "تسجيل الدخول",
       "exitDemo": "الخروج من العرض التوضيحي"

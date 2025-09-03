@@ -840,7 +840,9 @@ export default function OnboardingPage() {
           <Button
             size="sm"
             className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
-            onClick={() => window.open("https://getwow.ai", "_blank")}
+            onClick={() =>
+              window.open("https://accounts.getwow.ai/waitlist", "_blank")
+            }
           >
             <StarIcon className="mr-1 h-4 w-4" />
             <span className="hidden sm:inline">{t("nav.startFreeTrial")}</span>
@@ -939,7 +941,9 @@ export default function OnboardingPage() {
             <Button
               className="flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
               size="sm"
-              onClick={() => window.open("https://getwow.ai", "_blank")}
+              onClick={() =>
+                window.open("https://accounts.getwow.ai/waitlist", "_blank")
+              }
             >
               <StarIcon className="h-4 w-4" />
               <span className="hidden sm:inline">
@@ -976,7 +980,9 @@ export default function OnboardingPage() {
               <Button
                 size="lg"
                 className="w-full text-lg bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-                onClick={() => window.open("https://getwow.ai", "_blank")}
+                onClick={() =>
+                  window.open("https://accounts.getwow.ai/waitlist", "_blank")
+                }
               >
                 <SparklesIcon className="mr-2 h-5 w-5" />
                 {t("onboarding.finalCta.startFreeTrial")}
@@ -987,7 +993,10 @@ export default function OnboardingPage() {
                   variant="outline"
                   className="flex-1"
                   onClick={() =>
-                    window.open("https://getwow.ai/login", "_blank")
+                    window.open(
+                      "https://accounts.getwow.ai/waitlist/login",
+                      "_blank",
+                    )
                   }
                 >
                   {t("onboarding.finalCta.login")}

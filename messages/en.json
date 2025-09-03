@@ -22,11 +22,11 @@
     "makeBetterDecisionsDesc": "Get data-driven recommendations and insights that help you make smarter business decisions with confidence.",
     "trustedByEcommerceLeaders": "Trusted by E-commerce Leaders",
     "readyToTransform": "Ready to Transform Your Store?",
-    "readyToTransformDesc": "Join thousands of store owners who have already experienced the WOW factor. See how fast you can get started.",
+    "readyToTransformDesc": "Join store owners who have already experienced the WOW factor. See how fast you can get started.",
     "experienceTheMagic": "Experience the Magic",
     "freeTrialBadge": "Free 14-day trial",
     "noCreditCardBadge": "No credit card required",
-    "setupInMinutesBadge": "Setup in 2 minutes"
+    "setupInMinutesBadge": "Setup in minutes"
   },
   "features": {
     "aiChatAssistant": {
@@ -145,7 +145,7 @@
     },
     "finalCta": {
       "title": "Ready to Transform Your Store?",
-      "description": "Join thousands of store owners experiencing the WOW factor.",
+      "description": "Join store owners experiencing the WOW factor.",
       "startFreeTrial": "Start Free Trial",
       "login": "Login",
       "exitDemo": "Exit Demo"

@@ -24,7 +24,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+// import LanguageSwitcher from "@/components/LanguageSwitcher"; // Hidden until copy is fixed
 
 export default function HomePage() {
   const [currentFeature, setCurrentFeature] = useState(0);
@@ -649,10 +649,10 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-      {/* Language Switcher */}
-      <div className="fixed top-4 right-4 z-50">
+      {/* Language Switcher - Hidden until copy is fixed */}
+      {/* <div className="fixed top-4 right-4 z-50">
         <LanguageSwitcher />
-      </div>
+      </div> */}
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-20 pb-32">
@@ -719,7 +719,9 @@ export default function HomePage() {
                 size="lg"
                 variant="outline"
                 className="text-lg px-8 py-4 border-2 border-purple-600 text-purple-600 hover:bg-purple-50 transform hover:scale-105 transition-all"
-                onClick={() => window.open("https://getwow.ai", "_blank")}
+                onClick={() =>
+                  window.open("https://accounts.getwow.ai/waitlist", "_blank")
+                }
               >
                 <SparklesIcon className="mr-2 h-5 w-5" />
                 {t("homepage.signUpForWowAi")}
@@ -1012,12 +1014,8 @@ export default function HomePage() {
                       &ldquo;{testimonial.quote}&rdquo;
                     </p>
                     <div>
-                      <div className="font-bold text-gray-800">
-                        {testimonial.name}
-                      </div>
                       <div className="text-sm text-gray-600">
-                        {testimonial.role} {locale === "ar" ? "في" : "at"}{" "}
-                        {testimonial.company}
+                        {testimonial.role}
                       </div>
                     </div>
                   </CardContent>
