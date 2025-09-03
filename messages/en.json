@@ -7,7 +7,7 @@
   },
   "homepage": {
     "title": "WOW AI",
-    "subtitle": "Your AI-Powered Sala Co-Pilot",
+    "subtitle": "Your AI-Powered Salla & Zid Co-Pilot",
     "description": "Transform your e-commerce business with intelligent AI agents that work 24/7 to optimize your operations, boost profits, and provide instant insights.",
     "seeItInAction": "See It In Action",
     "signUpForWowAi": "Sign Up for WOW AI",
@@ -108,9 +108,9 @@
     "step": "Step {current} of {total}",
     "connectStore": {
       "title": "Connect Your Store",
-      "description": "Simply connect your Sala store in seconds",
+      "description": "Simply connect your Salla or Zid store in seconds",
       "storeName": "Urban Threads Boutique",
-      "connecting": "Connecting to Sala...",
+      "connecting": "Connecting to your store...",
       "connected": "Connected successfully!",
       "storeConnected": "Store Connected"
     },
