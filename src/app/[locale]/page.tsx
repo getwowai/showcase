@@ -28,6 +28,7 @@ import { Badge } from "@/components/ui/badge";
 
 export default function HomePage() {
   const [currentFeature, setCurrentFeature] = useState(0);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const t = useTranslations();
   const locale = useLocale();
@@ -300,15 +301,51 @@ export default function HomePage() {
       quote: t("testimonials.emilyDavis.quote"),
       avatar: "👩‍🔬",
     },
+    {
+      name: t("testimonials.alexThompson.name"),
+      role: t("testimonials.alexThompson.role"),
+      company: t("testimonials.alexThompson.company"),
+      quote: t("testimonials.alexThompson.quote"),
+      avatar: "👨‍💼",
+    },
+    {
+      name: t("testimonials.jessicaWang.name"),
+      role: t("testimonials.jessicaWang.role"),
+      company: t("testimonials.jessicaWang.company"),
+      quote: t("testimonials.jessicaWang.quote"),
+      avatar: "👩‍💼",
+    },
+    {
+      name: t("testimonials.davidKim.name"),
+      role: t("testimonials.davidKim.role"),
+      company: t("testimonials.davidKim.company"),
+      quote: t("testimonials.davidKim.quote"),
+      avatar: "👨‍💻",
+    },
+    {
+      name: t("testimonials.lisaMartinez.name"),
+      role: t("testimonials.lisaMartinez.role"),
+      company: t("testimonials.lisaMartinez.company"),
+      quote: t("testimonials.lisaMartinez.quote"),
+      avatar: "👩‍💼",
+    },
   ];
 
   useEffect(() => {
     setIsVisible(true);
-    const interval = setInterval(() => {
+    const featureInterval = setInterval(() => {
       setCurrentFeature((prev) => (prev + 1) % powerfulFeatures.length);
     }, 4000);
-    return () => clearInterval(interval);
-  }, [powerfulFeatures.length]);
+
+    const testimonialInterval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => {
+      clearInterval(featureInterval);
+      clearInterval(testimonialInterval);
+    };
+  }, [powerfulFeatures.length, testimonials.length]);
 
   const renderPowerfulDemo = (feature: any) => {
     const { demo } = feature;
@@ -999,29 +1036,45 @@ export default function HomePage() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+          <div className="max-w-4xl mx-auto">
+            <AnimatePresence mode="wait">
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
+                key={currentTestimonial}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
               >
                 <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
-                  <CardContent className="p-6">
-                    <div className="text-4xl mb-4">{testimonial.avatar}</div>
-                    <p className="text-gray-700 mb-4 italic">
-                      &ldquo;{testimonial.quote}&rdquo;
+                  <CardContent className="p-8 text-center">
+                    <div className="text-6xl mb-6">
+                      {testimonials[currentTestimonial].avatar}
+                    </div>
+                    <p className="text-xl text-gray-700 mb-6 italic leading-relaxed">
+                      &ldquo;{testimonials[currentTestimonial].quote}&rdquo;
                     </p>
-                    <div>
-                      <div className="text-sm text-gray-600">
-                        {testimonial.role}
-                      </div>
+                    <div className="text-lg text-gray-600 font-medium">
+                      {testimonials[currentTestimonial].role}
                     </div>
                   </CardContent>
                 </Card>
               </motion.div>
-            ))}
+            </AnimatePresence>
+
+            {/* Testimonial indicators */}
+            <div className="flex justify-center gap-2 mt-8">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentTestimonial(index)}
+                  className={`h-2 rounded-full transition-all ${
+                    index === currentTestimonial
+                      ? "bg-purple-600 w-8"
+                      : "bg-gray-300 hover:bg-gray-400 w-2"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

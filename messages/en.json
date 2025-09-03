@@ -72,6 +72,30 @@
       "role": "Operations Director",
       "company": "Fashion Forward",
       "quote": "The pricing agent increased our margins by 15% in just 2 months."
+    },
+    "alexThompson": {
+      "name": "Alex Thompson",
+      "role": "Digital Marketing Manager",
+      "company": "Style Co",
+      "quote": "The AI insights helped us identify our best-selling products before they went viral."
+    },
+    "jessicaWang": {
+      "name": "Jessica Wang",
+      "role": "Business Owner",
+      "company": "Modern Living",
+      "quote": "Inventory management used to be my biggest headache. Now it's completely automated."
+    },
+    "davidKim": {
+      "name": "David Kim",
+      "role": "E-commerce Director",
+      "company": "TechStyle",
+      "quote": "Our conversion rate increased by 23% after implementing the smart promotions agent."
+    },
+    "lisaMartinez": {
+      "name": "Lisa Martinez",
+      "role": "Store Manager",
+      "company": "Urban Essentials",
+      "quote": "The daily insights are like having a business consultant available 24/7."
     }
   },
   "onboarding": {
