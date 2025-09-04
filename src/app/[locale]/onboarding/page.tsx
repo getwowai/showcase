@@ -29,6 +29,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { WowLogo } from "@/components/ui/logo";
 
 interface StoreConnectContent {
   type: "store-connect";
@@ -829,12 +830,7 @@ export default function OnboardingPage() {
               <span className="hidden sm:inline">{t("nav.exitDemo")}</span>
             </Button>
           </Link>
-          <div className="flex items-center gap-2">
-            <SparklesIcon className="h-5 w-5 text-purple-600" />
-            <span className="font-bold text-gray-800">
-              {t("onboarding.title")}
-            </span>
-          </div>
+          <WowLogo size="standard" variant="primary" />
         </div>
         <div className="flex items-center gap-2">
           <Button

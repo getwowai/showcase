@@ -24,6 +24,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { WowLogo } from "@/components/ui/logo";
 // import LanguageSwitcher from "@/components/LanguageSwitcher"; // Hidden until copy is fixed
 
 export default function HomePage() {
@@ -700,22 +701,8 @@ export default function HomePage() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              >
-                <SparklesIcon className="h-8 w-8 text-purple-600" />
-              </motion.div>
-              <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                {t("homepage.title")}
-              </h1>
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              >
-                <RocketIcon className="h-8 w-8 text-blue-600" />
-              </motion.div>
+            <div className="flex items-center justify-center mb-6">
+              <WowLogo size="hero" variant="primary" />
             </div>
 
             <motion.h2
@@ -745,7 +732,7 @@ export default function HomePage() {
               <Link href={`/${locale}/onboarding`}>
                 <Button
                   size="lg"
-                  className="text-lg px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
+                  className="text-lg px-8 py-4 bg-gradient-to-r from-wow-lime to-wow-blue hover:from-wow-lime/90 hover:to-wow-blue/90 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
                 >
                   <RocketIcon className="mr-2 h-5 w-5" />
                   {t("homepage.seeItInAction")}
@@ -755,7 +742,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-4 border-2 border-purple-600 text-purple-600 hover:bg-purple-50 transform hover:scale-105 transition-all"
+                className="text-lg px-8 py-4 border-2 border-wow-blue text-wow-blue hover:bg-wow-blue/10 transform hover:scale-105 transition-all"
                 onClick={() =>
                   window.open("https://accounts.getwow.ai/waitlist", "_blank")
                 }

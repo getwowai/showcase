@@ -42,6 +42,11 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  
+  /* WOW AI Brand Colors */
+  --color-wow-lime: #aedf1a;
+  --color-wow-blue: #86c9e5;
+  --color-wow-charcoal: #4a5568;
 }
 
 :root {
