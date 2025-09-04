@@ -39,7 +39,7 @@ export default function HomePage() {
       icon: <MessageCirclePlusIcon className="h-6 w-6" />,
       title: t("features.aiChatAssistant.title"),
       description: t("features.aiChatAssistant.description"),
-      color: "from-blue-500 to-cyan-500",
+      color: "gradient-feature-1",
       demo: {
         type: "chat",
         messages: [
@@ -78,7 +78,7 @@ export default function HomePage() {
       icon: <ChartColumnIncreasingIcon className="h-6 w-6" />,
       title: t("features.dailyInsights.title"),
       description: t("features.dailyInsights.description"),
-      color: "from-purple-500 to-pink-500",
+      color: "gradient-feature-2",
       demo: {
         type: "insights",
         insight: {
@@ -115,7 +115,7 @@ export default function HomePage() {
       icon: <BarChart3Icon className="h-6 w-6" />,
       title: t("features.liveAgentIntelligence.title"),
       description: t("features.liveAgentIntelligence.description"),
-      color: "from-green-500 to-emerald-500",
+      color: "gradient-feature-3",
       demo: {
         type: "dashboard",
         agents: [
@@ -163,7 +163,7 @@ export default function HomePage() {
       icon: <PackageIcon className="h-6 w-6" />,
       title: t("features.smartInventory.title"),
       description: t("features.smartInventory.description"),
-      color: "from-orange-500 to-red-500",
+      color: "gradient-feature-4",
       demo: {
         type: "inventory",
         alerts: [
@@ -206,7 +206,7 @@ export default function HomePage() {
       icon: <DollarSignIcon className="h-6 w-6" />,
       title: t("features.profitOptimizer.title"),
       description: t("features.profitOptimizer.description"),
-      color: "from-indigo-500 to-purple-500",
+      color: "gradient-feature-5",
       demo: {
         type: "finance",
         metrics: [
@@ -253,7 +253,7 @@ export default function HomePage() {
       icon: <ZapIcon className="h-6 w-6" />,
       title: t("features.smartPromotions.title"),
       description: t("features.smartPromotions.description"),
-      color: "from-yellow-500 to-orange-500",
+      color: "gradient-feature-6",
       demo: {
         type: "promotions",
         campaigns: [
@@ -686,7 +686,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <div className="min-h-screen">
       {/* Language Switcher - Hidden until copy is fixed */}
       {/* <div className="fixed top-4 right-4 z-50">
         <LanguageSwitcher />
@@ -732,7 +732,7 @@ export default function HomePage() {
               <Link href={`/${locale}/onboarding`}>
                 <Button
                   size="lg"
-                  className="text-lg px-8 py-4 bg-gradient-to-r from-wow-lime to-wow-blue hover:from-wow-lime/90 hover:to-wow-blue/90 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
+                  className="text-lg px-8 py-4 gradient-primary shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
                 >
                   <RocketIcon className="mr-2 h-5 w-5" />
                   {t("homepage.seeItInAction")}
@@ -760,11 +760,11 @@ export default function HomePage() {
             transition={{ delay: 1, duration: 0.8 }}
             className="max-w-6xl mx-auto"
           >
-            <Card className="overflow-hidden shadow-2xl border-0 bg-white/90 backdrop-blur-sm">
+            <Card className="overflow-hidden shadow-2xl border-0 surface-white-strong">
               <CardHeader className="text-center pb-4 bg-gradient-to-r from-gray-50 to-gray-100">
                 <div className="flex items-center justify-center gap-3 mb-2">
                   <div
-                    className={`p-2 rounded-xl bg-gradient-to-br ${powerfulFeatures[currentFeature].color} text-white shadow-lg`}
+                    className={`p-2 rounded-xl ${powerfulFeatures[currentFeature].color} text-white shadow-lg`}
                   >
                     {powerfulFeatures[currentFeature].icon}
                   </div>
@@ -843,10 +843,10 @@ export default function HomePage() {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <Card className="h-full bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all">
+                <Card className="h-full surface-white border-0 shadow-lg hover:shadow-xl transition-all">
                   <CardHeader>
                     <div
-                      className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center text-white mb-4`}
+                      className={`feature-icon ${feature.color}`}
                     >
                       {feature.icon}
                     </div>
@@ -963,7 +963,7 @@ export default function HomePage() {
               transition={{ delay: 0.1, duration: 0.6 }}
               className="text-center"
             >
-              <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white">
+              <div className="benefit-icon gradient-feature-3">
                 <TrendingUpIcon className="h-10 w-10" />
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-4">
@@ -980,7 +980,7 @@ export default function HomePage() {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="text-center"
             >
-              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white">
+              <div className="benefit-icon gradient-feature-1">
                 <BrainIcon className="h-10 w-10" />
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-4">
@@ -995,7 +995,7 @@ export default function HomePage() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-center"
             >
-              <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white">
+              <div className="benefit-icon gradient-feature-2">
                 <CheckCircleIcon className="h-10 w-10" />
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-4">
@@ -1032,7 +1032,7 @@ export default function HomePage() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
               >
-                <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+                <Card className="surface-white border-0 shadow-lg">
                   <CardContent className="p-8 text-center">
                     <div className="text-6xl mb-6">
                       {testimonials[currentTestimonial].avatar}
@@ -1085,7 +1085,7 @@ export default function HomePage() {
               <Link href={`/${locale}/onboarding`}>
                 <Button
                   size="lg"
-                  className="text-xl px-12 py-6 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
+                  className="text-xl px-12 py-6 gradient-feature-2 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
                 >
                   <RocketIcon className="mr-3 h-6 w-6" />
                   {t("homepage.experienceTheMagic")}

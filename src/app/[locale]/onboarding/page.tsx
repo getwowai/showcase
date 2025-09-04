@@ -169,7 +169,7 @@ const StoreConnectStep = ({
   return (
     <Card className="max-w-lg mx-auto">
       <CardHeader className="text-center">
-        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white">
+        <div className="feature-icon gradient-feature-1 rounded-full mx-auto">
           <ShoppingCartIcon className="h-8 w-8" />
         </div>
         <CardTitle className="text-xl">
@@ -229,7 +229,7 @@ const AnalysisStep = ({
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white"
+          className="feature-icon gradient-feature-2 rounded-full mx-auto"
         >
           <BrainIcon className="h-8 w-8" />
         </motion.div>
@@ -290,10 +290,10 @@ const AgentsIntroStep = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.2 }}
         >
-          <Card className="bg-white/80">
+          <Card className="surface-white">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg text-white">
+                <div className="p-2 gradient-feature-2 rounded-lg text-white">
                   {agent.icon}
                 </div>
                 <div className="flex-1">
@@ -341,7 +341,7 @@ const InsightsStep = ({
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: index * 0.3 }}
         >
-          <Card className="bg-white/80">
+          <Card className="surface-white">
             <CardContent className="p-4">
               <div className="flex items-start gap-3">
                 <div
@@ -408,7 +408,7 @@ const ChatDemoStep = ({
           {t("onboarding.chat.chatWithData")}
         </h3>
       </div>
-      <Card className="bg-white/80">
+      <Card className="surface-white">
         <CardHeader>
           <div className="flex items-center gap-2">
             <MessageCirclePlusIcon className="h-5 w-5 text-purple-600" />
@@ -485,10 +485,10 @@ const ActionsStep = ({
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: index * 0.4 }}
         >
-          <Card className="bg-white/80">
+          <Card className="surface-white">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg text-white">
+                <div className="p-2 gradient-feature-3 rounded-lg text-white">
                   <RocketIcon className="h-5 w-5" />
                 </div>
                 <div className="flex-1">
@@ -545,7 +545,7 @@ const ResultsStep = ({
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: index * 0.2 }}
         >
-          <Card className="bg-white/80 text-center">
+          <Card className="surface-white text-center">
             <CardContent className="p-6">
               <div className={`text-3xl font-bold ${metric.color} mb-2`}>
                 {metric.value}
@@ -816,9 +816,9 @@ export default function OnboardingPage() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex flex-col">
+    <div className="fixed inset-0 z-50 flex flex-col">
       {/* Modal Header */}
-      <div className="flex items-center justify-between p-4 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+      <div className="flex items-center justify-between p-4 surface-white border-b border-gray-200">
         <div className="flex items-center gap-3">
           <Link href={`/${locale}`}>
             <Button
@@ -835,7 +835,7 @@ export default function OnboardingPage() {
         <div className="flex items-center gap-2">
           <Button
             size="sm"
-            className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+            className="gradient-success"
             onClick={() =>
               window.open("https://accounts.getwow.ai/waitlist", "_blank")
             }
@@ -896,7 +896,7 @@ export default function OnboardingPage() {
       </div>
 
       {/* Bottom Navigation */}
-      <div className="bg-white/80 backdrop-blur-sm border-t border-gray-200 p-4">
+      <div className="surface-white border-t border-gray-200 p-4">
         <div className="flex justify-between items-center max-w-4xl mx-auto">
           <Button
             variant="outline"
@@ -927,7 +927,7 @@ export default function OnboardingPage() {
           {currentStep < onboardingSteps.length - 1 ? (
             <Button
               onClick={nextStep}
-              className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600"
+              className="flex items-center gap-2 gradient-feature-2"
               size="sm"
             >
               <span className="hidden sm:inline">{t("onboarding.next")}</span>
@@ -935,7 +935,7 @@ export default function OnboardingPage() {
             </Button>
           ) : (
             <Button
-              className="flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+              className="flex items-center gap-2 gradient-success"
               size="sm"
               onClick={() =>
                 window.open("https://accounts.getwow.ai/waitlist", "_blank")
@@ -957,7 +957,8 @@ export default function OnboardingPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
-          className="absolute inset-0 bg-black/50 flex items-center justify-center p-4 z-10"
+          className="absolute inset-0 flex items-center justify-center p-4 z-10"
+          style={{ background: 'var(--surface-overlay)' }}
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -975,7 +976,7 @@ export default function OnboardingPage() {
             <div className="space-y-3">
               <Button
                 size="lg"
-                className="w-full text-lg bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+                className="w-full text-lg gradient-feature-2"
                 onClick={() =>
                   window.open("https://accounts.getwow.ai/waitlist", "_blank")
                 }
