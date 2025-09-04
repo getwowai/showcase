@@ -43,25 +43,37 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   
-  /* WOW AI Brand Colors */
+  /* WOW AI Brand Colors - Core */
   --color-wow-lime: #aedf1a;
   --color-wow-blue: #86c9e5;
   --color-wow-charcoal: #4a5568;
   
-  /* Consistent Gradient Patterns */
+  /* WOW Brand Color Variations */
+  --color-wow-lime-light: color-mix(in srgb, var(--color-wow-lime) 70%, white);
+  --color-wow-lime-dark: color-mix(in srgb, var(--color-wow-lime) 80%, black);
+  --color-wow-blue-light: color-mix(in srgb, var(--color-wow-blue) 60%, white);
+  --color-wow-blue-dark: color-mix(in srgb, var(--color-wow-blue) 70%, black);
+  --color-wow-charcoal-light: color-mix(in srgb, var(--color-wow-charcoal) 60%, white);
+  --color-wow-charcoal-dark: color-mix(in srgb, var(--color-wow-charcoal) 80%, black);
+  
+  /* WOW-Brand-Only Gradient System */
   --gradient-primary: linear-gradient(to right, var(--color-wow-lime), var(--color-wow-blue));
-  --gradient-primary-hover: linear-gradient(to right, color-mix(in srgb, var(--color-wow-lime) 90%, black), color-mix(in srgb, var(--color-wow-blue) 90%, black));
+  --gradient-primary-hover: linear-gradient(to right, var(--color-wow-lime-dark), var(--color-wow-blue-dark));
   --gradient-secondary: linear-gradient(135deg, var(--color-wow-blue) 0%, var(--color-wow-blue) 50%, rgba(255, 255, 255, 0.3) 100%);
-  --gradient-feature-1: linear-gradient(to bottom right, #3b82f6, #06b6d4);
-  --gradient-feature-2: linear-gradient(to bottom right, #8b5cf6, #ec4899);
-  --gradient-feature-3: linear-gradient(to bottom right, #10b981, #059669);
-  --gradient-feature-4: linear-gradient(to bottom right, #f59e0b, #ef4444);
-  --gradient-feature-5: linear-gradient(to bottom right, #6366f1, #8b5cf6);
-  --gradient-feature-6: linear-gradient(to bottom right, #eab308, #f59e0b);
-  --gradient-success: linear-gradient(to right, #16a34a, #059669);
-  --gradient-error: linear-gradient(to right, #dc2626, #b91c1c);
-  --gradient-warning: linear-gradient(to right, #d97706, #b45309);
-  --gradient-info: linear-gradient(to right, #0891b2, #0e7490);
+  
+  /* All Feature Gradients Use WOW Colors Only */
+  --gradient-feature-1: linear-gradient(to bottom right, var(--color-wow-blue), var(--color-wow-blue-dark));
+  --gradient-feature-2: linear-gradient(to bottom right, var(--color-wow-blue-dark), var(--color-wow-charcoal));
+  --gradient-feature-3: linear-gradient(to bottom right, var(--color-wow-lime), var(--color-wow-lime-dark));
+  --gradient-feature-4: linear-gradient(to bottom right, var(--color-wow-lime-dark), var(--color-wow-charcoal));
+  --gradient-feature-5: linear-gradient(to bottom right, var(--color-wow-charcoal), var(--color-wow-charcoal-dark));
+  --gradient-feature-6: linear-gradient(to bottom right, var(--color-wow-lime-light), var(--color-wow-lime));
+  
+  /* Status Colors Using WOW Brand */
+  --gradient-success: linear-gradient(to right, var(--color-wow-lime), var(--color-wow-lime-dark));
+  --gradient-error: linear-gradient(to right, var(--color-wow-charcoal), var(--color-wow-charcoal-dark));
+  --gradient-warning: linear-gradient(to right, var(--color-wow-lime-light), var(--color-wow-lime));
+  --gradient-info: linear-gradient(to right, var(--color-wow-blue), var(--color-wow-blue-dark));
   
   /* Surface colors with transparency */
   --surface-white: rgba(255, 255, 255, 0.8);
@@ -69,69 +81,70 @@
   --surface-glass: rgba(255, 255, 255, 0.1);
   --surface-overlay: rgba(0, 0, 0, 0.5);
   
-  /* Status colors */
-  --color-success: #10b981;
-  --color-success-light: #d1fae5;
-  --color-success-bg: #dcfce7;
-  --color-success-text: #166534;
-  --color-success-border: #bbf7d0;
-  --color-error: #ef4444;
-  --color-error-light: #fee2e2;
-  --color-error-bg: #fef2f2;
-  --color-error-text: #dc2626;
-  --color-error-border: #fecaca;
-  --color-warning: #f59e0b;
-  --color-warning-light: #fef3c7;
-  --color-warning-bg: #fffbeb;
-  --color-warning-text: #d97706;
-  --color-warning-border: #fed7aa;
-  --color-info: #3b82f6;
-  --color-info-light: #dbeafe;
-  --color-info-bg: #eff6ff;
-  --color-info-text: #1d4ed8;
-  --color-info-border: #bfdbfe;
+  /* WOW Brand Status Colors */
+  --color-success: var(--color-wow-lime);
+  --color-success-light: var(--color-wow-lime-light);
+  --color-success-bg: color-mix(in srgb, var(--color-wow-lime) 15%, white);
+  --color-success-text: var(--color-wow-lime-dark);
+  --color-success-border: color-mix(in srgb, var(--color-wow-lime) 30%, white);
+  --color-error: var(--color-wow-charcoal);
+  --color-error-light: var(--color-wow-charcoal-light);
+  --color-error-bg: color-mix(in srgb, var(--color-wow-charcoal) 10%, white);
+  --color-error-text: var(--color-wow-charcoal-dark);
+  --color-error-border: color-mix(in srgb, var(--color-wow-charcoal) 25%, white);
+  --color-warning: var(--color-wow-lime-light);
+  --color-warning-light: color-mix(in srgb, var(--color-wow-lime) 20%, white);
+  --color-warning-bg: color-mix(in srgb, var(--color-wow-lime) 8%, white);
+  --color-warning-text: var(--color-wow-lime-dark);
+  --color-warning-border: color-mix(in srgb, var(--color-wow-lime) 25%, white);
+  --color-info: var(--color-wow-blue);
+  --color-info-light: var(--color-wow-blue-light);
+  --color-info-bg: color-mix(in srgb, var(--color-wow-blue) 15%, white);
+  --color-info-text: var(--color-wow-blue-dark);
+  --color-info-border: color-mix(in srgb, var(--color-wow-blue) 30%, white);
   
-  /* Content colors */
-  --color-purple-50: #faf5ff;
-  --color-purple-100: #f3e8ff;
-  --color-purple-200: #e9d5ff;
-  --color-purple-500: #a855f7;
-  --color-purple-600: #9333ea;
-  --color-purple-700: #7c3aed;
-  --color-red-50: #fef2f2;
-  --color-red-100: #fee2e2;
-  --color-red-200: #fecaca;
-  --color-red-600: #dc2626;
-  --color-red-700: #b91c1c;
-  --color-red-800: #991b1b;
-  --color-blue-50: #eff6ff;
-  --color-blue-100: #dbeafe;
-  --color-blue-200: #bfdbfe;
-  --color-blue-500: #3b82f6;
-  --color-blue-600: #2563eb;
-  --color-blue-700: #1d4ed8;
-  --color-blue-800: #1e40af;
-  --color-green-50: #f0fdf4;
-  --color-green-100: #dcfce7;
-  --color-green-500: #22c55e;
-  --color-green-600: #16a34a;
-  --color-green-800: #166534;
-  --color-yellow-50: #fefce8;
-  --color-yellow-100: #fef3c7;
-  --color-yellow-200: #fed7aa;
-  --color-yellow-600: #ca8a04;
-  --color-orange-50: #fff7ed;
-  --color-orange-600: #ea580c;
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #111827;
+  /* WOW Brand Content Colors - All Based on Brand Palette */
+  /* Light tints for backgrounds */
+  --color-purple-50: color-mix(in srgb, var(--color-wow-blue) 8%, white);
+  --color-purple-100: color-mix(in srgb, var(--color-wow-blue) 15%, white);
+  --color-purple-200: color-mix(in srgb, var(--color-wow-blue) 25%, white);
+  --color-purple-500: var(--color-wow-blue-dark);
+  --color-purple-600: var(--color-wow-charcoal);
+  --color-purple-700: var(--color-wow-charcoal-dark);
+  --color-red-50: color-mix(in srgb, var(--color-wow-charcoal) 8%, white);
+  --color-red-100: color-mix(in srgb, var(--color-wow-charcoal) 15%, white);
+  --color-red-200: color-mix(in srgb, var(--color-wow-charcoal) 25%, white);
+  --color-red-600: var(--color-wow-charcoal);
+  --color-red-700: var(--color-wow-charcoal-dark);
+  --color-red-800: var(--color-wow-charcoal-dark);
+  --color-blue-50: color-mix(in srgb, var(--color-wow-blue) 10%, white);
+  --color-blue-100: color-mix(in srgb, var(--color-wow-blue) 20%, white);
+  --color-blue-200: color-mix(in srgb, var(--color-wow-blue) 35%, white);
+  --color-blue-500: var(--color-wow-blue);
+  --color-blue-600: var(--color-wow-blue-dark);
+  --color-blue-700: var(--color-wow-blue-dark);
+  --color-blue-800: var(--color-wow-charcoal);
+  --color-green-50: color-mix(in srgb, var(--color-wow-lime) 8%, white);
+  --color-green-100: color-mix(in srgb, var(--color-wow-lime) 15%, white);
+  --color-green-500: var(--color-wow-lime);
+  --color-green-600: var(--color-wow-lime-dark);
+  --color-green-800: var(--color-wow-lime-dark);
+  --color-yellow-50: color-mix(in srgb, var(--color-wow-lime) 5%, white);
+  --color-yellow-100: color-mix(in srgb, var(--color-wow-lime) 12%, white);
+  --color-yellow-200: color-mix(in srgb, var(--color-wow-lime) 20%, white);
+  --color-yellow-600: var(--color-wow-lime-dark);
+  --color-orange-50: color-mix(in srgb, var(--color-wow-lime) 6%, white);
+  --color-orange-600: color-mix(in srgb, var(--color-wow-lime) 70%, var(--color-wow-charcoal));
+  --color-gray-50: color-mix(in srgb, var(--color-wow-charcoal) 3%, white);
+  --color-gray-100: color-mix(in srgb, var(--color-wow-charcoal) 6%, white);
+  --color-gray-200: color-mix(in srgb, var(--color-wow-charcoal) 12%, white);
+  --color-gray-300: color-mix(in srgb, var(--color-wow-charcoal) 20%, white);
+  --color-gray-400: color-mix(in srgb, var(--color-wow-charcoal) 40%, white);
+  --color-gray-500: color-mix(in srgb, var(--color-wow-charcoal) 60%, white);
+  --color-gray-600: var(--color-wow-charcoal);
+  --color-gray-700: var(--color-wow-charcoal-light);
+  --color-gray-800: var(--color-wow-charcoal-dark);
+  --color-gray-900: var(--color-wow-charcoal-dark);
 }
 
 :root {
