@@ -286,49 +286,42 @@ export default function HomePage() {
       role: t("testimonials.sarahChen.role"),
       company: t("testimonials.sarahChen.company"),
       quote: t("testimonials.sarahChen.quote"),
-      avatar: "👩‍💼",
     },
     {
       name: t("testimonials.marcusRodriguez.name"),
       role: t("testimonials.marcusRodriguez.role"),
       company: t("testimonials.marcusRodriguez.company"),
       quote: t("testimonials.marcusRodriguez.quote"),
-      avatar: "👨‍💻",
     },
     {
       name: t("testimonials.emilyDavis.name"),
       role: t("testimonials.emilyDavis.role"),
       company: t("testimonials.emilyDavis.company"),
       quote: t("testimonials.emilyDavis.quote"),
-      avatar: "👩‍🔬",
     },
     {
       name: t("testimonials.alexThompson.name"),
       role: t("testimonials.alexThompson.role"),
       company: t("testimonials.alexThompson.company"),
       quote: t("testimonials.alexThompson.quote"),
-      avatar: "👨‍💼",
     },
     {
       name: t("testimonials.jessicaWang.name"),
       role: t("testimonials.jessicaWang.role"),
       company: t("testimonials.jessicaWang.company"),
       quote: t("testimonials.jessicaWang.quote"),
-      avatar: "👩‍💼",
     },
     {
       name: t("testimonials.davidKim.name"),
       role: t("testimonials.davidKim.role"),
       company: t("testimonials.davidKim.company"),
       quote: t("testimonials.davidKim.quote"),
-      avatar: "👨‍💻",
     },
     {
       name: t("testimonials.lisaMartinez.name"),
       role: t("testimonials.lisaMartinez.role"),
       company: t("testimonials.lisaMartinez.company"),
       quote: t("testimonials.lisaMartinez.quote"),
-      avatar: "👩‍💼",
     },
   ];
 
@@ -367,7 +360,7 @@ export default function HomePage() {
                   <div
                     className={`max-w-[80%] p-3 rounded-lg ${
                       msg.type === "user"
-                        ? "bg-[#aedf1a] text-white"
+                        ? "bg-[#4a5568] text-[#aedf1a]"
                         : "bg-white border shadow-sm"
                     }`}
                   >
@@ -423,7 +416,7 @@ export default function HomePage() {
                     <Badge className="bg-red-100 text-red-800">
                       {demo.insight.priority}
                     </Badge>
-                    <Badge className="bg-green-100 text-green-800">
+                    <Badge className="bg-[#4a5568] text-[#aedf1a]">
                       {demo.insight.impact}
                     </Badge>
                   </div>
@@ -526,7 +519,7 @@ export default function HomePage() {
                   className={`p-3 rounded-lg border ${
                     alert.urgent
                       ? "bg-red-50 border-red-200"
-                      : "bg-yellow-50 border-yellow-200"
+                      : "bg-[#86c9e5]/5 border-[#86c9e5]/20"
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -542,7 +535,7 @@ export default function HomePage() {
                       className={
                         alert.urgent
                           ? "bg-red-100 text-red-800"
-                          : "bg-yellow-100 text-yellow-800"
+                          : "bg-[#86c9e5]/15 text-[#4a5568]"
                       }
                     >
                       {alert.action}
@@ -607,7 +600,7 @@ export default function HomePage() {
                         {opp.impact}
                       </div>
                     </div>
-                    <Badge className="bg-green-100 text-green-800">
+                    <Badge className="bg-[#4a5568] text-[#aedf1a]">
                       {opp.confidence}
                     </Badge>
                   </div>
@@ -1031,11 +1024,8 @@ export default function HomePage() {
                 transition={{ duration: 0.5 }}
               >
                 <Card className="surface-white border-0 shadow-lg">
-                  <CardContent className="p-8 text-center">
-                    <div className="text-6xl mb-6">
-                      {testimonials[currentTestimonial].avatar}
-                    </div>
-                    <p className="text-xl text-gray-700 mb-6 italic leading-relaxed">
+                  <CardContent className="p-6 text-center">
+                    <p className="text-xl text-gray-700 mb-4 italic leading-relaxed">
                       &ldquo;{testimonials[currentTestimonial].quote}&rdquo;
                     </p>
                     <div className="text-lg text-gray-600 font-medium">

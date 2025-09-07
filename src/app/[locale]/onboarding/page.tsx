@@ -247,7 +247,7 @@ const AnalysisStep = ({
               className="flex items-center gap-3"
             >
               {index < currentItem ? (
-                <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                <CheckCircleIcon className="h-5 w-5 text-[#aedf1a]" />
               ) : index === currentItem ? (
                 <div className="w-5 h-5 border-2 border-[#aedf1a] border-t-transparent rounded-full animate-spin" />
               ) : (
@@ -303,13 +303,13 @@ const AgentsIntroStep = ({
                   <div className="flex items-center gap-2">
                     <Badge
                       variant="secondary"
-                      className="text-xs bg-green-100 text-green-800"
+                      className="text-xs bg-[#4a5568] text-[#aedf1a]"
                     >
                       {agent.status}
                     </Badge>
                   </div>
                 </div>
-                <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                <CheckCircleIcon className="h-5 w-5 text-[#aedf1a]" />
               </div>
             </CardContent>
           </Card>
@@ -350,7 +350,7 @@ const InsightsStep = ({
                       ? "bg-red-100 text-red-600"
                       : insight.urgency === "medium" ||
                           insight.urgency === "متوسطة"
-                        ? "bg-yellow-100 text-yellow-600"
+                        ? "bg-[#86c9e5]/10 text-[#4a5568]"
                         : "bg-blue-100 text-blue-600"
                   }`}
                 >
@@ -435,7 +435,7 @@ const ChatDemoStep = ({
                   <div
                     className={`max-w-[80%] p-3 rounded-lg ${
                       message.type === "user"
-                        ? "bg-[#aedf1a] text-white ml-4"
+                        ? "bg-[#4a5568] text-[#aedf1a] ml-4"
                         : "bg-gray-100 text-gray-800 mr-4"
                     }`}
                   >
