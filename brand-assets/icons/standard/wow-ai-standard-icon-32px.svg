@@ -1,0 +1,18 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define simplified flower for small sizes -->
+  <defs>
+    <g id="smallFlower">
+      <circle cx="0" cy="-6" r="3" fill="#aedf1a" opacity="0.8"/>
+      <circle cx="5" cy="-3" r="3" fill="#86c9e5" opacity="0.7"/>
+      <circle cx="5" cy="3" r="3" fill="#aedf1a" opacity="0.8"/>
+      <circle cx="0" cy="6" r="3" fill="#86c9e5" opacity="0.7"/>
+      <circle cx="-5" cy="3" r="3" fill="#aedf1a" opacity="0.8"/>
+      <circle cx="-5" cy="-3" r="3" fill="#86c9e5" opacity="0.7"/>
+      <circle cx="0" cy="0" r="5" fill="#aedf1a" opacity="0.9"/>
+    </g>
+  </defs>
+  
+  <!-- Standard Icon 32px - UI elements, toolbar buttons -->
+  <rect width="32" height="32" fill="#f0f0f0" stroke="#ccc" stroke-width="1" rx="6"/>
+  <use href="#smallFlower" transform="translate(16, 16) scale(0.8)"/>
+</svg>

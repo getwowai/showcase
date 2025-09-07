@@ -1,0 +1,19 @@
+<svg viewBox="0 0 50 20" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define simplified flower for small sizes -->
+  <defs>
+    <g id="smallFlower">
+      <circle cx="0" cy="-6" r="3" fill="#aedf1a" opacity="0.8"/>
+      <circle cx="5" cy="-3" r="3" fill="#86c9e5" opacity="0.7"/>
+      <circle cx="5" cy="3" r="3" fill="#aedf1a" opacity="0.8"/>
+      <circle cx="0" cy="6" r="3" fill="#86c9e5" opacity="0.7"/>
+      <circle cx="-5" cy="3" r="3" fill="#aedf1a" opacity="0.8"/>
+      <circle cx="-5" cy="-3" r="3" fill="#86c9e5" opacity="0.7"/>
+      <circle cx="0" cy="0" r="5" fill="#aedf1a" opacity="0.9"/>
+    </g>
+  </defs>
+  
+  <!-- Small Size (50px width) - Footer, mobile nav -->
+  <use href="#smallFlower" transform="translate(10, 10)"/>
+  <text x="17" y="15" font-family="Arial, sans-serif" font-size="12" font-weight="900" fill="#4a5568" letter-spacing="-0.6px">WOW</text>
+  <text x="43" y="15" font-family="Arial, sans-serif" font-size="12" font-weight="900" fill="#86c9e5">AI</text>
+</svg>

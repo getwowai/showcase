@@ -48,32 +48,39 @@
   --color-wow-blue: #86c9e5;
   --color-wow-charcoal: #4a5568;
   
-  /* WOW Brand Color Variations */
-  --color-wow-lime-light: color-mix(in srgb, var(--color-wow-lime) 70%, white);
-  --color-wow-lime-dark: color-mix(in srgb, var(--color-wow-lime) 80%, black);
-  --color-wow-blue-light: color-mix(in srgb, var(--color-wow-blue) 60%, white);
-  --color-wow-blue-dark: color-mix(in srgb, var(--color-wow-blue) 70%, black);
-  --color-wow-charcoal-light: color-mix(in srgb, var(--color-wow-charcoal) 60%, white);
-  --color-wow-charcoal-dark: color-mix(in srgb, var(--color-wow-charcoal) 80%, black);
+  /* Modern Designer Color Variations */
+  --color-wow-lime-subtle: color-mix(in srgb, var(--color-wow-lime) 12%, white);
+  --color-wow-lime-soft: color-mix(in srgb, var(--color-wow-lime) 25%, white);
+  --color-wow-lime-medium: color-mix(in srgb, var(--color-wow-lime) 85%, white);
+  --color-wow-lime-vivid: color-mix(in srgb, var(--color-wow-lime) 95%, #2d3748);
+  --color-wow-blue-subtle: color-mix(in srgb, var(--color-wow-blue) 15%, white);
+  --color-wow-blue-soft: color-mix(in srgb, var(--color-wow-blue) 35%, white);
+  --color-wow-blue-medium: var(--color-wow-blue);
+  --color-wow-blue-deep: color-mix(in srgb, var(--color-wow-blue) 80%, #1a202c);
+  --color-wow-charcoal-subtle: color-mix(in srgb, var(--color-wow-charcoal) 8%, white);
+  --color-wow-charcoal-soft: color-mix(in srgb, var(--color-wow-charcoal) 25%, white);
+  --color-wow-charcoal-medium: var(--color-wow-charcoal);
+  --color-wow-charcoal-deep: color-mix(in srgb, var(--color-wow-charcoal) 85%, black);
   
-  /* WOW-Brand-Only Gradient System */
-  --gradient-primary: linear-gradient(to right, var(--color-wow-lime), var(--color-wow-blue));
-  --gradient-primary-hover: linear-gradient(to right, var(--color-wow-lime-dark), var(--color-wow-blue-dark));
-  --gradient-secondary: linear-gradient(135deg, var(--color-wow-blue) 0%, var(--color-wow-blue) 50%, rgba(255, 255, 255, 0.3) 100%);
+  /* Modern Sophisticated Gradient System */
+  --gradient-hero: linear-gradient(135deg, var(--color-wow-blue-subtle) 0%, rgba(255, 255, 255, 0.95) 50%, var(--color-wow-lime-subtle) 100%);
+  --gradient-primary: linear-gradient(135deg, var(--color-wow-lime) 0%, var(--color-wow-blue-medium) 100%);
+  --gradient-primary-hover: linear-gradient(135deg, var(--color-wow-lime-vivid) 0%, var(--color-wow-blue-deep) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--color-wow-blue-soft) 0%, rgba(255, 255, 255, 0.9) 100%);
   
-  /* All Feature Gradients Use WOW Colors Only */
-  --gradient-feature-1: linear-gradient(to bottom right, var(--color-wow-blue), var(--color-wow-blue-dark));
-  --gradient-feature-2: linear-gradient(to bottom right, var(--color-wow-blue-dark), var(--color-wow-charcoal));
-  --gradient-feature-3: linear-gradient(to bottom right, var(--color-wow-lime), var(--color-wow-lime-dark));
-  --gradient-feature-4: linear-gradient(to bottom right, var(--color-wow-lime-dark), var(--color-wow-charcoal));
-  --gradient-feature-5: linear-gradient(to bottom right, var(--color-wow-charcoal), var(--color-wow-charcoal-dark));
-  --gradient-feature-6: linear-gradient(to bottom right, var(--color-wow-lime-light), var(--color-wow-lime));
+  /* Feature Gradients - Modern & Sophisticated */
+  --gradient-feature-1: linear-gradient(135deg, var(--color-wow-blue-medium) 0%, var(--color-wow-blue-deep) 100%);
+  --gradient-feature-2: linear-gradient(135deg, var(--color-wow-lime-vivid) 0%, var(--color-wow-charcoal-medium) 100%);
+  --gradient-feature-3: linear-gradient(135deg, var(--color-wow-lime) 0%, var(--color-wow-lime-vivid) 100%);
+  --gradient-feature-4: linear-gradient(135deg, var(--color-wow-charcoal-medium) 0%, var(--color-wow-charcoal-deep) 100%);
+  --gradient-feature-5: linear-gradient(135deg, var(--color-wow-blue-deep) 0%, var(--color-wow-charcoal-deep) 100%);
+  --gradient-feature-6: linear-gradient(135deg, var(--color-wow-lime-medium) 0%, var(--color-wow-lime) 100%);
   
-  /* Status Colors Using WOW Brand */
-  --gradient-success: linear-gradient(to right, var(--color-wow-lime), var(--color-wow-lime-dark));
-  --gradient-error: linear-gradient(to right, var(--color-wow-charcoal), var(--color-wow-charcoal-dark));
-  --gradient-warning: linear-gradient(to right, var(--color-wow-lime-light), var(--color-wow-lime));
-  --gradient-info: linear-gradient(to right, var(--color-wow-blue), var(--color-wow-blue-dark));
+  /* Status Gradients - Clean & Professional */
+  --gradient-success: linear-gradient(135deg, var(--color-wow-lime) 0%, var(--color-wow-lime-vivid) 100%);
+  --gradient-error: linear-gradient(135deg, var(--color-wow-charcoal-medium) 0%, var(--color-wow-charcoal-deep) 100%);
+  --gradient-warning: linear-gradient(135deg, var(--color-wow-lime-medium) 0%, var(--color-wow-lime) 100%);
+  --gradient-info: linear-gradient(135deg, var(--color-wow-blue-medium) 0%, var(--color-wow-blue-deep) 100%);
   
   /* Surface colors with transparency */
   --surface-white: rgba(255, 255, 255, 0.8);
@@ -81,70 +88,69 @@
   --surface-glass: rgba(255, 255, 255, 0.1);
   --surface-overlay: rgba(0, 0, 0, 0.5);
   
-  /* WOW Brand Status Colors */
+  /* Modern Status Colors - Sophisticated & Accessible */
   --color-success: var(--color-wow-lime);
-  --color-success-light: var(--color-wow-lime-light);
-  --color-success-bg: color-mix(in srgb, var(--color-wow-lime) 15%, white);
-  --color-success-text: var(--color-wow-lime-dark);
-  --color-success-border: color-mix(in srgb, var(--color-wow-lime) 30%, white);
-  --color-error: var(--color-wow-charcoal);
-  --color-error-light: var(--color-wow-charcoal-light);
-  --color-error-bg: color-mix(in srgb, var(--color-wow-charcoal) 10%, white);
-  --color-error-text: var(--color-wow-charcoal-dark);
-  --color-error-border: color-mix(in srgb, var(--color-wow-charcoal) 25%, white);
-  --color-warning: var(--color-wow-lime-light);
-  --color-warning-light: color-mix(in srgb, var(--color-wow-lime) 20%, white);
-  --color-warning-bg: color-mix(in srgb, var(--color-wow-lime) 8%, white);
-  --color-warning-text: var(--color-wow-lime-dark);
-  --color-warning-border: color-mix(in srgb, var(--color-wow-lime) 25%, white);
-  --color-info: var(--color-wow-blue);
-  --color-info-light: var(--color-wow-blue-light);
-  --color-info-bg: color-mix(in srgb, var(--color-wow-blue) 15%, white);
-  --color-info-text: var(--color-wow-blue-dark);
-  --color-info-border: color-mix(in srgb, var(--color-wow-blue) 30%, white);
+  --color-success-light: var(--color-wow-lime-soft);
+  --color-success-bg: var(--color-wow-lime-subtle);
+  --color-success-text: var(--color-wow-lime-vivid);
+  --color-success-border: var(--color-wow-lime-soft);
+  --color-error: var(--color-wow-charcoal-medium);
+  --color-error-light: var(--color-wow-charcoal-soft);
+  --color-error-bg: var(--color-wow-charcoal-subtle);
+  --color-error-text: var(--color-wow-charcoal-deep);
+  --color-error-border: var(--color-wow-charcoal-soft);
+  --color-warning: var(--color-wow-lime-medium);
+  --color-warning-light: var(--color-wow-lime-soft);
+  --color-warning-bg: var(--color-wow-lime-subtle);
+  --color-warning-text: var(--color-wow-lime-vivid);
+  --color-warning-border: var(--color-wow-lime-soft);
+  --color-info: var(--color-wow-blue-medium);
+  --color-info-light: var(--color-wow-blue-soft);
+  --color-info-bg: var(--color-wow-blue-subtle);
+  --color-info-text: var(--color-wow-blue-deep);
+  --color-info-border: var(--color-wow-blue-soft);
   
-  /* WOW Brand Content Colors - All Based on Brand Palette */
-  /* Light tints for backgrounds */
-  --color-purple-50: color-mix(in srgb, var(--color-wow-blue) 8%, white);
-  --color-purple-100: color-mix(in srgb, var(--color-wow-blue) 15%, white);
-  --color-purple-200: color-mix(in srgb, var(--color-wow-blue) 25%, white);
-  --color-purple-500: var(--color-wow-blue-dark);
-  --color-purple-600: var(--color-wow-charcoal);
-  --color-purple-700: var(--color-wow-charcoal-dark);
-  --color-red-50: color-mix(in srgb, var(--color-wow-charcoal) 8%, white);
-  --color-red-100: color-mix(in srgb, var(--color-wow-charcoal) 15%, white);
-  --color-red-200: color-mix(in srgb, var(--color-wow-charcoal) 25%, white);
-  --color-red-600: var(--color-wow-charcoal);
-  --color-red-700: var(--color-wow-charcoal-dark);
-  --color-red-800: var(--color-wow-charcoal-dark);
-  --color-blue-50: color-mix(in srgb, var(--color-wow-blue) 10%, white);
-  --color-blue-100: color-mix(in srgb, var(--color-wow-blue) 20%, white);
-  --color-blue-200: color-mix(in srgb, var(--color-wow-blue) 35%, white);
-  --color-blue-500: var(--color-wow-blue);
-  --color-blue-600: var(--color-wow-blue-dark);
-  --color-blue-700: var(--color-wow-blue-dark);
-  --color-blue-800: var(--color-wow-charcoal);
-  --color-green-50: color-mix(in srgb, var(--color-wow-lime) 8%, white);
-  --color-green-100: color-mix(in srgb, var(--color-wow-lime) 15%, white);
+  /* Sophisticated Content Colors - Modern Design System */
+  --color-purple-50: var(--color-wow-blue-subtle);
+  --color-purple-100: var(--color-wow-blue-soft);
+  --color-purple-200: var(--color-wow-blue-soft);
+  --color-purple-500: var(--color-wow-blue-medium);
+  --color-purple-600: var(--color-wow-blue-deep);
+  --color-purple-700: var(--color-wow-charcoal-medium);
+  --color-red-50: var(--color-wow-charcoal-subtle);
+  --color-red-100: var(--color-wow-charcoal-soft);
+  --color-red-200: var(--color-wow-charcoal-soft);
+  --color-red-600: var(--color-wow-charcoal-medium);
+  --color-red-700: var(--color-wow-charcoal-deep);
+  --color-red-800: var(--color-wow-charcoal-deep);
+  --color-blue-50: var(--color-wow-blue-subtle);
+  --color-blue-100: var(--color-wow-blue-soft);
+  --color-blue-200: var(--color-wow-blue-soft);
+  --color-blue-500: var(--color-wow-blue-medium);
+  --color-blue-600: var(--color-wow-blue-deep);
+  --color-blue-700: var(--color-wow-blue-deep);
+  --color-blue-800: var(--color-wow-charcoal-medium);
+  --color-green-50: var(--color-wow-lime-subtle);
+  --color-green-100: var(--color-wow-lime-soft);
   --color-green-500: var(--color-wow-lime);
-  --color-green-600: var(--color-wow-lime-dark);
-  --color-green-800: var(--color-wow-lime-dark);
-  --color-yellow-50: color-mix(in srgb, var(--color-wow-lime) 5%, white);
-  --color-yellow-100: color-mix(in srgb, var(--color-wow-lime) 12%, white);
-  --color-yellow-200: color-mix(in srgb, var(--color-wow-lime) 20%, white);
-  --color-yellow-600: var(--color-wow-lime-dark);
-  --color-orange-50: color-mix(in srgb, var(--color-wow-lime) 6%, white);
-  --color-orange-600: color-mix(in srgb, var(--color-wow-lime) 70%, var(--color-wow-charcoal));
-  --color-gray-50: color-mix(in srgb, var(--color-wow-charcoal) 3%, white);
-  --color-gray-100: color-mix(in srgb, var(--color-wow-charcoal) 6%, white);
-  --color-gray-200: color-mix(in srgb, var(--color-wow-charcoal) 12%, white);
-  --color-gray-300: color-mix(in srgb, var(--color-wow-charcoal) 20%, white);
-  --color-gray-400: color-mix(in srgb, var(--color-wow-charcoal) 40%, white);
-  --color-gray-500: color-mix(in srgb, var(--color-wow-charcoal) 60%, white);
-  --color-gray-600: var(--color-wow-charcoal);
-  --color-gray-700: var(--color-wow-charcoal-light);
-  --color-gray-800: var(--color-wow-charcoal-dark);
-  --color-gray-900: var(--color-wow-charcoal-dark);
+  --color-green-600: var(--color-wow-lime-vivid);
+  --color-green-800: var(--color-wow-lime-vivid);
+  --color-yellow-50: var(--color-wow-lime-subtle);
+  --color-yellow-100: var(--color-wow-lime-soft);
+  --color-yellow-200: var(--color-wow-lime-soft);
+  --color-yellow-600: var(--color-wow-lime-medium);
+  --color-orange-50: var(--color-wow-lime-subtle);
+  --color-orange-600: var(--color-wow-lime-vivid);
+  --color-gray-50: rgba(255, 255, 255, 0.95);
+  --color-gray-100: rgba(255, 255, 255, 0.85);
+  --color-gray-200: var(--color-wow-charcoal-subtle);
+  --color-gray-300: var(--color-wow-charcoal-soft);
+  --color-gray-400: var(--color-wow-charcoal-soft);
+  --color-gray-500: var(--color-wow-charcoal-medium);
+  --color-gray-600: var(--color-wow-charcoal-medium);
+  --color-gray-700: var(--color-wow-charcoal-medium);
+  --color-gray-800: var(--color-wow-charcoal-deep);
+  --color-gray-900: var(--color-wow-charcoal-deep);
 }
 
 :root {
@@ -226,9 +232,9 @@
     @apply bg-background text-foreground;
   }
   
-  /* Global background override for wow-blue theme */
+  /* Modern sophisticated background */
   html {
-    background: var(--gradient-secondary);
+    background: var(--gradient-hero);
     min-height: 100vh;
   }
 
@@ -311,19 +317,38 @@
   .gradient-feature-5 { background: var(--gradient-feature-5); }
   .gradient-feature-6 { background: var(--gradient-feature-6); }
   
+  /* Modern Glassmorphism Effects */
   .surface-glass {
-    background: var(--surface-glass);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
   
   .surface-white {
-    background: var(--surface-white);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
   }
   
   .surface-white-strong {
-    background: var(--surface-white-strong);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  
+  /* Modern Card Styles */
+  .card-modern {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-glass {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   }
   
   .feature-icon {

@@ -845,9 +845,7 @@ export default function HomePage() {
               >
                 <Card className="h-full surface-white border-0 shadow-lg hover:shadow-xl transition-all">
                   <CardHeader>
-                    <div
-                      className={`feature-icon ${feature.color}`}
-                    >
+                    <div className={`feature-icon ${feature.color}`}>
                       {feature.icon}
                     </div>
                     <CardTitle className="text-xl font-bold text-gray-800">

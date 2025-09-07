@@ -1,0 +1,16 @@
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define micro flower for tiny sizes -->
+  <defs>
+    <g id="microFlower">
+      <circle cx="0" cy="0" r="4" fill="#aedf1a" opacity="0.9"/>
+      <circle cx="0" cy="-3" r="2" fill="#86c9e5" opacity="0.8"/>
+      <circle cx="3" cy="0" r="2" fill="#86c9e5" opacity="0.8"/>
+      <circle cx="0" cy="3" r="2" fill="#86c9e5" opacity="0.8"/>
+      <circle cx="-3" cy="0" r="2" fill="#86c9e5" opacity="0.8"/>
+    </g>
+  </defs>
+  
+  <!-- Favicon 16px - Browser tab, bookmarks -->
+  <rect width="16" height="16" fill="#aedf1a" rx="3"/>
+  <use href="#microFlower" transform="translate(8, 8) scale(0.6)"/>
+</svg>

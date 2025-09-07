@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WOW AI Brand Assets Preview</title>
+    <style>
+        :root {
+            --wow-lime-green: #aedf1a;
+            --wow-sky-blue: #86c9e5;
+            --wow-charcoal: #4a5568;
+            --wow-bg-light: #fafafa;
+            --wow-border-light: #e0e0e0;
+            --wow-text-primary: #4a5568;
+            --wow-text-secondary: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--wow-bg-light);
+            color: var(--wow-text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: var(--wow-charcoal);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--wow-sky-blue);
+            margin: 30px 0 15px 0;
+            border-bottom: 2px solid var(--wow-sky-blue);
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            color: var(--wow-charcoal);
+            margin: 20px 0 10px 0;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .logo-item {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid var(--wow-border-light);
+            border-radius: 8px;
+            background: white;
+        }
+
+        .logo-item img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+
+        .logo-item h4 {
+            color: var(--wow-sky-blue);
+            margin-bottom: 5px;
+        }
+
+        .logo-item p {
+            color: var(--wow-text-secondary);
+            font-size: 14px;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .color-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 8px;
+            background: white;
+            border: 1px solid var(--wow-border-light);
+        }
+
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .color-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .color-info p {
+            font-size: 12px;
+            color: var(--wow-text-secondary);
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .icon-item {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid var(--wow-border-light);
+            border-radius: 8px;
+            background: white;
+        }
+
+        .icon-item img {
+            width: 64px;
+            height: 64px;
+            margin: 10px 0;
+        }
+
+        .usage-guidelines {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--wow-lime-green);
+        }
+
+        .do-dont {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .do, .dont {
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .do {
+            background: #e8f5e8;
+            border-left: 4px solid var(--wow-lime-green);
+        }
+
+        .dont {
+            background: #ffeaea;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .do h4, .dont h4 {
+            margin-bottom: 10px;
+        }
+
+        .do h4 {
+            color: var(--wow-lime-green);
+        }
+
+        .dont h4 {
+            color: #ff6b6b;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .do li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+
+        .dont li::before {
+            content: "❌";
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WOW AI Brand Assets Preview</h1>
+        
+        <div class="section">
+            <h2>Primary Logos</h2>
+            <div class="logo-grid">
+                <div class="logo-item">
+                    <h4>Primary Logo (Balanced Unity)</h4>
+                    <img src="logos/primary/wow-ai-primary-logo.svg" alt="WOW AI Primary Logo">
+                    <p>Main brand logo for 90% of applications</p>
+                </div>
+                <div class="logo-item">
+                    <h4>Secondary Logo (Enhanced Big .AI)</h4>
+                    <img src="logos/secondary/wow-ai-secondary-logo.svg" alt="WOW AI Secondary Logo">
+                    <p>AI-focused version for tech contexts</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Logo Sizes</h2>
+            <div class="logo-grid">
+                <div class="logo-item">
+                    <h4>Hero (200px)</h4>
+                    <img src="logos/sizes/wow-ai-hero-200px.svg" alt="WOW AI Hero Logo">
+                    <p>Homepage headers, hero sections</p>
+                </div>
+                <div class="logo-item">
+                    <h4>Header (120px)</h4>
+                    <img src="logos/sizes/wow-ai-header-120px.svg" alt="WOW AI Header Logo">
+                    <p>Navigation, page headers</p>
+                </div>
+                <div class="logo-item">
+                    <h4>Standard (80px)</h4>
+                    <img src="logos/sizes/wow-ai-standard-80px.svg" alt="WOW AI Standard Logo">
+                    <p>Content areas, sidebars, cards</p>
+                </div>
+                <div class="logo-item">
+                    <h4>Small (50px)</h4>
+                    <img src="logos/sizes/wow-ai-small-50px.svg" alt="WOW AI Small Logo">
+                    <p>Footer, mobile navigation</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Icon System</h2>
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <h4>App Icon (64px)</h4>
+                    <img src="icons/app/wow-ai-app-icon-64px.svg" alt="WOW AI App Icon">
+                    <p>iOS/Android apps, social media</p>
+                </div>
+                <div class="icon-item">
+                    <h4>Standard Icon (32px)</h4>
+                    <img src="icons/standard/wow-ai-standard-icon-32px.svg" alt="WOW AI Standard Icon">
+                    <p>UI elements, toolbar buttons</p>
+                </div>
+                <div class="icon-item">
+                    <h4>Favicon (16px)</h4>
+                    <img src="icons/favicon/wow-ai-favicon-16px.svg" alt="WOW AI Favicon">
+                    <p>Browser tab, bookmarks</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Color Palette</h2>
+            <div class="color-palette">
+                <div class="color-item">
+                    <div class="color-swatch" style="background-color: #aedf1a;"></div>
+                    <div class="color-info">
+                        <h4>Lime Green (Primary)</h4>
+                        <p>#aedf1a</p>
+                    </div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background-color: #86c9e5;"></div>
+                    <div class="color-info">
+                        <h4>Sky Blue (Secondary)</h4>
+                        <p>#86c9e5</p>
+                    </div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background-color: #4a5568;"></div>
+                    <div class="color-info">
+                        <h4>Soft Charcoal (Text)</h4>
+                        <p>#4a5568</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Usage Guidelines</h2>
+            <div class="do-dont">
+                <div class="do">
+                    <h4>DO</h4>
+                    <ul>
+                        <li>Use Primary Logo for 90% of applications</li>
+                        <li>Maintain minimum 20px clear space around logo</li>
+                        <li>Use simplified icons below 50px width</li>
+                        <li>Preserve original proportions and colors</li>
+                    </ul>
+                </div>
+                <div class="dont">
+                    <h4>DON'T</h4>
+                    <ul>
+                        <li>Stretch or distort proportions</li>
+                        <li>Change colors without approval</li>
+                        <li>Use detailed flower below 32px</li>
+                        <li>Add effects like shadows or gradients</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Quick Reference</h2>
+            <div class="usage-guidelines">
+                <h3>File Locations</h3>
+                <ul>
+                    <li><strong>Primary Logo:</strong> <code>logos/primary/wow-ai-primary-logo.svg</code></li>
+                    <li><strong>Header Logo:</strong> <code>logos/sizes/wow-ai-header-120px.svg</code></li>
+                    <li><strong>Favicon:</strong> <code>icons/favicon/wow-ai-favicon-16px.svg</code></li>
+                    <li><strong>App Icon:</strong> <code>icons/app/wow-ai-app-icon-64px.svg</code></li>
+                </ul>
+                
+                <h3>Documentation</h3>
+                <ul>
+                    <li><strong>Brand Guidelines:</strong> <code>guidelines/BRAND_GUIDELINES.md</code></li>
+                    <li><strong>Color Palette:</strong> <code>guidelines/COLOR_PALETTE.md</code></li>
+                    <li><strong>Asset Index:</strong> <code>ASSET_INDEX.md</code></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
