@@ -169,7 +169,7 @@ const StoreConnectStep = ({
   return (
     <Card className="max-w-lg mx-auto">
       <CardHeader className="text-center">
-        <div className="feature-icon gradient-feature-1 rounded-full mx-auto">
+        <div className="feature-icon bg-[#86c9e5] rounded-full mx-auto">
           <ShoppingCartIcon className="h-8 w-8" />
         </div>
         <CardTitle className="text-xl">
@@ -229,7 +229,7 @@ const AnalysisStep = ({
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          className="feature-icon gradient-feature-2 rounded-full mx-auto"
+          className="feature-icon bg-[#aedf1a] rounded-full mx-auto"
         >
           <BrainIcon className="h-8 w-8" />
         </motion.div>
@@ -293,7 +293,7 @@ const AgentsIntroStep = ({
           <Card className="surface-white">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-2 gradient-feature-2 rounded-lg text-white">
+                <div className="p-2 bg-[#aedf1a] rounded-lg text-white">
                   {agent.icon}
                 </div>
                 <div className="flex-1">
@@ -488,7 +488,7 @@ const ActionsStep = ({
           <Card className="surface-white">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-2 gradient-feature-3 rounded-lg text-white">
+                <div className="p-2 bg-[#86c9e5] rounded-lg text-white">
                   <RocketIcon className="h-5 w-5" />
                 </div>
                 <div className="flex-1">
@@ -835,7 +835,7 @@ export default function OnboardingPage() {
         <div className="flex items-center gap-2">
           <Button
             size="sm"
-            className="gradient-success"
+            className="bg-[#4a5568] hover:bg-[#3a4553] text-[#aedf1a] hover:text-[#aedf1a]"
             onClick={() =>
               window.open("https://accounts.getwow.ai/waitlist", "_blank")
             }
@@ -927,7 +927,7 @@ export default function OnboardingPage() {
           {currentStep < onboardingSteps.length - 1 ? (
             <Button
               onClick={nextStep}
-              className="flex items-center gap-2 gradient-feature-2"
+              className="flex items-center gap-2 bg-[#4a5568] hover:bg-[#3a4553] text-[#86c9e5] hover:text-[#86c9e5]"
               size="sm"
             >
               <span className="hidden sm:inline">{t("onboarding.next")}</span>
@@ -935,7 +935,7 @@ export default function OnboardingPage() {
             </Button>
           ) : (
             <Button
-              className="flex items-center gap-2 gradient-success"
+              className="flex items-center gap-2 bg-[#4a5568] hover:bg-[#3a4553] text-[#86c9e5] hover:text-[#86c9e5]"
               size="sm"
               onClick={() =>
                 window.open("https://accounts.getwow.ai/waitlist", "_blank")
@@ -976,7 +976,7 @@ export default function OnboardingPage() {
             <div className="space-y-3">
               <Button
                 size="lg"
-                className="w-full text-lg gradient-feature-2"
+                className="w-full text-lg bg-[#4a5568] hover:bg-[#3a4553] text-[#aedf1a] hover:text-[#aedf1a]"
                 onClick={() =>
                   window.open("https://accounts.getwow.ai/waitlist", "_blank")
                 }

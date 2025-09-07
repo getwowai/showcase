@@ -39,7 +39,7 @@ export default function HomePage() {
       icon: <MessageCirclePlusIcon className="h-6 w-6" />,
       title: t("features.aiChatAssistant.title"),
       description: t("features.aiChatAssistant.description"),
-      color: "gradient-feature-1",
+      color: "bg-[#86c9e5]",
       demo: {
         type: "chat",
         messages: [
@@ -78,7 +78,7 @@ export default function HomePage() {
       icon: <ChartColumnIncreasingIcon className="h-6 w-6" />,
       title: t("features.dailyInsights.title"),
       description: t("features.dailyInsights.description"),
-      color: "gradient-feature-2",
+      color: "bg-[#aedf1a]",
       demo: {
         type: "insights",
         insight: {
@@ -115,7 +115,7 @@ export default function HomePage() {
       icon: <BarChart3Icon className="h-6 w-6" />,
       title: t("features.liveAgentIntelligence.title"),
       description: t("features.liveAgentIntelligence.description"),
-      color: "gradient-feature-3",
+      color: "bg-[#4a5568]",
       demo: {
         type: "dashboard",
         agents: [
@@ -163,7 +163,7 @@ export default function HomePage() {
       icon: <PackageIcon className="h-6 w-6" />,
       title: t("features.smartInventory.title"),
       description: t("features.smartInventory.description"),
-      color: "gradient-feature-4",
+      color: "bg-[#86c9e5]",
       demo: {
         type: "inventory",
         alerts: [
@@ -206,7 +206,7 @@ export default function HomePage() {
       icon: <DollarSignIcon className="h-6 w-6" />,
       title: t("features.profitOptimizer.title"),
       description: t("features.profitOptimizer.description"),
-      color: "gradient-feature-5",
+      color: "bg-[#aedf1a]",
       demo: {
         type: "finance",
         metrics: [
@@ -253,7 +253,7 @@ export default function HomePage() {
       icon: <ZapIcon className="h-6 w-6" />,
       title: t("features.smartPromotions.title"),
       description: t("features.smartPromotions.description"),
-      color: "gradient-feature-6",
+      color: "bg-[#4a5568]",
       demo: {
         type: "promotions",
         campaigns: [
@@ -732,7 +732,7 @@ export default function HomePage() {
               <Link href={`/${locale}/onboarding`}>
                 <Button
                   size="lg"
-                  className="text-lg px-8 py-4 gradient-primary shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
+                  className="text-lg px-8 py-4 bg-[#4a5568] hover:bg-[#3a4553] text-[#aedf1a] hover:text-[#aedf1a] shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
                 >
                   <RocketIcon className="mr-2 h-5 w-5" />
                   {t("homepage.seeItInAction")}
@@ -742,7 +742,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-4 border-2 border-[#86c9e5] text-[#86c9e5] hover:bg-[#86c9e5]/10 transform hover:scale-105 transition-all"
+                className="text-lg px-8 py-4 border-2 border-[#86c9e5] text-[#86c9e5] hover:bg-[#86c9e5] hover:text-white transform hover:scale-105 transition-all"
                 onClick={() =>
                   window.open("https://accounts.getwow.ai/waitlist", "_blank")
                 }
@@ -961,7 +961,7 @@ export default function HomePage() {
               transition={{ delay: 0.1, duration: 0.6 }}
               className="text-center"
             >
-              <div className="benefit-icon gradient-feature-3">
+              <div className="benefit-icon bg-[#aedf1a]">
                 <TrendingUpIcon className="h-10 w-10" />
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-4">
@@ -978,7 +978,7 @@ export default function HomePage() {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="text-center"
             >
-              <div className="benefit-icon gradient-feature-1">
+              <div className="benefit-icon bg-[#86c9e5]">
                 <BrainIcon className="h-10 w-10" />
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-4">
@@ -993,7 +993,7 @@ export default function HomePage() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-center"
             >
-              <div className="benefit-icon gradient-feature-2">
+              <div className="benefit-icon bg-[#4a5568]">
                 <CheckCircleIcon className="h-10 w-10" />
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-4">
@@ -1083,7 +1083,7 @@ export default function HomePage() {
               <Link href={`/${locale}/onboarding`}>
                 <Button
                   size="lg"
-                  className="text-xl px-12 py-6 gradient-feature-2 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
+                  className="text-xl px-12 py-6 bg-[#4a5568] hover:bg-[#3a4553] text-[#86c9e5] hover:text-[#86c9e5] shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
                 >
                   <RocketIcon className="mr-3 h-6 w-6" />
                   {t("homepage.experienceTheMagic")}
