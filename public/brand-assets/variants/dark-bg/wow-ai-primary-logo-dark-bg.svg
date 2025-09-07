@@ -1,0 +1,20 @@
+<svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define flower for dark background -->
+  <defs>
+    <g id="flowerOnDark">
+      <ellipse cx="0" cy="-10" rx="5" ry="20" fill="#aedf1a" opacity="0.9" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-10" rx="8" ry="24" fill="#aedf1a" opacity="0.8" transform="rotate(50)"/>
+      <ellipse cx="0" cy="-10" rx="6" ry="18" fill="#aedf1a" opacity="0.95" transform="rotate(100)"/>
+      <ellipse cx="0" cy="-10" rx="9" ry="22" fill="#aedf1a" opacity="0.7" transform="rotate(150)"/>
+      <ellipse cx="0" cy="-10" rx="4" ry="16" fill="#aedf1a" opacity="0.9" transform="rotate(200)"/>
+      <ellipse cx="0" cy="-10" rx="7" ry="25" fill="#aedf1a" opacity="0.8" transform="rotate(250)"/>
+      <ellipse cx="0" cy="-10" rx="6" ry="19" fill="#aedf1a" opacity="0.85" transform="rotate(300)"/>
+      <circle cx="0" cy="0" r="8" fill="#86c9e5" opacity="0.9"/>
+    </g>
+  </defs>
+  
+  <!-- Primary Logo: Balanced Unity - Dark Background Variant -->
+  <use href="#flowerOnDark" transform="translate(30, 30)"/>
+  <text x="50" y="35" font-family="Arial, sans-serif" font-size="36" font-weight="900" fill="#aedf1a" letter-spacing="-1.8px">WOW</text>
+  <text x="140" y="35" font-family="Arial, sans-serif" font-size="36" font-weight="900" fill="#86c9e5" letter-spacing="-0.5px">AI</text>
+</svg>
