@@ -992,10 +992,7 @@ export default function OnboardingPage() {
                   variant="outline"
                   className="flex-1"
                   onClick={() =>
-                    window.open(
-                      "https://accounts.getwow.ai/waitlist/login",
-                      "_blank",
-                    )
+                    window.open("https://app.getwow.ai/sign-in", "_blank")
                   }
                 >
                   {t("onboarding.finalCta.login")}

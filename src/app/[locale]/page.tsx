@@ -735,7 +735,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-4 border-2 border-[#86c9e5] text-white hover:bg-[#86c9e5] hover:text-white transform hover:scale-105 transition-all"
+                className="text-lg px-8 py-4 border-2 border-[#86c9e5] text-[#86c9e5] hover:bg-[#86c9e5] hover:text-white transform hover:scale-105 transition-all"
                 onClick={() =>
                   window.open("https://accounts.getwow.ai/waitlist", "_blank")
                 }
