@@ -298,9 +298,9 @@ export default function AssetIndexPage({ params }: Props) {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-white rounded border">
                     <span className="font-mono text-sm">
-                      guidelines/BRAND_GUIDELINES.md
+                      brand-assets/README.md
                     </span>
-                    <Link href={`/${locale}/brand/guidelines`}>
+                    <Link href={`/${locale}/brand`}>
                       <Button size="sm" variant="outline">
                         View
                       </Button>
@@ -308,9 +308,9 @@ export default function AssetIndexPage({ params }: Props) {
                   </div>
                   <div className="flex justify-between items-center p-3 bg-white rounded border">
                     <span className="font-mono text-sm">
-                      guidelines/COLOR_PALETTE.md
+                      variants/README.md
                     </span>
-                    <Link href={`/${locale}/brand/color-palette`}>
+                    <Link href={`/${locale}/brand`}>
                       <Button size="sm" variant="outline">
                         View
                       </Button>

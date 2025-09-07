@@ -7,9 +7,9 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
-    title: "WOW AI Brand Assets",
+    title: "WOW AI Brand Assets - LLM Optimized",
     description:
-      "Complete brand asset library for WOW AI including logos, icons, colors, and usage guidelines",
+      "Complete brand asset library with background-adaptive variants and AI design prompts. Optimized for modern web development and LLM-assisted design workflows.",
   };
 }
 
@@ -23,9 +23,10 @@ export default function BrandAssetsPage({ params }: Props) {
             WOW AI Brand Assets
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Complete brand asset library including logos, icons, colors, and
-            usage guidelines. All assets are production-ready and optimized for
-            web, print, and mobile use.
+            Complete brand asset library optimized for modern web development,
+            mobile apps, and AI-assisted design workflows. Features
+            background-adaptive variants and comprehensive LLM prompts for
+            consistent brand implementation.
           </p>
         </header>
 
@@ -228,37 +229,6 @@ export default function BrandAssetsPage({ params }: Props) {
             </div>
           </section>
 
-          {/* Usage Guidelines Section */}
-          <section className="bg-white rounded-lg shadow-sm p-8">
-            <h2 className="text-2xl font-bold text-blue-600 mb-6 border-b-2 border-blue-600 pb-2">
-              Usage Guidelines
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
-                <h3 className="text-lg font-semibold text-green-700 mb-4">
-                  DO
-                </h3>
-                <ul className="space-y-2 text-sm text-green-700">
-                  <li>✅ Use Primary Logo for 90% of applications</li>
-                  <li>✅ Maintain minimum 20px clear space around logo</li>
-                  <li>✅ Use simplified icons below 50px width</li>
-                  <li>✅ Preserve original proportions and colors</li>
-                </ul>
-              </div>
-              <div className="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
-                <h3 className="text-lg font-semibold text-red-700 mb-4">
-                  DON'T
-                </h3>
-                <ul className="space-y-2 text-sm text-red-700">
-                  <li>❌ Stretch or distort proportions</li>
-                  <li>❌ Change colors without approval</li>
-                  <li>❌ Use detailed flower below 32px</li>
-                  <li>❌ Add effects like shadows or gradients</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
           {/* Quick Reference Section */}
           <section className="bg-white rounded-lg shadow-sm p-8">
             <h2 className="text-2xl font-bold text-blue-600 mb-6 border-b-2 border-blue-600 pb-2">
@@ -309,33 +279,173 @@ export default function BrandAssetsPage({ params }: Props) {
                   <ul className="space-y-1 text-gray-600">
                     <li>
                       <Link
-                        href={`/${locale}/brand/guidelines`}
-                        className="text-blue-600 hover:underline"
-                      >
-                        Brand Guidelines
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href={`/${locale}/brand/color-palette`}
-                        className="text-blue-600 hover:underline"
-                      >
-                        Color Palette
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <ul className="space-y-1 text-gray-600">
-                    <li>
-                      <Link
                         href={`/${locale}/brand/asset-index`}
                         className="text-blue-600 hover:underline"
                       >
                         Asset Index
                       </Link>
                     </li>
+                    <li>
+                      <span className="text-gray-500">
+                        Brand Guidelines (integrated above)
+                      </span>
+                    </li>
                   </ul>
+                </div>
+                <div>
+                  <ul className="space-y-1 text-gray-600">
+                    <li>
+                      <span className="text-gray-500">
+                        Color Palette (see LLM prompt above)
+                      </span>
+                    </li>
+                    <li>
+                      <span className="text-gray-500">
+                        Background Variants (see variants/README.md)
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* LLM Design Assistant Section */}
+          <section className="bg-white rounded-lg shadow-sm p-8">
+            <h2 className="text-2xl font-bold text-blue-600 mb-6 border-b-2 border-blue-600 pb-2">
+              🤖 LLM Design Assistant
+            </h2>
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                  AI-Optimized Brand Guidelines
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  Use this comprehensive prompt with AI design tools for
+                  consistent WOW AI brand implementation across any project.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-lg">
+                <h4 className="font-semibold text-gray-800 mb-3">
+                  Copy this prompt for AI design tools:
+                </h4>
+                <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+                  <pre>{`You are designing for WOW AI, an innovative AI technology company. Follow these brand guidelines:
+
+BRAND IDENTITY:
+- Company: WOW AI (AI technology solutions)
+- Personality: Innovative, professional, approachable, growth-oriented
+- Visual style: Modern, clean, organic with technological precision
+
+COLOR PALETTE (use exactly these hex codes):
+- Primary: #aedf1a (Lime Green) - for CTAs, highlights, primary elements
+- Secondary: #86c9e5 (Sky Blue) - for secondary actions, accents
+- Text: #4a5568 (Soft Charcoal) - for body text, navigation
+- Backgrounds: White (#ffffff), Light Gray (#f8f9fa), or brand colors
+
+LOGO USAGE:
+- Primary logo: /brand-assets/logos/primary/wow-ai-primary-logo.svg
+- Header logo: /brand-assets/logos/sizes/wow-ai-header-120px.svg
+- App icon: /brand-assets/icons/app/wow-ai-app-icon-64px.svg
+- Favicon: /brand-assets/icons/favicon/wow-ai-favicon-16px.svg
+- UI icon: /brand-assets/icons/standard/wow-ai-standard-icon-32px.svg
+
+BACKGROUND-ADAPTIVE VARIANTS:
+- Light backgrounds: /brand-assets/variants/light-bg/
+- Dark backgrounds: /brand-assets/variants/dark-bg/
+- Lime green backgrounds: /brand-assets/variants/lime-bg/
+- Sky blue backgrounds: /brand-assets/variants/blue-bg/
+- White backgrounds: /brand-assets/variants/white-bg/
+
+DESIGN RULES:
+1. Always maintain 20px clear space around logo
+2. Use appropriate background variant for contrast
+3. Minimum logo width: 80px for readability
+4. Typography: Arial, 900 weight, -1.8px letter-spacing for "WOW"
+5. Flower symbol: 8 elliptical petals, alternating lime/blue colors
+6. No shadows, gradients, or effects on logo
+7. Maintain original proportions - never stretch or distort
+
+IMPLEMENTATION:
+- Web: Use SVG format for scalability
+- Mobile: Use app icon for app stores, standard icon for UI
+- Print: Use white background variant
+- Dark mode: Use dark background variant
+- Light mode: Use light background variant
+
+When implementing, always reference the exact asset paths provided and ensure proper contrast ratios for accessibility.`}</pre>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold text-gray-800 mb-3">
+                    ✅ Quality Checklist
+                  </h4>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li className="flex items-center">
+                      <span className="text-green-500 mr-2">✓</span>
+                      Correct asset selected for use case
+                    </li>
+                    <li className="flex items-center">
+                      <span className="text-green-500 mr-2">✓</span>
+                      Appropriate background variant chosen
+                    </li>
+                    <li className="flex items-center">
+                      <span className="text-green-500 mr-2">✓</span>
+                      Minimum size requirements met
+                    </li>
+                    <li className="flex items-center">
+                      <span className="text-green-500 mr-2">✓</span>
+                      Clear space maintained around logo
+                    </li>
+                    <li className="flex items-center">
+                      <span className="text-green-500 mr-2">✓</span>
+                      Colors match brand palette
+                    </li>
+                    <li className="flex items-center">
+                      <span className="text-green-500 mr-2">✓</span>
+                      Accessibility contrast ratios verified
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-gray-800 mb-3">
+                    🎯 Asset Selection Matrix
+                  </h4>
+                  <div className="text-sm">
+                    <div className="grid grid-cols-3 gap-2 text-xs">
+                      <div className="font-semibold">Use Case</div>
+                      <div className="font-semibold">Asset</div>
+                      <div className="font-semibold">Variant</div>
+
+                      <div>Website Header</div>
+                      <div>Header 120px</div>
+                      <div>Match background</div>
+
+                      <div>Mobile App</div>
+                      <div>App Icon 64px</div>
+                      <div>Built-in (blue)</div>
+
+                      <div>UI Buttons</div>
+                      <div>Standard 32px</div>
+                      <div>Built-in (charcoal)</div>
+
+                      <div>Browser Tab</div>
+                      <div>Favicon 16px</div>
+                      <div>Built-in (lime)</div>
+
+                      <div>Print Materials</div>
+                      <div>Primary Logo</div>
+                      <div>White variant</div>
+
+                      <div>Dark Mode</div>
+                      <div>Primary Logo</div>
+                      <div>Dark variant</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -344,7 +454,7 @@ export default function BrandAssetsPage({ params }: Props) {
 
         <footer className="text-center mt-12 py-8 border-t border-gray-200">
           <p className="text-gray-600">
-            WOW AI Brand Assets • Version 1.0 • Last updated:{" "}
+            WOW AI Brand Assets • Version 2.0 - LLM Optimized • Last updated:{" "}
             {new Date().toLocaleDateString()}
           </p>
         </footer>
