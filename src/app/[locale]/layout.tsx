@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${t("title")} - ${t("subtitle")}`,
     description: t("description"),
     icons: {
-      icon: "/brand-assets/icons/favicon/wow-ai-favicon-16px.svg",
+      icon: "/brand-assets/icons/standard/wow-ai-standard-icon-32px.svg",
     },
   };
 }
