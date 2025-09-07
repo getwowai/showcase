@@ -32,7 +32,7 @@ export const WowLogo: React.FC<WowLogoProps> = ({
   const getSizeClasses = () => {
     switch (size) {
       case "hero":
-        return "h-20 md:h-28 w-auto";
+        return "h-28 md:h-44 w-auto";
       case "header":
         return "h-12 w-auto";
       case "standard":
