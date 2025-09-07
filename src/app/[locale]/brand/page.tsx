@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 interface Props {
   params: { locale: string };
@@ -307,40 +308,32 @@ export default function BrandAssetsPage({ params }: Props) {
                 <div>
                   <ul className="space-y-1 text-gray-600">
                     <li>
-                      <a
-                        href="/brand-assets/guidelines/BRAND_GUIDELINES.md"
+                      <Link
+                        href={`/${locale}/brand/guidelines`}
                         className="text-blue-600 hover:underline"
                       >
                         Brand Guidelines
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="/brand-assets/guidelines/COLOR_PALETTE.md"
+                      <Link
+                        href={`/${locale}/brand/color-palette`}
                         className="text-blue-600 hover:underline"
                       >
                         Color Palette
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
                 <div>
                   <ul className="space-y-1 text-gray-600">
                     <li>
-                      <a
-                        href="/brand-assets/ASSET_INDEX.md"
+                      <Link
+                        href={`/${locale}/brand/asset-index`}
                         className="text-blue-600 hover:underline"
                       >
                         Asset Index
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/brand-assets/ASSET_PREVIEW.html"
-                        className="text-blue-600 hover:underline"
-                      >
-                        HTML Preview
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
