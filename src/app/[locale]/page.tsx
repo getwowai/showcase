@@ -360,7 +360,7 @@ export default function HomePage() {
                   <div
                     className={`max-w-[80%] p-3 rounded-lg ${
                       msg.type === "user"
-                        ? "bg-[#4a5568] text-[#aedf1a]"
+                        ? "bg-[#4a5568] text-white"
                         : "bg-white border shadow-sm"
                     }`}
                   >
@@ -416,7 +416,7 @@ export default function HomePage() {
                     <Badge className="bg-red-100 text-red-800">
                       {demo.insight.priority}
                     </Badge>
-                    <Badge className="bg-[#4a5568] text-[#aedf1a]">
+                    <Badge className="bg-[#4a5568] text-white">
                       {demo.insight.impact}
                     </Badge>
                   </div>
@@ -451,7 +451,7 @@ export default function HomePage() {
                   transition={{ delay: idx * 0.1 }}
                   className="bg-white border rounded-lg p-3 text-center"
                 >
-                  <div className="font-bold text-lg text-[#aedf1a]">
+                  <div className="font-bold text-lg text-white">
                     {value as string}
                   </div>
                   <div className="text-xs text-gray-600 capitalize">
@@ -600,7 +600,7 @@ export default function HomePage() {
                         {opp.impact}
                       </div>
                     </div>
-                    <Badge className="bg-[#4a5568] text-[#aedf1a]">
+                    <Badge className="bg-[#4a5568] text-white">
                       {opp.confidence}
                     </Badge>
                   </div>
@@ -725,7 +725,7 @@ export default function HomePage() {
               <Link href={`/${locale}/onboarding`}>
                 <Button
                   size="lg"
-                  className="text-lg px-8 py-4 bg-[#4a5568] hover:bg-[#3a4553] text-[#aedf1a] hover:text-[#aedf1a] shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
+                  className="text-lg px-8 py-4 bg-[#4a5568] hover:bg-[#3a4553] text-white hover:text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
                 >
                   <RocketIcon className="mr-2 h-5 w-5" />
                   {t("homepage.seeItInAction")}
@@ -735,7 +735,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-4 border-2 border-[#86c9e5] text-[#86c9e5] hover:bg-[#86c9e5] hover:text-white transform hover:scale-105 transition-all"
+                className="text-lg px-8 py-4 border-2 border-[#86c9e5] text-white hover:bg-[#86c9e5] hover:text-white transform hover:scale-105 transition-all"
                 onClick={() =>
                   window.open("https://accounts.getwow.ai/waitlist", "_blank")
                 }
@@ -1073,7 +1073,7 @@ export default function HomePage() {
               <Link href={`/${locale}/onboarding`}>
                 <Button
                   size="lg"
-                  className="text-xl px-12 py-6 bg-[#4a5568] hover:bg-[#3a4553] text-[#86c9e5] hover:text-[#86c9e5] shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
+                  className="text-xl px-12 py-6 bg-[#4a5568] hover:bg-[#3a4553] text-white hover:text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
                 >
                   <RocketIcon className="mr-3 h-6 w-6" />
                   {t("homepage.experienceTheMagic")}

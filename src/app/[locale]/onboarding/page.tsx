@@ -167,7 +167,7 @@ const StoreConnectStep = ({
   }, [isActive]);
 
   return (
-    <Card className="max-w-lg mx-auto">
+    <Card className="max-w-lg mx-auto w-full">
       <CardHeader className="text-center">
         <div className="feature-icon bg-[#86c9e5] rounded-full mx-auto">
           <ShoppingCartIcon className="h-8 w-8" />
@@ -177,7 +177,7 @@ const StoreConnectStep = ({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
+        <div className="space-y-2 sm:space-y-4">
           <Progress value={progress} className="h-3" />
           <div className="text-center text-sm text-gray-600">
             {progress < 100
@@ -224,7 +224,7 @@ const AnalysisStep = ({
   }, [isActive, content.items.length]);
 
   return (
-    <Card className="max-w-lg mx-auto">
+    <Card className="max-w-lg mx-auto w-full">
       <CardHeader className="text-center">
         <motion.div
           animate={{ rotate: 360 }}
@@ -247,7 +247,7 @@ const AnalysisStep = ({
               className="flex items-center gap-3"
             >
               {index < currentItem ? (
-                <CheckCircleIcon className="h-5 w-5 text-[#aedf1a]" />
+                <CheckCircleIcon className="h-5 w-5 text-white" />
               ) : index === currentItem ? (
                 <div className="w-5 h-5 border-2 border-[#aedf1a] border-t-transparent rounded-full animate-spin" />
               ) : (
@@ -276,13 +276,13 @@ const AgentsIntroStep = ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   t: any;
 }) => (
-  <div className="max-w-2xl mx-auto">
-    <div className="text-center mb-8">
-      <h3 className="text-2xl font-bold text-gray-800 mb-4">
+  <div className="max-w-2xl mx-auto w-full">
+    <div className="text-center mb-4 sm:mb-8">
+      <h3 className="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">
         {t("onboarding.agents.meetYourTeam")}
       </h3>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
       {content.agents.map((agent: Agent, index: number) => (
         <motion.div
           key={agent.name}
@@ -291,7 +291,7 @@ const AgentsIntroStep = ({
           transition={{ delay: index * 0.2 }}
         >
           <Card className="surface-white">
-            <CardContent className="p-4">
+            <CardContent className="p-3 sm:p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-[#aedf1a] rounded-lg text-white">
                   {agent.icon}
@@ -303,13 +303,13 @@ const AgentsIntroStep = ({
                   <div className="flex items-center gap-2">
                     <Badge
                       variant="secondary"
-                      className="text-xs bg-[#4a5568] text-[#aedf1a]"
+                      className="text-xs bg-[#4a5568] text-white"
                     >
                       {agent.status}
                     </Badge>
                   </div>
                 </div>
-                <CheckCircleIcon className="h-5 w-5 text-[#aedf1a]" />
+                <CheckCircleIcon className="h-5 w-5 text-white" />
               </div>
             </CardContent>
           </Card>
@@ -327,13 +327,13 @@ const InsightsStep = ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   t: any;
 }) => (
-  <div className="max-w-2xl mx-auto">
-    <div className="text-center mb-8">
-      <h3 className="text-2xl font-bold text-gray-800 mb-4">
+  <div className="max-w-2xl mx-auto w-full">
+    <div className="text-center mb-4 sm:mb-8">
+      <h3 className="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">
         {t("onboarding.insights.yourFirstInsights")}
       </h3>
     </div>
-    <div className="space-y-4">
+    <div className="space-y-2 sm:space-y-4">
       {content.insights.map((insight: Insight, index: number) => (
         <motion.div
           key={index}
@@ -342,7 +342,7 @@ const InsightsStep = ({
           transition={{ delay: index * 0.3 }}
         >
           <Card className="surface-white">
-            <CardContent className="p-4">
+            <CardContent className="p-3 sm:p-4">
               <div className="flex items-start gap-3">
                 <div
                   className={`p-2 rounded-lg ${
@@ -402,16 +402,16 @@ const ChatDemoStep = ({
   }, [content.messages.length]);
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="text-center mb-8">
-        <h3 className="text-2xl font-bold text-gray-800 mb-4">
+    <div className="max-w-2xl mx-auto w-full">
+      <div className="text-center mb-4 sm:mb-8">
+        <h3 className="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">
           {t("onboarding.chat.chatWithData")}
         </h3>
       </div>
       <Card className="surface-white">
         <CardHeader>
           <div className="flex items-center gap-2">
-            <MessageCirclePlusIcon className="h-5 w-5 text-[#aedf1a]" />
+            <MessageCirclePlusIcon className="h-5 w-5 text-white" />
             <span className="font-semibold">
               {t("onboarding.chat.chatWithData")}
             </span>
@@ -421,7 +421,7 @@ const ChatDemoStep = ({
           </div>
         </CardHeader>
         <CardContent className="p-0">
-          <div className="space-y-4 p-4 max-h-80 overflow-y-auto">
+          <div className="space-y-4 p-4 max-h-48 sm:max-h-80 overflow-y-auto">
             {content.messages
               .slice(0, visibleMessages)
               .map((message: ChatMessage, index: number) => (
@@ -435,7 +435,7 @@ const ChatDemoStep = ({
                   <div
                     className={`max-w-[80%] p-3 rounded-lg ${
                       message.type === "user"
-                        ? "bg-[#4a5568] text-[#aedf1a] ml-4"
+                        ? "bg-[#4a5568] text-white ml-4"
                         : "bg-gray-100 text-gray-800 mr-4"
                     }`}
                   >
@@ -471,13 +471,13 @@ const ActionsStep = ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   t: any;
 }) => (
-  <div className="max-w-2xl mx-auto">
-    <div className="text-center mb-8">
-      <h3 className="text-2xl font-bold text-gray-800 mb-4">
+  <div className="max-w-2xl mx-auto w-full">
+    <div className="text-center mb-4 sm:mb-8">
+      <h3 className="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">
         {t("onboarding.actions.agentsTakingAction")}
       </h3>
     </div>
-    <div className="space-y-4">
+    <div className="space-y-2 sm:space-y-4">
       {content.actions.map((action: Action, index: number) => (
         <motion.div
           key={index}
@@ -486,7 +486,7 @@ const ActionsStep = ({
           transition={{ delay: index * 0.4 }}
         >
           <Card className="surface-white">
-            <CardContent className="p-4">
+            <CardContent className="p-3 sm:p-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-[#86c9e5] rounded-lg text-white">
                   <RocketIcon className="h-5 w-5" />
@@ -530,14 +530,16 @@ const ResultsStep = ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   t: any;
 }) => (
-  <div className="max-w-2xl mx-auto">
-    <div className="text-center mb-8">
-      <h3 className="text-2xl font-bold text-gray-800 mb-4">
+  <div className="max-w-2xl mx-auto w-full">
+    <div className="text-center mb-4 sm:mb-8">
+      <h3 className="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">
         {t("onboarding.results.immediateResults")}
       </h3>
-      <p className="text-gray-600">{t("onboarding.results.seeImpact")}</p>
+      <p className="text-sm sm:text-base text-gray-600">
+        {t("onboarding.results.seeImpact")}
+      </p>
     </div>
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-2 gap-2 sm:gap-4">
       {content.metrics.map((metric: Metric, index: number) => (
         <motion.div
           key={index}
@@ -546,7 +548,7 @@ const ResultsStep = ({
           transition={{ delay: index * 0.2 }}
         >
           <Card className="surface-white text-center">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className={`text-3xl font-bold ${metric.color} mb-2`}>
                 {metric.value}
               </div>
@@ -755,7 +757,7 @@ export default function OnboardingPage() {
             label: t("onboarding.results.profitMargin"),
             value: locale === "ar" ? "+٣.٢٪" : "+3.2%",
             trend: "up",
-            color: "text-[#aedf1a]",
+            color: "text-white",
           },
           {
             label: t("onboarding.results.inventoryEfficiency"),
@@ -835,7 +837,7 @@ export default function OnboardingPage() {
         <div className="flex items-center gap-2">
           <Button
             size="sm"
-            className="bg-[#4a5568] hover:bg-[#3a4553] text-[#aedf1a] hover:text-[#aedf1a]"
+            className="bg-[#4a5568] hover:bg-[#3a4553] text-white hover:text-white"
             onClick={() =>
               window.open("https://accounts.getwow.ai/waitlist", "_blank")
             }
@@ -856,7 +858,7 @@ export default function OnboardingPage() {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col justify-center px-4 py-6 overflow-hidden">
+      <div className="flex-1 flex flex-col justify-center px-4 py-2 sm:py-6 overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep}
@@ -864,13 +866,13 @@ export default function OnboardingPage() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.05 }}
             transition={{ duration: 0.4 }}
-            className="flex flex-col justify-center items-center text-center h-full"
+            className="flex flex-col justify-center items-center text-center min-h-0 flex-1"
           >
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3"
+              className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-2 sm:mb-3"
             >
               {onboardingSteps[currentStep].title}
             </motion.h2>
@@ -878,7 +880,7 @@ export default function OnboardingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-lg text-gray-600 mb-8 max-w-2xl"
+              className="text-sm sm:text-lg text-gray-600 mb-4 sm:mb-8 max-w-2xl"
             >
               {onboardingSteps[currentStep].description}
             </motion.p>
@@ -887,7 +889,7 @@ export default function OnboardingPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex-1 flex items-center justify-center w-full max-w-4xl"
+              className="flex-1 flex items-center justify-center w-full max-w-4xl min-h-0"
             >
               {renderStepContent(onboardingSteps[currentStep])}
             </motion.div>
@@ -927,7 +929,7 @@ export default function OnboardingPage() {
           {currentStep < onboardingSteps.length - 1 ? (
             <Button
               onClick={nextStep}
-              className="flex items-center gap-2 bg-[#4a5568] hover:bg-[#3a4553] text-[#86c9e5] hover:text-[#86c9e5]"
+              className="flex items-center gap-2 bg-[#4a5568] hover:bg-[#3a4553] text-white hover:text-white"
               size="sm"
             >
               <span className="hidden sm:inline">{t("onboarding.next")}</span>
@@ -935,7 +937,7 @@ export default function OnboardingPage() {
             </Button>
           ) : (
             <Button
-              className="flex items-center gap-2 bg-[#4a5568] hover:bg-[#3a4553] text-[#86c9e5] hover:text-[#86c9e5]"
+              className="flex items-center gap-2 bg-[#4a5568] hover:bg-[#3a4553] text-white hover:text-white"
               size="sm"
               onClick={() =>
                 window.open("https://accounts.getwow.ai/waitlist", "_blank")
@@ -964,19 +966,19 @@ export default function OnboardingPage() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 2.2 }}
-            className="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl"
+            className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 max-w-md w-full text-center shadow-2xl"
           >
-            <SparklesIcon className="h-12 w-12 text-[#aedf1a] mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">
+            <SparklesIcon className="h-12 w-12 text-white mx-auto mb-4" />
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">
               {t("onboarding.finalCta.title")}
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
               {t("onboarding.finalCta.description")}
             </p>
             <div className="space-y-3">
               <Button
                 size="lg"
-                className="w-full text-lg bg-[#4a5568] hover:bg-[#3a4553] text-[#aedf1a] hover:text-[#aedf1a]"
+                className="w-full text-lg bg-[#4a5568] hover:bg-[#3a4553] text-white hover:text-white"
                 onClick={() =>
                   window.open("https://accounts.getwow.ai/waitlist", "_blank")
                 }
