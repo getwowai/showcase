@@ -42,52 +42,125 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  
+
   /* WOW AI Brand Colors - Core */
   --color-wow-lime: #aedf1a;
   --color-wow-blue: #86c9e5;
   --color-wow-charcoal: #4a5568;
-  
+
   /* Modern Designer Color Variations */
   --color-wow-lime-subtle: color-mix(in srgb, var(--color-wow-lime) 12%, white);
   --color-wow-lime-soft: color-mix(in srgb, var(--color-wow-lime) 25%, white);
   --color-wow-lime-medium: color-mix(in srgb, var(--color-wow-lime) 85%, white);
-  --color-wow-lime-vivid: color-mix(in srgb, var(--color-wow-lime) 95%, #2d3748);
+  --color-wow-lime-vivid: color-mix(
+    in srgb,
+    var(--color-wow-lime) 95%,
+    #2d3748
+  );
   --color-wow-blue-subtle: color-mix(in srgb, var(--color-wow-blue) 15%, white);
   --color-wow-blue-soft: color-mix(in srgb, var(--color-wow-blue) 35%, white);
   --color-wow-blue-medium: var(--color-wow-blue);
   --color-wow-blue-deep: color-mix(in srgb, var(--color-wow-blue) 80%, #1a202c);
-  --color-wow-charcoal-subtle: color-mix(in srgb, var(--color-wow-charcoal) 8%, white);
-  --color-wow-charcoal-soft: color-mix(in srgb, var(--color-wow-charcoal) 25%, white);
+  --color-wow-charcoal-subtle: color-mix(
+    in srgb,
+    var(--color-wow-charcoal) 8%,
+    white
+  );
+  --color-wow-charcoal-soft: color-mix(
+    in srgb,
+    var(--color-wow-charcoal) 25%,
+    white
+  );
   --color-wow-charcoal-medium: var(--color-wow-charcoal);
-  --color-wow-charcoal-deep: color-mix(in srgb, var(--color-wow-charcoal) 85%, black);
-  
+  --color-wow-charcoal-deep: color-mix(
+    in srgb,
+    var(--color-wow-charcoal) 85%,
+    black
+  );
+
   /* Modern Sophisticated Gradient System */
-  --gradient-hero: linear-gradient(135deg, var(--color-wow-blue-subtle) 0%, rgba(255, 255, 255, 0.95) 50%, var(--color-wow-lime-subtle) 100%);
-  --gradient-primary: linear-gradient(135deg, var(--color-wow-lime) 0%, var(--color-wow-blue-medium) 100%);
-  --gradient-primary-hover: linear-gradient(135deg, var(--color-wow-lime-vivid) 0%, var(--color-wow-blue-deep) 100%);
-  --gradient-secondary: linear-gradient(135deg, var(--color-wow-blue-soft) 0%, rgba(255, 255, 255, 0.9) 100%);
-  
+  --gradient-hero: linear-gradient(
+    135deg,
+    var(--color-wow-blue-subtle) 0%,
+    rgba(255, 255, 255, 0.95) 50%,
+    var(--color-wow-lime-subtle) 100%
+  );
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--color-wow-lime) 0%,
+    var(--color-wow-blue-medium) 100%
+  );
+  --gradient-primary-hover: linear-gradient(
+    135deg,
+    var(--color-wow-lime-vivid) 0%,
+    var(--color-wow-blue-deep) 100%
+  );
+  --gradient-secondary: linear-gradient(
+    135deg,
+    var(--color-wow-blue-soft) 0%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+
   /* Feature Gradients - Modern & Sophisticated */
-  --gradient-feature-1: linear-gradient(135deg, var(--color-wow-blue-medium) 0%, var(--color-wow-blue-deep) 100%);
-  --gradient-feature-2: linear-gradient(135deg, var(--color-wow-lime-vivid) 0%, var(--color-wow-charcoal-medium) 100%);
-  --gradient-feature-3: linear-gradient(135deg, var(--color-wow-lime) 0%, var(--color-wow-lime-vivid) 100%);
-  --gradient-feature-4: linear-gradient(135deg, var(--color-wow-charcoal-medium) 0%, var(--color-wow-charcoal-deep) 100%);
-  --gradient-feature-5: linear-gradient(135deg, var(--color-wow-blue-deep) 0%, var(--color-wow-charcoal-deep) 100%);
-  --gradient-feature-6: linear-gradient(135deg, var(--color-wow-lime-medium) 0%, var(--color-wow-lime) 100%);
-  
+  --gradient-feature-1: linear-gradient(
+    135deg,
+    var(--color-wow-blue-medium) 0%,
+    var(--color-wow-blue-deep) 100%
+  );
+  --gradient-feature-2: linear-gradient(
+    135deg,
+    var(--color-wow-lime-vivid) 0%,
+    var(--color-wow-charcoal-medium) 100%
+  );
+  --gradient-feature-3: linear-gradient(
+    135deg,
+    var(--color-wow-lime) 0%,
+    var(--color-wow-lime-vivid) 100%
+  );
+  --gradient-feature-4: linear-gradient(
+    135deg,
+    var(--color-wow-charcoal-medium) 0%,
+    var(--color-wow-charcoal-deep) 100%
+  );
+  --gradient-feature-5: linear-gradient(
+    135deg,
+    var(--color-wow-blue-deep) 0%,
+    var(--color-wow-charcoal-deep) 100%
+  );
+  --gradient-feature-6: linear-gradient(
+    135deg,
+    var(--color-wow-lime-medium) 0%,
+    var(--color-wow-lime) 100%
+  );
+
   /* Status Gradients - Clean & Professional */
-  --gradient-success: linear-gradient(135deg, var(--color-wow-lime) 0%, var(--color-wow-lime-vivid) 100%);
-  --gradient-error: linear-gradient(135deg, var(--color-wow-charcoal-medium) 0%, var(--color-wow-charcoal-deep) 100%);
-  --gradient-warning: linear-gradient(135deg, var(--color-wow-lime-medium) 0%, var(--color-wow-lime) 100%);
-  --gradient-info: linear-gradient(135deg, var(--color-wow-blue-medium) 0%, var(--color-wow-blue-deep) 100%);
-  
+  --gradient-success: linear-gradient(
+    135deg,
+    var(--color-wow-lime) 0%,
+    var(--color-wow-lime-vivid) 100%
+  );
+  --gradient-error: linear-gradient(
+    135deg,
+    var(--color-wow-charcoal-medium) 0%,
+    var(--color-wow-charcoal-deep) 100%
+  );
+  --gradient-warning: linear-gradient(
+    135deg,
+    var(--color-wow-lime-medium) 0%,
+    var(--color-wow-lime) 100%
+  );
+  --gradient-info: linear-gradient(
+    135deg,
+    var(--color-wow-blue-medium) 0%,
+    var(--color-wow-blue-deep) 100%
+  );
+
   /* Surface colors with transparency */
   --surface-white: rgba(255, 255, 255, 0.8);
   --surface-white-strong: rgba(255, 255, 255, 0.9);
   --surface-glass: rgba(255, 255, 255, 0.1);
   --surface-overlay: rgba(0, 0, 0, 0.5);
-  
+
   /* Modern Status Colors - Sophisticated & Accessible */
   --color-success: var(--color-wow-lime);
   --color-success-light: var(--color-wow-lime-soft);
@@ -109,7 +182,7 @@
   --color-info-bg: var(--color-wow-blue-subtle);
   --color-info-text: var(--color-wow-blue-deep);
   --color-info-border: var(--color-wow-blue-soft);
-  
+
   /* Sophisticated Content Colors - Modern Design System */
   --color-purple-50: var(--color-wow-blue-subtle);
   --color-purple-100: var(--color-wow-blue-soft);
@@ -155,19 +228,19 @@
 
 :root {
   --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.35 0.02 230);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
+  --card-foreground: oklch(0.35 0.02 230);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.35 0.02 230);
+  --primary: oklch(0.84 0.17 110);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --secondary: oklch(0.78 0.08 210);
+  --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.967 0.001 286.375);
   --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.21 0.006 285.885);
+  --accent: oklch(0.78 0.08 210);
+  --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --border: oklch(0.92 0.004 286.32);
@@ -180,11 +253,11 @@
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.21 0.006 285.885);
+  --sidebar-foreground: oklch(0.35 0.02 230);
+  --sidebar-primary: oklch(0.84 0.17 110);
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+  --sidebar-accent: oklch(0.78 0.08 210);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
 }
@@ -196,13 +269,13 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.141 0.005 285.823);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
+  --primary: oklch(0.84 0.17 110);
   --primary-foreground: oklch(0.21 0.006 285.885);
-  --secondary: oklch(0.274 0.006 286.033);
+  --secondary: oklch(0.78 0.08 210);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0.006 286.033);
   --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
+  --accent: oklch(0.78 0.08 210);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
@@ -231,7 +304,7 @@
   body {
     @apply bg-background text-foreground;
   }
-  
+
   /* Modern sophisticated background */
   html {
     background: var(--gradient-hero);
@@ -240,7 +313,8 @@
 
   /* Arabic font family */
   .font-arabic {
-    font-family: var(--font-noto-arabic), var(--font-inter), system-ui, sans-serif;
+    font-family:
+      var(--font-noto-arabic), var(--font-inter), system-ui, sans-serif;
   }
 
   /* RTL specific styles */
@@ -300,42 +374,54 @@
   [dir="rtl"] .text-right {
     text-align: left;
   }
-  
+
   /* Utility classes for consistent patterns */
   .gradient-primary {
     background: var(--gradient-primary);
   }
-  
+
   .gradient-primary:hover {
     background: var(--gradient-primary-hover);
   }
-  
-  .gradient-feature-1 { background: var(--gradient-feature-1); }
-  .gradient-feature-2 { background: var(--gradient-feature-2); }
-  .gradient-feature-3 { background: var(--gradient-feature-3); }
-  .gradient-feature-4 { background: var(--gradient-feature-4); }
-  .gradient-feature-5 { background: var(--gradient-feature-5); }
-  .gradient-feature-6 { background: var(--gradient-feature-6); }
-  
+
+  .gradient-feature-1 {
+    background: var(--gradient-feature-1);
+  }
+  .gradient-feature-2 {
+    background: var(--gradient-feature-2);
+  }
+  .gradient-feature-3 {
+    background: var(--gradient-feature-3);
+  }
+  .gradient-feature-4 {
+    background: var(--gradient-feature-4);
+  }
+  .gradient-feature-5 {
+    background: var(--gradient-feature-5);
+  }
+  .gradient-feature-6 {
+    background: var(--gradient-feature-6);
+  }
+
   /* Modern Glassmorphism Effects */
   .surface-glass {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
-  
+
   .surface-white {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.3);
   }
-  
+
   .surface-white-strong {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.4);
   }
-  
+
   /* Modern Card Styles */
   .card-modern {
     background: rgba(255, 255, 255, 0.9);
@@ -343,71 +429,167 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   }
-  
+
   .card-glass {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   }
-  
+
   .feature-icon {
     @apply w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-4;
   }
-  
+
   .benefit-icon {
     @apply w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-white;
   }
-  
+
   /* Status color utilities */
-  .status-success { background-color: var(--color-success-bg); color: var(--color-success-text); border-color: var(--color-success-border); }
-  .status-error { background-color: var(--color-error-bg); color: var(--color-error-text); border-color: var(--color-error-border); }
-  .status-warning { background-color: var(--color-warning-bg); color: var(--color-warning-text); border-color: var(--color-warning-border); }
-  .status-info { background-color: var(--color-info-bg); color: var(--color-info-text); border-color: var(--color-info-border); }
-  
+  .status-success {
+    background-color: var(--color-success-bg);
+    color: var(--color-success-text);
+    border-color: var(--color-success-border);
+  }
+  .status-error {
+    background-color: var(--color-error-bg);
+    color: var(--color-error-text);
+    border-color: var(--color-error-border);
+  }
+  .status-warning {
+    background-color: var(--color-warning-bg);
+    color: var(--color-warning-text);
+    border-color: var(--color-warning-border);
+  }
+  .status-info {
+    background-color: var(--color-info-bg);
+    color: var(--color-info-text);
+    border-color: var(--color-info-border);
+  }
+
   /* Common color utilities */
-  .bg-gray-50 { background-color: var(--color-gray-50); }
-  .bg-gray-100 { background-color: var(--color-gray-100); }
-  .bg-purple-50 { background-color: var(--color-purple-50); }
-  .bg-purple-100 { background-color: var(--color-purple-100); }
-  .bg-purple-200 { background-color: var(--color-purple-200); }
-  .bg-purple-600 { background-color: var(--color-purple-600); }
-  .bg-red-50 { background-color: var(--color-red-50); }
-  .bg-red-100 { background-color: var(--color-red-100); }
-  .bg-blue-50 { background-color: var(--color-blue-50); }
-  .bg-blue-100 { background-color: var(--color-blue-100); }
-  .bg-blue-500 { background-color: var(--color-blue-500); }
-  .bg-green-50 { background-color: var(--color-green-50); }
-  .bg-green-100 { background-color: var(--color-green-100); }
-  .bg-green-500 { background-color: var(--color-green-500); }
-  .bg-yellow-50 { background-color: var(--color-yellow-50); }
-  .bg-yellow-100 { background-color: var(--color-yellow-100); }
-  
-  .text-gray-400 { color: var(--color-gray-400); }
-  .text-gray-500 { color: var(--color-gray-500); }
-  .text-gray-600 { color: var(--color-gray-600); }
-  .text-gray-700 { color: var(--color-gray-700); }
-  .text-gray-800 { color: var(--color-gray-800); }
-  .text-gray-900 { color: var(--color-gray-900); }
-  .text-purple-600 { color: var(--color-purple-600); }
-  .text-purple-700 { color: var(--color-purple-700); }
-  .text-red-600 { color: var(--color-red-600); }
-  .text-red-800 { color: var(--color-red-800); }
-  .text-blue-600 { color: var(--color-blue-600); }
-  .text-blue-700 { color: var(--color-blue-700); }
-  .text-blue-800 { color: var(--color-blue-800); }
-  .text-green-500 { color: var(--color-green-500); }
-  .text-green-600 { color: var(--color-green-600); }
-  .text-green-800 { color: var(--color-green-800); }
-  .text-orange-600 { color: var(--color-orange-600); }
-  
-  .border-gray-200 { border-color: var(--color-gray-200); }
-  .border-red-200 { border-color: var(--color-red-200); }
-  .border-blue-200 { border-color: var(--color-blue-200); }
-  .border-green-200 { border-color: var(--color-success-border); }
-  .border-yellow-200 { border-color: var(--color-yellow-200); }
-  .border-purple-200 { border-color: var(--color-purple-200); }
-  .border-purple-500 { border-color: var(--color-purple-500); }
+  .bg-gray-50 {
+    background-color: var(--color-gray-50);
+  }
+  .bg-gray-100 {
+    background-color: var(--color-gray-100);
+  }
+  .bg-purple-50 {
+    background-color: var(--color-purple-50);
+  }
+  .bg-purple-100 {
+    background-color: var(--color-purple-100);
+  }
+  .bg-purple-200 {
+    background-color: var(--color-purple-200);
+  }
+  .bg-purple-600 {
+    background-color: var(--color-purple-600);
+  }
+  .bg-red-50 {
+    background-color: var(--color-red-50);
+  }
+  .bg-red-100 {
+    background-color: var(--color-red-100);
+  }
+  .bg-blue-50 {
+    background-color: var(--color-blue-50);
+  }
+  .bg-blue-100 {
+    background-color: var(--color-blue-100);
+  }
+  .bg-blue-500 {
+    background-color: var(--color-blue-500);
+  }
+  .bg-green-50 {
+    background-color: var(--color-green-50);
+  }
+  .bg-green-100 {
+    background-color: var(--color-green-100);
+  }
+  .bg-green-500 {
+    background-color: var(--color-green-500);
+  }
+  .bg-yellow-50 {
+    background-color: var(--color-yellow-50);
+  }
+  .bg-yellow-100 {
+    background-color: var(--color-yellow-100);
+  }
+
+  .text-gray-400 {
+    color: var(--color-gray-400);
+  }
+  .text-gray-500 {
+    color: var(--color-gray-500);
+  }
+  .text-gray-600 {
+    color: var(--color-gray-600);
+  }
+  .text-gray-700 {
+    color: var(--color-gray-700);
+  }
+  .text-gray-800 {
+    color: var(--color-gray-800);
+  }
+  .text-gray-900 {
+    color: var(--color-gray-900);
+  }
+  .text-purple-600 {
+    color: var(--color-purple-600);
+  }
+  .text-purple-700 {
+    color: var(--color-purple-700);
+  }
+  .text-red-600 {
+    color: var(--color-red-600);
+  }
+  .text-red-800 {
+    color: var(--color-red-800);
+  }
+  .text-blue-600 {
+    color: var(--color-blue-600);
+  }
+  .text-blue-700 {
+    color: var(--color-blue-700);
+  }
+  .text-blue-800 {
+    color: var(--color-blue-800);
+  }
+  .text-green-500 {
+    color: var(--color-green-500);
+  }
+  .text-green-600 {
+    color: var(--color-green-600);
+  }
+  .text-green-800 {
+    color: var(--color-green-800);
+  }
+  .text-orange-600 {
+    color: var(--color-orange-600);
+  }
+
+  .border-gray-200 {
+    border-color: var(--color-gray-200);
+  }
+  .border-red-200 {
+    border-color: var(--color-red-200);
+  }
+  .border-blue-200 {
+    border-color: var(--color-blue-200);
+  }
+  .border-green-200 {
+    border-color: var(--color-success-border);
+  }
+  .border-yellow-200 {
+    border-color: var(--color-yellow-200);
+  }
+  .border-purple-200 {
+    border-color: var(--color-purple-200);
+  }
+  .border-purple-500 {
+    border-color: var(--color-purple-500);
+  }
 
   :root {
     --sidebar-background: 0 0% 98%;

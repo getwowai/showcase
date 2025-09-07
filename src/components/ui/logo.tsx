@@ -189,7 +189,7 @@ export const WowLogo: React.FC<WowLogoProps> = ({
           className={cn(
             "font-black",
             sizeClasses.wow,
-            "text-wow-charcoal",
+            "text-[#4a5568]",
             size === "hero" ? "tracking-[-1.4px]" : "tracking-tight",
           )}
         >
@@ -199,7 +199,7 @@ export const WowLogo: React.FC<WowLogoProps> = ({
           className={cn(
             "font-black",
             sizeClasses.ai,
-            isSecondary ? "text-wow-blue text-[1.2em]" : "text-wow-blue",
+            isSecondary ? "text-[#86c9e5] text-[1.2em]" : "text-[#86c9e5]",
             isSecondary && "ml-0.5",
             size === "hero" ? "tracking-[-0.3px]" : "tracking-tight",
           )}
@@ -252,7 +252,7 @@ export const WowIcon: React.FC<WowIconProps> = ({
     return (
       <div
         className={cn(
-          "bg-wow-blue flex items-center justify-center",
+          "bg-[#86c9e5] flex items-center justify-center",
           sizeClasses.bg,
           className,
         )}

@@ -367,7 +367,7 @@ export default function HomePage() {
                   <div
                     className={`max-w-[80%] p-3 rounded-lg ${
                       msg.type === "user"
-                        ? "bg-purple-600 text-white"
+                        ? "bg-[#aedf1a] text-white"
                         : "bg-white border shadow-sm"
                     }`}
                   >
@@ -458,7 +458,7 @@ export default function HomePage() {
                   transition={{ delay: idx * 0.1 }}
                   className="bg-white border rounded-lg p-3 text-center"
                 >
-                  <div className="font-bold text-lg text-purple-600">
+                  <div className="font-bold text-lg text-[#aedf1a]">
                     {value as string}
                   </div>
                   <div className="text-xs text-gray-600 capitalize">
@@ -667,9 +667,9 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="bg-purple-50 border border-purple-200 rounded-lg p-3 text-center"
+              className="bg-[#aedf1a]/10 border border-[#aedf1a]/30 rounded-lg p-3 text-center"
             >
-              <div className="text-sm text-purple-700 font-medium">
+              <div className="text-sm text-[#4a5568] font-medium">
                 {demo.aiGenerated}
               </div>
             </motion.div>
@@ -742,7 +742,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-4 border-2 border-wow-blue text-wow-blue hover:bg-wow-blue/10 transform hover:scale-105 transition-all"
+                className="text-lg px-8 py-4 border-2 border-[#86c9e5] text-[#86c9e5] hover:bg-[#86c9e5]/10 transform hover:scale-105 transition-all"
                 onClick={() =>
                   window.open("https://accounts.getwow.ai/waitlist", "_blank")
                 }
@@ -800,7 +800,7 @@ export default function HomePage() {
                       onClick={() => setCurrentFeature(index)}
                       className={`h-2 rounded-full transition-all ${
                         index === currentFeature
-                          ? "bg-purple-600 w-8"
+                          ? "bg-[#aedf1a] w-8"
                           : "bg-gray-300 hover:bg-gray-400 w-2"
                       }`}
                     />
@@ -812,9 +812,9 @@ export default function HomePage() {
         </div>
 
         {/* Floating elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-purple-200 rounded-full opacity-50 animate-pulse" />
-        <div className="absolute top-40 right-16 w-16 h-16 bg-blue-200 rounded-full opacity-50 animate-pulse delay-1000" />
-        <div className="absolute bottom-32 left-20 w-12 h-12 bg-cyan-200 rounded-full opacity-50 animate-pulse delay-2000" />
+        <div className="absolute top-20 left-10 w-20 h-20 bg-[#aedf1a]/20 rounded-full opacity-50 animate-pulse" />
+        <div className="absolute top-40 right-16 w-16 h-16 bg-[#86c9e5]/20 rounded-full opacity-50 animate-pulse delay-1000" />
+        <div className="absolute bottom-32 left-20 w-12 h-12 bg-[#86c9e5]/30 rounded-full opacity-50 animate-pulse delay-2000" />
       </section>
 
       {/* Features Grid */}
@@ -1054,7 +1054,7 @@ export default function HomePage() {
                   onClick={() => setCurrentTestimonial(index)}
                   className={`h-2 rounded-full transition-all ${
                     index === currentTestimonial
-                      ? "bg-purple-600 w-8"
+                      ? "bg-[#aedf1a] w-8"
                       : "bg-gray-300 hover:bg-gray-400 w-2"
                   }`}
                 />

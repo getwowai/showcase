@@ -128,9 +128,9 @@ const ProgressIndicator = ({
           key={i}
           className={`w-3 h-3 rounded-full ${
             i < currentStep
-              ? "bg-purple-600"
+              ? "bg-[#aedf1a]"
               : i === currentStep
-                ? "bg-purple-400"
+                ? "bg-[#aedf1a]/60"
                 : "bg-gray-300"
           }`}
         />
@@ -249,7 +249,7 @@ const AnalysisStep = ({
               {index < currentItem ? (
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
               ) : index === currentItem ? (
-                <div className="w-5 h-5 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+                <div className="w-5 h-5 border-2 border-[#aedf1a] border-t-transparent rounded-full animate-spin" />
               ) : (
                 <div className="w-5 h-5 border-2 border-gray-300 rounded-full" />
               )}
@@ -411,7 +411,7 @@ const ChatDemoStep = ({
       <Card className="surface-white">
         <CardHeader>
           <div className="flex items-center gap-2">
-            <MessageCirclePlusIcon className="h-5 w-5 text-purple-600" />
+            <MessageCirclePlusIcon className="h-5 w-5 text-[#aedf1a]" />
             <span className="font-semibold">
               {t("onboarding.chat.chatWithData")}
             </span>
@@ -435,7 +435,7 @@ const ChatDemoStep = ({
                   <div
                     className={`max-w-[80%] p-3 rounded-lg ${
                       message.type === "user"
-                        ? "bg-purple-600 text-white ml-4"
+                        ? "bg-[#aedf1a] text-white ml-4"
                         : "bg-gray-100 text-gray-800 mr-4"
                     }`}
                   >
@@ -755,7 +755,7 @@ export default function OnboardingPage() {
             label: t("onboarding.results.profitMargin"),
             value: locale === "ar" ? "+٣.٢٪" : "+3.2%",
             trend: "up",
-            color: "text-purple-600",
+            color: "text-[#aedf1a]",
           },
           {
             label: t("onboarding.results.inventoryEfficiency"),
@@ -958,7 +958,7 @@ export default function OnboardingPage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
           className="absolute inset-0 flex items-center justify-center p-4 z-10"
-          style={{ background: 'var(--surface-overlay)' }}
+          style={{ background: "var(--surface-overlay)" }}
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -966,7 +966,7 @@ export default function OnboardingPage() {
             transition={{ delay: 2.2 }}
             className="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl"
           >
-            <SparklesIcon className="h-12 w-12 text-purple-600 mx-auto mb-4" />
+            <SparklesIcon className="h-12 w-12 text-[#aedf1a] mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
               {t("onboarding.finalCta.title")}
             </h3>

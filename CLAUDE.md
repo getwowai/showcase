@@ -21,7 +21,7 @@ npm start             # Alternative with npm
 
 # Code Quality
 pnpm lint             # Run Next.js linting
-pnpm format           # Format code with Prettier  
+pnpm format           # Format code with Prettier
 pnpm format:check     # Check formatting without fixing
 npm run lint          # Alternative with npm
 npm run format        # Alternative with npm
@@ -31,11 +31,13 @@ npm run format:check  # Alternative with npm
 ## Architecture & Key Technologies
 
 **Framework & Core:**
+
 - Next.js 14 with App Router
 - TypeScript with strict typing
 - Uses pnpm as package manager (preferred over npm)
 
 **Internationalization (i18n):**
+
 - next-intl for internationalization with English/Arabic support
 - Localized routing: `/en/...` and `/ar/...` paths
 - RTL support for Arabic with custom fonts (Noto Sans Arabic)
@@ -43,12 +45,14 @@ npm run format:check  # Alternative with npm
 - Configuration in `src/i18n/config.ts`
 
 **Styling & UI:**
+
 - Tailwind CSS 4.x for styling
 - Custom UI components built with Radix UI primitives
 - Framer Motion for animations
 - Components follow shadcn/ui patterns in `src/components/ui/`
 
 **Project Structure:**
+
 ```
 src/
 ├── app/
@@ -70,12 +74,14 @@ src/
 ## Key Implementation Details
 
 **Internationalization Setup:**
+
 - Middleware handles locale detection and routing
 - Uses three fonts: Inter (Latin), JetBrains Mono (code), Noto Sans Arabic
 - Dynamic metadata generation based on locale
 - RTL/LTR direction switching based on language
 
 **Component Architecture:**
+
 - Custom UI components built on Radix UI primitives using shadcn/ui "new-york" style
 - Configured with components.json for shadcn/ui CLI integration
 - Utility-first approach with Tailwind CSS (zinc base color, CSS variables enabled)
@@ -84,6 +90,7 @@ src/
 - Lucide React for icons
 
 **Differences from Main WOW AI App:**
+
 - No authentication (Clerk auth mentioned but not implemented here)
 - No backend integration - purely static demonstrations
 - External links direct to main application for user actions
