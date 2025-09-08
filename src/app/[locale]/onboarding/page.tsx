@@ -643,17 +643,17 @@ export default function OnboardingPage() {
         insights: [
           {
             title: t("onboarding.insights.inventoryAlert"),
-            urgency: locale === "ar" ? "عالية" : "high",
+            urgency: t("onboarding.insights.highUrgency"),
             message: t("onboarding.insights.inventoryAlertMsg"),
           },
           {
             title: t("onboarding.insights.pricingOpportunity"),
-            urgency: locale === "ar" ? "متوسطة" : "medium",
+            urgency: t("onboarding.insights.mediumUrgency"),
             message: t("onboarding.insights.pricingOpportunityMsg"),
           },
           {
             title: t("onboarding.insights.seasonalTrend"),
-            urgency: locale === "ar" ? "منخفضة" : "low",
+            urgency: t("onboarding.insights.lowUrgency"),
             message: t("onboarding.insights.seasonalTrendMsg"),
           },
         ],
@@ -669,31 +669,19 @@ export default function OnboardingPage() {
         messages: [
           {
             type: "user",
-            text:
-              locale === "ar"
-                ? "ما هي أفضل منتجاتي هذا الشهر؟"
-                : "What are my best performing products this month?",
+            text: t("onboarding.chat.userMessage1"),
           },
           {
             type: "ai",
-            text:
-              locale === "ar"
-                ? "أفضل ٣ منتجات لك هي:\n١. سترة شتوية (٢،٣٤٠ ريال إيرادات)\n٢. كنزة دافئة (١،٨٩٠ ريال إيرادات)\n٣. طماق حراري (١،٦٥٠ ريال إيرادات)\n\nالسترة الشتوية لها هامش ربح ٣٤٪ وترتفع بنسبة ٢٣٪ مقارنة بالشهر الماضي."
-                : "Your top 3 products are:\n1. Winter Parka ($2,340 revenue)\n2. Cozy Sweater ($1,890 revenue)\n3. Thermal Leggings ($1,650 revenue)\n\nWinter Parka has a 34% profit margin and is trending up 23% vs last month.",
+            text: t("onboarding.chat.aiResponse1"),
           },
           {
             type: "user",
-            text:
-              locale === "ar"
-                ? "هل يجب أن أزيد سعر السترة الشتوية؟"
-                : "Should I increase the price of Winter Parka?",
+            text: t("onboarding.chat.userMessage2"),
           },
           {
             type: "ai",
-            text:
-              locale === "ar"
-                ? "نعم! بناءً على اتجاهات الطلب وتحليل المنافسين، يمكنك زيادة السعر بنسبة ١٢-١٥٪ دون التأثير على المبيعات. هذا يمكن أن يزيد الربح الشهري بمقدار ٢٨٠ ريال."
-                : "Yes! Based on demand trends and competitor analysis, you can increase the price by 12-15% without affecting sales. This could boost monthly profit by $280.",
+            text: t("onboarding.chat.aiResponse2"),
           },
         ],
       },
@@ -707,28 +695,19 @@ export default function OnboardingPage() {
         type: "actions",
         actions: [
           {
-            agent: locale === "ar" ? "المخزون" : "Inventory",
-            action:
-              locale === "ar"
-                ? "أعاد طلب ٥٠ سترة شتوية من المورد"
-                : "Reordered 50 Winter Parkas from supplier",
-            status: locale === "ar" ? "مكتمل" : "completed",
+            agent: t("onboarding.actions.inventoryAgent"),
+            action: t("onboarding.actions.inventoryAction"),
+            status: t("onboarding.actions.completed"),
           },
           {
-            agent: locale === "ar" ? "التسعير" : "Pricing",
-            action:
-              locale === "ar"
-                ? "حدّث أسعار ٣ منتجات بناءً على تحليل السوق"
-                : "Updated 3 product prices based on market analysis",
-            status: locale === "ar" ? "مكتمل" : "completed",
+            agent: t("onboarding.actions.pricingAgent"),
+            action: t("onboarding.actions.pricingAction"),
+            status: t("onboarding.actions.completed"),
           },
           {
-            agent: locale === "ar" ? "العروض الترويجية" : "Promotions",
-            action:
-              locale === "ar"
-                ? "أنشأ تخفيض سريع للمنتجات الصيفية بطيئة الحركة"
-                : "Created flash sale for slow-moving summer items",
-            status: locale === "ar" ? "قيد التنفيذ" : "in-progress",
+            agent: t("onboarding.actions.promotionsAgent"),
+            action: t("onboarding.actions.promotionsAction"),
+            status: t("onboarding.actions.inProgress"),
           },
         ],
       },
@@ -743,25 +722,25 @@ export default function OnboardingPage() {
         metrics: [
           {
             label: t("onboarding.results.revenueIncrease"),
-            value: locale === "ar" ? "+١٨٪" : "+18%",
+            value: t("onboarding.results.revenueIncrease"),
             trend: "up",
             color: "text-green-600",
           },
           {
             label: t("onboarding.results.timeSaved"),
-            value: locale === "ar" ? "١٢ساعة/أسبوع" : "12hrs/week",
+            value: t("onboarding.results.timeSaved"),
             trend: "neutral",
             color: "text-blue-600",
           },
           {
             label: t("onboarding.results.profitMargin"),
-            value: locale === "ar" ? "+٣.٢٪" : "+3.2%",
+            value: t("onboarding.results.profitMargin"),
             trend: "up",
             color: "text-white",
           },
           {
             label: t("onboarding.results.inventoryEfficiency"),
-            value: locale === "ar" ? "+٢٤٪" : "+24%",
+            value: t("onboarding.results.inventoryEfficiency"),
             trend: "up",
             color: "text-orange-600",
           },
@@ -921,7 +900,7 @@ export default function OnboardingPage() {
               {isPlaying ? t("onboarding.pause") : t("onboarding.play")}
             </Button>
             <span className="text-sm text-gray-500">
-              {currentStep + 1} {locale === "ar" ? "من" : "of"}{" "}
+              {currentStep + 1} {t("onboarding.step.of")}{" "}
               {onboardingSteps.length}
             </span>
           </div>

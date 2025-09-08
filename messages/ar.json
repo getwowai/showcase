@@ -142,20 +142,33 @@
       "pricingOpportunity": "فرصة تسعير مكتشفة",
       "pricingOpportunityMsg": "ارفع الهوامش على 12 منتجًا بنسبة 8%",
       "seasonalTrend": "تحليل الاتجاهات الموسمية",
-      "seasonalTrendMsg": "أداء مجموعة الشتاء يفوق التوقعات بنسبة 23%"
+      "seasonalTrendMsg": "أداء مجموعة الشتاء يفوق التوقعات بنسبة 23%",
+      "highUrgency": "عالية",
+      "mediumUrgency": "متوسطة",
+      "lowUrgency": "منخفضة"
     },
     "chat": {
       "title": "تحدث إلى بياناتك",
       "description": "اسأل أي شيء عن متجرك بلغة طبيعية",
       "chatWithData": "تحدث مع بياناتك",
-      "online": "متصل"
+      "online": "متصل",
+      "userMessage1": "ما هي أفضل منتجاتي هذا الشهر؟",
+      "aiResponse1": "أفضل ٣ منتجات لك هي:\n١. سترة شتوية (٢،٣٤٠ ريال إيرادات)\n٢. كنزة دافئة (١،٨٩٠ ريال إيرادات)\n٣. طماق حراري (١،٦٥٠ ريال إيرادات)\n\nالسترة الشتوية لها هامش ربح ٣٤٪ وترتفع بنسبة ٢٣٪ مقارنة بالشهر الماضي.",
+      "userMessage2": "هل يجب أن أزيد سعر السترة الشتوية؟",
+      "aiResponse2": "نعم! بناءً على اتجاهات الطلب وتحليل المنافسين، يمكنك زيادة السعر بنسبة ١٢-١٥٪ دون التأثير على المبيعات. هذا يمكن أن يزيد الربح الشهري بمقدار ٢٨٠ ريال."
     },
     "actions": {
       "title": "إجراءات مؤتمتة",
       "description": "شاهد عوامل الذكاء الاصطناعي تتخذ الإجراءات تلقائيًا",
       "agentsTakingAction": "العوامل تتخذ الإجراءات",
       "completed": "مكتمل",
-      "inProgress": "قيد التنفيذ"
+      "inProgress": "قيد التنفيذ",
+      "inventoryAgent": "المخزون",
+      "pricingAgent": "التسعير",
+      "promotionsAgent": "العروض الترويجية",
+      "inventoryAction": "أعاد طلب ٥٠ سترة شتوية من المورد",
+      "pricingAction": "حدّث أسعار ٣ منتجات بناءً على تحليل السوق",
+      "promotionsAction": "أنشأ تخفيض سريع للمنتجات الصيفية بطيئة الحركة"
     },
     "results": {
       "title": "لوحة نتائج الأداء",
@@ -173,6 +186,103 @@
       "startFreeTrial": "ابدأ الفترة التجريبية المجانية",
       "login": "تسجيل الدخول",
       "exitDemo": "الخروج من العرض التوضيحي"
+    },
+    "step": {
+      "of": "من"
+    }
+  },
+  "demo": {
+    "chat": {
+      "userMessage": "ما هي أفضل منتجاتي هذا الشهر؟",
+      "aiResponse": "أفضل ٣ منتجات:\n١. سترة شتوية - ١٢،٤٥٠ ريال (↑٢٣٪)\n٢. كنزة دافئة - ٨،٩٢٠ ريال (↑١٨٪)\n٣. أحذية حرارية - ٦،٧٨٠ ريال (↑٣١٪)\n\nإجمالي الإيرادات: ٢٨،١٥٠ ريال هذا الشهر",
+      "revenue": "الإيرادات",
+      "revenueValue": "٢٨،١٥٠ ريال",
+      "revenueChange": "+٢٣٪",
+      "orders": "الطلبات",
+      "ordersValue": "٢٤٧",
+      "ordersChange": "+١٨٪",
+      "instantInsights": "رؤى ذكية فورية مع البيانات"
+    },
+    "insights": {
+      "title": "اكتشاف فرصة إيرادات",
+      "priority": "عالية",
+      "impact": "+٤،٢٣٠ ريال محتملة",
+      "description": "مجموعة الشتاء تحقق أداءً أعلى بنسبة ٣٤٪ من التوقعات",
+      "action1": "✓ زيادة مخزون الشتاء بنسبة ٢٥٪",
+      "action2": "✓ إطلاق حملة شتوية مستهدفة",
+      "action3": "⏳ تحسين التسعير لذروة الطلب"
+    },
+    "dashboard": {
+      "alerts": "تنبيهات",
+      "actions": "إجراءات",
+      "revenue": "إيرادات",
+      "efficiency": "كفاءة",
+      "finance": "المالية",
+      "financeStatus": "نشط",
+      "financeAction": "حسّن ١٢ سعر",
+      "inventory": "المخزون",
+      "inventoryStatus": "يعمل",
+      "inventoryAction": "أعاد طلب ٥ منتجات",
+      "pricing": "التسعير",
+      "pricingStatus": "نشط",
+      "pricingAction": "وجد ٣ فرص",
+      "logistics": "اللوجستيات",
+      "logisticsStatus": "نشط",
+      "logisticsAction": "حسّن الشحن",
+      "promotions": "العروض الترويجية",
+      "promotionsStatus": "نشط",
+      "promotionsAction": "أنشأ تخفيض سريع",
+      "score": "نقاط",
+      "revenueImpact": "تأثير الإيرادات"
+    },
+    "inventory": {
+      "winterParka": "سترة شتوية",
+      "stock": "المخزون",
+      "demand": "الطلب",
+      "high": "عالي",
+      "medium": "متوسط",
+      "reorderAction": "أعد طلب ٥٠ قطعة",
+      "reorderAction2": "أعد طلب ٢٥ قطعة",
+      "thermalGloves": "قفازات حرارية",
+      "automated": "تم وضع ١٢ طلب تلقائياً هذا الشهر",
+      "smartAlerts": "تنبيهات إعادة التخزين الذكية"
+    },
+    "finance": {
+      "grossMargin": "الهامش الإجمالي",
+      "grossMarginValue": "٣٤.٢٪",
+      "grossMarginChange": "+٢.٣٪",
+      "grossMarginTarget": "٣٥٪",
+      "netProfit": "صافي الربح",
+      "netProfitValue": "١٨،٤٥٠ ريال",
+      "netProfitChange": "+١٥٪",
+      "netProfitTarget": "٢٠ ألف ريال",
+      "aov": "متوسط قيمة الطلب",
+      "aovValue": "١٢٧ ريال",
+      "aovChange": "+٨٪",
+      "aovTarget": "١٣٠ ريال",
+      "target": "الهدف",
+      "opportunity1": "زيادة سعر السترة الشتوية",
+      "opportunity1Impact": "+٨٩٠ ريال/شهر",
+      "opportunity1Confidence": "٩٤٪",
+      "opportunity2": "تجميع المنتجات بطيئة الحركة",
+      "opportunity2Impact": "+٣٤٠ ريال/شهر",
+      "opportunity2Confidence": "٨٧٪",
+      "profitOptimization": "تحسين الأرباح"
+    },
+    "promotions": {
+      "winterFlashSale": "تخفيض الشتاء السريع",
+      "live": "مباشر",
+      "conversion": "+٢٣٪ تحويل",
+      "revenue": "٣،٢٤٠ ريال",
+      "remaining": "يومان ١٤ساعة",
+      "bundleBoost": "دفعة الحزم",
+      "scheduled": "مجدول",
+      "aovPrediction": "+١٨٪ متوسط قيمة الطلب",
+      "target": "٢،١٠٠ ريال",
+      "starts": "غداً ٩ صباحاً",
+      "performance": "الأداء",
+      "revenue": "الإيرادات",
+      "aiGenerated": "تم إنشاء ٣ حملات تلقائياً هذا الأسبوع"
     }
   },
   "common": {

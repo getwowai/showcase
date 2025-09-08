@@ -45,30 +45,24 @@ export default function HomePage() {
         messages: [
           {
             type: "user",
-            text:
-              locale === "ar"
-                ? "ما هي أفضل منتجاتي هذا الشهر؟"
-                : "What are my top products this month?",
+            text: t("demo.chat.userMessage"),
           },
           {
             type: "ai",
-            text:
-              locale === "ar"
-                ? "أفضل ٣ منتجات:\n١. سترة شتوية - ١٢،٤٥٠ ريال (↑٢٣٪)\n٢. كنزة دافئة - ٨،٩٢٠ ريال (↑١٨٪)\n٣. أحذية حرارية - ٦،٧٨٠ ريال (↑٣١٪)\n\nإجمالي الإيرادات: ٢٨،١٥٠ ريال هذا الشهر"
-                : "Top 3 Products:\n1. Winter Parka - $12,450 (↑23%)\n2. Cozy Sweater - $8,920 (↑18%)\n3. Thermal Boots - $6,780 (↑31%)\n\nTotal revenue: $28,150 this month",
+            text: t("demo.chat.aiResponse"),
           },
         ],
         metrics: [
           {
-            label: locale === "ar" ? "الإيرادات" : "Revenue",
-            value: locale === "ar" ? "٢٨،١٥٠ ريال" : "$28,150",
-            change: locale === "ar" ? "+٢٣٪" : "+23%",
+            label: t("demo.chat.revenue"),
+            value: t("demo.chat.revenueValue"),
+            change: t("demo.chat.revenueChange"),
             positive: true,
           },
           {
-            label: locale === "ar" ? "الطلبات" : "Orders",
-            value: locale === "ar" ? "٢٤٧" : "247",
-            change: locale === "ar" ? "+١٨٪" : "+18%",
+            label: t("demo.chat.orders"),
+            value: t("demo.chat.ordersValue"),
+            change: t("demo.chat.ordersChange"),
             positive: true,
           },
         ],
@@ -82,27 +76,15 @@ export default function HomePage() {
       demo: {
         type: "insights",
         insight: {
-          title:
-            locale === "ar"
-              ? "اكتشاف فرصة إيرادات"
-              : "Revenue Opportunity Detected",
-          priority: locale === "ar" ? "عالية" : "high",
-          impact: locale === "ar" ? "+٤،٢٣٠ ريال محتملة" : "+$4,230 potential",
-          description:
-            locale === "ar"
-              ? "مجموعة الشتاء تحقق أداءً أعلى بنسبة ٣٤٪ من التوقعات"
-              : "Winter collection performing 34% above forecast",
+          title: t("demo.insights.title"),
+          priority: t("demo.insights.priority"),
+          impact: t("demo.insights.impact"),
+          description: t("demo.insights.description"),
         },
         actions: [
-          locale === "ar"
-            ? "✓ زيادة مخزون الشتاء بنسبة ٢٥٪"
-            : "✓ Increase winter inventory by 25%",
-          locale === "ar"
-            ? "✓ إطلاق حملة شتوية مستهدفة"
-            : "✓ Launch targeted winter campaign",
-          locale === "ar"
-            ? "⏳ تحسين التسعير لذروة الطلب"
-            : "⏳ Optimize pricing for peak demand",
+          t("demo.insights.action1"),
+          t("demo.insights.action2"),
+          t("demo.insights.action3"),
         ],
         chart: {
           current: 134,
@@ -120,42 +102,41 @@ export default function HomePage() {
         type: "dashboard",
         agents: [
           {
-            name: locale === "ar" ? "المالية" : "Finance",
-            status: locale === "ar" ? "نشط" : "active",
+            name: t("demo.dashboard.finance"),
+            status: t("demo.dashboard.financeStatus"),
             score: 95,
-            action: locale === "ar" ? "حسّن ١٢ سعر" : "Optimized 12 prices",
+            action: t("demo.dashboard.financeAction"),
           },
           {
-            name: locale === "ar" ? "المخزون" : "Inventory",
-            status: locale === "ar" ? "يعمل" : "working",
+            name: t("demo.dashboard.inventory"),
+            status: t("demo.dashboard.inventoryStatus"),
             score: 88,
-            action:
-              locale === "ar" ? "أعاد طلب ٥ منتجات" : "Reordered 5 products",
+            action: t("demo.dashboard.inventoryAction"),
           },
           {
-            name: locale === "ar" ? "التسعير" : "Pricing",
-            status: locale === "ar" ? "نشط" : "active",
+            name: t("demo.dashboard.pricing"),
+            status: t("demo.dashboard.pricingStatus"),
             score: 92,
-            action: locale === "ar" ? "وجد ٣ فرص" : "Found 3 opportunities",
+            action: t("demo.dashboard.pricingAction"),
           },
           {
-            name: locale === "ar" ? "اللوجستيات" : "Logistics",
-            status: locale === "ar" ? "نشط" : "active",
+            name: t("demo.dashboard.logistics"),
+            status: t("demo.dashboard.logisticsStatus"),
             score: 97,
-            action: locale === "ar" ? "حسّن الشحن" : "Optimized shipping",
+            action: t("demo.dashboard.logisticsAction"),
           },
           {
-            name: locale === "ar" ? "العروض الترويجية" : "Promotions",
-            status: locale === "ar" ? "نشط" : "active",
+            name: t("demo.dashboard.promotions"),
+            status: t("demo.dashboard.promotionsStatus"),
             score: 90,
-            action: locale === "ar" ? "أنشأ تخفيض سريع" : "Created flash sale",
+            action: t("demo.dashboard.promotionsAction"),
           },
         ],
         summary: {
           alerts: 2,
           actions: 8,
-          revenue: locale === "ar" ? "+٢،٣٤٠ ريال" : "+$2,340",
-          efficiency: locale === "ar" ? "٩٤٪" : "94%",
+          revenue: "+$2,340",
+          efficiency: "94%",
         },
       },
     },
@@ -168,38 +149,35 @@ export default function HomePage() {
         type: "inventory",
         alerts: [
           {
-            product: locale === "ar" ? "سترة شتوية" : "Winter Parka",
+            product: t("demo.inventory.winterParka"),
             stock: 3,
-            demand: locale === "ar" ? "عالي" : "High",
-            action: locale === "ar" ? "أعد طلب ٥٠ قطعة" : "Reorder 50 units",
+            demand: t("demo.inventory.high"),
+            action: t("demo.inventory.reorderAction"),
             urgent: true,
           },
           {
-            product: locale === "ar" ? "قفازات حرارية" : "Thermal Gloves",
+            product: t("demo.inventory.thermalGloves"),
             stock: 8,
-            demand: locale === "ar" ? "متوسط" : "Medium",
-            action: locale === "ar" ? "أعد طلب ٢٥ قطعة" : "Reorder 25 units",
+            demand: t("demo.inventory.medium"),
+            action: t("demo.inventory.reorderAction2"),
             urgent: false,
           },
         ],
         predictions: [
           {
-            week: locale === "ar" ? "هذا الأسبوع" : "This Week",
+            week: "This Week",
             demand: 145,
             stock: 120,
             status: "critical",
           },
           {
-            week: locale === "ar" ? "الأسبوع القادم" : "Next Week",
+            week: "Next Week",
             demand: 167,
             stock: 200,
             status: "optimal",
           },
         ],
-        automated:
-          locale === "ar"
-            ? "تم وضع ١٢ طلب تلقائياً هذا الشهر"
-            : "12 orders placed automatically this month",
+        automated: t("demo.inventory.automated"),
       },
     },
     {
@@ -211,40 +189,34 @@ export default function HomePage() {
         type: "finance",
         metrics: [
           {
-            label: locale === "ar" ? "الهامش الإجمالي" : "Gross Margin",
-            value: locale === "ar" ? "٣٤.٢٪" : "34.2%",
-            change: locale === "ar" ? "+٢.٣٪" : "+2.3%",
-            target: locale === "ar" ? "٣٥٪" : "35%",
+            label: t("demo.finance.grossMargin"),
+            value: t("demo.finance.grossMarginValue"),
+            change: t("demo.finance.grossMarginChange"),
+            target: t("demo.finance.grossMarginTarget"),
           },
           {
-            label: locale === "ar" ? "صافي الربح" : "Net Profit",
-            value: locale === "ar" ? "١٨،٤٥٠ ريال" : "$18,450",
-            change: locale === "ar" ? "+١٥٪" : "+15%",
-            target: locale === "ar" ? "٢٠ ألف ريال" : "$20K",
+            label: t("demo.finance.netProfit"),
+            value: t("demo.finance.netProfitValue"),
+            change: t("demo.finance.netProfitChange"),
+            target: t("demo.finance.netProfitTarget"),
           },
           {
-            label: locale === "ar" ? "متوسط قيمة الطلب" : "AOV",
-            value: locale === "ar" ? "١٢٧ ريال" : "$127",
-            change: locale === "ar" ? "+٨٪" : "+8%",
-            target: locale === "ar" ? "١٣٠ ريال" : "$130",
+            label: t("demo.finance.aov"),
+            value: t("demo.finance.aovValue"),
+            change: t("demo.finance.aovChange"),
+            target: t("demo.finance.aovTarget"),
           },
         ],
         opportunities: [
           {
-            action:
-              locale === "ar"
-                ? "زيادة سعر السترة الشتوية"
-                : "Increase Winter Parka price",
-            impact: locale === "ar" ? "+٨٩٠ ريال/شهر" : "+$890/month",
-            confidence: locale === "ar" ? "٩٤٪" : "94%",
+            action: t("demo.finance.opportunity1"),
+            impact: t("demo.finance.opportunity1Impact"),
+            confidence: t("demo.finance.opportunity1Confidence"),
           },
           {
-            action:
-              locale === "ar"
-                ? "تجميع المنتجات بطيئة الحركة"
-                : "Bundle slow-moving items",
-            impact: locale === "ar" ? "+٣٤٠ ريال/شهر" : "+$340/month",
-            confidence: locale === "ar" ? "٨٧٪" : "87%",
+            action: t("demo.finance.opportunity2"),
+            impact: t("demo.finance.opportunity2Impact"),
+            confidence: t("demo.finance.opportunity2Confidence"),
           },
         ],
       },
@@ -258,24 +230,21 @@ export default function HomePage() {
         type: "promotions",
         campaigns: [
           {
-            name: locale === "ar" ? "تخفيض الشتاء السريع" : "Winter Flash Sale",
-            status: locale === "ar" ? "مباشر" : "live",
-            performance: locale === "ar" ? "+٢٣٪ تحويل" : "+23% conversion",
-            revenue: locale === "ar" ? "٣،٢٤٠ ريال" : "$3,240",
-            remaining: locale === "ar" ? "يومان ١٤ساعة" : "2d 14h",
+            name: t("demo.promotions.winterFlashSale"),
+            status: t("demo.promotions.live"),
+            performance: t("demo.promotions.conversion"),
+            revenue: t("demo.promotions.revenue"),
+            remaining: t("demo.promotions.remaining"),
           },
           {
-            name: locale === "ar" ? "دفعة الحزم" : "Bundle Boost",
-            status: locale === "ar" ? "مجدول" : "scheduled",
-            prediction: locale === "ar" ? "+١٨٪ متوسط قيمة الطلب" : "+18% AOV",
-            target: locale === "ar" ? "٢،١٠٠ ريال" : "$2,100",
-            starts: locale === "ar" ? "غداً ٩ صباحاً" : "Tomorrow 9AM",
+            name: t("demo.promotions.bundleBoost"),
+            status: t("demo.promotions.scheduled"),
+            prediction: t("demo.promotions.aovPrediction"),
+            target: t("demo.promotions.target"),
+            starts: t("demo.promotions.starts"),
           },
         ],
-        aiGenerated:
-          locale === "ar"
-            ? "تم إنشاء ٣ حملات تلقائياً هذا الأسبوع"
-            : "3 campaigns created automatically this week",
+        aiGenerated: t("demo.promotions.aiGenerated"),
       },
     },
   ];
@@ -347,41 +316,43 @@ export default function HomePage() {
     switch (demo.type) {
       case "chat":
         return (
-          <div className="space-y-4">
-            <div className="bg-gray-50 rounded-lg p-4 space-y-3">
-              {demo.messages?.map((msg: any, idx: number) => (
+          <div className="h-full flex flex-col space-y-3">
+            <div className="bg-gray-50 rounded-lg p-3 space-y-2 flex-1">
+              {demo.messages?.slice(0, 2).map((msg: any, idx: number) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, x: msg.type === "user" ? 20 : -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.5 }}
+                  transition={{ delay: idx * 0.3 }}
                   className={`flex ${msg.type === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[80%] p-3 rounded-lg ${
+                    className={`max-w-[85%] p-2 rounded-lg ${
                       msg.type === "user"
                         ? "bg-[#4a5568] text-white"
                         : "bg-white border shadow-sm"
                     }`}
                   >
-                    <pre className="text-sm whitespace-pre-wrap font-sans">
-                      {msg.text}
-                    </pre>
+                    <div className="text-xs sm:text-sm whitespace-pre-wrap font-sans">
+                      {msg.text.length > 100
+                        ? msg.text.substring(0, 100) + "..."
+                        : msg.text}
+                    </div>
                   </div>
                 </motion.div>
               ))}
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              {demo.metrics.map((metric: any, idx: number) => (
+            <div className="grid grid-cols-2 gap-2">
+              {demo.metrics.slice(0, 2).map((metric: any, idx: number) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1 + idx * 0.2 }}
-                  className="bg-white border rounded-lg p-3 text-center"
+                  transition={{ delay: 0.6 + idx * 0.1 }}
+                  className="bg-white border rounded-lg p-2 text-center"
                 >
-                  <div className="font-bold text-lg">{metric.value}</div>
-                  <div className="text-sm text-gray-600">{metric.label}</div>
+                  <div className="font-bold text-sm">{metric.value}</div>
+                  <div className="text-xs text-gray-600">{metric.label}</div>
                   <div
                     className={`text-xs ${metric.positive ? "text-green-600" : "text-red-600"}`}
                   >
@@ -395,44 +366,44 @@ export default function HomePage() {
 
       case "insights":
         return (
-          <div className="space-y-4">
+          <div className="h-full flex flex-col space-y-3">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-lg p-4"
+              className="bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-lg p-3 flex-1"
             >
-              <div className="flex items-start gap-3">
-                <div className="bg-red-100 p-2 rounded-full">
-                  <TrendingUpIcon className="h-5 w-5 text-red-600" />
+              <div className="flex items-start gap-2">
+                <div className="bg-red-100 p-1.5 rounded-full">
+                  <TrendingUpIcon className="h-4 w-4 text-red-600" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-bold text-gray-800">
+                  <h4 className="font-bold text-sm text-gray-800">
                     {demo.insight.title}
                   </h4>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-xs text-gray-600">
                     {demo.insight.description}
                   </p>
-                  <div className="mt-2 flex gap-2">
-                    <Badge className="bg-red-100 text-red-800">
+                  <div className="mt-2 flex gap-1">
+                    <Badge className="bg-red-100 text-red-800 text-xs px-2 py-0.5">
                       {demo.insight.priority}
                     </Badge>
-                    <Badge className="bg-[#4a5568] text-white">
+                    <Badge className="bg-[#4a5568] text-white text-xs px-2 py-0.5">
                       {demo.insight.impact}
                     </Badge>
                   </div>
                 </div>
               </div>
             </motion.div>
-            <div className="grid grid-cols-1 gap-2">
-              {demo.actions.map((action: string, idx: number) => (
+            <div className="space-y-1">
+              {demo.actions.slice(0, 2).map((action: string, idx: number) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 + idx * 0.2 }}
-                  className="flex items-center gap-2 p-2 bg-gray-50 rounded"
+                  transition={{ delay: 0.3 + idx * 0.1 }}
+                  className="flex items-center gap-2 p-2 bg-gray-50 rounded text-xs"
                 >
-                  <span className="text-sm">{action}</span>
+                  <span>{action}</span>
                 </motion.div>
               ))}
             </div>
@@ -441,46 +412,38 @@ export default function HomePage() {
 
       case "dashboard":
         return (
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {Object.entries(demo.summary).map(([key, value], idx) => (
-                <motion.div
-                  key={key}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bg-white border rounded-lg p-3 text-center"
-                >
-                  <div className="font-bold text-lg text-white">
-                    {value as string}
-                  </div>
-                  <div className="text-xs text-gray-600 capitalize">
-                    {locale === "ar"
-                      ? key === "alerts"
-                        ? "تنبيهات"
-                        : key === "actions"
-                          ? "إجراءات"
-                          : key === "revenue"
-                            ? "إيرادات"
-                            : key === "efficiency"
-                              ? "كفاءة"
-                              : key
-                      : key}
-                  </div>
-                </motion.div>
-              ))}
+          <div className="h-full flex flex-col space-y-3">
+            <div className="grid grid-cols-2 gap-2">
+              {Object.entries(demo.summary)
+                .slice(0, 4)
+                .map(([key, value], idx) => (
+                  <motion.div
+                    key={key}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="bg-white border rounded-lg p-2 text-center"
+                  >
+                    <div className="font-bold text-sm text-[#4a5568]">
+                      {value as string}
+                    </div>
+                    <div className="text-xs text-gray-600 capitalize">
+                      {t(`demo.dashboard.${key}`)}
+                    </div>
+                  </motion.div>
+                ))}
             </div>
-            <div className="space-y-2">
-              {demo.agents.map((agent: any, idx: number) => (
+            <div className="space-y-1 flex-1 overflow-y-auto">
+              {demo.agents.slice(0, 3).map((agent: any, idx: number) => (
                 <motion.div
                   key={agent.name}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 + idx * 0.1 }}
-                  className="flex items-center gap-3 p-3 bg-white border rounded-lg"
+                  transition={{ delay: 0.4 + idx * 0.1 }}
+                  className="flex items-center gap-2 p-2 bg-white border rounded-lg"
                 >
                   <div
-                    className={`w-3 h-3 rounded-full ${
+                    className={`w-2 h-2 rounded-full ${
                       agent.status === "active" || agent.status === "نشط"
                         ? "bg-green-500"
                         : agent.status === "working" || agent.status === "يعمل"
@@ -489,15 +452,14 @@ export default function HomePage() {
                     }`}
                   />
                   <div className="flex-1">
-                    <div className="font-medium text-sm">{agent.name}</div>
-                    <div className="text-xs text-gray-600">{agent.action}</div>
+                    <div className="font-medium text-xs">{agent.name}</div>
+                    <div className="text-xs text-gray-600 truncate">
+                      {agent.action}
+                    </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-sm font-bold text-green-600">
+                    <div className="text-xs font-bold text-green-600">
                       {agent.score}%
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      {locale === "ar" ? "نقاط" : "Score"}
                     </div>
                   </div>
                 </motion.div>
@@ -508,15 +470,15 @@ export default function HomePage() {
 
       case "inventory":
         return (
-          <div className="space-y-4">
-            <div className="space-y-2">
-              {demo.alerts.map((alert: any, idx: number) => (
+          <div className="h-full flex flex-col space-y-3">
+            <div className="space-y-2 flex-1">
+              {demo.alerts.slice(0, 2).map((alert: any, idx: number) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.2 }}
-                  className={`p-3 rounded-lg border ${
+                  className={`p-2 rounded-lg border ${
                     alert.urgent
                       ? "bg-red-50 border-red-200"
                       : "bg-[#86c9e5]/5 border-[#86c9e5]/20"
@@ -524,19 +486,18 @@ export default function HomePage() {
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="font-medium">{alert.product}</div>
-                      <div className="text-sm text-gray-600">
-                        {locale === "ar"
-                          ? `المخزون: ${alert.stock} • الطلب: ${alert.demand}`
-                          : `Stock: ${alert.stock} • Demand: ${alert.demand}`}
+                      <div className="font-medium text-sm">{alert.product}</div>
+                      <div className="text-xs text-gray-600">
+                        {t("demo.inventory.stock")}: {alert.stock} •{" "}
+                        {t("demo.inventory.demand")}: {alert.demand}
                       </div>
                     </div>
                     <Badge
-                      className={
+                      className={`text-xs px-2 py-0.5 ${
                         alert.urgent
                           ? "bg-red-100 text-red-800"
                           : "bg-[#86c9e5]/15 text-[#4a5568]"
-                      }
+                      }`}
                     >
                       {alert.action}
                     </Badge>
@@ -547,10 +508,10 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-center"
+              transition={{ delay: 0.4 }}
+              className="bg-blue-50 border border-blue-200 rounded-lg p-2 text-center"
             >
-              <div className="text-sm text-blue-700 font-medium">
+              <div className="text-xs text-blue-700 font-medium">
                 {demo.automated}
               </div>
             </motion.div>
@@ -559,48 +520,43 @@ export default function HomePage() {
 
       case "finance":
         return (
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {demo.metrics.map((metric: any, idx: number) => (
+          <div className="h-full flex flex-col space-y-3">
+            <div className="grid grid-cols-3 gap-2">
+              {demo.metrics.slice(0, 3).map((metric: any, idx: number) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.2 }}
-                  className="bg-white border rounded-lg p-3"
+                  transition={{ delay: idx * 0.1 }}
+                  className="bg-white border rounded-lg p-2"
                 >
                   <div className="text-center">
-                    <div className="font-bold text-lg">{metric.value}</div>
-                    <div className="text-sm text-gray-600">{metric.label}</div>
+                    <div className="font-bold text-sm">{metric.value}</div>
+                    <div className="text-xs text-gray-600">{metric.label}</div>
                     <div className="text-xs text-green-600">
                       {metric.change}
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      {locale === "ar"
-                        ? `الهدف: ${metric.target}`
-                        : `Target: ${metric.target}`}
                     </div>
                   </div>
                 </motion.div>
               ))}
             </div>
-            <div className="space-y-2">
-              {demo.opportunities.map((opp: any, idx: number) => (
+            <div className="space-y-1 flex-1">
+              {demo.opportunities.slice(0, 2).map((opp: any, idx: number) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 + idx * 0.2 }}
-                  className="p-3 bg-green-50 border border-green-200 rounded-lg"
+                  transition={{ delay: 0.3 + idx * 0.1 }}
+                  className="p-2 bg-green-50 border border-green-200 rounded-lg"
                 >
                   <div className="flex justify-between items-start">
                     <div className="flex-1">
-                      <div className="font-medium text-sm">{opp.action}</div>
-                      <div className="text-green-600 font-bold">
+                      <div className="font-medium text-xs">{opp.action}</div>
+                      <div className="text-green-600 font-bold text-xs">
                         {opp.impact}
                       </div>
                     </div>
-                    <Badge className="bg-[#4a5568] text-white">
+                    <Badge className="bg-[#4a5568] text-white text-xs px-2 py-0.5">
                       {opp.confidence}
                     </Badge>
                   </div>
@@ -612,57 +568,57 @@ export default function HomePage() {
 
       case "promotions":
         return (
-          <div className="space-y-4">
-            {demo.campaigns.map((campaign: any, idx: number) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.3 }}
-                className="p-4 bg-white border rounded-lg"
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <h4 className="font-bold">{campaign.name}</h4>
-                  <Badge
-                    className={
-                      campaign.status === "live" || campaign.status === "مباشر"
-                        ? "bg-green-100 text-green-800"
-                        : "bg-blue-100 text-blue-800"
-                    }
-                  >
-                    {campaign.status}
-                  </Badge>
-                </div>
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <div className="text-gray-600">
-                      {locale === "ar" ? "الأداء" : "Performance"}
+          <div className="h-full flex flex-col space-y-3">
+            <div className="space-y-2 flex-1">
+              {demo.campaigns.slice(0, 2).map((campaign: any, idx: number) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.2 }}
+                  className="p-3 bg-white border rounded-lg"
+                >
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="font-bold text-sm">{campaign.name}</h4>
+                    <Badge
+                      className={`text-xs px-2 py-0.5 ${
+                        campaign.status === "live" ||
+                        campaign.status === "مباشر"
+                          ? "bg-green-100 text-green-800"
+                          : "bg-blue-100 text-blue-800"
+                      }`}
+                    >
+                      {campaign.status}
+                    </Badge>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 text-xs">
+                    <div>
+                      <div className="text-gray-600">
+                        {t("demo.promotions.performance")}
+                      </div>
+                      <div className="font-medium">
+                        {campaign.performance || campaign.prediction}
+                      </div>
                     </div>
-                    <div className="font-medium">
-                      {campaign.performance || campaign.prediction}
+                    <div>
+                      <div className="text-gray-600">
+                        {t("demo.promotions.revenue")}
+                      </div>
+                      <div className="font-medium">
+                        {campaign.revenue || campaign.target}
+                      </div>
                     </div>
                   </div>
-                  <div>
-                    <div className="text-gray-600">
-                      {locale === "ar" ? "الإيرادات" : "Revenue"}
-                    </div>
-                    <div className="font-medium">
-                      {campaign.revenue || campaign.target}
-                    </div>
-                  </div>
-                </div>
-                <div className="text-xs text-gray-500 mt-2">
-                  {campaign.remaining || campaign.starts}
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="bg-[#aedf1a]/10 border border-[#aedf1a]/30 rounded-lg p-3 text-center"
+              transition={{ delay: 0.4 }}
+              className="bg-[#aedf1a]/10 border border-[#aedf1a]/30 rounded-lg p-2 text-center"
             >
-              <div className="text-sm text-[#4a5568] font-medium">
+              <div className="text-xs text-[#4a5568] font-medium">
                 {demo.aiGenerated}
               </div>
             </motion.div>
@@ -686,7 +642,7 @@ export default function HomePage() {
       </div> */}
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20 pb-32">
+      <section className="relative overflow-hidden pt-20 pb-8">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -694,15 +650,17 @@ export default function HomePage() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <div className="flex items-center justify-center mb-6">
-              <WowLogo size="hero" variant="primary" />
+            <div className="flex items-center justify-center mb-10 md:mb-12">
+              <div className="scale-150 sm:scale-175 md:scale-[1.8] lg:scale-[2]">
+                <WowLogo size="hero" variant="primary" />
+              </div>
             </div>
 
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-2xl md:text-4xl font-semibold text-gray-800 mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-8 md:mb-8 leading-tight px-4"
             >
               {t("homepage.subtitle")}
             </motion.h2>
@@ -711,7 +669,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto"
+              className="text-xl sm:text-2xl md:text-2xl lg:text-3xl text-gray-600 mb-16 md:mb-16 max-w-4xl mx-auto font-medium leading-relaxed px-4"
             >
               {t("homepage.description")}
             </motion.p>
@@ -720,37 +678,270 @@ export default function HomePage() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.7, duration: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center px-4"
             >
               <Link href={`/${locale}/onboarding`}>
                 <Button
                   size="lg"
-                  className="text-lg px-8 py-4 bg-[#4a5568] hover:bg-[#3a4553] text-white hover:text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
+                  className="text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 bg-[#4a5568] hover:bg-[#3a4553] text-white hover:text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all w-full sm:w-auto"
                 >
-                  <RocketIcon className="mr-2 h-5 w-5" />
+                  <RocketIcon className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6" />
                   {t("homepage.seeItInAction")}
-                  <ArrowRightIcon className="ml-2 h-5 w-5" />
+                  <ArrowRightIcon className="ml-2 sm:ml-3 h-5 w-5 sm:h-6 sm:w-6" />
                 </Button>
               </Link>
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-4 border-2 border-[#86c9e5] text-[#86c9e5] hover:bg-[#86c9e5] hover:text-white transform hover:scale-105 transition-all"
+                className="text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 border-2 border-[#86c9e5] text-[#86c9e5] hover:bg-[#86c9e5] hover:text-white transform hover:scale-105 transition-all w-full sm:w-auto"
                 onClick={() =>
                   window.open("https://accounts.getwow.ai/waitlist", "_blank")
                 }
               >
-                <SparklesIcon className="mr-2 h-5 w-5" />
+                <SparklesIcon className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6" />
                 {t("homepage.signUpForWowAi")}
               </Button>
             </motion.div>
           </motion.div>
+        </div>
 
-          {/* Powerful Live Feature Demo */}
+        {/* Floating elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-[#aedf1a]/20 rounded-full opacity-50 animate-pulse" />
+        <div className="absolute top-40 right-16 w-16 h-16 bg-[#86c9e5]/20 rounded-full opacity-50 animate-pulse delay-1000" />
+        <div className="absolute bottom-32 left-20 w-12 h-12 bg-[#86c9e5]/30 rounded-full opacity-50 animate-pulse delay-2000" />
+      </section>
+
+      {/* Features Grid */}
+      <section className="pt-12 pb-20 bg-white/50">
+        <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#4a5568] mb-4 md:mb-6">
+              {t("homepage.powerfullAiAgents")}
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+              {t("homepage.powerfullAiAgentsDesc")}
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {powerfulFeatures.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <Card className="h-full surface-white border-0 shadow-lg hover:shadow-xl transition-all">
+                  <CardHeader>
+                    <div className={`feature-icon ${feature.color}`}>
+                      {feature.icon}
+                    </div>
+                    <CardTitle className="text-lg sm:text-xl font-semibold text-gray-700">
+                      {feature.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-4">{feature.description}</p>
+                    <div className="bg-gray-50 rounded-lg p-3 text-sm text-gray-700">
+                      {feature.demo.type === "chat" && (
+                        <div>
+                          <div className="font-medium mb-1">
+                            💬 &ldquo;{feature.demo.messages?.[0]?.text}&rdquo;
+                          </div>
+                          <div className="text-green-600">
+                            ✓ {t("demo.chat.instantInsights")}
+                          </div>
+                        </div>
+                      )}
+                      {feature.demo.type === "insights" && (
+                        <div>
+                          <div className="font-medium mb-1">
+                            📊 {feature.demo.insight?.title}
+                          </div>
+                          <div className="text-green-600">
+                            {feature.demo.insight?.impact}
+                          </div>
+                        </div>
+                      )}
+                      {feature.demo.type === "dashboard" && (
+                        <div>
+                          <div className="font-medium mb-1">
+                            🤖 {feature.demo.agents?.length} AI agents active
+                          </div>
+                          <div className="text-green-600">
+                            {feature.demo.summary?.revenue}{" "}
+                            {t("demo.dashboard.revenueImpact")}
+                          </div>
+                        </div>
+                      )}
+                      {feature.demo.type === "inventory" && (
+                        <div>
+                          <div className="font-medium mb-1">
+                            📦 {t("demo.inventory.smartAlerts")}
+                          </div>
+                          <div className="text-green-600">
+                            {feature.demo.automated}
+                          </div>
+                        </div>
+                      )}
+                      {feature.demo.type === "finance" && (
+                        <div>
+                          <div className="font-medium mb-1">
+                            💰 {t("demo.finance.profitOptimization")}
+                          </div>
+                          <div className="text-green-600">
+                            {feature.demo.opportunities?.[0]?.impact}
+                          </div>
+                        </div>
+                      )}
+                      {feature.demo.type === "promotions" && (
+                        <div>
+                          <div className="font-medium mb-1">
+                            ⚡ {feature.demo.campaigns?.[0]?.name}
+                          </div>
+                          <div className="text-green-600">
+                            {feature.demo.campaigns?.[0]?.performance ||
+                              feature.demo.campaigns?.[0]?.prediction}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 md:py-20">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black bg-gradient-to-r from-[#aedf1a] to-[#86c9e5] bg-clip-text text-transparent mb-4 md:mb-6">
+              {t("homepage.readyToTransform")}
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 md:mb-12 max-w-2xl mx-auto">
+              {t("homepage.readyToTransformDesc")}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link href={`/${locale}/onboarding`}>
+                <Button
+                  size="lg"
+                  className="text-xl px-12 py-6 bg-[#4a5568] hover:bg-[#3a4553] text-white hover:text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
+                >
+                  <RocketIcon className="mr-3 h-6 w-6" />
+                  {t("homepage.experienceTheMagic")}
+                  <ArrowRightIcon className="ml-3 h-6 w-6" />
+                </Button>
+              </Link>
+            </div>
+
+            <div className="mt-8 flex items-center justify-center gap-4 text-sm text-gray-500">
+              <Badge variant="secondary" className="px-3 py-1">
+                <CheckCircleIcon className="mr-1 h-4 w-4" />
+                {t("homepage.freeTrialBadge")}
+              </Badge>
+              <Badge variant="secondary" className="px-3 py-1">
+                <CheckCircleIcon className="mr-1 h-4 w-4" />
+                {t("homepage.noCreditCardBadge")}
+              </Badge>
+              <Badge variant="secondary" className="px-3 py-1">
+                <CheckCircleIcon className="mr-1 h-4 w-4" />
+                {t("homepage.setupInMinutesBadge")}
+              </Badge>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 md:py-20">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#4a5568] mb-4 md:mb-6">
+              {t("homepage.whyStoreOwnersLove")}
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              className="text-center"
+            >
+              <div className="benefit-icon bg-[#aedf1a]">
+                <TrendingUpIcon className="h-10 w-10" />
+              </div>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-700 mb-3 md:mb-4">
+                {t("homepage.increaseRevenue")}
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600">
+                {t("homepage.increaseRevenueDesc")}
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-center"
+            >
+              <div className="benefit-icon bg-[#86c9e5]">
+                <BrainIcon className="h-10 w-10" />
+              </div>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-700 mb-3 md:mb-4">
+                {t("homepage.saveTime")}
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600">
+                {t("homepage.saveTimeDesc")}
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-center"
+            >
+              <div className="benefit-icon bg-[#4a5568]">
+                <CheckCircleIcon className="h-10 w-10" />
+              </div>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-700 mb-3 md:mb-4">
+                {t("homepage.makeBetterDecisions")}
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600">
+                {t("homepage.makeBetterDecisionsDesc")}
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Powerful Live Feature Demo */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
             className="max-w-6xl mx-auto"
           >
             <Card className="overflow-hidden shadow-2xl border-0 surface-white-strong">
@@ -779,7 +970,7 @@ export default function HomePage() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.05 }}
                     transition={{ duration: 0.5 }}
-                    className="min-h-[300px] sm:min-h-[400px]"
+                    className="h-[350px] sm:h-[400px] overflow-hidden"
                   >
                     {renderPowerfulDemo(powerfulFeatures[currentFeature])}
                   </motion.div>
@@ -803,213 +994,18 @@ export default function HomePage() {
             </Card>
           </motion.div>
         </div>
-
-        {/* Floating elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-[#aedf1a]/20 rounded-full opacity-50 animate-pulse" />
-        <div className="absolute top-40 right-16 w-16 h-16 bg-[#86c9e5]/20 rounded-full opacity-50 animate-pulse delay-1000" />
-        <div className="absolute bottom-32 left-20 w-12 h-12 bg-[#86c9e5]/30 rounded-full opacity-50 animate-pulse delay-2000" />
-      </section>
-
-      {/* Features Grid */}
-      <section className="py-20 bg-white/50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">
-              {t("homepage.powerfullAiAgents")}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              {t("homepage.powerfullAiAgentsDesc")}
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {powerfulFeatures.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <Card className="h-full surface-white border-0 shadow-lg hover:shadow-xl transition-all">
-                  <CardHeader>
-                    <div className={`feature-icon ${feature.color}`}>
-                      {feature.icon}
-                    </div>
-                    <CardTitle className="text-xl font-bold text-gray-800">
-                      {feature.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 mb-4">{feature.description}</p>
-                    <div className="bg-gray-50 rounded-lg p-3 text-sm text-gray-700">
-                      {feature.demo.type === "chat" && (
-                        <div>
-                          <div className="font-medium mb-1">
-                            💬 &ldquo;{feature.demo.messages?.[0]?.text}&rdquo;
-                          </div>
-                          <div className="text-green-600">
-                            ✓{" "}
-                            {locale === "ar"
-                              ? "رؤى ذكية فورية مع البيانات"
-                              : "Instant AI insights with data"}
-                          </div>
-                        </div>
-                      )}
-                      {feature.demo.type === "insights" && (
-                        <div>
-                          <div className="font-medium mb-1">
-                            📊 {feature.demo.insight?.title}
-                          </div>
-                          <div className="text-green-600">
-                            {feature.demo.insight?.impact}
-                          </div>
-                        </div>
-                      )}
-                      {feature.demo.type === "dashboard" && (
-                        <div>
-                          <div className="font-medium mb-1">
-                            🤖 {feature.demo.agents?.length}{" "}
-                            {locale === "ar"
-                              ? "وكلاء ذكيين نشطين"
-                              : "AI agents active"}
-                          </div>
-                          <div className="text-green-600">
-                            {feature.demo.summary?.revenue}{" "}
-                            {locale === "ar"
-                              ? "تأثير الإيرادات"
-                              : "revenue impact"}
-                          </div>
-                        </div>
-                      )}
-                      {feature.demo.type === "inventory" && (
-                        <div>
-                          <div className="font-medium mb-1">
-                            📦{" "}
-                            {locale === "ar"
-                              ? "تنبيهات إعادة التخزين الذكية"
-                              : "Smart restocking alerts"}
-                          </div>
-                          <div className="text-green-600">
-                            {feature.demo.automated}
-                          </div>
-                        </div>
-                      )}
-                      {feature.demo.type === "finance" && (
-                        <div>
-                          <div className="font-medium mb-1">
-                            💰{" "}
-                            {locale === "ar"
-                              ? "تحسين الأرباح"
-                              : "Profit optimization"}
-                          </div>
-                          <div className="text-green-600">
-                            {feature.demo.opportunities?.[0]?.impact}
-                          </div>
-                        </div>
-                      )}
-                      {feature.demo.type === "promotions" && (
-                        <div>
-                          <div className="font-medium mb-1">
-                            ⚡ {feature.demo.campaigns?.[0]?.name}
-                          </div>
-                          <div className="text-green-600">
-                            {feature.demo.campaigns?.[0]?.performance ||
-                              feature.demo.campaigns?.[0]?.prediction}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">
-              {t("homepage.whyStoreOwnersLove")}
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.6 }}
-              className="text-center"
-            >
-              <div className="benefit-icon bg-[#aedf1a]">
-                <TrendingUpIcon className="h-10 w-10" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                {t("homepage.increaseRevenue")}
-              </h3>
-              <p className="text-gray-600">
-                {t("homepage.increaseRevenueDesc")}
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-center"
-            >
-              <div className="benefit-icon bg-[#86c9e5]">
-                <BrainIcon className="h-10 w-10" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                {t("homepage.saveTime")}
-              </h3>
-              <p className="text-gray-600">{t("homepage.saveTimeDesc")}</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-center"
-            >
-              <div className="benefit-icon bg-[#4a5568]">
-                <CheckCircleIcon className="h-10 w-10" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                {t("homepage.makeBetterDecisions")}
-              </h3>
-              <p className="text-gray-600">
-                {t("homepage.makeBetterDecisionsDesc")}
-              </p>
-            </motion.div>
-          </div>
-        </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white/50">
+      <section className="py-16 md:py-20 bg-white/50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-12 md:mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#4a5568] mb-4 md:mb-6">
               {t("homepage.trustedByEcommerceLeaders")}
             </h2>
           </motion.div>
@@ -1025,10 +1021,10 @@ export default function HomePage() {
               >
                 <Card className="surface-white border-0 shadow-lg">
                   <CardContent className="p-6 text-center">
-                    <p className="text-xl text-gray-700 mb-4 italic leading-relaxed">
+                    <p className="text-lg sm:text-xl text-gray-700 mb-4 italic leading-relaxed">
                       &ldquo;{testimonials[currentTestimonial].quote}&rdquo;
                     </p>
-                    <div className="text-lg text-gray-600 font-medium">
+                    <div className="text-base sm:text-lg text-gray-600 font-medium">
                       {testimonials[currentTestimonial].role}
                     </div>
                   </CardContent>
@@ -1054,22 +1050,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20">
+      {/* Final CTA Section */}
+      <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">
-              {t("homepage.readyToTransform")}
-            </h2>
-            <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
-              {t("homepage.readyToTransformDesc")}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
               <Link href={`/${locale}/onboarding`}>
                 <Button
                   size="lg"
@@ -1082,7 +1071,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="mt-8 flex items-center justify-center gap-4 text-sm text-gray-500">
+            <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
               <Badge variant="secondary" className="px-3 py-1">
                 <CheckCircleIcon className="mr-1 h-4 w-4" />
                 {t("homepage.freeTrialBadge")}

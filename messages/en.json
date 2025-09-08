@@ -142,20 +142,33 @@
       "pricingOpportunity": "Pricing Opportunity Detected",
       "pricingOpportunityMsg": "Increase margins on 12 products by 8%",
       "seasonalTrend": "Seasonal Trend Analysis",
-      "seasonalTrendMsg": "Winter collection performing 23% above forecast"
+      "seasonalTrendMsg": "Winter collection performing 23% above forecast",
+      "highUrgency": "high",
+      "mediumUrgency": "medium",
+      "lowUrgency": "low"
     },
     "chat": {
       "title": "Chat with Your Data",
       "description": "Ask anything about your store in natural language",
       "chatWithData": "Chat with Your Data",
-      "online": "Online"
+      "online": "Online",
+      "userMessage1": "What are my best performing products this month?",
+      "aiResponse1": "Your top 3 products are:\n1. Winter Parka ($2,340 revenue)\n2. Cozy Sweater ($1,890 revenue)\n3. Thermal Leggings ($1,650 revenue)\n\nWinter Parka has a 34% profit margin and is trending up 23% vs last month.",
+      "userMessage2": "Should I increase the price of Winter Parka?",
+      "aiResponse2": "Yes! Based on demand trends and competitor analysis, you can increase the price by 12-15% without affecting sales. This could boost monthly profit by $280."
     },
     "actions": {
       "title": "Automated Actions",
       "description": "Watch AI agents take action automatically",
       "agentsTakingAction": "AI Agents Taking Action",
       "completed": "completed",
-      "inProgress": "in-progress"
+      "inProgress": "in-progress",
+      "inventoryAgent": "Inventory",
+      "pricingAgent": "Pricing",
+      "promotionsAgent": "Promotions",
+      "inventoryAction": "Reordered 50 Winter Parkas from supplier",
+      "pricingAction": "Updated 3 product prices based on market analysis",
+      "promotionsAction": "Created flash sale for slow-moving summer items"
     },
     "results": {
       "title": "Results Dashboard",
@@ -173,6 +186,103 @@
       "startFreeTrial": "Start Free Trial",
       "login": "Login",
       "exitDemo": "Exit Demo"
+    },
+    "step": {
+      "of": "of"
+    }
+  },
+  "demo": {
+    "chat": {
+      "userMessage": "What are my top products this month?",
+      "aiResponse": "Top 3 Products:\n1. Winter Parka - $12,450 (↑23%)\n2. Cozy Sweater - $8,920 (↑18%)\n3. Thermal Boots - $6,780 (↑31%)\n\nTotal revenue: $28,150 this month",
+      "revenue": "Revenue",
+      "revenueValue": "$28,150",
+      "revenueChange": "+23%",
+      "orders": "Orders",
+      "ordersValue": "247",
+      "ordersChange": "+18%",
+      "instantInsights": "Instant AI insights with data"
+    },
+    "insights": {
+      "title": "Revenue Opportunity Detected",
+      "priority": "high",
+      "impact": "+$4,230 potential",
+      "description": "Winter collection performing 34% above forecast",
+      "action1": "✓ Increase winter inventory by 25%",
+      "action2": "✓ Launch targeted winter campaign",
+      "action3": "⏳ Optimize pricing for peak demand"
+    },
+    "dashboard": {
+      "alerts": "alerts",
+      "actions": "actions",
+      "revenue": "revenue",
+      "efficiency": "efficiency",
+      "finance": "Finance",
+      "financeStatus": "active",
+      "financeAction": "Optimized 12 prices",
+      "inventory": "Inventory",
+      "inventoryStatus": "working",
+      "inventoryAction": "Reordered 5 products",
+      "pricing": "Pricing",
+      "pricingStatus": "active",
+      "pricingAction": "Found 3 opportunities",
+      "logistics": "Logistics",
+      "logisticsStatus": "active",
+      "logisticsAction": "Optimized shipping",
+      "promotions": "Promotions",
+      "promotionsStatus": "active",
+      "promotionsAction": "Created flash sale",
+      "score": "Score",
+      "revenueImpact": "revenue impact"
+    },
+    "inventory": {
+      "winterParka": "Winter Parka",
+      "stock": "Stock",
+      "demand": "Demand",
+      "high": "High",
+      "medium": "Medium",
+      "reorderAction": "Reorder 50 units",
+      "reorderAction2": "Reorder 25 units",
+      "thermalGloves": "Thermal Gloves",
+      "automated": "12 orders placed automatically this month",
+      "smartAlerts": "Smart restocking alerts"
+    },
+    "finance": {
+      "grossMargin": "Gross Margin",
+      "grossMarginValue": "34.2%",
+      "grossMarginChange": "+2.3%",
+      "grossMarginTarget": "35%",
+      "netProfit": "Net Profit",
+      "netProfitValue": "$18,450",
+      "netProfitChange": "+15%",
+      "netProfitTarget": "$20K",
+      "aov": "AOV",
+      "aovValue": "$127",
+      "aovChange": "+8%",
+      "aovTarget": "$130",
+      "target": "Target",
+      "opportunity1": "Increase Winter Parka price",
+      "opportunity1Impact": "+$890/month",
+      "opportunity1Confidence": "94%",
+      "opportunity2": "Bundle slow-moving items",
+      "opportunity2Impact": "+$340/month",
+      "opportunity2Confidence": "87%",
+      "profitOptimization": "Profit optimization"
+    },
+    "promotions": {
+      "winterFlashSale": "Winter Flash Sale",
+      "live": "live",
+      "conversion": "+23% conversion",
+      "revenue": "$3,240",
+      "remaining": "2d 14h",
+      "bundleBoost": "Bundle Boost",
+      "scheduled": "scheduled",
+      "aovPrediction": "+18% AOV",
+      "target": "$2,100",
+      "starts": "Tomorrow 9AM",
+      "performance": "Performance",
+      "revenue": "Revenue",
+      "aiGenerated": "3 campaigns created automatically this week"
     }
   },
   "common": {
