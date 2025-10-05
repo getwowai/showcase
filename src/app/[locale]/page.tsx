@@ -25,7 +25,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { WowLogo } from "@/components/ui/logo";
-// import LanguageSwitcher from "@/components/LanguageSwitcher"; // Hidden until copy is fixed
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function HomePage() {
   const [currentFeature, setCurrentFeature] = useState(0);
@@ -636,10 +636,10 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
-      {/* Language Switcher - Hidden until copy is fixed */}
-      {/* <div className="fixed top-4 right-4 z-50">
+      {/* Language Switcher */}
+      <div className="fixed top-4 right-4 z-50">
         <LanguageSwitcher />
-      </div> */}
+      </div>
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-20 pb-8">
