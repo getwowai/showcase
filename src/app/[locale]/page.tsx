@@ -662,7 +662,16 @@ export default function HomePage() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-8 md:mb-8 leading-tight px-4"
             >
-              {t("homepage.subtitle")}
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: t("homepage.subtitle").includes("Co-Pilot")
+                    ? t("homepage.subtitle").replace(
+                        /Co-Pilot/g,
+                        '<span class="whitespace-nowrap">Co-Pilot</span>',
+                      )
+                    : t("homepage.subtitle"),
+                }}
+              />
             </motion.h2>
 
             <motion.p
