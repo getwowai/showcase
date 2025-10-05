@@ -3,27 +3,20 @@ import { cn } from "@/components/lib/utils";
 
 interface WowLogoProps {
   size?: "hero" | "header" | "standard" | "small" | "favicon";
-  variant?: "primary" | "secondary";
   className?: string;
 }
 
 export const WowLogo: React.FC<WowLogoProps> = ({
   size = "standard",
-  variant = "primary",
   className,
 }) => {
   const getLogoPath = () => {
-    const baseVariant = variant === "secondary" ? "secondary" : "primary";
-    
     switch (size) {
       case "hero":
-        return `/brand-assets/logos/sizes/wow-ai-hero-200px.svg`;
       case "header":
-        return `/brand-assets/logos/sizes/wow-ai-header-120px.svg`;
       case "standard":
-        return `/brand-assets/logos/sizes/wow-ai-standard-80px.svg`;
       case "small":
-        return `/brand-assets/logos/sizes/wow-ai-small-50px.svg`;
+        return `/brand-assets/logos/primary/wow-ai-primary-logo.svg`;
       case "favicon":
         return `/brand-assets/icons/favicon/wow-ai-favicon-16px.svg`;
     }

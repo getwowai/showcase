@@ -83,6 +83,34 @@ export default function AssetIndexPage({ params }: Props) {
                           SVG
                         </td>
                       </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-2 font-mono text-sm">
+                          logos/primary/wow-ai-primary-logo.png
+                        </td>
+                        <td className="border border-gray-300 px-4 py-2">
+                          400x120px
+                        </td>
+                        <td className="border border-gray-300 px-4 py-2">
+                          Web use, presentations, general purpose
+                        </td>
+                        <td className="border border-gray-300 px-4 py-2">
+                          PNG
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-2 font-mono text-sm">
+                          logos/primary/wow-ai-primary-logo-300dpi.png
+                        </td>
+                        <td className="border border-gray-300 px-4 py-2">
+                          1200x360px
+                        </td>
+                        <td className="border border-gray-300 px-4 py-2">
+                          Print materials, high-res displays
+                        </td>
+                        <td className="border border-gray-300 px-4 py-2">
+                          PNG (300 DPI)
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -110,22 +138,7 @@ export default function AssetIndexPage({ params }: Props) {
                         </th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td className="border border-gray-300 px-4 py-2 font-mono text-sm">
-                          logos/secondary/wow-ai-secondary-logo.svg
-                        </td>
-                        <td className="border border-gray-300 px-4 py-2">
-                          200x60px
-                        </td>
-                        <td className="border border-gray-300 px-4 py-2">
-                          AI-focused contexts, tech presentations
-                        </td>
-                        <td className="border border-gray-300 px-4 py-2">
-                          SVG
-                        </td>
-                      </tr>
-                    </tbody>
+                    <tbody></tbody>
                   </table>
                 </div>
               </div>
@@ -407,7 +420,8 @@ export default function AssetIndexPage({ params }: Props) {
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-600">
                       <li>logos/primary/wow-ai-primary-logo.svg</li>
-                      <li>logos/secondary/wow-ai-secondary-logo.svg</li>
+                      <li>logos/primary/wow-ai-primary-logo.png</li>
+                      <li>logos/primary/wow-ai-primary-logo-300dpi.png</li>
                       <li>logos/sizes/wow-ai-hero-200px.svg</li>
                     </ul>
                   </div>
@@ -499,7 +513,7 @@ export default function AssetIndexPage({ params }: Props) {
                     Categories:
                   </h4>
                   <ul className="space-y-2 text-sm text-gray-600">
-                    <li>• primary, secondary (logo variants)</li>
+                    <li>• primary (logo variant)</li>
                     <li>• hero, header, standard, small (sizes)</li>
                     <li>• app, standard, favicon (icon types)</li>
                   </ul>

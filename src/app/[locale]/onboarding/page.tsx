@@ -811,7 +811,7 @@ export default function OnboardingPage() {
               <span className="hidden sm:inline">{t("nav.exitDemo")}</span>
             </Button>
           </Link>
-          <WowLogo size="standard" variant="primary" />
+          <WowLogo size="standard" />
         </div>
         <div className="flex items-center gap-2">
           <Button

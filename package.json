@@ -9,7 +9,8 @@
     "lint": "next lint",
     "prepare": "husky",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "generate:logo-png": "node scripts/generate-logo-png.js"
   },
   "dependencies": {
     "@ai-sdk/react": "^1.2.12",

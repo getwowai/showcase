@@ -36,105 +36,142 @@ export default function BrandAssetsPage({ params }: Props) {
             <h2 className="text-2xl font-bold text-blue-600 mb-6 border-b-2 border-blue-600 pb-2">
               Primary Logos
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="flex justify-center">
               <div className="text-center">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4">
                   Primary Logo (Balanced Unity)
                 </h3>
-                <div className="bg-gray-50 p-6 rounded-lg">
+                <div className="bg-gray-50 p-8 rounded-lg">
                   <img
                     src="/brand-assets/logos/primary/wow-ai-primary-logo.svg"
                     alt="WOW AI Primary Logo"
-                    className="max-w-full h-auto mx-auto"
+                    className="max-w-full h-auto mx-auto scale-150"
                   />
                 </div>
                 <p className="text-sm text-gray-600 mt-3">
                   Main brand logo for 90% of applications
                 </p>
-              </div>
-              <div className="text-center">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">
-                  Secondary Logo (Enhanced Big .AI)
-                </h3>
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <img
-                    src="/brand-assets/logos/secondary/wow-ai-secondary-logo.svg"
-                    alt="WOW AI Secondary Logo"
-                    className="max-w-full h-auto mx-auto"
-                  />
+                <div className="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
+                  <a
+                    href="/brand-assets/logos/primary/wow-ai-primary-logo.png"
+                    download="wow-ai-primary-logo.png"
+                    className="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    <svg
+                      className="w-4 h-4 mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                    Download PNG (400px)
+                  </a>
+                  <a
+                    href="/brand-assets/logos/primary/wow-ai-primary-logo-300dpi.png"
+                    download="wow-ai-primary-logo-300dpi.png"
+                    className="inline-flex items-center px-4 py-2 bg-gray-600 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors"
+                  >
+                    <svg
+                      className="w-4 h-4 mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                    Download PNG (300 DPI)
+                  </a>
+                  <a
+                    href="/brand-assets/logos/primary/wow-ai-primary-logo.svg"
+                    download="wow-ai-primary-logo.svg"
+                    className="inline-flex items-center px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700 transition-colors"
+                  >
+                    <svg
+                      className="w-4 h-4 mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                    Download SVG
+                  </a>
                 </div>
-                <p className="text-sm text-gray-600 mt-3">
-                  AI-focused version for tech contexts
-                </p>
               </div>
             </div>
           </section>
 
-          {/* Logo Sizes Section */}
+          {/* Logo Resizing Guidelines */}
           <section className="bg-white rounded-lg shadow-sm p-8">
             <h2 className="text-2xl font-bold text-blue-600 mb-6 border-b-2 border-blue-600 pb-2">
-              Logo Sizes
+              Logo Resizing Guidelines
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="text-center">
-                <h3 className="text-sm font-semibold text-gray-800 mb-3">
-                  Hero (200px)
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                  CSS-Based Resizing
                 </h3>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <img
-                    src="/brand-assets/logos/sizes/wow-ai-hero-200px.svg"
-                    alt="WOW AI Hero Logo"
-                    className="max-w-full h-auto mx-auto"
-                  />
-                </div>
-                <p className="text-xs text-gray-600 mt-2">
-                  Homepage headers, hero sections
+                <p className="text-gray-600 mb-4">
+                  Use the primary logo file and resize it with CSS classes. This
+                  ensures consistent quality and design across all sizes.
                 </p>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-gray-700 mb-2">
+                    Recommended CSS Classes:
+                  </h4>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li>
+                      <code className="bg-gray-200 px-2 py-1 rounded">
+                        h-28 md:h-44
+                      </code>{" "}
+                      - Hero size (large displays)
+                    </li>
+                    <li>
+                      <code className="bg-gray-200 px-2 py-1 rounded">
+                        h-12
+                      </code>{" "}
+                      - Header size (navigation)
+                    </li>
+                    <li>
+                      <code className="bg-gray-200 px-2 py-1 rounded">h-8</code>{" "}
+                      - Standard size (content areas)
+                    </li>
+                    <li>
+                      <code className="bg-gray-200 px-2 py-1 rounded">h-6</code>{" "}
+                      - Small size (footers, mobile)
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="text-center">
-                <h3 className="text-sm font-semibold text-gray-800 mb-3">
-                  Header (120px)
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                  Usage Examples
                 </h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <img
-                    src="/brand-assets/logos/sizes/wow-ai-header-120px.svg"
-                    alt="WOW AI Header Logo"
-                    className="max-w-full h-auto mx-auto"
-                  />
+                  <pre className="text-sm text-gray-600 overflow-x-auto">
+                    {`<img 
+  src="/brand-assets/logos/primary/wow-ai-primary-logo.svg"
+  alt="WOW AI"
+  className="h-8 w-auto"
+/>`}
+                  </pre>
                 </div>
-                <p className="text-xs text-gray-600 mt-2">
-                  Navigation, page headers
-                </p>
-              </div>
-              <div className="text-center">
-                <h3 className="text-sm font-semibold text-gray-800 mb-3">
-                  Standard (80px)
-                </h3>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <img
-                    src="/brand-assets/logos/sizes/wow-ai-standard-80px.svg"
-                    alt="WOW AI Standard Logo"
-                    className="max-w-full h-auto mx-auto"
-                  />
-                </div>
-                <p className="text-xs text-gray-600 mt-2">
-                  Content areas, sidebars, cards
-                </p>
-              </div>
-              <div className="text-center">
-                <h3 className="text-sm font-semibold text-gray-800 mb-3">
-                  Small (50px)
-                </h3>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <img
-                    src="/brand-assets/logos/sizes/wow-ai-small-50px.svg"
-                    alt="WOW AI Small Logo"
-                    className="max-w-full h-auto mx-auto"
-                  />
-                </div>
-                <p className="text-xs text-gray-600 mt-2">
-                  Footer, mobile navigation
-                </p>
               </div>
             </div>
           </section>

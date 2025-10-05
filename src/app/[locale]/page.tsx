@@ -652,7 +652,7 @@ export default function HomePage() {
           >
             <div className="flex items-center justify-center mb-10 md:mb-12">
               <div className="scale-150 sm:scale-175 md:scale-[1.8] lg:scale-[2]">
-                <WowLogo size="hero" variant="primary" />
+                <WowLogo size="hero" />
               </div>
             </div>
 
