@@ -143,68 +143,122 @@ src/
 
 ## Experimentation & Growth Framework
 
+**Platform:** PostHog (Feature Flags + Experiments + Analytics + Session Recording)
+
 **Experiment Architecture Principles:**
 
 When building experiments, follow these core principles:
 
-1. **Isolation**: Experiments should be self-contained and not pollute global state
-2. **Composability**: Build experiments from reusable components and utilities
-3. **Toggleability**: Every experiment should be easy to enable/disable without code changes
-4. **Measurability**: Instrument tracking from the start—never retrofit analytics
-5. **Performance**: Experiments must not degrade page load or interaction metrics
-6. **Scalability**: Adding a new experiment should take minutes, not hours
+1. **Minimal Custom Code**: Leverage PostHog's built-in platform (~100 lines of custom code total)
+2. **i18n First**: All tracking includes locale context (English/Arabic)
+3. **Rapid Iteration**: Create experiments in PostHog UI without code deployment
+4. **Component Composability**: Build experiments from reusable landing page sections
+5. **Measurability**: PostHog auto-tracks exposure, conversions, and statistical significance
+6. **Performance**: PostHog SDK is ~45KB gzipped, loads asynchronously
 
-**Recommended Experiment Structure:**
+**Implementation Structure:**
 
-```typescript
-// src/experiments/
-├── config.ts                 # Central experiment registry & feature flags
-├── types.ts                  # Shared experiment types & interfaces
-├── tracking.ts               # Analytics utilities & event tracking
-├── utils.ts                  # Variant selection, bucketing logic
-└── [experiment-name]/
-    ├── index.ts              # Experiment component/logic
-    ├── variants.tsx          # Variant components (A, B, C...)
-    ├── config.ts             # Experiment-specific config
-    └── tracking.ts           # Experiment-specific events
+```
+src/
+├── experiments/
+│   ├── config.ts                 # Experiment registry (documentation only)
+│   ├── tracking.ts               # i18n-aware tracking utilities
+│   └── hooks/
+│       └── useExperiment.ts      # Variant assignment hook
+│
+├── lib/
+│   └── posthog.ts                # PostHog initialization
+│
+├── components/
+│   ├── PostHogProvider.tsx       # Wrap app to provide context
+│   └── landing/                  # Reusable landing page sections
+│       ├── heroes/               # Hero variants
+│       ├── features/             # Feature section variants
+│       ├── ctas/                 # CTA variants
+│       └── testimonials/         # Testimonial variants
 ```
 
-**Key Experimentation Guidelines:**
+**Creating an Experiment (5 Steps):**
 
-- **Feature Flags**: Use environment variables or config files for toggling experiments
-- **Variant Assignment**: Implement deterministic bucketing (e.g., hash-based on user ID/session)
-- **Tracking Events**: Always track: exposure, interactions, conversions, and drop-offs
-- **Performance Budget**: Each experiment should add <5KB gzipped, no blocking JS
-- **Fallback Strategy**: Always have a default/control variant that matches production
-- **Documentation**: Each experiment needs: hypothesis, success metrics, rollout plan
-- **Cleanup**: Remove experiment code within 2 weeks of conclusion—no dead code
+1. **PostHog UI**: Create feature flag with variants (e.g., 'control', 'variant-a')
+2. **PostHog UI**: Create experiment, set primary metric (e.g., 'waitlist_joined')
+3. **Code**: Document in `src/experiments/config.ts`
+4. **Code**: Implement variants using `useExperiment('flag-key')` hook
+5. **Track**: Conversion events fire automatically, attributed to variants
+
+**Example Implementation:**
+
+```typescript
+// Use the experiment hook
+const variant = useExperiment('hero-test')
+
+// Render different components based on variant
+if (variant === 'control') return <HeroDefault />
+if (variant === 'signup-focused') return <HeroSignup />
+if (variant === 'demo-first') return <HeroDemoFirst />
+```
+
+**Tracking Events (i18n-aware):**
+
+```typescript
+import { useTracking, EVENTS } from '@/experiments/tracking'
+
+const { trackEvent, trackCTAClick, trackConversion } = useTracking()
+
+// All events automatically include locale (en/ar)
+trackCTAClick('Join Waitlist', 'hero-section')
+trackConversion(EVENTS.WAITLIST_JOINED)
+```
+
+**Key Guidelines:**
+
+- ✅ **Create experiments in PostHog UI** (no code deployment needed)
+- ✅ **Use standardized event names** from `EVENTS` constants
+- ✅ **Test both locales** (en and ar) for every experiment
+- ✅ **Wait for statistical significance** before shipping winners
+- ✅ **Clean up** experiment code within 2 weeks of conclusion
+- ❌ **Don't build custom bucketing** (PostHog handles it)
+- ❌ **Don't track PII** (emails, names, etc.)
+- ❌ **Don't run too many experiments** simultaneously (interaction effects)
 
 **Measurement & Analytics:**
 
-- Track micro-conversions: clicks, scrolls, time-on-page, video plays
-- Track macro-conversions: demo signups, trial starts, contact form submissions
-- Implement session recording triggers for interesting user behaviors
-- Use UTM parameters to track traffic source performance across variants
-- Monitor Core Web Vitals (LCP, FID, CLS) per experiment to catch degradation
-- Build experiment dashboards that show real-time results and statistical significance
+PostHog automatically provides:
+- Experiment exposure tracking
+- Conversion attribution to variants
+- Statistical significance calculation
+- Session recordings per variant
+- Funnel analysis
+- Breakdown by locale (en vs ar)
 
-**Customer Segmentation for Experiments:**
+**Standard Events to Track:**
 
-Consider running targeted experiments for:
-- Traffic source (organic, paid, referral, direct)
-- Geographic location (GCC markets vs. international)
-- Language preference (English vs. Arabic speakers)
+- **Conversions:** `waitlist_joined`, `demo_requested`, `signup_initiated`
+- **Engagement:** `hero_cta_clicked`, `feature_explored`, `scroll_depth`
+- **Navigation:** `language_switched`, `external_link_clicked`
+
+All events in `src/experiments/tracking.ts` as constants.
+
+**Customer Segmentation:**
+
+PostHog enables targeting experiments by:
+- Language (English vs. Arabic) - via `language` user property
+- Traffic source (organic, paid, referral)
+- Geographic location
 - Device type (mobile vs. desktop)
-- Time of day / day of week patterns
-- Returning visitors vs. first-time visitors
+- Returning vs. first-time visitors
 
-**Growth Experiment Ideas to Prioritize:**
+**Experiment Ideas to Prioritize:**
 
-1. **Hero Section Variants**: Headlines, subheadlines, CTAs, social proof placement
-2. **Value Proposition Testing**: Different benefit framing, pain points, messaging
-3. **Demo/Onboarding Flows**: Interactive vs. video, step count, progressive disclosure
-4. **Social Proof**: Testimonials, logos, metrics, case studies placement & format
-5. **CTA Variations**: Button copy, color, size, positioning, urgency tactics
-6. **Pricing Messaging**: Transparency, anchoring, value framing
-7. **Visual Hierarchy**: Layout changes, whitespace, attention-directing cues
-8. **Trust Signals**: Security badges, certifications, guarantees placement
+1. **Hero Section Variants**: Headlines, CTAs, social proof placement
+2. **Value Proposition Testing**: Benefit framing, pain points, messaging
+3. **Demo/Onboarding Flows**: Interactive vs. video, step count
+4. **Social Proof**: Testimonials, logos, metrics placement & format
+5. **CTA Variations**: Button copy, color, size, positioning
+6. **Visual Hierarchy**: Layout changes, whitespace, attention-directing
+
+**Documentation:**
+
+- **Architecture details:** See [docs/architecture.md](docs/architecture.md)
+- **Platform comparison:** See [docs/posthog-vs-mixpanel.md](docs/posthog-vs-mixpanel.md)
+- **PostHog docs:** https://posthog.com/docs/experiments
