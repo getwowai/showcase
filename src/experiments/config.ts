@@ -27,16 +27,26 @@ export interface ExperimentConfig {
  * understand what's running and what metrics to track.
  */
 export const EXPERIMENTS: Record<string, ExperimentConfig> = {
-  // Example experiment (remove when adding real ones)
-  "example-hero-test": {
-    id: "example-hero-test",
-    name: "Hero Section Test",
+  "signup-variants-oct-2025": {
+    id: "signup-variants-oct-2025",
+    name: "Signup Landing Page Variants",
     description:
-      "Testing different hero section variants to optimize conversion",
-    variants: ["control", "signup-focused", "demo-first"],
+      "Testing two signup-focused landing pages: minimal design vs. social proof heavy. " +
+      "Hypothesis: Social proof variant will convert better by reducing anxiety and building trust.",
+    variants: [
+      "control", // Main landing page (/en or /ar)
+      "minimal", // /en/signup-minimal - Clean, distraction-free
+      "social-proof", // /en/signup-social-proof - Heavy trust signals
+    ],
     primaryMetric: "waitlist_joined",
-    secondaryMetrics: ["hero_cta_clicked", "scroll_depth"],
-    status: "draft",
+    secondaryMetrics: [
+      "hero_cta_clicked",
+      "scroll_depth",
+      "time_on_page",
+      "form_interaction",
+    ],
+    status: "running",
+    startDate: "2025-10-09",
     targetLocales: ["en", "ar"],
   },
 };
