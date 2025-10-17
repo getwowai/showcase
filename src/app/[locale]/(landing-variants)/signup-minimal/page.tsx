@@ -155,9 +155,7 @@ export default function SignupMinimalPage() {
             {/* User Message */}
             <div className="flex justify-end">
               <div className="bg-[#4a5568] text-white p-4 rounded-lg max-w-[80%]">
-                <p className="text-sm">
-                  "What are my top-selling products this month?"
-                </p>
+                <p className="text-sm">"{t("chatDemo.userMessage1")}"</p>
               </div>
             </div>
 
@@ -171,16 +169,15 @@ export default function SignupMinimalPage() {
                   </span>
                 </div>
                 <p className="text-sm text-gray-700">
-                  Your top 3 products this month are:
-                  <br />• Winter Parka - $12,450 (45 units)
-                  <br />• Thermal Gloves - $8,920 (67 units)
-                  <br />• Wool Scarf - $6,340 (89 units)
+                  {t("chatDemo.aiResponse1")}
+                  <br />• {t("chatDemo.product1")}
+                  <br />• {t("chatDemo.product2")}
+                  <br />• {t("chatDemo.product3")}
                   <br />
                   <br />
                   <span className="text-green-600 font-medium">
-                    +23% increase
-                  </span>{" "}
-                  from last month!
+                    {t("chatDemo.increase")}
+                  </span>
                 </p>
               </div>
             </div>
@@ -188,9 +185,7 @@ export default function SignupMinimalPage() {
             {/* User Message */}
             <div className="flex justify-end">
               <div className="bg-[#4a5568] text-white p-4 rounded-lg max-w-[80%]">
-                <p className="text-sm">
-                  "How many orders did I get last month?"
-                </p>
+                <p className="text-sm">"{t("chatDemo.userMessage2")}"</p>
               </div>
             </div>
 
@@ -204,19 +199,16 @@ export default function SignupMinimalPage() {
                   </span>
                 </div>
                 <p className="text-sm text-gray-700">
-                  Last month you received <strong>247 orders</strong> with a
-                  total value of <strong>$18,450</strong>.
+                  {t("chatDemo.aiResponse2")}
                   <br />
                   <br />
                   <span className="text-green-600 font-medium">
-                    📈 +12% increase
-                  </span>{" "}
-                  from the previous month
+                    {t("chatDemo.monthlyIncrease")}
+                  </span>
                   <br />
                   <span className="text-blue-600 font-medium">
-                    💰 Average order value:
-                  </span>{" "}
-                  $74.70
+                    {t("chatDemo.averageOrderValue")}
+                  </span>
                 </p>
               </div>
             </div>

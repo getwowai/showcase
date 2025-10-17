@@ -300,7 +300,19 @@
     "smartRecommendationsDesc": "Receive actionable advice to optimize your store and increase sales.",
     "readyToStart": "Ready to Start Chatting?",
     "readyToStartDesc": "Install WOW AI and start getting instant insights about your store in minutes.",
-    "copyright": "© 2025 WOW AI. All rights reserved."
+    "copyright": "© 2025 WOW AI. All rights reserved.",
+    "chatDemo": {
+      "userMessage1": "What are my top-selling products this month?",
+      "aiResponse1": "Your top 3 products this month are:",
+      "product1": "Winter Parka - $12,450 (45 units)",
+      "product2": "Thermal Gloves - $8,920 (67 units)",
+      "product3": "Wool Scarf - $6,340 (89 units)",
+      "increase": "+23% increase from last month!",
+      "userMessage2": "How many orders did I get last month?",
+      "aiResponse2": "Last month you received 247 orders with a total value of $18,450.",
+      "monthlyIncrease": "📈 +12% increase from the previous month",
+      "averageOrderValue": "💰 Average order value: $74.70"
+    }
   },
   "common": {
     "loading": "Loading...",
