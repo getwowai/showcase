@@ -5,17 +5,21 @@ The Wow AI Showcase includes a comprehensive experiment system that allows you t
 ## 🧪 Experiment Types
 
 ### 1. Route-based Experiments
+
 Different landing page variants are served at different routes, making it easy to test completely different user experiences.
 
 **Example Routes:**
+
 - `/en/signup-minimal` - Clean, focused signup
 - `/en/signup-social-proof` - Social validation variant
 - `/en/signup-router` - Dynamic routing experiments
 
 ### 2. Component-based Experiments
+
 Individual components can be wrapped with experiment logic for more granular testing within the same page.
 
 **Example Components:**
+
 - Button text variations
 - Form field arrangements
 - Call-to-action placement
@@ -44,16 +48,16 @@ All experiments are automatically tracked with PostHog:
 
 ```typescript
 // src/lib/posthog.ts
-import { PostHog } from 'posthog-js'
+import { PostHog } from 'posthog-js';
 
 export const initPostHog = () => {
   if (typeof window !== 'undefined') {
     const posthog = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
       api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-    })
-    posthog.init()
+    });
+    posthog.init();
   }
-}
+};
 ```
 
 ### 2. Set Up Route-based Experiments
@@ -65,22 +69,22 @@ export const experiments = {
     variants: ['minimal', 'social-proof', 'router'],
     defaultVariant: 'minimal',
     trafficAllocation: 0.1, // 10% of traffic
-  }
-}
+  },
+};
 ```
 
 ### 3. Track Events
 
 ```typescript
 // src/experiments/tracking.ts
-import { getPostHog } from '@/lib/posthog'
+import { getPostHog } from '@/lib/posthog';
 
 export const trackExperimentEvent = (event: string, properties: any) => {
-  const posthog = getPostHog()
+  const posthog = getPostHog();
   if (posthog) {
-    posthog.capture(event, properties)
+    posthog.capture(event, properties);
   }
-}
+};
 ```
 
 ## 📈 Experiment Analysis
@@ -108,12 +112,12 @@ Create custom dashboards in PostHog to monitor:
 ```typescript
 // src/experiments/config.ts
 export interface Experiment {
-  variants: string[]
-  defaultVariant: string
-  trafficAllocation: number
-  startDate?: Date
-  endDate?: Date
-  targetAudience?: string[]
+  variants: string[];
+  defaultVariant: string;
+  trafficAllocation: number;
+  startDate?: Date;
+  endDate?: Date;
+  targetAudience?: string[];
 }
 
 export const experiments: Record<string, Experiment> = {
@@ -123,8 +127,8 @@ export const experiments: Record<string, Experiment> = {
     trafficAllocation: 0.1,
     startDate: new Date('2024-01-01'),
     endDate: new Date('2024-12-31'),
-  }
-}
+  },
+};
 ```
 
 ### Tracking Configuration
@@ -137,37 +141,47 @@ export const TRACKING_EVENTS = {
   SIGNUP_COMPLETE: 'signup_completed',
   BUTTON_CLICK: 'button_clicked',
   FORM_SUBMIT: 'form_submitted',
-} as const
+} as const;
 ```
 
 ## 🎯 Best Practices
 
 ### 1. Hypothesis-Driven Testing
+
 - Start with a clear hypothesis
 - Define success metrics before running the experiment
 - Set a minimum sample size for statistical significance
 
 ### 2. Test One Variable at a Time
+
 - Focus on testing one specific element per experiment
 - Avoid testing multiple changes simultaneously
 - Use component-based experiments for granular testing
 
 ### 3. Monitor Performance
+
 - Set up real-time monitoring dashboards
 - Watch for technical issues or errors
 - Monitor user feedback and behavior
 
 ### 4. Document Results
+
 - Keep detailed records of experiment results
 - Document learnings and insights
 - Share findings with the team
+
+## 🎯 Setting Default Variants
+
+Learn how to make one of your landing page variants the default experience for users visiting the main landing page:
+
+- **[Setting Default Variant](/experiments/setting-default-variant)** - Complete guide to making a variant the default main landing page
 
 ## 📚 Available Experiments
 
 ### Current Experiments
 
 1. **Signup Variant Test**
-   - **Minimal**: Clean, distraction-free signup
+   - **Minimal**: Clean, distraction-free signup (now default)
    - **Social Proof**: Social validation and testimonials
    - **Router**: Dynamic routing-based experience
 
@@ -192,7 +206,7 @@ Enable debug mode to see events in the console:
 const posthog = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
   api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
   debug: process.env.NODE_ENV === 'development',
-})
+});
 ```
 
 ### Common Issues
@@ -214,6 +228,7 @@ const posthog = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
 
 ## 📖 Next Steps
 
+- [Setting Default Variant](/experiments/setting-default-variant) - Make a variant the default main landing page
 - [Route-based Experiments](/experiments/route-based) - Learn about route-based testing
 - [Component-based Experiments](/experiments/component-based) - Granular component testing
 - [PostHog Integration](/experiments/posthog) - Analytics setup and configuration

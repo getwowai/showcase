@@ -32,13 +32,13 @@ export const EXPERIMENTS: Record<string, ExperimentConfig> = {
     name: "Signup Landing Page Variants",
     description:
       "Testing two signup-focused landing pages: minimal design vs. social proof heavy. " +
-      "Hypothesis: Social proof variant will convert better by reducing anxiety and building trust.",
+      "Hypothesis: Minimal variant will convert better by being clear about immediate value and next steps.",
     variants: [
-      "control", // Main landing page (/en or /ar)
-      "minimal", // /en/signup-minimal - Clean, distraction-free
+      "minimal", // /en/signup-minimal - Clean, distraction-free (now default)
+      "control", // Main landing page (/en or /ar) - original full landing
       "social-proof", // /en/signup-social-proof - Heavy trust signals
     ],
-    primaryMetric: "waitlist_joined",
+    primaryMetric: "app_installed",
     secondaryMetrics: [
       "hero_cta_clicked",
       "scroll_depth",
@@ -54,7 +54,9 @@ export const EXPERIMENTS: Record<string, ExperimentConfig> = {
 /**
  * Get experiment configuration by ID
  */
-export const getExperiment = (experimentId: string): ExperimentConfig | null => {
+export const getExperiment = (
+  experimentId: string,
+): ExperimentConfig | null => {
   return EXPERIMENTS[experimentId] || null;
 };
 
