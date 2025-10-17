@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 
 import { Inter, JetBrains_Mono, Noto_Sans_Arabic } from "next/font/google";
 import { locales, type Locale } from "../../i18n/config";
+import { PostHogProvider } from "@/components/PostHogProvider";
 
 import "../globals.css";
 
@@ -65,9 +66,11 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} ${notoSansArabic.variable} antialiased ${locale === "ar" ? "font-arabic" : ""}`}
       >
-        <NextIntlClientProvider messages={messages} locale={locale}>
-          {children}
-        </NextIntlClientProvider>
+        <PostHogProvider>
+          <NextIntlClientProvider messages={messages} locale={locale}>
+            {children}
+          </NextIntlClientProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
