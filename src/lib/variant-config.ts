@@ -27,7 +27,7 @@ export interface VariantConfig {
  * 3. Default fallback ('control')
  */
 export function getVariantConfig(
-  posthogVariant?: string | null,
+  posthogVariant?: string | boolean | null,
 ): VariantConfig {
   // Check if we should force override with environment variable
   const forceOverride =
@@ -44,9 +44,10 @@ export function getVariantConfig(
     };
   }
 
-  // Use PostHog variant if available
+  // Use PostHog variant if available and valid
   if (
     posthogVariant &&
+    typeof posthogVariant === "string" &&
     ["minimal", "control", "social-proof"].includes(posthogVariant)
   ) {
     return {
@@ -90,7 +91,7 @@ export function isValidVariant(variant: string): variant is LandingVariant {
 /**
  * Get variant configuration for debugging
  */
-export function getVariantDebugInfo(posthogVariant?: string | null) {
+export function getVariantDebugInfo(posthogVariant?: string | boolean | null) {
   const config = getVariantConfig(posthogVariant);
 
   return {
