@@ -50,9 +50,39 @@ export default function HomePage() {
 }
 ```
 
-### 2. Update Experiment Configuration
+### 2. Update Main Landing Page
 
-Modify your experiment configuration to set the desired variant as default:
+The main landing page now uses a variant configuration utility that handles environment variables and PostHog integration:
+
+```typescript
+// src/app/[locale]/page.tsx
+import { getVariantConfig, getVariantDebugInfo } from "@/lib/variant-config";
+
+export default function HomePage() {
+  // Get PostHog variant
+  const posthogVariant = useExperiment("signup-landing-variant");
+
+  // Get final variant configuration with fallbacks
+  const variantConfig = getVariantConfig(posthogVariant);
+
+  // Debug logging
+  useEffect(() => {
+    const debugInfo = getVariantDebugInfo(posthogVariant);
+    console.log("Variant Configuration:", debugInfo);
+  }, [posthogVariant, variantConfig]);
+
+  // Render based on variant
+  if (variantConfig.variant === "minimal") {
+    return <SignupMinimalPage />;
+  }
+
+  // ... rest of original landing page
+}
+```
+
+### 3. Update Experiment Configuration (Optional)
+
+Modify your experiment configuration to document the variants:
 
 ```typescript
 // src/experiments/config.ts
@@ -75,9 +105,36 @@ export const EXPERIMENTS: Record<string, ExperimentConfig> = {
 };
 ```
 
-### 3. Configure PostHog Feature Flag
+### 4. Configure Environment Variables (Recommended)
 
-In your PostHog dashboard:
+Copy the example file and configure your environment variables:
+
+```bash
+# Copy the example file
+cp env.local.example .env.local
+
+# Edit .env.local with your values
+```
+
+**Example `.env.local` configuration:**
+
+```bash
+# PostHog Configuration
+NEXT_PUBLIC_POSTHOG_KEY=your_posthog_project_key
+NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com
+
+# Landing Page Variant Configuration
+# Options: 'minimal', 'control', 'social-proof', or leave empty to use PostHog feature flags
+NEXT_PUBLIC_DEFAULT_LANDING_VARIANT=minimal
+
+# Force variant override (for testing)
+# Set to 'true' to use NEXT_PUBLIC_DEFAULT_LANDING_VARIANT instead of PostHog
+NEXT_PUBLIC_FORCE_VARIANT_OVERRIDE=false
+```
+
+### 5. Configure PostHog Feature Flag (Optional)
+
+If you want to use PostHog for A/B testing instead of environment variables:
 
 1. **Create or update the feature flag** named `signup-landing-variant`
 2. **Set the variants** to match your configuration:
@@ -89,6 +146,28 @@ In your PostHog dashboard:
    - Or split traffic for A/B testing (e.g., 50% minimal, 30% control, 20% social-proof)
 
 ## 🔧 Configuration Options
+
+### Environment Variable Priority
+
+The system uses the following priority order for variant selection:
+
+1. **Environment Override** (if `NEXT_PUBLIC_FORCE_VARIANT_OVERRIDE=true`)
+   - Uses `NEXT_PUBLIC_DEFAULT_LANDING_VARIANT` value
+   - Ignores PostHog completely
+   - Useful for testing and development
+
+2. **PostHog Feature Flag** (if available and not overridden)
+   - Uses PostHog experiment results
+   - Enables A/B testing and gradual rollouts
+   - Production-ready approach
+
+3. **Environment Fallback** (if PostHog is unavailable)
+   - Uses `NEXT_PUBLIC_DEFAULT_LANDING_VARIANT` as fallback
+   - Ensures site works even if PostHog fails
+
+4. **Default Fallback** (last resort)
+   - Falls back to `'control'` variant
+   - Ensures site always works
 
 ### Option 1: Make Variant the Default (100% Traffic)
 

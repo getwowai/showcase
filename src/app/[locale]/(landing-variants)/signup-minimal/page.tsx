@@ -7,6 +7,7 @@ import { getPostHog } from "@/lib/posthog";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { WowLogo } from "@/components/ui/logo";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import {
   CheckCircle,
   ArrowRight,
@@ -80,6 +81,11 @@ export default function SignupMinimalPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      {/* Language Switcher */}
+      <div className="fixed top-4 right-4 z-50">
+        <LanguageSwitcher />
+      </div>
+
       {/* Hero Section - Centered */}
       <section className="container mx-auto px-4 py-20 max-w-4xl text-center">
         <motion.div

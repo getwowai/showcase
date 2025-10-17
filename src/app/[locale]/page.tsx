@@ -27,6 +27,7 @@ import { Badge } from "@/components/ui/badge";
 import { WowLogo } from "@/components/ui/logo";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useExperiment } from "@/experiments/hooks/useExperiment";
+import { getVariantConfig, getVariantDebugInfo } from "@/lib/variant-config";
 import SignupMinimalPage from "./(landing-variants)/signup-minimal/page";
 
 export default function HomePage() {
@@ -37,13 +38,17 @@ export default function HomePage() {
   const locale = useLocale();
 
   // Use PostHog experiment to determine which landing page to show
-  const variant = useExperiment("signup-landing-variant");
+  const posthogVariant = useExperiment("signup-landing-variant");
+  const variantConfig = getVariantConfig(posthogVariant);
 
   // Debug logging
   useEffect(() => {
-    console.log("PostHog variant:", variant);
-    console.log("Experiment key: signup-landing-variant");
-  }, [variant]);
+    const debugInfo = getVariantDebugInfo(posthogVariant);
+    console.log("Variant Configuration:", debugInfo);
+    console.log("Selected variant:", variantConfig.variant);
+    console.log("Source:", variantConfig.source);
+    console.log("Is overridden:", variantConfig.isOverridden);
+  }, [posthogVariant, variantConfig]);
 
   const powerfulFeatures = [
     {
@@ -322,13 +327,16 @@ export default function HomePage() {
   }, [powerfulFeatures.length, testimonials.length]);
 
   // If variant is 'minimal', render the minimal signup page
-  if (variant === "minimal") {
+  if (variantConfig.variant === "minimal") {
     console.log("Rendering minimal signup page");
     return <SignupMinimalPage />;
   }
 
   // For 'control' or any other variant, show the original landing page
-  console.log("Rendering original landing page, variant:", variant);
+  console.log(
+    "Rendering original landing page, variant:",
+    variantConfig.variant,
+  );
 
   const renderPowerfulDemo = (feature: any) => {
     const { demo } = feature;
