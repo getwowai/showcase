@@ -105,7 +105,7 @@ export default function SignupSocialProofPage() {
       {/* Header */}
       <header className="p-6 border-b">
         <div className="container mx-auto flex items-center justify-between">
-          <WowLogo size="default" />
+          <WowLogo size="header" />
           <div className="flex items-center gap-2 text-sm text-gray-600">
             <Users className="w-4 h-4" />
             <span className="font-medium">5,000+ {t("homepage.storeOwners")}</span>

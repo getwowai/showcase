@@ -28,7 +28,10 @@ export const useTracking = () => {
     /**
      * Track a page view (use this instead of automatic capture for i18n)
      */
-    trackPageView: (pagePath?: string, properties?: Record<string, unknown>) => {
+    trackPageView: (
+      pagePath?: string,
+      properties?: Record<string, unknown>,
+    ) => {
       if (!posthog) return;
 
       posthog.capture("$pageview", {

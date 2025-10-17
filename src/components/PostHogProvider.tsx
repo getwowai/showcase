@@ -1,7 +1,7 @@
 "use client";
 
 import { PostHogProvider as PHProvider } from "posthog-js/react";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { initPostHog, getPostHog } from "@/lib/posthog";
 import { usePathname, useSearchParams } from "next/navigation";
 
@@ -12,7 +12,7 @@ import { usePathname, useSearchParams } from "next/navigation";
  * Note: This component must be used INSIDE NextIntlClientProvider
  * to have access to locale context
  */
-export function PostHogProvider({ children }: { children: React.ReactNode }) {
+function PostHogProviderInner({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -30,7 +30,7 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
     const url = pathname + (searchParams?.toString() ? `?${searchParams}` : "");
 
     // Extract locale from pathname (format: /[locale]/...)
-    const locale = pathname.split('/')[1] || 'en';
+    const locale = pathname.split("/")[1] || "en";
 
     posthog.capture("$pageview", {
       $current_url: url,
@@ -47,4 +47,12 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
   }
 
   return <PHProvider client={posthog}>{children}</PHProvider>;
+}
+
+export function PostHogProvider({ children }: { children: React.ReactNode }) {
+  return (
+    <Suspense fallback={<>{children}</>}>
+      <PostHogProviderInner>{children}</PostHogProviderInner>
+    </Suspense>
+  );
 }

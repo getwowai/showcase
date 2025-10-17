@@ -4,9 +4,11 @@ export const viewport = {
   maximumScale: 1, // Disable auto-zoom on mobile Safari
 };
 
-// Root layout now only handles the redirect
+// Root layout must include html and body tags
 export default function RootLayout({ children }: { children: ReactNode }) {
-  return children;
+  return (
+    <html>
+      <body>{children}</body>
+    </html>
+  );
 }
-
-

@@ -43,3 +43,8 @@ next-env.d.ts
 .claude
 .husky
 .next
+
+# VitePress
+.vitepress/.vitepress/dist
+.vitepress/.vitepress/cache
+.vitepress/.vitepress/.temp

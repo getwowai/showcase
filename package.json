@@ -11,7 +11,10 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "generate:logo-png": "node scripts/generate-logo-png.js",
-    "generate:icon-png": "node scripts/generate-icon-png.js"
+    "generate:icon-png": "node scripts/generate-icon-png.js",
+    "docs:dev": "vitepress dev .vitepress",
+    "docs:build": "vitepress build .vitepress",
+    "docs:preview": "vitepress preview .vitepress"
   },
   "dependencies": {
     "@ai-sdk/react": "^1.2.12",
@@ -74,7 +77,8 @@
     "prettier": "^3.6.0",
     "sharp": "^0.34.3",
     "tailwindcss": "^4.1.10",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitepress": "^1.6.4"
   },
   "overrides": {
     "react-is": "^19.0.0-rc-69d4b800-20241021"
