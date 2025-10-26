@@ -4,19 +4,11 @@ import { useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useTracking, EVENTS } from "@/experiments/tracking";
 import { getPostHog } from "@/lib/posthog";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { WowLogo } from "@/components/ui/logo";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Footer from "@/components/Footer";
-import {
-  ArrowRight,
-  MessageCircle,
-  Brain,
-  Zap,
-  ExternalLink,
-  LogIn,
-} from "lucide-react";
+import { MessageCircle, Brain, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
 /**
@@ -52,32 +44,6 @@ export default function SignupMinimalPage() {
       });
     }
   }, [locale, trackEvent]);
-
-  const handleInstallApp = () => {
-    // Track conversion
-    trackConversion(EVENTS.WAITLIST_JOINED, {
-      variant: "minimal",
-      source: "install-app-button",
-      action: "shopify_install",
-    });
-
-    // Track CTA click
-    trackCTAClick("Install Shopify App", "hero-cta");
-
-    // Open Shopify App installation
-    window.open(
-      "https://admin.shopify.com/?organization_id=184935022&no_redirect=true&redirect=/oauth/redirect_from_developer_dashboard?client_id%3Dffba2100cb6b0b2cb593b30dfc4dc08a",
-      "_blank",
-    );
-  };
-
-  const handleLogin = () => {
-    // Track CTA click
-    trackCTAClick("Already a customer? Login", "hero-cta");
-
-    // Open WOW AI login page
-    window.open("https://app.getwow.ai/sign-in", "_blank");
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
@@ -117,31 +83,16 @@ export default function SignupMinimalPage() {
             transition={{ delay: 0.7, duration: 0.5 }}
             className="flex flex-col gap-4 justify-center px-4"
           >
-            <Button
-              size="lg"
-              onClick={handleInstallApp}
-              className="text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 bg-[#4a5568] hover:bg-[#3a4553] text-white hover:text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all w-full sm:w-auto cursor-pointer"
-            >
-              <ExternalLink className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6" />
-              {t("installButton")}
-              <ArrowRight className="ml-2 sm:ml-3 h-5 w-5 sm:h-6 sm:w-6" />
-            </Button>
-
-            {/* Already a customer? */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleLogin}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 cursor-pointer mx-auto"
-            >
-              <LogIn className="h-4 w-4" />
-              {t("alreadyCustomer")}
-            </Button>
+            <div className="bg-gradient-to-r from-[#86c9e5] to-[#aedf1a] p-6 rounded-lg max-w-2xl mx-auto">
+              <p className="text-white font-medium text-lg">
+                {t("installProcess")}
+              </p>
+            </div>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Chat Demo Section */}
+      {/* Email Insights Preview Section */}
       <section className="container mx-auto px-4 py-16 max-w-4xl">
         <motion.div
           initial={{ opacity: 0 }}
@@ -150,79 +101,91 @@ export default function SignupMinimalPage() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {t("chatWithData")}
+            {t("emailInsights")}
           </h2>
-          <p className="text-lg text-gray-600">{t("chatDescription")}</p>
+          <p className="text-lg text-gray-600">
+            {t("emailInsightsDescription")}
+          </p>
         </motion.div>
 
-        {/* Chat Demo Card */}
-        <Card className="p-8 shadow-xl border-2 max-w-2xl mx-auto">
-          <div className="space-y-4">
-            {/* User Message */}
-            <div className="flex justify-end">
-              <div className="bg-[#4a5568] text-white p-4 rounded-lg max-w-[80%]">
-                <p className="text-sm">"{t("chatDemo.userMessage1")}"</p>
+        {/* Email Preview Card */}
+        <Card className="p-6 shadow-xl border-2 max-w-2xl mx-auto bg-white">
+          <div className="border border-gray-200 rounded-lg overflow-hidden">
+            {/* Email Header */}
+            <div className="bg-gray-50 px-4 py-3 border-b border-gray-200">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-[#86c9e5] rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">W</span>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-gray-900">WOW AI</p>
+                  <p className="text-xs text-gray-500">Performance Report</p>
+                </div>
               </div>
             </div>
 
-            {/* AI Response */}
-            <div className="flex justify-start">
-              <div className="bg-gray-100 p-4 rounded-lg max-w-[80%]">
-                <div className="flex items-center gap-2 mb-2">
-                  <Brain className="w-4 h-4 text-[#4a5568]" />
-                  <span className="text-xs font-medium text-gray-600">
-                    WOW AI
+            {/* Email Content */}
+            <div className="p-4 space-y-4">
+              <div className="text-sm text-gray-600">{t("emailGreeting")}</div>
+
+              {/* Metrics */}
+              <div className="space-y-3">
+                <div className="bg-green-50 border-l-4 border-green-400 p-3 rounded">
+                  <div className="text-xs text-gray-600 mb-1">
+                    {t("grossSales")}
+                  </div>
+                  <div className="text-lg font-bold text-gray-900">
+                    {t("grossSalesValue")}
+                  </div>
+                </div>
+
+                <div className="bg-blue-50 border-l-4 border-blue-400 p-3 rounded">
+                  <div className="text-xs text-gray-600 mb-1">
+                    {t("orders")}
+                  </div>
+                  <div className="text-lg font-bold text-gray-900">
+                    {t("ordersValue")}
+                  </div>
+                </div>
+
+                <div className="bg-purple-50 border-l-4 border-purple-400 p-3 rounded">
+                  <div className="text-xs text-gray-600 mb-1">
+                    {t("averageOrderValue")}
+                  </div>
+                  <div className="text-lg font-bold text-gray-900">
+                    {t("averageOrderValueAmount")}
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-sm text-gray-600">{t("topProducts")}</div>
+
+              <div className="space-y-2">
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-sm text-gray-700">{t("product1")}</span>
+                  <span className="text-sm font-medium text-green-600">
+                    {t("product1Growth")}
                   </span>
                 </div>
-                <p className="text-sm text-gray-700">
-                  {t("chatDemo.aiResponse1")}
-                  <br />• {t("chatDemo.product1")}
-                  <br />• {t("chatDemo.product2")}
-                  <br />• {t("chatDemo.product3")}
-                  <br />
-                  <br />
-                  <span className="text-green-600 font-medium">
-                    {t("chatDemo.increase")}
-                  </span>
-                </p>
-              </div>
-            </div>
-
-            {/* User Message */}
-            <div className="flex justify-end">
-              <div className="bg-[#4a5568] text-white p-4 rounded-lg max-w-[80%]">
-                <p className="text-sm">"{t("chatDemo.userMessage2")}"</p>
-              </div>
-            </div>
-
-            {/* AI Response */}
-            <div className="flex justify-start">
-              <div className="bg-gray-100 p-4 rounded-lg max-w-[80%]">
-                <div className="flex items-center gap-2 mb-2">
-                  <Brain className="w-4 h-4 text-[#4a5568]" />
-                  <span className="text-xs font-medium text-gray-600">
-                    WOW AI
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-sm text-gray-700">{t("product2")}</span>
+                  <span className="text-sm font-medium text-green-600">
+                    {t("product2Growth")}
                   </span>
                 </div>
-                <p className="text-sm text-gray-700">
-                  {t("chatDemo.aiResponse2")}
-                  <br />
-                  <br />
-                  <span className="text-green-600 font-medium">
-                    {t("chatDemo.monthlyIncrease")}
+                <div className="flex justify-between items-center py-2">
+                  <span className="text-sm text-gray-700">{t("product3")}</span>
+                  <span className="text-sm font-medium text-green-600">
+                    {t("product3Growth")}
                   </span>
-                  <br />
-                  <span className="text-blue-600 font-medium">
-                    {t("chatDemo.averageOrderValue")}
-                  </span>
-                </p>
+                </div>
               </div>
             </div>
           </div>
         </Card>
       </section>
 
-      {/* 3 Key Benefits - Chat Focused */}
+      {/* 3 Key Benefits - Email Insights Focused */}
       <section className="container mx-auto px-4 py-16 max-w-5xl">
         <motion.div
           initial={{ opacity: 0 }}
@@ -231,13 +194,13 @@ export default function SignupMinimalPage() {
           className="grid md:grid-cols-3 gap-8 text-center"
         >
           <div>
-            <div className="bg-[#4a5568] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#86c9e5] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <MessageCircle className="w-8 h-8 text-white" />
             </div>
             <h3 className="font-semibold text-xl mb-3 text-gray-900">
-              {t("naturalConversation")}
+              {t("weeklyReports")}
             </h3>
-            <p className="text-gray-600">{t("naturalConversationDesc")}</p>
+            <p className="text-gray-600">{t("weeklyReportsDesc")}</p>
           </div>
 
           <div>
@@ -251,7 +214,7 @@ export default function SignupMinimalPage() {
           </div>
 
           <div>
-            <div className="bg-[#86c9e5] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#4a5568] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <Zap className="w-8 h-8 text-white" />
             </div>
             <h3 className="font-semibold text-xl mb-3 text-gray-900">
@@ -270,18 +233,14 @@ export default function SignupMinimalPage() {
           transition={{ delay: 0.6, duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            {t("readyToStart")}
+            {t("readyToLearn")}
           </h2>
-          <p className="text-lg text-gray-600 mb-8">{t("readyToStartDesc")}</p>
-          <Button
-            size="lg"
-            onClick={handleInstallApp}
-            className="text-xl px-12 py-6 bg-[#4a5568] hover:bg-[#3a4553] text-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all cursor-pointer"
-          >
-            <ExternalLink className="mr-3 h-6 w-6" />
-            {t("installButton")}
-            <ArrowRight className="ml-3 h-6 w-6" />
-          </Button>
+          <p className="text-lg text-gray-600 mb-8">{t("readyToLearnDesc")}</p>
+          <div className="bg-gradient-to-r from-[#86c9e5] to-[#aedf1a] p-6 rounded-lg max-w-2xl mx-auto">
+            <p className="text-white font-medium text-lg">
+              {t("simpleProcess")}
+            </p>
+          </div>
         </motion.div>
       </section>
 
