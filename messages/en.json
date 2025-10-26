@@ -26,7 +26,24 @@
     "experienceTheMagic": "Experience the Magic",
     "freeTrialBadge": "Free 14-day trial",
     "noCreditCardBadge": "No credit card required",
-    "setupInMinutesBadge": "Setup in minutes"
+    "setupInMinutesBadge": "Setup in minutes",
+    "secureData": "Secure Data",
+    "reviews": "Reviews",
+    "from": "from",
+    "storeOwners": "Store Owners",
+    "averageROI": "Average ROI",
+    "startFreeTrial": "Start Free Trial",
+    "joinThousands": "Join Thousands",
+    "enterYourEmail": "Enter your email",
+    "getStartedFree": "Get Started Free",
+    "cancelAnytime": "Cancel anytime",
+    "supportIncluded": "Support included",
+    "joinedThisWeek": "Joined this week",
+    "moneyBackGuarantee": "Money-back guarantee",
+    "activeUsers": "Active Users",
+    "revenueGenerated": "Revenue Generated",
+    "satisfaction": "Satisfaction",
+    "copyright": "© {year} WOW AI. All rights reserved."
   },
   "features": {
     "aiChatAssistant": {
@@ -314,11 +331,192 @@
       "averageOrderValue": "💰 Average order value: $74.70"
     }
   },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: {date}",
+    "introduction": {
+      "title": "Introduction",
+      "content": "WOW AI (\"we,\" \"our,\" or \"us\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Shopify application. By installing and using WOW AI, you agree to the collection and use of information in accordance with this policy."
+    },
+    "informationWeCollect": {
+      "title": "Information We Collect",
+      "description": "When you install and use WOW AI, we collect and process the following types of data from your Shopify store:",
+      "storeInfo": {
+        "title": "Store and Business Information",
+        "items": [
+          "Store name, domain, and contact information",
+          "Store settings and configurations",
+          "Analytics and performance data",
+          "Order history and transaction data"
+        ]
+      },
+      "customerData": {
+        "title": "Customer Data",
+        "items": [
+          "Customer names, email addresses, and contact information",
+          "Purchase history and order details",
+          "Customer behavior and interaction data"
+        ]
+      },
+      "productData": {
+        "title": "Product and Inventory Data",
+        "items": [
+          "Product information, descriptions, and images",
+          "Inventory levels and fulfillment data",
+          "Pricing and discount information"
+        ]
+      },
+      "marketingData": {
+        "title": "Marketing and Engagement Data",
+        "items": [
+          "Marketing campaign performance",
+          "Customer engagement metrics",
+          "Promotional activities and discount usage"
+        ]
+      }
+    },
+    "howWeUse": {
+      "title": "How We Use Your Information",
+      "description": "We use the collected data to:",
+      "items": [
+        "Provide AI-powered insights and recommendations to help you optimize your store performance",
+        "Analyze store performance and identify trends, opportunities, and areas for improvement",
+        "Manage and automate promotions, orders, and product operations through our AI copilot",
+        "Generate analytics and reports to help you make informed business decisions",
+        "Improve our service by understanding how merchants use our application",
+        "Provide customer support and respond to your inquiries",
+        "Ensure compliance with legal obligations and platform requirements"
+      ]
+    },
+    "dataSecurity": {
+      "title": "Data Storage and Security",
+      "description": "We take data security seriously and implement industry-standard measures to protect your information:",
+      "measures": [
+        "Data is encrypted in transit using TLS/SSL protocols",
+        "We use secure cloud infrastructure with access controls and monitoring",
+        "Access to your data is restricted to authorized personnel only",
+        "We regularly review and update our security practices"
+      ],
+      "retention": "Your data is stored securely on servers located in compliance with applicable data protection regulations. We retain your data only for as long as necessary to provide our services and fulfill the purposes outlined in this policy."
+    },
+    "dataSharing": {
+      "title": "Data Sharing and Disclosure",
+      "description": "We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:",
+      "circumstances": [
+        "With your consent: When you explicitly authorize us to share specific information",
+        "Service providers: With trusted third-party services that help us operate our application (e.g., cloud hosting, AI processing)",
+        "Legal compliance: When required by law, court order, or government request",
+        "Business transfers: In connection with a merger, acquisition, or sale of assets",
+        "Protection of rights: To protect our rights, privacy, safety, or property, and that of our users"
+      ],
+      "shopifySync": "All customer data collected through Shopify channels is synced to the Shopify admin and made accessible to you as the merchant."
+    },
+    "yourRights": {
+      "title": "Your Rights and Choices",
+      "description": "As a merchant using WOW AI, you have the following rights:",
+      "rights": [
+        "Access: Request access to the data we hold about your store",
+        "Correction: Request corrections to inaccurate or incomplete data",
+        "Deletion: Request deletion of your data by uninstalling the app or contacting us",
+        "Opt-out: Opt-out of marketing communications at any time",
+        "Data portability: Request a copy of your data in a machine-readable format"
+      ],
+      "contact": "To exercise these rights, please contact us at support@getwow.ai"
+    },
+    "dataRetention": {
+      "title": "Data Retention and Deletion",
+      "description": "When you uninstall WOW AI from your Shopify store:",
+      "process": [
+        "We will automatically cease collecting new data from your store",
+        "You can request immediate deletion of all your data by contacting us",
+        "We will delete or anonymize your data within 30 days of your request",
+        "Some data may be retained for legal compliance purposes, as required by law"
+      ]
+    },
+    "marketing": {
+      "title": "Marketing and Communications",
+      "withConsent": "With your consent, we may send you:",
+      "communications": [
+        "Product updates and feature announcements",
+        "Tips and best practices for using WOW AI",
+        "Promotional offers and special deals"
+      ],
+      "optOut": "You can opt-out of marketing communications at any time by:",
+      "optOutMethods": [
+        "Clicking the \"unsubscribe\" link in any marketing email",
+        "Contacting us at support@getwow.ai"
+      ],
+      "note": "Note: We may still send you essential service-related communications even if you opt-out of marketing emails."
+    },
+    "compliance": {
+      "title": "Compliance with Data Protection Laws",
+      "description": "We comply with applicable data protection regulations, including:",
+      "regulations": [
+        "General Data Protection Regulation (GDPR) for European merchants",
+        "California Consumer Privacy Act (CCPA) for California merchants",
+        "Personal Information Protection and Electronic Documents Act (PIPEDA) for Canadian merchants",
+        "Other applicable regional data protection laws"
+      ]
+    },
+    "cookies": {
+      "title": "Cookies and Tracking Technologies",
+      "description": "WOW AI may use cookies and similar tracking technologies to:",
+      "purposes": [
+        "Maintain your session and authentication status",
+        "Remember your preferences and settings",
+        "Analyze app usage and performance",
+        "Improve user experience"
+      ],
+      "control": "You can control cookie settings through your browser preferences."
+    },
+    "thirdParty": {
+      "title": "Third-Party Services",
+      "description": "WOW AI integrates with third-party services to provide AI-powered functionality. These services have their own privacy policies:",
+      "services": [
+        "Shopify (for store data access and API integration)",
+        "AI/ML service providers (for generating insights and recommendations)",
+        "Cloud infrastructure providers (for data storage and processing)"
+      ],
+      "review": "We encourage you to review the privacy policies of these third-party services."
+    },
+    "changes": {
+      "title": "Changes to This Privacy Policy",
+      "description": "We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of any material changes by:",
+      "notifications": [
+        "Posting the updated policy on this page",
+        "Updating the \"Last updated\" date at the top",
+        "Sending you a notification through the app or email"
+      ],
+      "acceptance": "Your continued use of WOW AI after changes are posted constitutes acceptance of the updated Privacy Policy."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:",
+      "email": "Email: support@getwow.ai",
+      "website": "Website: https://getwow.ai"
+    },
+    "copyright": "© {year} WOW AI. All rights reserved.",
+    "backToHome": "Back to Home"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "We're here to help you succeed with WOW AI. Reach out to our team for support, questions, or just to say hello!",
+    "emailSupport": {
+      "title": "Email Support",
+      "description": "Get help via email. We typically respond within 24 hours.",
+      "email": "support@getwow.ai",
+      "button": "Send Email"
+    },
+    "backToHome": "Back to Home"
+  },
   "common": {
     "loading": "Loading...",
     "error": "Error",
     "success": "Success",
     "close": "Close",
+    "privacyPolicy": "Privacy Policy",
+    "contactUs": "Contact Us",
+    "copyright": "© {year} WOW AI. All rights reserved.",
     "open": "Open",
     "save": "Save",
     "cancel": "Cancel",

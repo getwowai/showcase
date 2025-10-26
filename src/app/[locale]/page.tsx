@@ -26,6 +26,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { WowLogo } from "@/components/ui/logo";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import Footer from "@/components/Footer";
 import { useExperiment } from "@/experiments/hooks/useExperiment";
 import { getVariantConfig, getVariantDebugInfo } from "@/lib/variant-config";
 import SignupMinimalPage from "./(landing-variants)/signup-minimal/page";
@@ -1125,6 +1126,8 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

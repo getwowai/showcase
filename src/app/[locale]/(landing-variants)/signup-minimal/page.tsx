@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { WowLogo } from "@/components/ui/logo";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import Footer from "@/components/Footer";
 import {
-  CheckCircle,
   ArrowRight,
   MessageCircle,
   Brain,
@@ -285,10 +285,7 @@ export default function SignupMinimalPage() {
         </motion.div>
       </section>
 
-      {/* Footer - Minimal */}
-      <footer className="container mx-auto px-4 py-8 text-center text-sm text-gray-500">
-        <p>{t("copyright")}</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
