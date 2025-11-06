@@ -510,6 +510,55 @@
     },
     "backToHome": "Back to Home"
   },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "backToHome": "Back to Home",
+    "questions": {
+      "q1": {
+        "question": "What is WOW AI?",
+        "answer": "WOW AI is your smart e-commerce assistant. It connects to your store on Salla, Zid, or Shopify and analyzes your sales, customer, and product data to provide you with daily insights, ready-made recommendations, and growth plans that help you increase revenue easily."
+      },
+      "q2": {
+        "question": "How does WOW AI help me grow my store?",
+        "answer": "WOW AI analyzes your store data and tells you what to do today to improve performance, such as:",
+        "items": [
+          "Most profitable products",
+          "Most loyal customers",
+          "Promotions that achieve the best results",
+          "Inventory or pricing issues that affect profits"
+        ],
+        "summary": "In simple terms: it transforms your data into smart daily decisions."
+      },
+      "q3": {
+        "question": "Is the app free?",
+        "answer": "Yes ✅ You can start using WOW AI completely free. Users will be able to try the basic features — such as daily insights, smart tasks, and chatting with the assistant — at no cost."
+      },
+      "q4": {
+        "question": "Do I need technical expertise to use WOW AI?",
+        "answer": "Not at all. WOW AI is designed for store owners and brand managers, not programmers or data analysts. All you need to do is connect your store, and WOW AI will do the rest automatically."
+      },
+      "q5": {
+        "question": "How is WOW AI different from traditional dashboards?",
+        "answer": "Traditional dashboards only show numbers, while WOW AI provides smart recommendations that tell you what to do to increase sales and reduce losses. It's not just an analytics tool, but a smart partner that thinks with you."
+      },
+      "q6": {
+        "question": "What platforms does WOW AI integrate with?",
+        "answer": "WOW AI currently integrates with Salla, Zid, and Shopify, and will soon support other platforms like Google Ads and Meta to track ad performance directly."
+      },
+      "q7": {
+        "question": "Is my store data secure?",
+        "answer": "Absolutely 🔒 WOW AI does not share your data with any third parties. A secure connection (API) is used with full data encryption, and the AI only works to analyze performance and provide recommendations within your account."
+      },
+      "q8": {
+        "question": "How long does setup take?",
+        "answer": "Setup takes less than two minutes. Once you log in and connect your store, WOW AI immediately begins analyzing your data and sends the first daily insights within hours."
+      },
+      "q9": {
+        "question": "Can I talk to WOW AI in Arabic?",
+        "answer": "Yes! 🤖 WOW AI understands Arabic and English, and you can chat with it naturally to ask about your products' performance, customers, or even advertising campaigns."
+      }
+    }
+  },
   "common": {
     "loading": "Loading...",
     "error": "Error",
@@ -517,6 +566,7 @@
     "close": "Close",
     "privacyPolicy": "Privacy Policy",
     "contactUs": "Contact Us",
+    "faq": "FAQ",
     "copyright": "© {year} WOW AI. All rights reserved.",
     "open": "Open",
     "save": "Save",

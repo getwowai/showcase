@@ -12,6 +12,13 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 text-sm text-gray-600">
           <Link
+            href={`/${locale}/faq`}
+            className="hover:text-[#4a5568] transition-colors"
+          >
+            {t("faq")}
+          </Link>
+          <span className="hidden sm:block">•</span>
+          <Link
             href={`/${locale}/privacy`}
             className="hover:text-[#4a5568] transition-colors"
           >
