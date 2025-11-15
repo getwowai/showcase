@@ -34,7 +34,8 @@ export const EXPERIMENTS: Record<string, ExperimentConfig> = {
       "Testing two signup-focused landing pages: minimal design vs. social proof heavy. " +
       "Hypothesis: Minimal variant will convert better by being clear about immediate value and next steps.",
     variants: [
-      "minimal", // /en/signup-minimal - Clean, distraction-free (now default)
+      "minimal", // /en/signup-minimal - Clean, distraction-free
+      "minimal-plus", // /en/signup-minimal-plus - Minimal with additional features
       "control", // Main landing page (/en or /ar) - original full landing
       "social-proof", // /en/signup-social-proof - Heavy trust signals
     ],

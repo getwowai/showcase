@@ -30,6 +30,7 @@ import Footer from "@/components/Footer";
 import { useExperiment } from "@/experiments/hooks/useExperiment";
 import { getVariantConfig, getVariantDebugInfo } from "@/lib/variant-config";
 import SignupMinimalPage from "./(landing-variants)/signup-minimal/page";
+import SignupMinimalPlusPage from "./(landing-variants)/signup-minimal-plus/page";
 
 export default function HomePage() {
   const [currentFeature, setCurrentFeature] = useState(0);
@@ -331,6 +332,12 @@ export default function HomePage() {
   if (variantConfig.variant === "minimal") {
     console.log("Rendering minimal signup page");
     return <SignupMinimalPage />;
+  }
+
+  // If variant is 'minimal-plus', render the minimal-plus signup page
+  if (variantConfig.variant === "minimal-plus") {
+    console.log("Rendering minimal-plus signup page");
+    return <SignupMinimalPlusPage />;
   }
 
   // For 'control' or any other variant, show the original landing page

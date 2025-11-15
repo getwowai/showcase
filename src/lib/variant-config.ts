@@ -7,7 +7,11 @@
  * 3. Default fallback
  */
 
-export type LandingVariant = "minimal" | "control" | "social-proof";
+export type LandingVariant =
+  | "minimal"
+  | "minimal-plus"
+  | "control"
+  | "social-proof";
 
 export interface VariantConfig {
   /** The variant to show on the main landing page */
@@ -48,7 +52,9 @@ export function getVariantConfig(
   if (
     posthogVariant &&
     typeof posthogVariant === "string" &&
-    ["minimal", "control", "social-proof"].includes(posthogVariant)
+    ["minimal", "minimal-plus", "control", "social-proof"].includes(
+      posthogVariant,
+    )
   ) {
     return {
       variant: posthogVariant as LandingVariant,
@@ -78,7 +84,7 @@ export function getVariantConfig(
  * Get available variants for validation
  */
 export function getAvailableVariants(): LandingVariant[] {
-  return ["minimal", "control", "social-proof"];
+  return ["minimal", "minimal-plus", "control", "social-proof"];
 }
 
 /**

@@ -56,14 +56,14 @@ NEXT_PUBLIC_POSTHOG_KEY=your_posthog_project_key
 NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com
 
 # Landing Page Variant (optional)
-NEXT_PUBLIC_DEFAULT_LANDING_VARIANT=minimal
+NEXT_PUBLIC_DEFAULT_LANDING_VARIANT=control
 NEXT_PUBLIC_FORCE_VARIANT_OVERRIDE=false
 ```
 
 **Variant Options:**
 
-- `minimal` - Clean, focused signup page (default)
-- `control` - Original full landing page
+- `control` - Original full landing page (default)
+- `minimal` - Clean, focused signup page
 - `social-proof` - Social validation variant
 
 **Override Behavior:**
