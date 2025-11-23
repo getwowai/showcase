@@ -513,6 +513,125 @@
     "copyright": "© {year} WOW AI. All rights reserved.",
     "backToHome": "Back to Home"
   },
+  "terms": {
+    "title": "Terms & Conditions",
+    "lastUpdated": "Last updated: {date}",
+    "introduction": "Welcome to **WOW AI** (\"we\", \"our\", \"us\"). These Terms & Conditions (\"Terms\") govern your use of our website, products, and services (collectively, the \"Service\"). By accessing or using the Service, you agree to be bound by these Terms. If you do not agree, please do not use the Service.",
+    "useOfService": {
+      "title": "Use of the Service",
+      "items": [
+        "You must be at least 18 years old to use the Service.",
+        "You agree to use the Service only for lawful purposes.",
+        "You are responsible for maintaining the security of your account and login credentials."
+      ]
+    },
+    "accounts": {
+      "title": "Accounts",
+      "description": "When you create an account, you must provide accurate and complete information. We may suspend or terminate your account if:",
+      "reasons": [
+        "You violate these Terms",
+        "We detect suspicious or abusive activity"
+      ]
+    },
+    "dataPrivacy": {
+      "title": "Data & Privacy",
+      "description": "Your use of the Service is also governed by our Privacy Policy:",
+      "privacyLink": "https://getwow.ai/en/privacy",
+      "consent": "By using the Service, you consent to the collection and processing of your data as described in the Privacy Policy."
+    },
+    "paymentBilling": {
+      "title": "Payment & Billing (if applicable)",
+      "items": [
+        "Some features require a paid subscription.",
+        "Fees, billing cycles, and refund rules will be clearly displayed before purchase.",
+        "We may change pricing with notice sent to your registered email."
+      ]
+    },
+    "intellectualProperty": {
+      "title": "Intellectual Property",
+      "description": "All content, trademarks, code, and materials within the Service are the property of WOW AI or its licensors. You may not copy, modify, or redistribute any part of the Service without permission."
+    },
+    "thirdPartyServices": {
+      "title": "Third-Party Services",
+      "description": "Our Service may integrate with third-party platforms (e.g., Salla, Shopify, Meta). We are not responsible for:",
+      "items": ["Their content", "Their downtime", "Their actions or policies"],
+      "note": "You are responsible for complying with their terms as well."
+    },
+    "serviceAvailability": {
+      "title": "Service Availability",
+      "description": "We aim to keep the Service running smoothly but do not guarantee:",
+      "items": [
+        "Uninterrupted access",
+        "Error-free performance",
+        "Instant data syncing"
+      ],
+      "reservation": "We reserve the right to modify, suspend, or discontinue any part of the Service."
+    },
+    "limitationOfLiability": {
+      "title": "Limitation of Liability",
+      "description": "To the maximum extent permitted by law, WOW AI is not liable for:",
+      "items": [
+        "Losses resulting from misuse of the Service",
+        "Downtime or service interruptions",
+        "Errors caused by third-party platforms or integrations"
+      ],
+      "risk": "Your use of the Service is at your own risk."
+    },
+    "termination": {
+      "title": "Termination",
+      "description": "We may suspend or terminate your access if you violate these Terms. You may stop using the Service at any time."
+    },
+    "changesToTerms": {
+      "title": "Changes to Terms",
+      "description": "We may update these Terms from time to time. When we do, we will update the \"Last Updated\" date at the top of the page. Continued use of the Service means you accept the updated Terms."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "If you have questions about these Terms, you can contact us at:",
+      "email": "support@getwow.ai"
+    },
+    "copyright": "© {year} WOW AI. All rights reserved.",
+    "backToHome": "Back to Home"
+  },
+  "dataDeletion": {
+    "title": "Data Deletion Instructions",
+    "lastUpdated": "Last updated: {date}",
+    "introduction": "At WOW AI, we respect your privacy and give all users the right to request the deletion of their personal data in accordance with applicable laws and platform requirements (including Meta/WhatsApp). This page explains how you can request the removal of all personal data associated with your account.",
+    "howToRequest": {
+      "title": "How to Request Data Deletion",
+      "description": "To delete your personal data, please follow these steps:",
+      "steps": [
+        "Send an email to **support@getwow.ai** with the subject line: **\"Data Deletion Request\"**",
+        "Include the following information in your message:",
+        "Your full name (optional)",
+        "The email or phone number associated with your WOW AI account",
+        "The app or integration you are requesting deletion for (e.g., WOW AI App)",
+        "Our team will verify your identity and process the deletion request."
+      ]
+    },
+    "whatWillBeDeleted": {
+      "title": "What Data Will Be Deleted",
+      "description": "Once verified, we will permanently delete:",
+      "items": [
+        "Your account information",
+        "Store or integration data associated with your account",
+        "Any synced analytics or app-generated insights",
+        "Any data required to operate your instance of the app"
+      ],
+      "note": "Some anonymized, non-identifiable logs may remain for security and compliance."
+    },
+    "processingTime": {
+      "title": "Processing Time",
+      "description": "Data deletion requests are typically processed within **7–14 business days**. You will receive a confirmation email once deletion is complete."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "If you have any questions about data deletion or privacy, contact us at:",
+      "email": "support@getwow.ai"
+    },
+    "copyright": "© {year} WOW AI. All rights reserved.",
+    "backToHome": "Back to Home"
+  },
   "contact": {
     "title": "Get in Touch",
     "description": "We're here to help you succeed with WOW AI. Reach out to our team for support, questions, or just to say hello!",
@@ -579,6 +698,8 @@
     "success": "Success",
     "close": "Close",
     "privacyPolicy": "Privacy Policy",
+    "termsConditions": "Terms & Conditions",
+    "dataDeletion": "Data Deletion",
     "contactUs": "Contact Us",
     "faq": "FAQ",
     "copyright": "© {year} WOW AI. All rights reserved.",

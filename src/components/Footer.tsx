@@ -26,6 +26,20 @@ export default function Footer() {
           </Link>
           <span className="hidden sm:block">•</span>
           <Link
+            href={`/${locale}/terms-conditions`}
+            className="hover:text-[#4a5568] transition-colors"
+          >
+            {t("termsConditions")}
+          </Link>
+          <span className="hidden sm:block">•</span>
+          <Link
+            href={`/${locale}/data-deletion`}
+            className="hover:text-[#4a5568] transition-colors"
+          >
+            {t("dataDeletion")}
+          </Link>
+          <span className="hidden sm:block">•</span>
+          <Link
             href={`/${locale}/contact-us`}
             className="hover:text-[#4a5568] transition-colors"
           >

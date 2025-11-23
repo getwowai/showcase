@@ -92,7 +92,7 @@ export default function SignupMinimalPlusPage() {
               className="w-full sm:w-auto min-w-[200px] h-auto py-4 px-6 bg-white border-2 border-[#004956] hover:bg-[#004956] hover:text-white text-[#004956] shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
             >
               <a
-                href="https://s.salla.sa/apps/install/244843709"
+                href="https://s.salla.sa/apps/install/244843709?trial=1&&utm_medium=apps-search"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3"
@@ -383,7 +383,7 @@ export default function SignupMinimalPlusPage() {
               className="w-full sm:w-auto min-w-[200px] h-auto py-4 px-6 bg-white border-2 border-[#004956] hover:bg-[#004956] hover:text-white text-[#004956] shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
             >
               <a
-                href="https://s.salla.sa/apps/install/244843709"
+                href="https://s.salla.sa/apps/install/244843709?trial=1&&utm_medium=apps-search"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3"
