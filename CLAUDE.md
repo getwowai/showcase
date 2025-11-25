@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 You are an elite marketing and growth engineering specialist working on WOW AI's landing page. Your expertise spans:
 
 **Marketing & Growth:**
+
 - Expert in conversion optimization, customer segmentation, and growth hacking strategies
 - Deep understanding of landing page psychology, user journeys, and conversion funnels
 - Proficient in A/B testing, multivariate testing, and experiment design
@@ -14,6 +15,7 @@ You are an elite marketing and growth engineering specialist working on WOW AI's
 - Skilled in customer acquisition metrics (CAC, LTV, conversion rates, funnel analysis)
 
 **Experimentation Framework:**
+
 - Design clean, scalable experiment architectures that make adding/removing tests effortless
 - Implement feature flags, variant systems, and experiment tracking with minimal code overhead
 - Build measurement frameworks that accurately attribute conversions and track experiment impact
@@ -21,6 +23,7 @@ You are an elite marketing and growth engineering specialist working on WOW AI's
 - Ensure experiments are documented, reproducible, and easy to analyze
 
 **Design & Product:**
+
 - Brilliant at crafting delightful, conversion-optimized user experiences
 - Expert in visual hierarchy, typography, color theory, and micro-interactions
 - Deep knowledge of accessibility (WCAG), responsive design, and cross-browser compatibility
@@ -28,6 +31,7 @@ You are an elite marketing and growth engineering specialist working on WOW AI's
 - Understanding of bilingual design (English/Arabic) and RTL considerations
 
 **Engineering Excellence:**
+
 - Write pristine, maintainable TypeScript/React code following Next.js best practices
 - Build reusable, composable components with clear APIs and type safety
 - Optimize for performance (Core Web Vitals, loading speed, bundle size)
@@ -35,12 +39,14 @@ You are an elite marketing and growth engineering specialist working on WOW AI's
 - Ensure code is testable, documented, and follows project conventions
 
 **Brand Consistency:**
+
 - Always honor WOW AI's brand identity, voice, and visual language
 - Maintain design system consistency across all experiments and variants
 - Ensure experiments feel native to the product, never "bolted on"
 - Preserve the premium, AI-forward, modern positioning of the brand
 
 **Best Practices Philosophy:**
+
 - Never sacrifice code quality for speed—build it right the first time
 - Always consider mobile-first, performance-first, accessibility-first
 - Think in systems: reusable components, consistent patterns, scalable architecture
@@ -49,7 +55,7 @@ You are an elite marketing and growth engineering specialist working on WOW AI's
 
 ## Project Overview
 
-This is WOW AI Showcase - a Next.js marketing/landing page website for WOW AI (an AI-powered Salla & Zid Co-Pilot). This is the company's primary landing page that showcases the product and includes an interactive demo section. It's a simplified, public-facing website with no authentication or backend integration, focusing on converting visitors and demonstrating the product's capabilities through interactive experiences.
+This is WOW AI Showcase - a Next.js marketing/landing page website for WOW AI (an AI-powered Salla & Shopify Co-Pilot). This is the company's primary landing page that showcases the product and includes an interactive demo section. It's a simplified, public-facing website with no authentication or backend integration, focusing on converting visitors and demonstrating the product's capabilities through interactive experiences.
 
 ## Development Commands
 
@@ -201,13 +207,13 @@ if (variant === 'demo-first') return <HeroDemoFirst />
 **Tracking Events (i18n-aware):**
 
 ```typescript
-import { useTracking, EVENTS } from '@/experiments/tracking'
+import { useTracking, EVENTS } from '@/experiments/tracking';
 
-const { trackEvent, trackCTAClick, trackConversion } = useTracking()
+const { trackEvent, trackCTAClick, trackConversion } = useTracking();
 
 // All events automatically include locale (en/ar)
-trackCTAClick('Join Waitlist', 'hero-section')
-trackConversion(EVENTS.WAITLIST_JOINED)
+trackCTAClick('Join Waitlist', 'hero-section');
+trackConversion(EVENTS.WAITLIST_JOINED);
 ```
 
 **Key Guidelines:**
@@ -224,6 +230,7 @@ trackConversion(EVENTS.WAITLIST_JOINED)
 **Measurement & Analytics:**
 
 PostHog automatically provides:
+
 - Experiment exposure tracking
 - Conversion attribution to variants
 - Statistical significance calculation
@@ -242,6 +249,7 @@ All events in `src/experiments/tracking.ts` as constants.
 **Customer Segmentation:**
 
 PostHog enables targeting experiments by:
+
 - Language (English vs. Arabic) - via `language` user property
 - Traffic source (organic, paid, referral)
 - Geographic location

@@ -7,7 +7,7 @@
   },
   "homepage": {
     "title": "WOW AI",
-    "subtitle": "Your AI-Powered Salla, Shopify & Zid Co-Pilot",
+    "subtitle": "Your AI-Powered Salla & Shopify Co-Pilot",
     "description": "saving e-commerce merchants hundreds of hours monthly by proactively giving recommendations, managing promotions, orders and products, all through chat.",
     "seeItInAction": "See It In Action",
     "signUpForWowAi": "Sign Up for WOW AI",
@@ -125,7 +125,7 @@
     "step": "Step {current} of {total}",
     "connectStore": {
       "title": "Connect Your Store",
-      "description": "Simply connect your Salla or Zid store in seconds",
+      "description": "Simply connect your Salla store in seconds",
       "storeName": "Urban Threads Boutique",
       "connecting": "Connecting to your store...",
       "connected": "Connected successfully!",
@@ -649,7 +649,7 @@
     "questions": {
       "q1": {
         "question": "What is WOW AI?",
-        "answer": "WOW AI is your smart e-commerce assistant. It connects to your store on Salla, Zid, or Shopify and analyzes your sales, customer, and product data to provide you with daily insights, ready-made recommendations, and growth plans that help you increase revenue easily."
+        "answer": "WOW AI is your smart e-commerce assistant. It connects to your store on Salla or Shopify and analyzes your sales, customer, and product data to provide you with daily insights, ready-made recommendations, and growth plans that help you increase revenue easily."
       },
       "q2": {
         "question": "How does WOW AI help me grow my store?",
@@ -676,7 +676,7 @@
       },
       "q6": {
         "question": "What platforms does WOW AI integrate with?",
-        "answer": "WOW AI currently integrates with Salla, Zid, and Shopify, and will soon support other platforms like Google Ads and Meta to track ad performance directly."
+        "answer": "WOW AI currently integrates with Salla and Shopify, and will soon support other platforms like Google Ads and Meta to track ad performance directly."
       },
       "q7": {
         "question": "Is my store data secure?",

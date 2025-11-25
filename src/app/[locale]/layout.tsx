@@ -35,11 +35,38 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: "homepage" });
 
+  const title = `${t("title")} - ${t("subtitle")}`;
+  const description = t("description");
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://getwow.ai";
+  const ogImage = `${siteUrl}/brand-assets/logos/primary/wow-ai-primary-logo.png`;
+
   return {
-    title: `${t("title")} - ${t("subtitle")}`,
-    description: t("description"),
+    title,
+    description,
     icons: {
       icon: "/brand-assets/icons/standard/wow-ai-standard-icon-32px.svg",
+    },
+    openGraph: {
+      title,
+      description,
+      url: `${siteUrl}/${locale}`,
+      siteName: "WOW AI",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: "WOW AI - Your AI-Powered Salla & Shopify Co-Pilot",
+        },
+      ],
+      locale: locale === "ar" ? "ar_SA" : "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
     },
   };
 }

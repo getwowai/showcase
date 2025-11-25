@@ -1,6 +1,6 @@
 # WOW AI Showcase Website
 
-This is the marketing/showcase website for WOW AI - your AI-powered Salla & Zid Co-Pilot.
+This is the marketing/showcase website for WOW AI - your AI-powered Salla & Shopify Co-Pilot.
 
 ## Overview
 
