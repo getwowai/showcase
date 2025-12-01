@@ -85,61 +85,18 @@ export default function SignupMinimalPlusPage() {
             transition={{ delay: 0.7, duration: 0.5 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 max-w-3xl mx-auto"
           >
-            {/* Salla Button */}
-            <Button
-              asChild
-              size="lg"
-              className="w-full sm:w-auto min-w-[200px] h-auto py-4 px-6 bg-white border-2 border-[#004956] hover:bg-[#004956] hover:text-white text-[#004956] shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
-            >
-              <a
-                href="https://s.salla.sa/apps/install/244843709?trial=1&&utm_medium=apps-search"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3"
-                onClick={() => {
-                  trackCTAClick("salla_install", "hero", {
-                    variant: "minimal-plus",
-                  });
-                }}
-              >
-                <span className="font-semibold text-lg">
-                  {t("sallaMerchantButton")}
-                </span>
-                <Image
-                  src="/salla-logo.svg"
-                  alt="Salla"
-                  width={48}
-                  height={40}
-                  className="w-12 h-auto"
-                />
-              </a>
-            </Button>
-
-            {/* Shopify Button */}
+            {/* Sign up Button */}
             <Button
               asChild
               size="lg"
               className="w-full sm:w-auto min-w-[200px] h-auto py-4 px-6 bg-white border-2 border-[#95BF47] hover:bg-[#95BF47] hover:text-white text-[#5E8E3E] shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
             >
               <a
-                href={`mailto:support@getwow.ai?subject=${encodeURIComponent("Shopify Partner Invitation Request")}&body=${encodeURIComponent("Hello,\n\nI would like to request access to install WOW AI on my Shopify store.\n\nPlease find my details below:\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📦 STORE LINK:\n(Please paste your Shopify store URL here)\n\n📞 PHONE NUMBER:\n(Please provide your phone number here)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nThank you!\n")}`}
+                href={`https://app.getwow.ai/sign-up?utm_source=showcase&utm_medium=howcase-signup&language=${locale}`}
+                target="_blank"
                 className="flex items-center gap-3"
-                onClick={() => {
-                  trackCTAClick("shopify_install", "hero", {
-                    variant: "minimal-plus",
-                  });
-                }}
               >
-                <span className="font-semibold text-lg">
-                  {t("shopifyMerchantButton")}
-                </span>
-                <Image
-                  src="/shopify-logo.svg"
-                  alt="Shopify"
-                  width={100}
-                  height={28}
-                  className="h-7 w-auto"
-                />
+                <span className="font-semibold text-lg">{t("signUp")}</span>
               </a>
             </Button>
           </motion.div>
