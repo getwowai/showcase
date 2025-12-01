@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useSignUp } from "@clerk/clerk-react";
 import { useTranslations, useLocale } from "next-intl";
 import { useTracking, EVENTS } from "@/experiments/tracking";
 import { getPostHog } from "@/lib/posthog";
@@ -12,6 +13,8 @@ import Footer from "@/components/Footer";
 import { MessageCircle, Brain, Zap, MessageCirclePlusIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
 
 /**
  * Signup Landing - Minimal Plus Variant
@@ -29,6 +32,25 @@ export default function SignupMinimalPlusPage() {
   const t = useTranslations("signupMinimal");
   const locale = useLocale();
   const { trackEvent, trackConversion, trackCTAClick } = useTracking();
+  // const { signUp, isLoaded, setSession } = useSignUp();
+
+  const [signUpParams, setSignUpParams] = useState({
+    email: "",
+    name: "",
+    storeName: "",
+    phoneNumber: "",
+    password: "",
+    platform: "",
+  });
+  const [isSignUpDisabled, setIsSignUpDisabled] = useState(true);
+
+  useEffect(() => {
+    const { email, name, storeName, phoneNumber, password, platform } =
+      signUpParams;
+    if (email && name && storeName && phoneNumber && password && platform) {
+      setIsSignUpDisabled(false);
+    }
+  }, [signUpParams]);
 
   // Track experiment exposure
   useEffect(() => {
@@ -46,6 +68,37 @@ export default function SignupMinimalPlusPage() {
       });
     }
   }, [locale, trackEvent]);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
+  ) => {
+    const { name, value } = e.target;
+    setSignUpParams((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSignUpClick = async () => {
+    try {
+      // await signUp.create({
+      //   emailAddress: signUpParams.email,
+      //   password: signUpParams.password,
+      //   firstName: signUpParams.name,
+      // });
+
+      // // Trigger email verification
+      // await signUp.prepareEmailAddressVerification({
+      //   strategy: "email_code",
+      // });
+
+      console.log("Check your email for verification link!");
+    } catch (err) {
+      console.error("SignUp error:", err);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
@@ -78,28 +131,77 @@ export default function SignupMinimalPlusPage() {
             {t("subtitle")}
           </p>
 
-          {/* Main CTA - Install Buttons */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.7, duration: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 max-w-3xl mx-auto"
-          >
-            {/* Sign up Button */}
-            <Button
-              asChild
-              size="lg"
-              className="w-full sm:w-auto min-w-[200px] h-auto py-4 px-6 bg-white border-2 border-[#95BF47] hover:bg-[#95BF47] hover:text-white text-[#5E8E3E] shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
-            >
-              <a
-                href={`https://app.getwow.ai/sign-up?utm_source=showcase&utm_medium=howcase-signup&language=${locale}`}
-                target="_blank"
-                className="flex items-center gap-3"
+          <div className="flex flex-col gap-3">
+            <div className="flex gap-3">
+              <Input
+                type="email"
+                placeholder={t("enterYourEmail")}
+                required
+                className="text-lg h-14"
+                name="email"
+                onChange={handleInputChange}
+              />
+
+              <Input
+                type="text"
+                placeholder={t("name")}
+                required
+                className="text-lg h-14"
+                name="name"
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className="flex gap-3">
+              <Input
+                type="text"
+                placeholder={t("storeName")}
+                required
+                className="text-lg h-14"
+                name="storeName"
+                onChange={handleInputChange}
+              />
+
+              <Input
+                type="text"
+                placeholder={t("phoneNumberWithWtsup")}
+                required
+                className="text-lg h-14"
+                name="phoneNumber"
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className="flex gap-3">
+              <Input
+                type="text"
+                placeholder={t("password")}
+                required
+                className="text-lg h-14"
+                name="password"
+                onChange={handleInputChange}
+              />
+              <Select onChange={handleInputChange} name="platform">
+                <option value="">{t("choosePlatform")}</option>
+                <option value="salla">{t("platform_1")}</option>
+                <option value="shopify">{t("platform_2")}</option>
+                <option value="zid">{t("platform_3")}</option>
+              </Select>
+            </div>
+            <div className="flex gap-3">
+              <Button
+                disabled={isSignUpDisabled}
+                size="lg"
+                className="w-full h-14 px-6 bg-white border-2 border-[#95BF47] 
+             hover:bg-[#95BF47] hover:text-white text-[#5E8E3E] 
+             shadow-lg hover:shadow-xl transform hover:scale-105 
+             transition-all rounded-[12px] cursor-pointer disabled:cursor-not-allowed"
+                onClick={handleSignUpClick}
               >
-                <span className="font-semibold text-lg">{t("signUp")}</span>
-              </a>
-            </Button>
-          </motion.div>
+                {t("signUp")}
+              </Button>
+            </div>
+          </div>
         </motion.div>
       </section>
 

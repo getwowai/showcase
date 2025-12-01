@@ -345,7 +345,16 @@
     "product3": "Thermal Boots",
     "product3Growth": "+15%",
     "performanceReport": "Performance Report",
-    "online": "Online"
+    "online": "Online",
+    "enterYourEmail": "Enter your email",
+    "name": "Name",
+    "storeName": "Store Name",
+    "phoneNumberWithWtsup": "Phone number (with WhatsApp)",
+    "password": "Password",
+    "choosePlatform": "Choose the platform",
+    "platform_1": "Salla",
+    "platform_2": "Shopify",
+    "platform_3": "Zid"
   },
   "privacy": {
     "title": "Privacy Policy",
