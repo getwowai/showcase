@@ -270,6 +270,24 @@ export default function HomePage() {
     },
   ];
 
+  const renderSignupBadges = () => (
+    <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm text-white">
+      {[
+        t("homepage.freeTrialBadge"),
+        t("homepage.noCreditCardBadge"),
+        t("homepage.setupInMinutesBadge"),
+      ].map((label, index) => (
+        <div
+          key={index}
+          className="flex items-center gap-2 px-3 py-2 bg-[#4a5568] rounded-xl shadow min-w-[150px] justify-center"
+        >
+          <CheckCircleIcon className="h-4 w-4 text-white" />
+          <span className="font-semibold">{label}</span>
+        </div>
+      ))}
+    </div>
+  );
+
   const testimonials = [
     {
       name: t("testimonials.sarahChen.name"),
@@ -773,6 +791,7 @@ export default function HomePage() {
                   </h3>
                 </div>
                 <SignUp />
+                {renderSignupBadges()}
               </div>
             </motion.div>
           </motion.div>
@@ -922,21 +941,6 @@ export default function HomePage() {
                   <ArrowRightIcon className="ml-3 h-6 w-6" />
                 </Button>
               </Link>
-            </div>
-
-            <div className="mt-8 flex items-center justify-center gap-4 text-sm text-gray-500">
-              <Badge variant="secondary" className="px-3 py-1">
-                <CheckCircleIcon className="mr-1 h-4 w-4" />
-                {t("homepage.freeTrialBadge")}
-              </Badge>
-              <Badge variant="secondary" className="px-3 py-1">
-                <CheckCircleIcon className="mr-1 h-4 w-4" />
-                {t("homepage.noCreditCardBadge")}
-              </Badge>
-              <Badge variant="secondary" className="px-3 py-1">
-                <CheckCircleIcon className="mr-1 h-4 w-4" />
-                {t("homepage.setupInMinutesBadge")}
-              </Badge>
             </div>
           </motion.div>
         </div>
@@ -1141,6 +1145,7 @@ export default function HomePage() {
                 </p>
               </div>
               <SignUp />
+              {renderSignupBadges()}
             </div>
 
             <div className="w-full px-6 sm:px-8 mb-8">
@@ -1155,21 +1160,6 @@ export default function HomePage() {
                   sizes="(min-width: 1024px) 30vw, 70vw"
                 />
               </div>
-            </div>
-
-            <div className="flex items-center justify-center gap-4 text-sm text-gray-500 flex-wrap">
-              <Badge variant="secondary" className="px-3 py-1">
-                <CheckCircleIcon className="mr-1 h-4 w-4" />
-                {t("homepage.freeTrialBadge")}
-              </Badge>
-              <Badge variant="secondary" className="px-3 py-1">
-                <CheckCircleIcon className="mr-1 h-4 w-4" />
-                {t("homepage.noCreditCardBadge")}
-              </Badge>
-              <Badge variant="secondary" className="px-3 py-1">
-                <CheckCircleIcon className="mr-1 h-4 w-4" />
-                {t("homepage.setupInMinutesBadge")}
-              </Badge>
             </div>
           </motion.div>
         </div>

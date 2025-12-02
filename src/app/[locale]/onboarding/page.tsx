@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
@@ -570,184 +570,187 @@ export default function OnboardingPage() {
   const t = useTranslations();
   const locale = useLocale();
 
-  const onboardingSteps: OnboardingStep[] = [
-    {
-      id: 1,
-      title: t("onboarding.connectStore.title"),
-      description: t("onboarding.connectStore.description"),
-      duration: 3500,
-      content: {
-        type: "store-connect",
-        storeName: t("onboarding.connectStore.storeName"),
-        progress: 0,
+  const onboardingSteps: OnboardingStep[] = useMemo(
+    () => [
+      {
+        id: 1,
+        title: t("onboarding.connectStore.title"),
+        description: t("onboarding.connectStore.description"),
+        duration: 3500,
+        content: {
+          type: "store-connect",
+          storeName: t("onboarding.connectStore.storeName"),
+          progress: 0,
+        },
       },
-    },
-    {
-      id: 2,
-      title: t("onboarding.analysis.title"),
-      description: t("onboarding.analysis.description"),
-      duration: 4500,
-      content: {
-        type: "analysis",
-        items: [
-          t("onboarding.analysis.analyzing", { count: "1,247" }),
-          t("onboarding.analysis.processing"),
-          t("onboarding.analysis.identifying"),
-          t("onboarding.analysis.setting"),
-        ],
+      {
+        id: 2,
+        title: t("onboarding.analysis.title"),
+        description: t("onboarding.analysis.description"),
+        duration: 4500,
+        content: {
+          type: "analysis",
+          items: [
+            t("onboarding.analysis.analyzing", { count: "1,247" }),
+            t("onboarding.analysis.processing"),
+            t("onboarding.analysis.identifying"),
+            t("onboarding.analysis.setting"),
+          ],
+        },
       },
-    },
-    {
-      id: 3,
-      title: t("onboarding.agents.title"),
-      description: t("onboarding.agents.description"),
-      duration: 5000,
-      content: {
-        type: "agents-intro",
-        agents: [
-          {
-            name: t("onboarding.agents.financeAgent"),
-            status: t("onboarding.agents.active"),
-            icon: <DollarSignIcon className="h-5 w-5" />,
-          },
-          {
-            name: t("onboarding.agents.inventoryAgent"),
-            status: t("onboarding.agents.active"),
-            icon: <PackageIcon className="h-5 w-5" />,
-          },
-          {
-            name: t("onboarding.agents.pricingAgent"),
-            status: t("onboarding.agents.active"),
-            icon: <TagIcon className="h-5 w-5" />,
-          },
-          {
-            name: t("onboarding.agents.logisticsAgent"),
-            status: t("onboarding.agents.active"),
-            icon: <TruckIcon className="h-5 w-5" />,
-          },
-          {
-            name: t("onboarding.agents.promotionsAgent"),
-            status: t("onboarding.agents.active"),
-            icon: <ZapIcon className="h-5 w-5" />,
-          },
-        ],
+      {
+        id: 3,
+        title: t("onboarding.agents.title"),
+        description: t("onboarding.agents.description"),
+        duration: 5000,
+        content: {
+          type: "agents-intro",
+          agents: [
+            {
+              name: t("onboarding.agents.financeAgent"),
+              status: t("onboarding.agents.active"),
+              icon: <DollarSignIcon className="h-5 w-5" />,
+            },
+            {
+              name: t("onboarding.agents.inventoryAgent"),
+              status: t("onboarding.agents.active"),
+              icon: <PackageIcon className="h-5 w-5" />,
+            },
+            {
+              name: t("onboarding.agents.pricingAgent"),
+              status: t("onboarding.agents.active"),
+              icon: <TagIcon className="h-5 w-5" />,
+            },
+            {
+              name: t("onboarding.agents.logisticsAgent"),
+              status: t("onboarding.agents.active"),
+              icon: <TruckIcon className="h-5 w-5" />,
+            },
+            {
+              name: t("onboarding.agents.promotionsAgent"),
+              status: t("onboarding.agents.active"),
+              icon: <ZapIcon className="h-5 w-5" />,
+            },
+          ],
+        },
       },
-    },
-    {
-      id: 4,
-      title: t("onboarding.insights.title"),
-      description: t("onboarding.insights.description"),
-      duration: 4500,
-      content: {
-        type: "insights",
-        insights: [
-          {
-            title: t("onboarding.insights.inventoryAlert"),
-            urgency: t("onboarding.insights.highUrgency"),
-            message: t("onboarding.insights.inventoryAlertMsg"),
-          },
-          {
-            title: t("onboarding.insights.pricingOpportunity"),
-            urgency: t("onboarding.insights.mediumUrgency"),
-            message: t("onboarding.insights.pricingOpportunityMsg"),
-          },
-          {
-            title: t("onboarding.insights.seasonalTrend"),
-            urgency: t("onboarding.insights.lowUrgency"),
-            message: t("onboarding.insights.seasonalTrendMsg"),
-          },
-        ],
+      {
+        id: 4,
+        title: t("onboarding.insights.title"),
+        description: t("onboarding.insights.description"),
+        duration: 4500,
+        content: {
+          type: "insights",
+          insights: [
+            {
+              title: t("onboarding.insights.inventoryAlert"),
+              urgency: t("onboarding.insights.highUrgency"),
+              message: t("onboarding.insights.inventoryAlertMsg"),
+            },
+            {
+              title: t("onboarding.insights.pricingOpportunity"),
+              urgency: t("onboarding.insights.mediumUrgency"),
+              message: t("onboarding.insights.pricingOpportunityMsg"),
+            },
+            {
+              title: t("onboarding.insights.seasonalTrend"),
+              urgency: t("onboarding.insights.lowUrgency"),
+              message: t("onboarding.insights.seasonalTrendMsg"),
+            },
+          ],
+        },
       },
-    },
-    {
-      id: 5,
-      title: t("onboarding.chat.title"),
-      description: t("onboarding.chat.description"),
-      duration: 6000,
-      content: {
-        type: "chat-demo",
-        messages: [
-          {
-            type: "user",
-            text: t("onboarding.chat.userMessage1"),
-          },
-          {
-            type: "ai",
-            text: t("onboarding.chat.aiResponse1"),
-          },
-          {
-            type: "user",
-            text: t("onboarding.chat.userMessage2"),
-          },
-          {
-            type: "ai",
-            text: t("onboarding.chat.aiResponse2"),
-          },
-        ],
+      {
+        id: 5,
+        title: t("onboarding.chat.title"),
+        description: t("onboarding.chat.description"),
+        duration: 6000,
+        content: {
+          type: "chat-demo",
+          messages: [
+            {
+              type: "user",
+              text: t("onboarding.chat.userMessage1"),
+            },
+            {
+              type: "ai",
+              text: t("onboarding.chat.aiResponse1"),
+            },
+            {
+              type: "user",
+              text: t("onboarding.chat.userMessage2"),
+            },
+            {
+              type: "ai",
+              text: t("onboarding.chat.aiResponse2"),
+            },
+          ],
+        },
       },
-    },
-    {
-      id: 6,
-      title: t("onboarding.actions.title"),
-      description: t("onboarding.actions.description"),
-      duration: 4500,
-      content: {
-        type: "actions",
-        actions: [
-          {
-            agent: t("onboarding.actions.inventoryAgent"),
-            action: t("onboarding.actions.inventoryAction"),
-            status: t("onboarding.actions.completed"),
-          },
-          {
-            agent: t("onboarding.actions.pricingAgent"),
-            action: t("onboarding.actions.pricingAction"),
-            status: t("onboarding.actions.completed"),
-          },
-          {
-            agent: t("onboarding.actions.promotionsAgent"),
-            action: t("onboarding.actions.promotionsAction"),
-            status: t("onboarding.actions.inProgress"),
-          },
-        ],
+      {
+        id: 6,
+        title: t("onboarding.actions.title"),
+        description: t("onboarding.actions.description"),
+        duration: 4500,
+        content: {
+          type: "actions",
+          actions: [
+            {
+              agent: t("onboarding.actions.inventoryAgent"),
+              action: t("onboarding.actions.inventoryAction"),
+              status: t("onboarding.actions.completed"),
+            },
+            {
+              agent: t("onboarding.actions.pricingAgent"),
+              action: t("onboarding.actions.pricingAction"),
+              status: t("onboarding.actions.completed"),
+            },
+            {
+              agent: t("onboarding.actions.promotionsAgent"),
+              action: t("onboarding.actions.promotionsAction"),
+              status: t("onboarding.actions.inProgress"),
+            },
+          ],
+        },
       },
-    },
-    {
-      id: 7,
-      title: t("onboarding.results.title"),
-      description: t("onboarding.results.description"),
-      duration: 5000,
-      content: {
-        type: "results",
-        metrics: [
-          {
-            label: t("onboarding.results.revenueIncrease"),
-            value: t("onboarding.results.revenueIncrease"),
-            trend: "up",
-            color: "text-green-600",
-          },
-          {
-            label: t("onboarding.results.timeSaved"),
-            value: t("onboarding.results.timeSaved"),
-            trend: "neutral",
-            color: "text-blue-600",
-          },
-          {
-            label: t("onboarding.results.profitMargin"),
-            value: t("onboarding.results.profitMargin"),
-            trend: "up",
-            color: "text-white",
-          },
-          {
-            label: t("onboarding.results.inventoryEfficiency"),
-            value: t("onboarding.results.inventoryEfficiency"),
-            trend: "up",
-            color: "text-orange-600",
-          },
-        ],
+      {
+        id: 7,
+        title: t("onboarding.results.title"),
+        description: t("onboarding.results.description"),
+        duration: 5000,
+        content: {
+          type: "results",
+          metrics: [
+            {
+              label: t("onboarding.results.revenueIncrease"),
+              value: t("onboarding.results.revenueIncrease"),
+              trend: "up",
+              color: "text-green-600",
+            },
+            {
+              label: t("onboarding.results.timeSaved"),
+              value: t("onboarding.results.timeSaved"),
+              trend: "neutral",
+              color: "text-blue-600",
+            },
+            {
+              label: t("onboarding.results.profitMargin"),
+              value: t("onboarding.results.profitMargin"),
+              trend: "up",
+              color: "text-white",
+            },
+            {
+              label: t("onboarding.results.inventoryEfficiency"),
+              value: t("onboarding.results.inventoryEfficiency"),
+              trend: "up",
+              color: "text-orange-600",
+            },
+          ],
+        },
       },
-    },
-  ];
+    ],
+    [t],
+  );
 
   useEffect(() => {
     if (isPlaying && currentStep < onboardingSteps.length - 1) {

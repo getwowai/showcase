@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { cn } from "@/components/lib/utils";
 
 interface WowLogoProps {
@@ -37,10 +38,31 @@ export const WowLogo: React.FC<WowLogoProps> = ({
     }
   };
 
+  const getDimensions = () => {
+    switch (size) {
+      case "hero":
+        return { width: 320, height: 140 };
+      case "header":
+        return { width: 200, height: 90 };
+      case "standard":
+        return { width: 160, height: 70 };
+      case "small":
+        return { width: 120, height: 50 };
+      case "favicon":
+        return { width: 32, height: 32 };
+      default:
+        return { width: 160, height: 70 };
+    }
+  };
+
+  const { width, height } = getDimensions();
+
   return (
-    <img
+    <Image
       src={getLogoPath()}
       alt="WOW AI"
+      width={width}
+      height={height}
       className={cn(getSizeClasses(), className)}
       style={{ minWidth: "80px" }}
     />
@@ -79,9 +101,11 @@ export const WowIcon: React.FC<WowIconProps> = ({
           className,
         )}
       >
-        <img
+        <Image
           src="/brand-assets/icons/standard/wow-ai-standard-icon-32px.svg"
           alt="WOW AI Icon"
+          width={64}
+          height={64}
           className="w-full h-full p-1"
         />
       </div>
@@ -89,9 +113,11 @@ export const WowIcon: React.FC<WowIconProps> = ({
   }
 
   return (
-    <img
+    <Image
       src="/brand-assets/icons/standard/wow-ai-standard-icon-32px.svg"
       alt="WOW AI Icon"
+      width={64}
+      height={64}
       className={cn(getSizeClasses(), className)}
     />
   );

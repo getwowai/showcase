@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -43,10 +44,13 @@ export default async function BrandAssetsPage({ params }: Props) {
                   Primary Logo (Balanced Unity)
                 </h3>
                 <div className="bg-gray-50 p-8 rounded-lg">
-                  <img
+                  <Image
                     src="/brand-assets/logos/primary/wow-ai-primary-logo.svg"
                     alt="WOW AI Primary Logo"
+                    width={800}
+                    height={260}
                     className="max-w-full h-auto mx-auto scale-150"
+                    priority
                   />
                 </div>
                 <p className="text-sm text-gray-600 mt-3">
@@ -188,9 +192,11 @@ export default async function BrandAssetsPage({ params }: Props) {
                   App Icon (64px)
                 </h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <img
+                  <Image
                     src="/brand-assets/icons/app/wow-ai-app-icon-64px.svg"
                     alt="WOW AI App Icon"
+                    width={64}
+                    height={64}
                     className="w-16 h-16 mx-auto"
                   />
                 </div>
@@ -203,9 +209,11 @@ export default async function BrandAssetsPage({ params }: Props) {
                   Standard Icon (32px)
                 </h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <img
+                  <Image
                     src="/brand-assets/icons/standard/wow-ai-standard-icon-32px.svg"
                     alt="WOW AI Standard Icon"
+                    width={64}
+                    height={64}
                     className="w-16 h-16 mx-auto"
                   />
                 </div>
@@ -218,9 +226,11 @@ export default async function BrandAssetsPage({ params }: Props) {
                   Favicon (16px)
                 </h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <img
+                  <Image
                     src="/brand-assets/icons/favicon/wow-ai-favicon-16px.svg"
                     alt="WOW AI Favicon"
+                    width={64}
+                    height={64}
                     className="w-16 h-16 mx-auto"
                   />
                 </div>
