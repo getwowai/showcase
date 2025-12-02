@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeftIcon } from "lucide-react";
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  await params;
   return {
     title: "Asset Index - WOW AI",
     description:
@@ -15,8 +16,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function AssetIndexPage({ params }: Props) {
-  const { locale } = params;
+export default async function AssetIndexPage({ params }: Props) {
+  const { locale } = await params;
 
   return (
     <div className="min-h-screen bg-gray-50">

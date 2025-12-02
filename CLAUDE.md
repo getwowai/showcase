@@ -53,6 +53,15 @@ You are an elite marketing and growth engineering specialist working on WOW AI's
 - Measure everything: instrument before launching, analyze before iterating
 - Ship iteratively: small, testable changes over large rewrites
 
+**CRITICAL: Always Run Before Completing Tasks:**
+
+After making any code changes, you MUST run these commands in sequence:
+
+1. **Format code:** `pnpm format` - Ensures consistent code formatting across the project
+2. **Build verification:** `pnpm build` - Verifies TypeScript types, linting, and build success
+
+**Never consider a task complete until both commands pass successfully.** Build failures must be fixed before moving on.
+
 ## Project Overview
 
 This is WOW AI Showcase - a Next.js marketing/landing page website for WOW AI (an AI-powered Salla & Shopify Co-Pilot). This is the company's primary landing page that showcases the product and includes an interactive demo section. It's a simplified, public-facing website with no authentication or backend integration, focusing on converting visitors and demonstrating the product's capabilities through interactive experiences.
@@ -207,12 +216,12 @@ if (variant === 'demo-first') return <HeroDemoFirst />
 **Tracking Events (i18n-aware):**
 
 ```typescript
-import { useTracking, EVENTS } from '@/experiments/tracking';
+import { useTracking, EVENTS } from "@/experiments/tracking";
 
 const { trackEvent, trackCTAClick, trackConversion } = useTracking();
 
 // All events automatically include locale (en/ar)
-trackCTAClick('Join Waitlist', 'hero-section');
+trackCTAClick("Join Waitlist", "hero-section");
 trackConversion(EVENTS.WAITLIST_JOINED);
 ```
 

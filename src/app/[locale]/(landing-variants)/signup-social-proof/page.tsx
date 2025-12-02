@@ -108,7 +108,9 @@ export default function SignupSocialProofPage() {
           <WowLogo size="header" />
           <div className="flex items-center gap-2 text-sm text-gray-600">
             <Users className="w-4 h-4" />
-            <span className="font-medium">5,000+ {t("homepage.storeOwners")}</span>
+            <span className="font-medium">
+              5,000+ {t("homepage.storeOwners")}
+            </span>
           </div>
         </div>
       </header>
@@ -152,7 +154,7 @@ export default function SignupSocialProofPage() {
                   <div className="w-12 h-12 bg-gradient-to-br from-[#86c9e5] to-[#aedf1a] rounded-full flex-shrink-0" />
                   <div>
                     <p className="text-gray-700 italic mb-2">
-                      "{t("testimonials.sarahChen.quote")}"
+                      &ldquo;{t("testimonials.sarahChen.quote")}&rdquo;
                     </p>
                     <p className="text-sm font-medium text-gray-900">
                       {t("testimonials.sarahChen.name")}
@@ -193,9 +195,7 @@ export default function SignupSocialProofPage() {
                 <h2 className="text-2xl font-bold mb-2">
                   {t("homepage.startFreeTrial")}
                 </h2>
-                <p className="text-gray-600">
-                  {t("homepage.joinThousands")}
-                </p>
+                <p className="text-gray-600">{t("homepage.joinThousands")}</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -284,7 +284,9 @@ export default function SignupSocialProofPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-[#4a5568] mb-2">5,000+</div>
+              <div className="text-4xl font-bold text-[#4a5568] mb-2">
+                5,000+
+              </div>
               <p className="text-gray-600">{t("homepage.activeUsers")}</p>
             </div>
             <div>

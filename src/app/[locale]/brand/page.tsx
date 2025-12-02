@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  await params;
   return {
     title: "WOW AI Brand Assets - LLM Optimized",
     description:
@@ -13,8 +14,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function BrandAssetsPage({ params }: Props) {
-  const { locale } = params;
+export default async function BrandAssetsPage({ params }: Props) {
+  const { locale } = await params;
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">

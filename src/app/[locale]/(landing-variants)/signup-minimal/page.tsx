@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { useTracking, EVENTS } from "@/experiments/tracking";
+import { useTracking } from "@/experiments/tracking";
 import { getPostHog } from "@/lib/posthog";
 import { Card } from "@/components/ui/card";
 import { WowLogo } from "@/components/ui/logo";
@@ -26,7 +26,7 @@ import { motion } from "framer-motion";
 export default function SignupMinimalPage() {
   const t = useTranslations("signupMinimal");
   const locale = useLocale();
-  const { trackEvent, trackConversion, trackCTAClick } = useTracking();
+  const { trackEvent } = useTracking();
 
   // Track experiment exposure
   useEffect(() => {

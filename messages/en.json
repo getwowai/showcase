@@ -355,7 +355,17 @@
     "platform_1": "Salla",
     "platform_2": "Shopify",
     "platform_3": "Zid",
-    "verificationCode": "Verification Code"
+    "verificationCode": "Verification Code",
+    "creatingAccount": "Creating account...",
+    "passwordHint": "Password must be at least 8 characters",
+    "passwordError": "Password must be at least 8 characters with a mix of letters and numbers",
+    "emailError": "This email is already registered",
+    "genericError": "Unable to create account. Please try again.",
+    "countryCode": "Country",
+    "invalidEmail": "Please enter a valid email address",
+    "invalidPhone": "Please enter a valid phone number (9-15 digits)",
+    "fieldRequired": "This field is required",
+    "formInstruction": "All fields are required to create your account"
   },
   "privacy": {
     "title": "Privacy Policy",

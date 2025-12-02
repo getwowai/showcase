@@ -21,11 +21,11 @@ const notoSansArabic = Noto_Sans_Arabic({
 
 interface LocaleLayoutProps {
   children: ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 export async function generateMetadata({ params }: LocaleLayoutProps) {
-  const { locale } = params;
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "homepage" });
 
   const title = `${t("title")} - ${t("subtitle")}`;
@@ -61,7 +61,7 @@ export default async function LocaleLayout({
   children,
   params,
 }: LocaleLayoutProps) {
-  const { locale } = params;
+  const { locale } = await params;
   if (!locales.includes(locale as Locale)) notFound();
 
   const messages = await getMessages({ locale });
