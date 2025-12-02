@@ -27,6 +27,7 @@ export default function SignupMinimalPage() {
   const t = useTranslations("signupMinimal");
   const locale = useLocale();
   const { trackEvent } = useTracking();
+  const isRTL = locale === "ar";
 
   // Track experiment exposure
   useEffect(() => {
@@ -46,7 +47,10 @@ export default function SignupMinimalPage() {
   }, [locale, trackEvent]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div
+      className="min-h-screen bg-gradient-to-b from-white to-gray-50"
+      dir={isRTL ? "rtl" : "ltr"}
+    >
       {/* Language Switcher */}
       <div className="fixed top-4 right-4 z-50">
         <LanguageSwitcher />
