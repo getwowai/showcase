@@ -412,6 +412,19 @@ export const SignUp = () => {
       {error && (
         <Toast title={error} open={open} setOpen={setOpen} variant="error" />
       )}
+
+      <div
+        className="text-sm text-center text-gray-600"
+        dir={isRTL ? "rtl" : "ltr"}
+      >
+        {t("alreadyCustomer")}{" "}
+        <a
+          href="https://app.getwow.ai/sign-in"
+          className="font-semibold text-[#4a5568] hover:underline"
+        >
+          {t("signInLink")}
+        </a>
+      </div>
     </form>
   );
 };
