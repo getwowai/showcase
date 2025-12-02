@@ -144,14 +144,22 @@ export const SignUp = () => {
       });
 
       if (response?.status === "complete" && response.createdSessionId) {
-        // User is automatically signed in, redirect to app
-        window.location.href = baseUrl;
+        // User is automatically signed in, redirect to app with UTM parameters
+        const redirectUrl = new URL(baseUrl);
+        redirectUrl.searchParams.set("utm_source", "showcase");
+        redirectUrl.searchParams.set("utm_medium", "signup");
+        redirectUrl.searchParams.set("utm_campaign", "showcase-signup");
+        window.location.href = redirectUrl.toString();
       }
     } catch (err: unknown) {
       if (err instanceof Error) {
         if (err.message.includes("already signed")) {
-          // User already exists, send to sign-in page
-          window.location.href = `${baseUrl}/sign-in`;
+          // User already exists, send to sign-in page with UTM parameters
+          const signInUrl = new URL(`${baseUrl}/sign-in`);
+          signInUrl.searchParams.set("utm_source", "showcase");
+          signInUrl.searchParams.set("utm_medium", "signup");
+          signInUrl.searchParams.set("utm_campaign", "showcase-signup");
+          window.location.href = signInUrl.toString();
           return;
         }
         // Map common Clerk errors to user-friendly messages
