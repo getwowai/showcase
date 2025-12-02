@@ -354,7 +354,8 @@
     "choosePlatform": "Choose the platform",
     "platform_1": "Salla",
     "platform_2": "Shopify",
-    "platform_3": "Zid"
+    "platform_3": "Zid",
+    "verificationCode": "Verification Code"
   },
   "privacy": {
     "title": "Privacy Policy",

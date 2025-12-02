@@ -354,7 +354,8 @@
     "choosePlatform": "اختر المنصة",
     "platform_1": "سلا",
     "platform_2": "شوبيفاي",
-    "platform_3": "زيد"
+    "platform_3": "زيد",
+    "verificationCode": "رمز التحقق"
   },
   "privacy": {
     "title": "سياسة الخصوصية",

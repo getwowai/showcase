@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { useSignUp } from "@clerk/clerk-react";
+import { useRouter } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
-import { useTracking, EVENTS } from "@/experiments/tracking";
+import { Loader2 } from "lucide-react";
+import { useTracking } from "@/experiments/tracking";
 import { getPostHog } from "@/lib/posthog";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -31,8 +33,9 @@ import { Select } from "@/components/ui/select";
 export default function SignupMinimalPlusPage() {
   const t = useTranslations("signupMinimal");
   const locale = useLocale();
-  const { trackEvent, trackConversion, trackCTAClick } = useTracking();
-  // const { signUp, isLoaded, setSession } = useSignUp();
+  const router = useRouter();
+  const { trackEvent, trackCTAClick } = useTracking();
+  const { signUp, isLoaded } = useSignUp();
 
   const [signUpParams, setSignUpParams] = useState({
     email: "",
@@ -43,6 +46,7 @@ export default function SignupMinimalPlusPage() {
     platform: "",
   });
   const [isSignUpDisabled, setIsSignUpDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const { email, name, storeName, phoneNumber, password, platform } =
@@ -82,22 +86,27 @@ export default function SignupMinimalPlusPage() {
   };
 
   const handleSignUpClick = async () => {
+    if (isLoaded && !signUp) return;
+    setLoading(true);
+    const url =
+      `${process.env.NEXT_PUBLIC_WOW_APP_URL}/sign-in` ||
+      "https://app.getwow.ai/sign-in";
     try {
-      // await signUp.create({
-      //   emailAddress: signUpParams.email,
-      //   password: signUpParams.password,
-      //   firstName: signUpParams.name,
-      // });
+      const response = await signUp?.create({
+        emailAddress: signUpParams.email,
+        password: signUpParams.password,
+        firstName: signUpParams.name,
+      });
 
-      // // Trigger email verification
-      // await signUp.prepareEmailAddressVerification({
-      //   strategy: "email_code",
-      // });
-
-      console.log("Check your email for verification link!");
-    } catch (err) {
-      console.error("SignUp error:", err);
+      if (response?.status === "complete" && response.createdUserId) {
+        router.push(url);
+      }
+    } catch (err: unknown) {
+      if (err instanceof Error && err.message.includes("already signed")) {
+        router.push(url);
+      }
     }
+    setLoading(false);
   };
 
   return (
@@ -130,7 +139,6 @@ export default function SignupMinimalPlusPage() {
           <p className="text-xl sm:text-2xl md:text-2xl lg:text-3xl text-gray-600 mb-16 md:mb-16 max-w-4xl mx-auto font-medium leading-relaxed px-4">
             {t("subtitle")}
           </p>
-
           <div className="flex flex-col gap-3">
             <div className="flex gap-3">
               <Input
@@ -174,7 +182,7 @@ export default function SignupMinimalPlusPage() {
 
             <div className="flex gap-3">
               <Input
-                type="text"
+                type="password"
                 placeholder={t("password")}
                 required
                 className="text-lg h-14"
@@ -190,16 +198,22 @@ export default function SignupMinimalPlusPage() {
             </div>
             <div className="flex gap-3">
               <Button
-                disabled={isSignUpDisabled}
+                disabled={isSignUpDisabled || loading}
                 size="lg"
                 className="w-full h-14 px-6 bg-white border-2 border-[#95BF47] 
-             hover:bg-[#95BF47] hover:text-white text-[#5E8E3E] 
-             shadow-lg hover:shadow-xl transform hover:scale-105 
-             transition-all rounded-[12px] cursor-pointer disabled:cursor-not-allowed"
+    hover:bg-[#95BF47] hover:text-white text-[#5E8E3E] 
+    shadow-lg hover:shadow-xl transform hover:scale-105 
+    transition-all rounded-[12px] flex items-center justify-center gap-2"
                 onClick={handleSignUpClick}
               >
-                {t("signUp")}
+                {loading && (
+                  <Loader2 className="animate-spin h-5 w-5 text-[#5E8E3E]" />
+                )}
+                <span className={loading ? "opacity-70" : ""}>
+                  {t("signUp")}
+                </span>
               </Button>
+              <div id="clerk-captcha"></div>
             </div>
           </div>
         </motion.div>

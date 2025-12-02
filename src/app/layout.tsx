@@ -1,18 +1,13 @@
 import { ReactNode } from "react";
 
-export const viewport = {
-  maximumScale: 1, // Disable auto-zoom on mobile Safari
-};
+interface RootLayoutProps {
+  children: ReactNode;
+}
 
-// Root layout must include html and body tags
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html>
+    <html lang="en" suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );
 }
-
-
-
-
