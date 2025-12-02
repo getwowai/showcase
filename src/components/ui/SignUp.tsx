@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { Loader2 } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { useSignUp } from "@clerk/clerk-react";
+import * as Sentry from "@sentry/nextjs";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { Toast } from "@/components/ui/Toast";
@@ -152,6 +153,22 @@ export const SignUp = () => {
         window.location.href = redirectUrl.toString();
       }
     } catch (err: unknown) {
+      // Capture error in Sentry with context
+      Sentry.captureException(err, {
+        tags: {
+          component: "SignUp",
+          locale: locale,
+        },
+        contexts: {
+          signup: {
+            email: signUpParams.email,
+            platform: signUpParams.platform,
+            hasStoreName: !!signUpParams.storeName,
+            hasPhoneNumber: !!signUpParams.phoneNumber,
+          },
+        },
+      });
+
       if (err instanceof Error) {
         if (err.message.includes("already signed")) {
           // User already exists, send to sign-in page with UTM parameters
