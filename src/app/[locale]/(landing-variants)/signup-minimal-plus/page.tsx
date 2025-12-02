@@ -1,22 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useSignUp } from "@clerk/clerk-react";
-import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { Loader2 } from "lucide-react";
 import { useTracking } from "@/experiments/tracking";
 import { getPostHog } from "@/lib/posthog";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { WowLogo } from "@/components/ui/logo";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Footer from "@/components/Footer";
 import { MessageCircle, Brain, Zap, MessageCirclePlusIcon } from "lucide-react";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
+import { SignUp } from "@/components/ui/SignUp";
 
 /**
  * Signup Landing - Minimal Plus Variant
@@ -33,28 +27,7 @@ import { Select } from "@/components/ui/select";
 export default function SignupMinimalPlusPage() {
   const t = useTranslations("signupMinimal");
   const locale = useLocale();
-  const router = useRouter();
-  const { trackEvent, trackCTAClick } = useTracking();
-  const { signUp, isLoaded } = useSignUp();
-
-  const [signUpParams, setSignUpParams] = useState({
-    email: "",
-    name: "",
-    storeName: "",
-    phoneNumber: "",
-    password: "",
-    platform: "",
-  });
-  const [isSignUpDisabled, setIsSignUpDisabled] = useState(true);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const { email, name, storeName, phoneNumber, password, platform } =
-      signUpParams;
-    if (email && name && storeName && phoneNumber && password && platform) {
-      setIsSignUpDisabled(false);
-    }
-  }, [signUpParams]);
+  const { trackEvent } = useTracking();
 
   // Track experiment exposure
   useEffect(() => {
@@ -73,49 +46,12 @@ export default function SignupMinimalPlusPage() {
     }
   }, [locale, trackEvent]);
 
-  const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >,
-  ) => {
-    const { name, value } = e.target;
-    setSignUpParams((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSignUpClick = async () => {
-    if (isLoaded && !signUp) return;
-    setLoading(true);
-    const url =
-      `${process.env.NEXT_PUBLIC_WOW_APP_URL}/sign-in` ||
-      "https://app.getwow.ai/sign-in";
-    try {
-      const response = await signUp?.create({
-        emailAddress: signUpParams.email,
-        password: signUpParams.password,
-        firstName: signUpParams.name,
-      });
-
-      if (response?.status === "complete" && response.createdUserId) {
-        router.push(url);
-      }
-    } catch (err: unknown) {
-      if (err instanceof Error && err.message.includes("already signed")) {
-        router.push(url);
-      }
-    }
-    setLoading(false);
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Language Switcher */}
       <div className="fixed top-4 right-4 z-50">
         <LanguageSwitcher />
       </div>
-
       {/* Hero Section - Centered */}
       <section className="container mx-auto px-4 py-20 max-w-4xl text-center">
         <motion.div
@@ -139,86 +75,9 @@ export default function SignupMinimalPlusPage() {
           <p className="text-xl sm:text-2xl md:text-2xl lg:text-3xl text-gray-600 mb-16 md:mb-16 max-w-4xl mx-auto font-medium leading-relaxed px-4">
             {t("subtitle")}
           </p>
-          <div className="flex flex-col gap-3">
-            <div className="flex gap-3">
-              <Input
-                type="email"
-                placeholder={t("enterYourEmail")}
-                required
-                className="text-lg h-14"
-                name="email"
-                onChange={handleInputChange}
-              />
-
-              <Input
-                type="text"
-                placeholder={t("name")}
-                required
-                className="text-lg h-14"
-                name="name"
-                onChange={handleInputChange}
-              />
-            </div>
-
-            <div className="flex gap-3">
-              <Input
-                type="text"
-                placeholder={t("storeName")}
-                required
-                className="text-lg h-14"
-                name="storeName"
-                onChange={handleInputChange}
-              />
-
-              <Input
-                type="text"
-                placeholder={t("phoneNumberWithWtsup")}
-                required
-                className="text-lg h-14"
-                name="phoneNumber"
-                onChange={handleInputChange}
-              />
-            </div>
-
-            <div className="flex gap-3">
-              <Input
-                type="password"
-                placeholder={t("password")}
-                required
-                className="text-lg h-14"
-                name="password"
-                onChange={handleInputChange}
-              />
-              <Select onChange={handleInputChange} name="platform">
-                <option value="">{t("choosePlatform")}</option>
-                <option value="salla">{t("platform_1")}</option>
-                <option value="shopify">{t("platform_2")}</option>
-                <option value="zid">{t("platform_3")}</option>
-              </Select>
-            </div>
-            <div className="flex gap-3">
-              <Button
-                disabled={isSignUpDisabled || loading}
-                size="lg"
-                className="w-full h-14 px-6 bg-white border-2 border-[#95BF47] 
-    hover:bg-[#95BF47] hover:text-white text-[#5E8E3E] 
-    shadow-lg hover:shadow-xl transform hover:scale-105 
-    transition-all rounded-[12px] flex items-center justify-center gap-2"
-                onClick={handleSignUpClick}
-              >
-                {loading && (
-                  <Loader2 className="animate-spin h-5 w-5 text-[#5E8E3E]" />
-                )}
-                <span className={loading ? "opacity-70" : ""}>
-                  {t("signUp")}
-                </span>
-              </Button>
-              <div id="clerk-captcha"></div>
-            </div>
-          </div>
+          <SignUp />
         </motion.div>
       </section>
-
       {/* Unified Features Section - Email/WhatsApp Insights & Chat */}
       <section className="container mx-auto px-4 py-16 max-w-6xl">
         <motion.div
@@ -389,7 +248,6 @@ export default function SignupMinimalPlusPage() {
           </Card>
         </div>
       </section>
-
       {/* 3 Key Benefits - Email Insights Focused */}
       <section className="container mx-auto px-4 py-16 max-w-5xl">
         <motion.div
@@ -429,7 +287,6 @@ export default function SignupMinimalPlusPage() {
           </div>
         </motion.div>
       </section>
-
       {/* Final CTA */}
       <section className="container mx-auto px-4 py-16 text-center">
         <motion.div
@@ -446,70 +303,9 @@ export default function SignupMinimalPlusPage() {
               {t("simpleProcess")}
             </p>
           </div>
-
-          {/* Install Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 max-w-3xl mx-auto">
-            {/* Salla Button */}
-            <Button
-              asChild
-              size="lg"
-              className="w-full sm:w-auto min-w-[200px] h-auto py-4 px-6 bg-white border-2 border-[#004956] hover:bg-[#004956] hover:text-white text-[#004956] shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
-            >
-              <a
-                href="https://s.salla.sa/apps/install/244843709?trial=1&&utm_medium=apps-search"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3"
-                onClick={() => {
-                  trackCTAClick("salla_install", "final_cta", {
-                    variant: "minimal-plus",
-                  });
-                }}
-              >
-                <span className="font-semibold text-lg">
-                  {t("sallaMerchantButton")}
-                </span>
-                <Image
-                  src="/salla-logo.svg"
-                  alt="Salla"
-                  width={48}
-                  height={40}
-                  className="w-12 h-auto"
-                />
-              </a>
-            </Button>
-
-            {/* Shopify Button */}
-            <Button
-              asChild
-              size="lg"
-              className="w-full sm:w-auto min-w-[200px] h-auto py-4 px-6 bg-white border-2 border-[#95BF47] hover:bg-[#95BF47] hover:text-white text-[#5E8E3E] shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
-            >
-              <a
-                href={`mailto:support@getwow.ai?subject=${encodeURIComponent("Shopify Partner Invitation Request")}&body=${encodeURIComponent("Hello,\n\nI would like to request access to install WOW AI on my Shopify store.\n\nPlease find my details below:\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📦 STORE LINK:\n(Please paste your Shopify store URL here)\n\n📞 PHONE NUMBER:\n(Please provide your phone number here)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nThank you!\n")}`}
-                className="flex items-center gap-3"
-                onClick={() => {
-                  trackCTAClick("shopify_install", "final_cta", {
-                    variant: "minimal-plus",
-                  });
-                }}
-              >
-                <span className="font-semibold text-lg">
-                  {t("shopifyMerchantButton")}
-                </span>
-                <Image
-                  src="/shopify-logo.svg"
-                  alt="Shopify"
-                  width={100}
-                  height={28}
-                  className="h-7 w-auto"
-                />
-              </a>
-            </Button>
-          </div>
+          <SignUp />
         </motion.div>
       </section>
-
       <Footer />
     </div>
   );
