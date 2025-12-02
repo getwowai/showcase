@@ -135,8 +135,8 @@ export const SignUp = () => {
       const response = await signUp?.create({
         emailAddress: signUpParams.email,
         password: signUpParams.password,
-        firstName: signUpParams.name,
         unsafeMetadata: {
+          firstName: signUpParams.name,
           storeName: signUpParams.storeName,
           phoneNumber: fullPhoneNumber,
           platform: signUpParams.platform,
