@@ -38,6 +38,7 @@ export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
   const t = useTranslations();
   const locale = useLocale();
+  const isRTL = locale === "ar";
 
   // Use PostHog experiment to determine which landing page to show
   const posthogVariant = useExperiment("signup-landing-variant");
@@ -671,7 +672,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" dir={isRTL ? "rtl" : "ltr"}>
       {/* Language Switcher */}
       <div className="fixed top-4 right-4 z-50">
         <LanguageSwitcher />

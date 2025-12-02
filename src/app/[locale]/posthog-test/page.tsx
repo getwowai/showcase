@@ -38,7 +38,10 @@ export default function PostHogTestPage() {
       test: true,
       timestamp: new Date().toISOString(),
     });
-    setEventsSent((prev) => [...prev, `${eventName} (${new Date().toLocaleTimeString()})`]);
+    setEventsSent((prev) => [
+      ...prev,
+      `${eventName} (${new Date().toLocaleTimeString()})`,
+    ]);
   };
 
   const handleTestCTA = () => {
@@ -126,12 +129,8 @@ export default function PostHogTestPage() {
                     <strong>PostHog is not connected. Check:</strong>
                   </p>
                   <ul className="text-sm text-red-700 space-y-1 ml-4">
-                    <li>
-                      • NEXT_PUBLIC_POSTHOG_KEY is set in .env.local
-                    </li>
-                    <li>
-                      • NEXT_PUBLIC_POSTHOG_HOST is set in .env.local
-                    </li>
+                    <li>• NEXT_PUBLIC_POSTHOG_KEY is set in .env.local</li>
+                    <li>• NEXT_PUBLIC_POSTHOG_HOST is set in .env.local</li>
                     <li>• PostHogProvider wraps your app in layout.tsx</li>
                     <li>• Browser console for error messages</li>
                   </ul>
@@ -153,8 +152,8 @@ export default function PostHogTestPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-600 mb-4">
-                  Click these buttons to send test events to PostHog. Check
-                  your PostHog Activity tab to see them arrive in real-time.
+                  Click these buttons to send test events to PostHog. Check your
+                  PostHog Activity tab to see them arrive in real-time.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -175,9 +174,7 @@ export default function PostHogTestPage() {
                   </Button>
 
                   <Button
-                    onClick={() =>
-                      handleTestEvent(EVENTS.FEATURE_EXPLORED)
-                    }
+                    onClick={() => handleTestEvent(EVENTS.FEATURE_EXPLORED)}
                     variant="outline"
                     className="w-full"
                   >
@@ -221,9 +218,9 @@ export default function PostHogTestPage() {
 
                   <div className="mt-4 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
                     <p className="text-sm text-yellow-800">
-                      <strong>Next step:</strong> Go to your PostHog dashboard
-                      → Activity tab to see these events appear in real-time
-                      (may take 5-10 seconds)
+                      <strong>Next step:</strong> Go to your PostHog dashboard →
+                      Activity tab to see these events appear in real-time (may
+                      take 5-10 seconds)
                     </p>
                   </div>
                 </CardContent>
