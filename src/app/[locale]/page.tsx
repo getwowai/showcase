@@ -4,6 +4,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import {
@@ -27,6 +28,7 @@ import { Badge } from "@/components/ui/badge";
 import { WowLogo } from "@/components/ui/logo";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Footer from "@/components/Footer";
+import { SignUp } from "@/components/ui/SignUp";
 import { useExperiment } from "@/experiments/hooks/useExperiment";
 import { getVariantConfig, getVariantDebugInfo } from "@/lib/variant-config";
 import SignupMinimalPage from "./(landing-variants)/signup-minimal/page";
@@ -721,6 +723,25 @@ export default function HomePage() {
             </motion.p>
 
             <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="w-full px-6 sm:px-8 mb-12"
+            >
+              <div className="mx-auto max-w-3xl">
+                <Image
+                  src="/platforms.png"
+                  width={800}
+                  height={147}
+                  alt={t("homepage.platformsAlt")}
+                  className="w-full h-auto object-contain"
+                  priority
+                  sizes="(min-width: 1024px) 40vw, 85vw"
+                />
+              </div>
+            </motion.div>
+
+            <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.7, duration: 0.5 }}
@@ -736,17 +757,23 @@ export default function HomePage() {
                   <ArrowRightIcon className="ml-2 sm:ml-3 h-5 w-5 sm:h-6 sm:w-6" />
                 </Button>
               </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 border-2 border-[#86c9e5] text-[#86c9e5] hover:bg-[#86c9e5] hover:text-white transform hover:scale-105 transition-all w-full sm:w-auto"
-                onClick={() =>
-                  window.open("https://accounts.getwow.ai/waitlist", "_blank")
-                }
-              >
-                <SparklesIcon className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6" />
-                {t("homepage.signUpForWowAi")}
-              </Button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.9, duration: 0.5 }}
+              className="mt-10 px-4 w-full"
+            >
+              <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 sm:p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <SparklesIcon className="h-6 w-6 text-[#86c9e5]" />
+                  <h3 className="text-2xl md:text-3xl font-semibold text-gray-800">
+                    {t("homepage.signUpForWowAi")}
+                  </h3>
+                </div>
+                <SignUp />
+              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -818,7 +845,10 @@ export default function HomePage() {
                       {feature.demo.type === "dashboard" && (
                         <div>
                           <div className="font-medium mb-1">
-                            🤖 {feature.demo.agents?.length} AI agents active
+                            🤖{" "}
+                            {t("demo.dashboard.agentsActive", {
+                              count: feature.demo.agents?.length ?? 0,
+                            })}
                           </div>
                           <div className="text-green-600">
                             {feature.demo.summary?.revenue}{" "}
@@ -1070,9 +1100,6 @@ export default function HomePage() {
                     <p className="text-lg sm:text-xl text-gray-700 mb-4 italic leading-relaxed">
                       &ldquo;{testimonials[currentTestimonial].quote}&rdquo;
                     </p>
-                    <div className="text-base sm:text-lg text-gray-600 font-medium">
-                      {testimonials[currentTestimonial].role}
-                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -1104,20 +1131,33 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
-              <Link href={`/${locale}/onboarding`}>
-                <Button
-                  size="lg"
-                  className="text-xl px-12 py-6 bg-[#4a5568] hover:bg-[#3a4553] text-white hover:text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
-                >
-                  <RocketIcon className="mr-3 h-6 w-6" />
+            <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 sm:p-8 mb-8">
+              <div className="flex flex-col gap-3 mb-6 text-center">
+                <h3 className="text-3xl font-semibold text-gray-800">
                   {t("homepage.experienceTheMagic")}
-                  <ArrowRightIcon className="ml-3 h-6 w-6" />
-                </Button>
-              </Link>
+                </h3>
+                <p className="text-base text-gray-600">
+                  {t("homepage.readyToTransformDesc")}
+                </p>
+              </div>
+              <SignUp />
             </div>
 
-            <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
+            <div className="w-full px-6 sm:px-8 mb-8">
+              <div className="max-w-2xl mx-auto">
+                <Image
+                  src="/platforms.png"
+                  width={800}
+                  height={147}
+                  alt={t("homepage.platformsAlt")}
+                  className="w-full h-auto object-contain"
+                  loading="lazy"
+                  sizes="(min-width: 1024px) 30vw, 70vw"
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center gap-4 text-sm text-gray-500 flex-wrap">
               <Badge variant="secondary" className="px-3 py-1">
                 <CheckCircleIcon className="mr-1 h-4 w-4" />
                 {t("homepage.freeTrialBadge")}

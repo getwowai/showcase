@@ -6,9 +6,9 @@
     "startFreeTrial": "ابدأ الفترة التجريبية المجانية"
   },
   "homepage": {
-    "title": "WOW AI",
-    "subtitle": "ضاعف مبيعات متجرك بقرارات أذكى بدون أي مجهود",
-    "description": "ذكاء اصطناعي يمنحك رؤى يومية ومساعد فوري يجيب على كل أسئلتك التجارية",
+    "title": "ضاعف مبيعات متجرك بقرارات أذكى باستخدام WOW AI",
+    "subtitle": "ضاعف مبيعات متجرك بقرارات أذكى باستخدام WOW AI",
+    "description": "ذكاء اصطناعي يعمل في الخلفية… لتطوير مبيعاتك بدون مجهود",
     "seeItInAction": "شاهد كيف يعمل",
     "signUpForWowAi": "سجل الآن بدون رسوم لفترة محدودة",
     "powerfullAiAgents": "عوامل ذكاء اصطناعي قوية لخدمتك",
@@ -23,7 +23,7 @@
     "trustedByEcommerceLeaders": "موثوق من قادة التجارة الإلكترونية",
     "readyToTransform": "هل أنت مستعد لتحويل متجرك؟",
     "readyToTransformDesc": "انضم إلى أصحاب المتاجر الذين جربوا تأثير WOW. اكتشف مدى سرعة البدء.",
-    "experienceTheMagic": "اختبر السحر",
+    "experienceTheMagic": "اختبر قوة التقنية",
     "freeTrialBadge": "تجربة مجانية لمدة 14 يومًا",
     "noCreditCardBadge": "لا حاجة لبطاقة ائتمان",
     "setupInMinutesBadge": "إعداد في دقائق",
@@ -43,6 +43,7 @@
     "activeUsers": "المستخدمون النشطون",
     "revenueGenerated": "الإيرادات المُولدة",
     "satisfaction": "الرضا",
+    "platformsAlt": "شعارات المنصات التي يدعمها WOW AI",
     "copyright": "© {year} WOW AI. جميع الحقوق محفوظة."
   },
   "features": {
@@ -250,7 +251,8 @@
       "promotionsStatus": "نشط",
       "promotionsAction": "أنشأ تخفيض سريع",
       "score": "نقاط",
-      "revenueImpact": "تأثير الإيرادات"
+      "revenueImpact": "تأثير الإيرادات",
+      "agentsActive": "٥ وكلاء ذكاء اصطناعي قيد العمل"
     },
     "inventory": {
       "winterParka": "سترة شتوية",
