@@ -3,7 +3,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
@@ -14,15 +13,13 @@ import {
   PackageIcon,
   DollarSignIcon,
   ZapIcon,
-  ArrowRightIcon,
   SparklesIcon,
-  RocketIcon,
   BrainIcon,
   TrendingUpIcon,
   CheckCircleIcon,
+  UsersIcon,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { WowLogo } from "@/components/ui/logo";
@@ -760,24 +757,6 @@ export default function HomePage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.7, duration: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center px-4"
-            >
-              <Link href={`/${locale}/onboarding`}>
-                <Button
-                  size="lg"
-                  className="text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 bg-[#4a5568] hover:bg-[#3a4553] text-white hover:text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all w-full sm:w-auto"
-                >
-                  <RocketIcon className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6" />
-                  {t("homepage.seeItInAction")}
-                  <ArrowRightIcon className="ml-2 sm:ml-3 h-5 w-5 sm:h-6 sm:w-6" />
-                </Button>
-              </Link>
-            </motion.div>
-
-            <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.9, duration: 0.5 }}
@@ -792,6 +771,10 @@ export default function HomePage() {
                 </div>
                 <SignUp />
                 {renderSignupBadges()}
+                <div className="mt-6 -mx-6 sm:-mx-8 flex items-center justify-center gap-3 px-6 py-4 bg-[#86c9e5] text-white font-bold text-base sm:text-lg tracking-tight">
+                  <UsersIcon className="h-6 w-6 sm:h-7 sm:w-7" />
+                  <span>{t("homepage.socialProofTagline")}</span>
+                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -929,23 +912,9 @@ export default function HomePage() {
             <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 md:mb-12 max-w-2xl mx-auto">
               {t("homepage.readyToTransformDesc")}
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link href={`/${locale}/onboarding`}>
-                <Button
-                  size="lg"
-                  className="text-xl px-12 py-6 bg-[#4a5568] hover:bg-[#3a4553] text-white hover:text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
-                >
-                  <RocketIcon className="mr-3 h-6 w-6" />
-                  {t("homepage.experienceTheMagic")}
-                  <ArrowRightIcon className="ml-3 h-6 w-6" />
-                </Button>
-              </Link>
-            </div>
           </motion.div>
         </div>
       </section>
-
       {/* Benefits Section */}
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4">
@@ -1135,17 +1104,23 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 sm:p-8 mb-8">
-              <div className="flex flex-col gap-3 mb-6 text-center">
-                <h3 className="text-3xl font-semibold text-gray-800">
-                  {t("homepage.experienceTheMagic")}
-                </h3>
-                <p className="text-base text-gray-600">
-                  {t("homepage.readyToTransformDesc")}
-                </p>
+            <div className="max-w-4xl mx-auto mb-8">
+              <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 sm:p-8">
+                <div className="flex flex-col gap-3 mb-6 text-center">
+                  <h3 className="text-3xl font-semibold text-gray-800">
+                    {t("homepage.experienceTheMagic")}
+                  </h3>
+                  <p className="text-base text-gray-600">
+                    {t("homepage.readyToTransformDesc")}
+                  </p>
+                </div>
+                <SignUp />
+                {renderSignupBadges()}
+                <div className="mt-6 -mx-6 sm:-mx-8 flex items-center justify-center gap-3 px-6 py-4 bg-[#86c9e5] text-white font-bold text-base sm:text-lg tracking-tight">
+                  <UsersIcon className="h-6 w-6 sm:h-7 sm:w-7" />
+                  <span>{t("homepage.socialProofTagline")}</span>
+                </div>
               </div>
-              <SignUp />
-              {renderSignupBadges()}
             </div>
 
             <div className="w-full px-6 sm:px-8 mb-8">
