@@ -43,6 +43,26 @@ export default function SignupSuccessPage() {
   };
 
   useEffect(() => {
+    // Fire Facebook Pixel conversion events
+    if (
+      typeof window !== "undefined" &&
+      "fbq" in window &&
+      typeof window.fbq === "function"
+    ) {
+      window.fbq("track", "Lead");
+    }
+
+    // Fire Google Ads conversion event (if configured)
+    if (
+      typeof window !== "undefined" &&
+      "gtag" in window &&
+      typeof window.gtag === "function"
+    ) {
+      window.gtag("event", "conversion", {
+        send_to: "AW-CONVERSION_ID/CONVERSION_LABEL", // Replace with your Google Ads conversion ID
+      });
+    }
+
     // Redirect to WOW app after 5 seconds with UTM parameters
     // (5 seconds gives conversion pixels enough time to fire)
     const baseUrl =
