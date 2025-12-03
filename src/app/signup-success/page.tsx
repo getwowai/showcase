@@ -43,12 +43,18 @@ export default function SignupSuccessPage() {
   };
 
   useEffect(() => {
-    // Redirect to WOW app after 3 seconds
-    const redirectUrl =
+    // Redirect to WOW app after 5 seconds with UTM parameters
+    // (5 seconds gives conversion pixels enough time to fire)
+    const baseUrl =
       process.env.NEXT_PUBLIC_WOW_APP_URL ?? "https://app.getwow.ai";
+    const redirectUrl = new URL(baseUrl);
+    redirectUrl.searchParams.set("utm_source", "showcase");
+    redirectUrl.searchParams.set("utm_medium", "signup");
+    redirectUrl.searchParams.set("utm_campaign", "showcase-signup");
+
     const timer = setTimeout(() => {
-      window.location.href = redirectUrl;
-    }, 3000);
+      window.location.href = redirectUrl.toString();
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
