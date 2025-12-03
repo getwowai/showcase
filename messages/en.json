@@ -718,6 +718,12 @@
       }
     }
   },
+  "signupSuccess": {
+    "title": "Welcome to WOW AI!",
+    "subtitle": "Your account has been created successfully",
+    "redirecting": "Redirecting you to your dashboard in a few seconds...",
+    "welcome": "Get ready to transform your e-commerce business with AI-powered insights"
+  },
   "common": {
     "loading": "Loading...",
     "error": "Error",

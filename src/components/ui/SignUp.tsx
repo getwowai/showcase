@@ -145,12 +145,9 @@ export const SignUp = () => {
       });
 
       if (response?.status === "complete" && response.createdSessionId) {
-        // User is automatically signed in, redirect to app with UTM parameters
-        const redirectUrl = new URL(baseUrl);
-        redirectUrl.searchParams.set("utm_source", "showcase");
-        redirectUrl.searchParams.set("utm_medium", "signup");
-        redirectUrl.searchParams.set("utm_campaign", "showcase-signup");
-        window.location.href = redirectUrl.toString();
+        // Redirect to signup success page for conversion tracking
+        // Pass locale as query param so the page can detect user's language
+        window.location.href = `/signup-success?locale=${locale}`;
       }
     } catch (err: unknown) {
       // Capture error in Sentry with context
