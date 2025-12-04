@@ -39,18 +39,18 @@ export default function HomePage() {
   const locale = useLocale();
   const isRTL = locale === "ar";
 
-  // Use PostHog experiment to determine which landing page to show
-  const posthogVariant = useExperiment("signup-landing-variant");
-  const variantConfig = getVariantConfig(posthogVariant);
+  // Use Mixpanel experiment to determine which landing page to show
+  const mixpanelVariant = useExperiment("signup-landing-variant", "control");
+  const variantConfig = getVariantConfig(mixpanelVariant);
 
   // Debug logging
   useEffect(() => {
-    const debugInfo = getVariantDebugInfo(posthogVariant);
+    const debugInfo = getVariantDebugInfo(mixpanelVariant);
     console.log("Variant Configuration:", debugInfo);
     console.log("Selected variant:", variantConfig.variant);
     console.log("Source:", variantConfig.source);
     console.log("Is overridden:", variantConfig.isOverridden);
-  }, [posthogVariant, variantConfig]);
+  }, [mixpanelVariant, variantConfig]);
 
   const powerfulFeatures = [
     {

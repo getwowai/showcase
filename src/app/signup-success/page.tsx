@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { CheckCircle, Sparkles } from "lucide-react";
 import { WowLogo } from "@/components/ui/logo";
+import { getMixpanel } from "@/lib/mixpanel";
 
 export default function SignupSuccessPage() {
   // Detect locale from URL query param or localStorage
@@ -43,6 +44,15 @@ export default function SignupSuccessPage() {
   };
 
   useEffect(() => {
+    // Track signup success page view and redirect
+    const mixpanel = getMixpanel();
+    if (mixpanel) {
+      mixpanel.track("signup_landing_redirected", {
+        locale,
+        redirect_destination: "app",
+      });
+    }
+
     // Fire Facebook Pixel conversion events
     if (
       typeof window !== "undefined" &&
@@ -77,7 +87,7 @@ export default function SignupSuccessPage() {
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [locale]);
 
   return (
     <div

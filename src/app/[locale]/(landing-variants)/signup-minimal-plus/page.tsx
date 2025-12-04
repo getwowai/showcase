@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useTracking } from "@/experiments/tracking";
-import { getPostHog } from "@/lib/posthog";
+import { getMixpanel } from "@/lib/mixpanel";
 import { Card } from "@/components/ui/card";
 import { WowLogo } from "@/components/ui/logo";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -37,10 +37,10 @@ export default function SignupMinimalPlusPage() {
       page_path: `/${locale}/signup-minimal-plus`,
     });
 
-    // Set PostHog person property for experiment tracking
-    const posthog = getPostHog();
-    if (posthog) {
-      posthog.setPersonProperties({
+    // Set Mixpanel user property for experiment tracking
+    const mixpanel = getMixpanel();
+    if (mixpanel) {
+      mixpanel.people.set({
         "experiment:signup-variants-oct-2025": "minimal-plus",
       });
     }

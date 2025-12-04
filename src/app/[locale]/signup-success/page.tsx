@@ -4,13 +4,21 @@ import { useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { CheckCircle, Sparkles } from "lucide-react";
 import { WowLogo } from "@/components/ui/logo";
+import { useMixpanelTracking } from "@/lib/mixpanel-tracking";
 
 export default function SignupSuccessPage() {
   const t = useTranslations("signupSuccess");
   const locale = useLocale();
   const isRTL = locale === "ar";
+  const { trackEvent } = useMixpanelTracking();
 
   useEffect(() => {
+    // Track signup success page view and redirect
+    trackEvent("signup_landing_redirected", {
+      locale,
+      redirect_destination: "app",
+    });
+
     // Redirect to WOW app after 3 seconds
     const redirectUrl =
       process.env.NEXT_PUBLIC_WOW_APP_URL ?? "https://app.getwow.ai";
@@ -19,7 +27,7 @@ export default function SignupSuccessPage() {
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [locale, trackEvent]);
 
   return (
     <div

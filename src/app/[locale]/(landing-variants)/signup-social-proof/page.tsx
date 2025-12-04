@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useTracking, EVENTS } from "@/experiments/tracking";
-import { getPostHog } from "@/lib/posthog";
+import { getMixpanel } from "@/lib/mixpanel";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -48,10 +48,10 @@ export default function SignupSocialProofPage() {
       page_path: `/${locale}/signup-social-proof`,
     });
 
-    // Set PostHog person property for experiment tracking
-    const posthog = getPostHog();
-    if (posthog) {
-      posthog.setPersonProperties({
+    // Set Mixpanel user property for experiment tracking
+    const mixpanel = getMixpanel();
+    if (mixpanel) {
+      mixpanel.people.set({
         "experiment:signup-variants-oct-2025": "social-proof",
       });
     }

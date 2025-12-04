@@ -8,11 +8,13 @@ import { Select } from "@/components/ui/select";
 import { Toast } from "@/components/ui/Toast";
 import { Button } from "@/components/ui/button";
 import countryCodesData from "@/lib/country-codes.json";
+import { useMixpanelTracking } from "@/lib/mixpanel-tracking";
 
 export const SignUp = () => {
   const t = useTranslations("signupMinimal");
   const locale = useLocale();
   const isRTL = locale === "ar";
+  const { trackEvent } = useMixpanelTracking();
 
   const { signUp, isLoaded } = useSignUp();
 
@@ -132,6 +134,18 @@ export const SignUp = () => {
     // Combine country code with phone number
     const fullPhoneNumber = `${countryCode}${signUpParams.phoneNumber}`;
 
+    // Track signup attempt
+    // Note: This event is tracked with Mixpanel's auto-generated anonymous distinct_id
+    // The main app will call mixpanel.alias(userId) and mixpanel.identify(userId) after signup
+    // to connect this anonymous profile to the authenticated user
+    trackEvent("signup_landing_attempted", {
+      platform: signUpParams.platform,
+      locale,
+      has_store_name: !!signUpParams.storeName,
+      has_phone_number: !!signUpParams.phoneNumber,
+      country_code: countryCode,
+    });
+
     try {
       const response = await signUp?.create({
         emailAddress: signUpParams.email,
@@ -145,11 +159,70 @@ export const SignUp = () => {
       });
 
       if (response?.status === "complete" && response.createdSessionId) {
+        // Track successful signup
+        // Note: This event is tracked with Mixpanel's auto-generated anonymous distinct_id
+        // The main app will call mixpanel.alias(userId) and mixpanel.identify(userId) after signup
+        // to connect this anonymous profile to the authenticated user
+        trackEvent("signup_landing_success", {
+          platform: signUpParams.platform,
+          locale,
+          has_store_name: !!signUpParams.storeName,
+          has_phone_number: !!signUpParams.phoneNumber,
+          country_code: countryCode,
+        });
+
         // Redirect to signup success page for conversion tracking
         // Pass locale as query param so the page can detect user's language
         window.location.href = `/signup-success?locale=${locale}`;
       }
     } catch (err: unknown) {
+      // Determine error type
+      let errorType = "unknown";
+      let errorMessage = t("genericError");
+
+      if (err instanceof Error) {
+        if (err.message.includes("already signed")) {
+          errorType = "user_already_exists";
+          // Track failed signup due to existing user
+          trackEvent("signup_landing_failed", {
+            error_type: errorType,
+            error_message: "User already exists",
+            platform: signUpParams.platform,
+            locale,
+            has_store_name: !!signUpParams.storeName,
+            has_phone_number: !!signUpParams.phoneNumber,
+            country_code: countryCode,
+          });
+
+          // User already exists, send to sign-in page with UTM parameters
+          const signInUrl = new URL(`${baseUrl}/sign-in`);
+          signInUrl.searchParams.set("utm_source", "showcase");
+          signInUrl.searchParams.set("utm_medium", "signup");
+          signInUrl.searchParams.set("utm_campaign", "showcase-signup");
+          window.location.href = signInUrl.toString();
+          return;
+        } else if (err.message.includes("password")) {
+          errorType = "password_error";
+          errorMessage = t("passwordError");
+        } else if (err.message.includes("email")) {
+          errorType = "email_error";
+          errorMessage = t("emailError");
+        } else {
+          errorType = "validation_error";
+        }
+      }
+
+      // Track failed signup
+      trackEvent("signup_landing_failed", {
+        error_type: errorType,
+        error_message: err instanceof Error ? err.message : "Unknown error",
+        platform: signUpParams.platform,
+        locale,
+        has_store_name: !!signUpParams.storeName,
+        has_phone_number: !!signUpParams.phoneNumber,
+        country_code: countryCode,
+      });
+
       // Capture error in Sentry with context
       Sentry.captureException(err, {
         tags: {
@@ -166,26 +239,7 @@ export const SignUp = () => {
         },
       });
 
-      if (err instanceof Error) {
-        if (err.message.includes("already signed")) {
-          // User already exists, send to sign-in page with UTM parameters
-          const signInUrl = new URL(`${baseUrl}/sign-in`);
-          signInUrl.searchParams.set("utm_source", "showcase");
-          signInUrl.searchParams.set("utm_medium", "signup");
-          signInUrl.searchParams.set("utm_campaign", "showcase-signup");
-          window.location.href = signInUrl.toString();
-          return;
-        }
-        // Map common Clerk errors to user-friendly messages
-        const errorMessage = err.message.includes("password")
-          ? t("passwordError")
-          : err.message.includes("email")
-            ? t("emailError")
-            : t("genericError");
-        setError(errorMessage);
-      } else {
-        setError(t("genericError"));
-      }
+      setError(errorMessage);
       setOpen(true);
     } finally {
       setLoading(false);

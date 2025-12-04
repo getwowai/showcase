@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { getPostHog } from "@/lib/posthog";
+import { getMixpanel } from "@/lib/mixpanel";
 
 /**
  * Custom hook for i18n-aware event tracking
@@ -9,19 +9,18 @@ import { getPostHog } from "@/lib/posthog";
  */
 export const useTracking = () => {
   const locale = useLocale();
-  const posthog = getPostHog();
+  const mixpanel = getMixpanel();
 
   return {
     /**
      * Track a custom event with automatic locale inclusion
      */
     trackEvent: (eventName: string, properties?: Record<string, unknown>) => {
-      if (!posthog) return;
+      if (!mixpanel) return;
 
-      posthog.capture(eventName, {
+      mixpanel.track(eventName, {
         ...properties,
         locale, // Always include locale for segmentation
-        $set: { language: locale }, // Set user property for targeting
       });
     },
 
@@ -32,13 +31,13 @@ export const useTracking = () => {
       pagePath?: string,
       properties?: Record<string, unknown>,
     ) => {
-      if (!posthog) return;
+      if (!mixpanel) return;
 
-      posthog.capture("$pageview", {
+      mixpanel.track("Page View", {
         ...properties,
+        page_url: pagePath || window.location.href,
+        page_title: document.title,
         locale,
-        $current_url: pagePath || window.location.href,
-        $set: { language: locale },
       });
     },
 
@@ -49,13 +48,12 @@ export const useTracking = () => {
       conversionName: string,
       properties?: Record<string, unknown>,
     ) => {
-      if (!posthog) return;
+      if (!mixpanel) return;
 
-      posthog.capture(conversionName, {
+      mixpanel.track(conversionName, {
         ...properties,
         locale,
         conversion: true,
-        $set: { language: locale },
       });
     },
 
@@ -63,9 +61,9 @@ export const useTracking = () => {
      * Track scroll depth
      */
     trackScrollDepth: (percentage: 25 | 50 | 75 | 100) => {
-      if (!posthog) return;
+      if (!mixpanel) return;
 
-      posthog.capture("scroll_depth", {
+      mixpanel.track("scroll_depth", {
         locale,
         percentage,
         page: window.location.pathname,
@@ -80,9 +78,9 @@ export const useTracking = () => {
       ctaLocation: string,
       properties?: Record<string, unknown>,
     ) => {
-      if (!posthog) return;
+      if (!mixpanel) return;
 
-      posthog.capture("cta_clicked", {
+      mixpanel.track("cta_clicked", {
         ...properties,
         locale,
         cta_name: ctaName,
@@ -98,9 +96,9 @@ export const useTracking = () => {
       featureName: string,
       properties?: Record<string, unknown>,
     ) => {
-      if (!posthog) return;
+      if (!mixpanel) return;
 
-      posthog.capture("feature_interaction", {
+      mixpanel.track("feature_interaction", {
         ...properties,
         locale,
         feature: featureName,
@@ -134,6 +132,12 @@ export const EVENTS = {
   DEMO_REQUESTED: "demo_requested",
   SIGNUP_INITIATED: "signup_initiated",
   CONTACT_FORM_SUBMITTED: "contact_form_submitted",
+
+  // Signup Journey
+  SIGNUP_LANDING_ATTEMPTED: "signup_landing_attempted",
+  SIGNUP_LANDING_SUCCESS: "signup_landing_success",
+  SIGNUP_LANDING_FAILED: "signup_landing_failed",
+  SIGNUP_LANDING_REDIRECTED: "signup_landing_redirected",
 
   // Engagement
   SCROLL_DEPTH: "scroll_depth",

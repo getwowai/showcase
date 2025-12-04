@@ -3,7 +3,7 @@
  *
  * This utility handles variant selection with fallback priority:
  * 1. Environment variable override (for testing/development)
- * 2. PostHog feature flag (for production experiments)
+ * 2. Mixpanel feature flag (for production experiments)
  * 3. Default fallback
  */
 
@@ -19,7 +19,7 @@ export interface VariantConfig {
   /** Whether the variant was set via environment override */
   isOverridden: boolean;
   /** The source of the variant decision */
-  source: "env" | "posthog" | "fallback";
+  source: "env" | "mixpanel" | "fallback";
 }
 
 /**
@@ -27,11 +27,11 @@ export interface VariantConfig {
  *
  * Priority order:
  * 1. NEXT_PUBLIC_DEFAULT_LANDING_VARIANT (if NEXT_PUBLIC_FORCE_VARIANT_OVERRIDE is true)
- * 2. PostHog feature flag result
+ * 2. Mixpanel feature flag result
  * 3. Default fallback ('control')
  */
 export function getVariantConfig(
-  posthogVariant?: string | boolean | null,
+  mixpanelVariant?: string | boolean | null,
 ): VariantConfig {
   // Check if we should force override with environment variable
   const forceOverride =
@@ -48,22 +48,22 @@ export function getVariantConfig(
     };
   }
 
-  // Use PostHog variant if available and valid
+  // Use Mixpanel variant if available and valid
   if (
-    posthogVariant &&
-    typeof posthogVariant === "string" &&
+    mixpanelVariant &&
+    typeof mixpanelVariant === "string" &&
     ["minimal", "minimal-plus", "control", "social-proof"].includes(
-      posthogVariant,
+      mixpanelVariant,
     )
   ) {
     return {
-      variant: posthogVariant as LandingVariant,
+      variant: mixpanelVariant as LandingVariant,
       isOverridden: false,
-      source: "posthog",
+      source: "mixpanel",
     };
   }
 
-  // Fallback to environment variable if PostHog is not available
+  // Fallback to environment variable if Mixpanel is not available
   if (envVariant) {
     return {
       variant: envVariant,
@@ -97,15 +97,15 @@ export function isValidVariant(variant: string): variant is LandingVariant {
 /**
  * Get variant configuration for debugging
  */
-export function getVariantDebugInfo(posthogVariant?: string | boolean | null) {
-  const config = getVariantConfig(posthogVariant);
+export function getVariantDebugInfo(mixpanelVariant?: string | boolean | null) {
+  const config = getVariantConfig(mixpanelVariant);
 
   return {
     ...config,
     environment: {
       forceOverride: process.env.NEXT_PUBLIC_FORCE_VARIANT_OVERRIDE === "true",
       envVariant: process.env.NEXT_PUBLIC_DEFAULT_LANDING_VARIANT,
-      posthogVariant,
+      mixpanelVariant,
     },
   };
 }

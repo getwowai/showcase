@@ -51,9 +51,8 @@ pnpm dev
 Copy `env.local.example` to `.env.local` and configure the following variables:
 
 ```bash
-# PostHog Configuration (required for analytics)
-NEXT_PUBLIC_POSTHOG_KEY=your_posthog_project_key
-NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com
+# Mixpanel Configuration (required for analytics)
+NEXT_PUBLIC_MIXPANEL_TOKEN=your_mixpanel_project_token
 
 # Landing Page Variant (optional)
 NEXT_PUBLIC_DEFAULT_LANDING_VARIANT=control
@@ -68,8 +67,8 @@ NEXT_PUBLIC_FORCE_VARIANT_OVERRIDE=false
 
 **Override Behavior:**
 
-- `NEXT_PUBLIC_FORCE_VARIANT_OVERRIDE=true` - Uses environment variable, ignores PostHog
-- `NEXT_PUBLIC_FORCE_VARIANT_OVERRIDE=false` - Uses PostHog for A/B testing
+- `NEXT_PUBLIC_FORCE_VARIANT_OVERRIDE=true` - Uses environment variable, ignores Mixpanel
+- `NEXT_PUBLIC_FORCE_VARIANT_OVERRIDE=false` - Uses Mixpanel for A/B testing
 
 Open [http://localhost:3000](http://localhost:3000) to view the showcase website.
 

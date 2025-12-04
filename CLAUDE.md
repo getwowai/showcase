@@ -158,18 +158,18 @@ src/
 
 ## Experimentation & Growth Framework
 
-**Platform:** PostHog (Feature Flags + Experiments + Analytics + Session Recording)
+**Platform:** Mixpanel (Feature Flags + Experiments + Analytics + Session Replay)
 
 **Experiment Architecture Principles:**
 
 When building experiments, follow these core principles:
 
-1. **Minimal Custom Code**: Leverage PostHog's built-in platform (~100 lines of custom code total)
+1. **Minimal Custom Code**: Leverage Mixpanel's built-in platform (~100 lines of custom code total)
 2. **i18n First**: All tracking includes locale context (English/Arabic)
-3. **Rapid Iteration**: Create experiments in PostHog UI without code deployment
+3. **Rapid Iteration**: Create experiments in Mixpanel UI without code deployment
 4. **Component Composability**: Build experiments from reusable landing page sections
-5. **Measurability**: PostHog auto-tracks exposure, conversions, and statistical significance
-6. **Performance**: PostHog SDK is ~45KB gzipped, loads asynchronously
+5. **Measurability**: Mixpanel auto-tracks exposure, conversions, and statistical significance
+6. **Performance**: Mixpanel SDK loads asynchronously with feature flags support
 
 **Implementation Structure:**
 
@@ -179,13 +179,15 @@ src/
 │   ├── config.ts                 # Experiment registry (documentation only)
 │   ├── tracking.ts               # i18n-aware tracking utilities
 │   └── hooks/
-│       └── useExperiment.ts      # Variant assignment hook
+│       ├── useExperiment.ts      # Variant assignment hook
+│       └── useMixpanelFeatureFlag.ts # Mixpanel feature flag hooks
 │
 ├── lib/
-│   └── posthog.ts                # PostHog initialization
+│   ├── mixpanel.ts               # Mixpanel initialization
+│   └── mixpanel-tracking.ts      # Mixpanel tracking utilities
 │
 ├── components/
-│   ├── PostHogProvider.tsx       # Wrap app to provide context
+│   ├── MixpanelProvider.tsx      # Wrap app to provide context
 │   └── landing/                  # Reusable landing page sections
 │       ├── heroes/               # Hero variants
 │       ├── features/             # Feature section variants
@@ -195,10 +197,10 @@ src/
 
 **Creating an Experiment (5 Steps):**
 
-1. **PostHog UI**: Create feature flag with variants (e.g., 'control', 'variant-a')
-2. **PostHog UI**: Create experiment, set primary metric (e.g., 'waitlist_joined')
+1. **Mixpanel UI**: Create feature flag with variants (e.g., 'control', 'variant-a')
+2. **Mixpanel UI**: Create experiment, set primary metric (e.g., 'waitlist_joined')
 3. **Code**: Document in `src/experiments/config.ts`
-4. **Code**: Implement variants using `useExperiment('flag-key')` hook
+4. **Code**: Implement variants using `useExperiment('flag-key', 'fallback')` hook
 5. **Track**: Conversion events fire automatically, attributed to variants
 
 **Example Implementation:**
@@ -227,23 +229,23 @@ trackConversion(EVENTS.WAITLIST_JOINED);
 
 **Key Guidelines:**
 
-- ✅ **Create experiments in PostHog UI** (no code deployment needed)
+- ✅ **Create experiments in Mixpanel UI** (no code deployment needed)
 - ✅ **Use standardized event names** from `EVENTS` constants
 - ✅ **Test both locales** (en and ar) for every experiment
 - ✅ **Wait for statistical significance** before shipping winners
 - ✅ **Clean up** experiment code within 2 weeks of conclusion
-- ❌ **Don't build custom bucketing** (PostHog handles it)
+- ❌ **Don't build custom bucketing** (Mixpanel handles it)
 - ❌ **Don't track PII** (emails, names, etc.)
 - ❌ **Don't run too many experiments** simultaneously (interaction effects)
 
 **Measurement & Analytics:**
 
-PostHog automatically provides:
+Mixpanel automatically provides:
 
 - Experiment exposure tracking
 - Conversion attribution to variants
 - Statistical significance calculation
-- Session recordings per variant
+- Session replay per variant
 - Funnel analysis
 - Breakdown by locale (en vs ar)
 
@@ -257,9 +259,9 @@ All events in `src/experiments/tracking.ts` as constants.
 
 **Customer Segmentation:**
 
-PostHog enables targeting experiments by:
+Mixpanel enables targeting experiments by:
 
-- Language (English vs. Arabic) - via `language` user property
+- Language (English vs. Arabic) - via `locale` property
 - Traffic source (organic, paid, referral)
 - Geographic location
 - Device type (mobile vs. desktop)
@@ -277,5 +279,4 @@ PostHog enables targeting experiments by:
 **Documentation:**
 
 - **Architecture details:** See [docs/architecture.md](docs/architecture.md)
-- **Platform comparison:** See [docs/posthog-vs-mixpanel.md](docs/posthog-vs-mixpanel.md)
-- **PostHog docs:** https://posthog.com/docs/experiments
+- **Mixpanel docs:** https://docs.mixpanel.com/docs/tracking-methods/sdks/javascript/javascript-flags

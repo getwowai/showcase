@@ -3,7 +3,7 @@
  *
  * This file serves as a centralized registry of all active experiments.
  * Use this for documentation and quick reference, though the actual
- * experiment configuration lives in PostHog.
+ * experiment configuration lives in Mixpanel.
  */
 
 export interface ExperimentConfig {
@@ -23,7 +23,7 @@ export interface ExperimentConfig {
  * Active Experiments Registry
  *
  * Add experiments here for documentation purposes.
- * The source of truth is PostHog, but this helps developers
+ * The source of truth is Mixpanel, but this helps developers
  * understand what's running and what metrics to track.
  */
 export const EXPERIMENTS: Record<string, ExperimentConfig> = {
