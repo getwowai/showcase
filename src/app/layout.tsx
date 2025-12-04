@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import Script from "next/script";
+import AnalyticsTracker from "./AnalyticsTracker";
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -28,6 +29,18 @@ export default function RootLayout({ children }: RootLayoutProps) {
           `,
           }}
         />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+        `}
+        </Script>
         <noscript>
           <img
             height="1"
@@ -38,7 +51,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           />
         </noscript>
       </head>
-      <body>{children}</body>
+      <body>
+        <AnalyticsTracker />
+        {children}
+      </body>
     </html>
   );
 }
