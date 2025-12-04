@@ -369,6 +369,7 @@
     "countryCode": "Country",
     "invalidEmail": "Please enter a valid email address",
     "invalidPhone": "Please enter a valid phone number (9-15 digits)",
+    "phoneCountryCodeError": "Include your country code (e.g. +9665xxxxxxx)",
     "fieldRequired": "This field is required",
     "formInstruction": "All fields are required to create your account"
   },

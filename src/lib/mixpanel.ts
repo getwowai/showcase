@@ -1,7 +1,5 @@
 import mixpanel from "mixpanel-browser";
 
-export const MIXPANEL_READY_EVENT = "mixpanel:ready";
-
 // Track initialization state
 let isMixpanelInitialized = false;
 
@@ -46,10 +44,6 @@ export const initMixpanel = () => {
     });
 
     isMixpanelInitialized = true;
-
-    if (typeof window !== "undefined") {
-      window.dispatchEvent(new Event(MIXPANEL_READY_EVENT));
-    }
   } catch (error) {
     console.error("Failed to initialize Mixpanel:", error);
   }

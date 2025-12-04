@@ -369,6 +369,7 @@
     "countryCode": "الدولة",
     "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صالح",
     "invalidPhone": "يرجى إدخال رقم هاتف صالح (9-15 رقم)",
+    "phoneCountryCodeError": "يرجى إضافة مفتاح الدولة مع + (مثال: ‎+9665xxxxxxx)",
     "fieldRequired": "هذا الحقل مطلوب",
     "formInstruction": "جميع الحقول مطلوبة لإنشاء حسابك"
   },

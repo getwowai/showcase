@@ -7,8 +7,22 @@ import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { Toast } from "@/components/ui/Toast";
 import { Button } from "@/components/ui/button";
-import countryCodesData from "@/lib/country-codes.json";
 import { useMixpanelTracking } from "@/lib/mixpanel-tracking";
+
+const normalizePhoneNumber = (value: string) =>
+  value.replace(/[\s-]/g, "").replace(/[^\d+]/g, "");
+
+const extractCountryCode = (normalizedPhone: string) => {
+  const match = normalizedPhone.match(/^(\+\d{1,3})/);
+  return match ? match[1] : "";
+};
+
+const isPhoneNumberValid = (value: string) => {
+  const stripped = value.replace(/[\s-]/g, "");
+  if (!stripped.startsWith("+")) return false;
+  const digits = stripped.slice(1).replace(/\D/g, "");
+  return /^\d{9,15}$/.test(digits);
+};
 
 export const SignUp = () => {
   const t = useTranslations("signupMinimal");
@@ -22,7 +36,6 @@ export const SignUp = () => {
   const [error, setError] = useState<string | undefined>();
   const [loading, setLoading] = useState(false);
   const [isSignUpDisabled, setIsSignUpDisabled] = useState(true);
-  const [countryCode, setCountryCode] = useState("+966"); // Default to Saudi Arabia
   const [signUpParams, setSignUpParams] = useState({
     email: "",
     name: "",
@@ -59,15 +72,20 @@ export const SignUp = () => {
 
     const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     const isValidPassword = password.length >= 8;
-    // Validate phone number: must be 9-15 digits (allowing for various formats)
-    const isValidPhone = /^\d{9,15}$/.test(phoneNumber);
+    const hasCountryCode = phoneNumber.trim().startsWith("+");
+    // Validate phone number: must include country code (+) and 9-15 digits
+    const isValidPhone = isPhoneNumberValid(phoneNumber);
 
     // Update field errors
     const errors = {
       email: touched.email && email && !isValidEmail ? t("invalidEmail") : "",
       phoneNumber:
-        touched.phoneNumber && phoneNumber && !isValidPhone
-          ? t("invalidPhone")
+        touched.phoneNumber && phoneNumber
+          ? !hasCountryCode
+            ? t("phoneCountryCodeError")
+            : !isValidPhone
+              ? t("invalidPhone")
+              : ""
           : "",
       password:
         touched.password && password && !isValidPassword
@@ -83,6 +101,7 @@ export const SignUp = () => {
     if (!name.trim()) missing.push(t("name"));
     if (!storeName.trim()) missing.push(t("storeName"));
     if (!phoneNumber) missing.push(t("phoneNumberWithWtsup"));
+    else if (!hasCountryCode) missing.push(t("phoneCountryCodeError"));
     else if (!isValidPhone)
       missing.push(t("phoneNumberWithWtsup") + " (valid)");
     if (!password) missing.push(t("password"));
@@ -131,8 +150,10 @@ export const SignUp = () => {
     const baseUrl =
       process.env.NEXT_PUBLIC_WOW_APP_URL ?? "https://app.getwow.ai";
 
-    // Combine country code with phone number
-    const fullPhoneNumber = `${countryCode}${signUpParams.phoneNumber}`;
+    const normalizedPhoneNumber = normalizePhoneNumber(
+      signUpParams.phoneNumber,
+    );
+    const countryCodeForTracking = extractCountryCode(normalizedPhoneNumber);
 
     // Track signup attempt
     // Note: This event is tracked with Mixpanel's auto-generated anonymous distinct_id
@@ -143,7 +164,7 @@ export const SignUp = () => {
       locale,
       has_store_name: !!signUpParams.storeName,
       has_phone_number: !!signUpParams.phoneNumber,
-      country_code: countryCode,
+      country_code: countryCodeForTracking || undefined,
     });
 
     try {
@@ -153,7 +174,7 @@ export const SignUp = () => {
         unsafeMetadata: {
           firstName: signUpParams.name,
           storeName: signUpParams.storeName,
-          phoneNumber: fullPhoneNumber,
+          phoneNumber: normalizedPhoneNumber,
           platform: signUpParams.platform,
         },
       });
@@ -168,7 +189,7 @@ export const SignUp = () => {
           locale,
           has_store_name: !!signUpParams.storeName,
           has_phone_number: !!signUpParams.phoneNumber,
-          country_code: countryCode,
+          country_code: countryCodeForTracking || undefined,
         });
 
         // Redirect to signup success page for conversion tracking
@@ -191,7 +212,7 @@ export const SignUp = () => {
             locale,
             has_store_name: !!signUpParams.storeName,
             has_phone_number: !!signUpParams.phoneNumber,
-            country_code: countryCode,
+            country_code: countryCodeForTracking || undefined,
           });
 
           // User already exists, send to sign-in page with UTM parameters
@@ -220,7 +241,7 @@ export const SignUp = () => {
         locale,
         has_store_name: !!signUpParams.storeName,
         has_phone_number: !!signUpParams.phoneNumber,
-        country_code: countryCode,
+        country_code: countryCodeForTracking || undefined,
       });
 
       // Capture error in Sentry with context
@@ -310,42 +331,23 @@ export const SignUp = () => {
         </div>
 
         <div className="flex-1 space-y-1">
-          <div
-            className={`flex gap-2 w-full ${isRTL ? "flex-row-reverse" : "flex-row"}`}
-          >
-            <Select
-              value={countryCode}
-              onChange={(e) => setCountryCode(e.target.value)}
-              className="w-28 text-base h-14"
-              aria-label={t("countryCode")}
-              dir="ltr"
-            >
-              {countryCodesData.countries
-                .sort((a, b) => a.code.localeCompare(b.code))
-                .map((country) => (
-                  <option key={country.name} value={country.code}>
-                    {country.code}
-                  </option>
-                ))}
-            </Select>
-            <Input
-              type="tel"
-              placeholder={`${isRTL ? "5xxxxxxxx" : "5xxxxxxxx"} *`}
-              required
-              className="text-lg h-14 flex-1"
-              name="phoneNumber"
-              value={signUpParams.phoneNumber}
-              onChange={handleInputChange}
-              onBlur={() => handleBlur("phoneNumber")}
-              aria-label={t("phoneNumberWithWtsup")}
-              dir="ltr"
-              pattern="[0-9]{9,15}"
-              aria-invalid={!!fieldErrors.phoneNumber ? "true" : undefined}
-              aria-describedby={
-                fieldErrors.phoneNumber ? "phone-error" : undefined
-              }
-            />
-          </div>
+          <Input
+            type="tel"
+            placeholder={`${isRTL ? "+9665xxxxxxxx" : "+9665xxxxxxxx"} *`}
+            required
+            className="text-lg h-14 w-full"
+            name="phoneNumber"
+            value={signUpParams.phoneNumber}
+            onChange={handleInputChange}
+            onBlur={() => handleBlur("phoneNumber")}
+            aria-label={t("phoneNumberWithWtsup")}
+            dir="ltr"
+            inputMode="tel"
+            aria-invalid={!!fieldErrors.phoneNumber ? "true" : undefined}
+            aria-describedby={
+              fieldErrors.phoneNumber ? "phone-error" : undefined
+            }
+          />
           {fieldErrors.phoneNumber && (
             <p
               id="phone-error"
