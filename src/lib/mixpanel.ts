@@ -1,5 +1,7 @@
 import mixpanel from "mixpanel-browser";
 
+export const MIXPANEL_READY_EVENT = "mixpanel:ready";
+
 // Track initialization state
 let isMixpanelInitialized = false;
 
@@ -34,6 +36,7 @@ export const initMixpanel = () => {
     // Initialize Mixpanel with feature flags enabled
     // Note: We don't set a distinct_id, so Mixpanel auto-generates an anonymous one
     mixpanel.init(token, {
+      api_host: "https://api-eu.mixpanel.com",
       debug: process.env.NODE_ENV === "development",
       track_pageview: true,
       persistence: "localStorage",
@@ -43,6 +46,10 @@ export const initMixpanel = () => {
     });
 
     isMixpanelInitialized = true;
+
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event(MIXPANEL_READY_EVENT));
+    }
   } catch (error) {
     console.error("Failed to initialize Mixpanel:", error);
   }

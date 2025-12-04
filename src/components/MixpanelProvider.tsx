@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect, Suspense } from "react";
-import { initMixpanel, getMixpanel } from "@/lib/mixpanel";
+import {
+  initMixpanel,
+  getMixpanel,
+  MIXPANEL_READY_EVENT,
+} from "@/lib/mixpanel";
 import { usePathname, useSearchParams } from "next/navigation";
 
 /**
@@ -18,6 +22,45 @@ function MixpanelProviderInner({ children }: { children: React.ReactNode }) {
   // Initialize Mixpanel on mount
   useEffect(() => {
     initMixpanel();
+  }, []);
+
+  // Fire a test event once on initial page load to verify tracking
+  useEffect(() => {
+    const sendTestEvent = () => {
+      const mixpanel = getMixpanel();
+      if (!mixpanel || typeof mixpanel.track !== "function") return false;
+
+      try {
+        const url =
+          window.location.pathname +
+          (window.location.search ? `?${window.location.search}` : "");
+
+        mixpanel.track("showcase_test_page_load", {
+          page_url: url,
+          page_title: document.title,
+          timestamp: new Date().toISOString(),
+        });
+        return true;
+      } catch (error) {
+        console.warn("Failed to send Mixpanel test event:", error);
+        return false;
+      }
+    };
+
+    if (sendTestEvent()) return;
+
+    const handleReady = () => {
+      const success = sendTestEvent();
+      if (success) {
+        window.removeEventListener(MIXPANEL_READY_EVENT, handleReady);
+      }
+    };
+
+    window.addEventListener(MIXPANEL_READY_EVENT, handleReady);
+
+    return () => {
+      window.removeEventListener(MIXPANEL_READY_EVENT, handleReady);
+    };
   }, []);
 
   // Track page views on route changes

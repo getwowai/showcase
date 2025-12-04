@@ -9,23 +9,33 @@ import { getMixpanel } from "@/lib/mixpanel";
  */
 export const useMixpanelTracking = () => {
   const locale = useLocale();
-  const mixpanel = getMixpanel();
+
+  const withMixpanel = (
+    handler: (
+      mixpanelInstance: NonNullable<ReturnType<typeof getMixpanel>>,
+    ) => void,
+  ) => {
+    const mixpanel = getMixpanel();
+    if (!mixpanel || typeof mixpanel.track !== "function") return;
+
+    try {
+      handler(mixpanel);
+    } catch (error) {
+      console.warn("Failed to track Mixpanel event:", error);
+    }
+  };
 
   return {
     /**
      * Track a custom event with automatic locale inclusion
      */
     trackEvent: (eventName: string, properties?: Record<string, unknown>) => {
-      if (!mixpanel || typeof mixpanel.track !== "function") return;
-
-      try {
+      withMixpanel((mixpanel) => {
         mixpanel.track(eventName, {
           ...properties,
           locale, // Always include locale for segmentation
         });
-      } catch (error) {
-        console.warn("Failed to track Mixpanel event:", error);
-      }
+      });
     },
 
     /**
@@ -35,18 +45,14 @@ export const useMixpanelTracking = () => {
       pagePath?: string,
       properties?: Record<string, unknown>,
     ) => {
-      if (!mixpanel || typeof mixpanel.track !== "function") return;
-
-      try {
+      withMixpanel((mixpanel) => {
         mixpanel.track("Page View", {
           ...properties,
           page_url: pagePath || window.location.href,
           page_title: document.title,
           locale,
         });
-      } catch (error) {
-        console.warn("Failed to track Mixpanel page view:", error);
-      }
+      });
     },
 
     /**
@@ -57,18 +63,14 @@ export const useMixpanelTracking = () => {
       conversionValue?: number,
       properties?: Record<string, unknown>,
     ) => {
-      if (!mixpanel || typeof mixpanel.track !== "function") return;
-
-      try {
+      withMixpanel((mixpanel) => {
         mixpanel.track("Conversion", {
           ...properties,
           "Conversion Type": conversionType,
           "Conversion Value": conversionValue,
           locale,
         });
-      } catch (error) {
-        console.warn("Failed to track Mixpanel conversion:", error);
-      }
+      });
     },
 
     /**
@@ -80,14 +82,14 @@ export const useMixpanelTracking = () => {
       signupMethod: string,
       properties?: Record<string, unknown>,
     ) => {
-      if (!mixpanel) return;
-
-      mixpanel.track("Sign Up", {
-        ...properties,
-        user_id: userId,
-        email,
-        signup_method: signupMethod,
-        locale,
+      withMixpanel((mixpanel) => {
+        mixpanel.track("Sign Up", {
+          ...properties,
+          user_id: userId,
+          email,
+          signup_method: signupMethod,
+          locale,
+        });
       });
     },
 
@@ -100,14 +102,14 @@ export const useMixpanelTracking = () => {
       success: boolean,
       properties?: Record<string, unknown>,
     ) => {
-      if (!mixpanel) return;
-
-      mixpanel.track("Sign In", {
-        ...properties,
-        user_id: userId,
-        login_method: loginMethod,
-        success,
-        locale,
+      withMixpanel((mixpanel) => {
+        mixpanel.track("Sign In", {
+          ...properties,
+          user_id: userId,
+          login_method: loginMethod,
+          success,
+          locale,
+        });
       });
     },
 
@@ -119,13 +121,13 @@ export const useMixpanelTracking = () => {
       resultsCount?: number,
       properties?: Record<string, unknown>,
     ) => {
-      if (!mixpanel) return;
-
-      mixpanel.track("Search", {
-        ...properties,
-        search_query: searchQuery,
-        results_count: resultsCount,
-        locale,
+      withMixpanel((mixpanel) => {
+        mixpanel.track("Search", {
+          ...properties,
+          search_query: searchQuery,
+          results_count: resultsCount,
+          locale,
+        });
       });
     },
 
@@ -138,15 +140,15 @@ export const useMixpanelTracking = () => {
       errorCode?: string,
       properties?: Record<string, unknown>,
     ) => {
-      if (!mixpanel) return;
-
-      mixpanel.track("Error", {
-        ...properties,
-        error_type: errorType,
-        error_message: errorMessage,
-        error_code: errorCode,
-        page_url: window.location.href,
-        locale,
+      withMixpanel((mixpanel) => {
+        mixpanel.track("Error", {
+          ...properties,
+          error_type: errorType,
+          error_message: errorMessage,
+          error_code: errorCode,
+          page_url: window.location.href,
+          locale,
+        });
       });
     },
 
@@ -160,15 +162,15 @@ export const useMixpanelTracking = () => {
       currency: string,
       properties?: Record<string, unknown>,
     ) => {
-      if (!mixpanel) return;
-
-      mixpanel.track("Purchase", {
-        ...properties,
-        user_id: userId,
-        transaction_id: transactionId,
-        revenue,
-        currency,
-        locale,
+      withMixpanel((mixpanel) => {
+        mixpanel.track("Purchase", {
+          ...properties,
+          user_id: userId,
+          transaction_id: transactionId,
+          revenue,
+          currency,
+          locale,
+        });
       });
     },
   };

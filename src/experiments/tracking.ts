@@ -9,18 +9,32 @@ import { getMixpanel } from "@/lib/mixpanel";
  */
 export const useTracking = () => {
   const locale = useLocale();
-  const mixpanel = getMixpanel();
+
+  const withMixpanel = (
+    handler: (
+      mixpanelInstance: NonNullable<ReturnType<typeof getMixpanel>>,
+    ) => void,
+  ) => {
+    const mixpanel = getMixpanel();
+    if (!mixpanel || typeof mixpanel.track !== "function") return;
+
+    try {
+      handler(mixpanel);
+    } catch (error) {
+      console.warn("Failed to track Mixpanel event:", error);
+    }
+  };
 
   return {
     /**
      * Track a custom event with automatic locale inclusion
      */
     trackEvent: (eventName: string, properties?: Record<string, unknown>) => {
-      if (!mixpanel) return;
-
-      mixpanel.track(eventName, {
-        ...properties,
-        locale, // Always include locale for segmentation
+      withMixpanel((mixpanel) => {
+        mixpanel.track(eventName, {
+          ...properties,
+          locale, // Always include locale for segmentation
+        });
       });
     },
 
@@ -31,13 +45,13 @@ export const useTracking = () => {
       pagePath?: string,
       properties?: Record<string, unknown>,
     ) => {
-      if (!mixpanel) return;
-
-      mixpanel.track("Page View", {
-        ...properties,
-        page_url: pagePath || window.location.href,
-        page_title: document.title,
-        locale,
+      withMixpanel((mixpanel) => {
+        mixpanel.track("Page View", {
+          ...properties,
+          page_url: pagePath || window.location.href,
+          page_title: document.title,
+          locale,
+        });
       });
     },
 
@@ -48,12 +62,12 @@ export const useTracking = () => {
       conversionName: string,
       properties?: Record<string, unknown>,
     ) => {
-      if (!mixpanel) return;
-
-      mixpanel.track(conversionName, {
-        ...properties,
-        locale,
-        conversion: true,
+      withMixpanel((mixpanel) => {
+        mixpanel.track(conversionName, {
+          ...properties,
+          locale,
+          conversion: true,
+        });
       });
     },
 
@@ -61,12 +75,12 @@ export const useTracking = () => {
      * Track scroll depth
      */
     trackScrollDepth: (percentage: 25 | 50 | 75 | 100) => {
-      if (!mixpanel) return;
-
-      mixpanel.track("scroll_depth", {
-        locale,
-        percentage,
-        page: window.location.pathname,
+      withMixpanel((mixpanel) => {
+        mixpanel.track("scroll_depth", {
+          locale,
+          percentage,
+          page: window.location.pathname,
+        });
       });
     },
 
@@ -78,14 +92,14 @@ export const useTracking = () => {
       ctaLocation: string,
       properties?: Record<string, unknown>,
     ) => {
-      if (!mixpanel) return;
-
-      mixpanel.track("cta_clicked", {
-        ...properties,
-        locale,
-        cta_name: ctaName,
-        cta_location: ctaLocation,
-        page: window.location.pathname,
+      withMixpanel((mixpanel) => {
+        mixpanel.track("cta_clicked", {
+          ...properties,
+          locale,
+          cta_name: ctaName,
+          cta_location: ctaLocation,
+          page: window.location.pathname,
+        });
       });
     },
 
@@ -96,13 +110,13 @@ export const useTracking = () => {
       featureName: string,
       properties?: Record<string, unknown>,
     ) => {
-      if (!mixpanel) return;
-
-      mixpanel.track("feature_interaction", {
-        ...properties,
-        locale,
-        feature: featureName,
-        page: window.location.pathname,
+      withMixpanel((mixpanel) => {
+        mixpanel.track("feature_interaction", {
+          ...properties,
+          locale,
+          feature: featureName,
+          page: window.location.pathname,
+        });
       });
     },
   };
