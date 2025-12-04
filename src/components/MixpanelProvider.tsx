@@ -24,18 +24,23 @@ function MixpanelProviderInner({ children }: { children: React.ReactNode }) {
   // Locale is extracted from pathname (e.g., /en/page or /ar/page)
   useEffect(() => {
     const mixpanel = getMixpanel();
-    if (!mixpanel) return;
+    if (!mixpanel || typeof mixpanel.track !== "function") return;
 
-    const url = pathname + (searchParams?.toString() ? `?${searchParams}` : "");
+    try {
+      const url =
+        pathname + (searchParams?.toString() ? `?${searchParams}` : "");
 
-    // Extract locale from pathname (format: /[locale]/...)
-    const locale = pathname.split("/")[1] || "en";
+      // Extract locale from pathname (format: /[locale]/...)
+      const locale = pathname.split("/")[1] || "en";
 
-    mixpanel.track("Page View", {
-      page_url: url,
-      page_title: document.title,
-      locale,
-    });
+      mixpanel.track("Page View", {
+        page_url: url,
+        page_title: document.title,
+        locale,
+      });
+    } catch (error) {
+      console.warn("Failed to track Mixpanel page view:", error);
+    }
   }, [pathname, searchParams]);
 
   return <>{children}</>;

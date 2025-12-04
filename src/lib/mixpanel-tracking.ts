@@ -16,12 +16,16 @@ export const useMixpanelTracking = () => {
      * Track a custom event with automatic locale inclusion
      */
     trackEvent: (eventName: string, properties?: Record<string, unknown>) => {
-      if (!mixpanel) return;
+      if (!mixpanel || typeof mixpanel.track !== "function") return;
 
-      mixpanel.track(eventName, {
-        ...properties,
-        locale, // Always include locale for segmentation
-      });
+      try {
+        mixpanel.track(eventName, {
+          ...properties,
+          locale, // Always include locale for segmentation
+        });
+      } catch (error) {
+        console.warn("Failed to track Mixpanel event:", error);
+      }
     },
 
     /**
@@ -31,14 +35,18 @@ export const useMixpanelTracking = () => {
       pagePath?: string,
       properties?: Record<string, unknown>,
     ) => {
-      if (!mixpanel) return;
+      if (!mixpanel || typeof mixpanel.track !== "function") return;
 
-      mixpanel.track("Page View", {
-        ...properties,
-        page_url: pagePath || window.location.href,
-        page_title: document.title,
-        locale,
-      });
+      try {
+        mixpanel.track("Page View", {
+          ...properties,
+          page_url: pagePath || window.location.href,
+          page_title: document.title,
+          locale,
+        });
+      } catch (error) {
+        console.warn("Failed to track Mixpanel page view:", error);
+      }
     },
 
     /**
@@ -49,14 +57,18 @@ export const useMixpanelTracking = () => {
       conversionValue?: number,
       properties?: Record<string, unknown>,
     ) => {
-      if (!mixpanel) return;
+      if (!mixpanel || typeof mixpanel.track !== "function") return;
 
-      mixpanel.track("Conversion", {
-        ...properties,
-        "Conversion Type": conversionType,
-        "Conversion Value": conversionValue,
-        locale,
-      });
+      try {
+        mixpanel.track("Conversion", {
+          ...properties,
+          "Conversion Type": conversionType,
+          "Conversion Value": conversionValue,
+          locale,
+        });
+      } catch (error) {
+        console.warn("Failed to track Mixpanel conversion:", error);
+      }
     },
 
     /**

@@ -1,5 +1,8 @@
 import mixpanel from "mixpanel-browser";
 
+// Track initialization state
+let isMixpanelInitialized = false;
+
 /**
  * Initialize Mixpanel for client-side analytics
  * Call this once in your app, typically in a provider or layout
@@ -15,6 +18,9 @@ import mixpanel from "mixpanel-browser";
 export const initMixpanel = () => {
   if (typeof window === "undefined") return;
 
+  // Prevent double initialization
+  if (isMixpanelInitialized) return;
+
   const token =
     process.env.NEXT_PUBLIC_MIXPANEL_TOKEN ||
     "bb45473ca9d564e395e228ba33b1a4ed";
@@ -24,16 +30,22 @@ export const initMixpanel = () => {
     return;
   }
 
-  // Initialize Mixpanel with feature flags enabled (safe to call multiple times)
-  // Note: We don't set a distinct_id, so Mixpanel auto-generates an anonymous one
-  mixpanel.init(token, {
-    debug: process.env.NODE_ENV === "development",
-    track_pageview: true,
-    persistence: "localStorage",
-    autocapture: true,
-    record_sessions_percent: 100,
-    flags: true, // Enable feature flags
-  });
+  try {
+    // Initialize Mixpanel with feature flags enabled
+    // Note: We don't set a distinct_id, so Mixpanel auto-generates an anonymous one
+    mixpanel.init(token, {
+      debug: process.env.NODE_ENV === "development",
+      track_pageview: true,
+      persistence: "localStorage",
+      autocapture: true,
+      record_sessions_percent: 100,
+      flags: true, // Enable feature flags
+    });
+
+    isMixpanelInitialized = true;
+  } catch (error) {
+    console.error("Failed to initialize Mixpanel:", error);
+  }
 };
 
 /**
@@ -46,6 +58,16 @@ export const initMixpanel = () => {
  */
 export const getMixpanel = () => {
   if (typeof window === "undefined") return null;
+
+  // Only return Mixpanel if it's been initialized
+  if (
+    !isMixpanelInitialized ||
+    !mixpanel ||
+    typeof mixpanel.track !== "function"
+  ) {
+    return null;
+  }
+
   return mixpanel;
 };
 

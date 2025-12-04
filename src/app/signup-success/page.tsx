@@ -1,23 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { CheckCircle, Sparkles } from "lucide-react";
 import { WowLogo } from "@/components/ui/logo";
 import { getMixpanel } from "@/lib/mixpanel";
 
 export default function SignupSuccessPage() {
-  // Detect locale from URL query param or localStorage
-  const getLocale = () => {
-    if (typeof window === "undefined") return "en";
-    const params = new URLSearchParams(window.location.search);
-    const localeParam = params.get("locale");
-    if (localeParam) return localeParam;
-    // Fallback to localStorage or browser language
-    const savedLocale = localStorage.getItem("preferredLocale");
-    return savedLocale || "en";
-  };
-
-  const locale = getLocale();
+  const [locale, setLocale] = useState<"en" | "ar">("en");
   const isRTL = locale === "ar";
 
   // Translations
@@ -44,11 +33,27 @@ export default function SignupSuccessPage() {
   };
 
   useEffect(() => {
+    // Detect locale from URL query param or localStorage (client-side only)
+    const detectLocale = () => {
+      if (typeof window === "undefined") return "en";
+      const params = new URLSearchParams(window.location.search);
+      const localeParam = params.get("locale");
+      if (localeParam === "ar" || localeParam === "en") {
+        return localeParam;
+      }
+      // Fallback to localStorage or browser language
+      const savedLocale = localStorage.getItem("preferredLocale");
+      return savedLocale === "ar" ? "ar" : "en";
+    };
+
+    const detectedLocale = detectLocale();
+    setLocale(detectedLocale);
+
     // Track signup success page view and redirect
     const mixpanel = getMixpanel();
     if (mixpanel) {
       mixpanel.track("signup_landing_redirected", {
-        locale,
+        locale: detectedLocale,
         redirect_destination: "app",
       });
     }
@@ -87,7 +92,7 @@ export default function SignupSuccessPage() {
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, [locale]);
+  }, []);
 
   return (
     <div
