@@ -743,5 +743,95 @@
     "confirm": "Confirm",
     "delete": "Delete",
     "edit": "Edit"
+  },
+  "waitingList": {
+    "heroTitle": "Double your store sales with smarter decisions using WOW AI, without any effort",
+    "heroSubtitle": "Supports platforms:",
+    "platformLogosAlt": "Salla, Shopify, and Zid platform logos",
+    "formTitle": "Register Now",
+    "limitedOffer": "Free for a limited number of stores",
+    "downloadAppsAlt": "Download on App Store and Google Play",
+    "featuresTitle": "AI works in the background... to grow your sales without effort",
+    "featuresSubtitle": "No complicated tools, no confusing reports. WOW AI gives you the right information at the right time — so you can focus on growing your business.",
+    "feature1Title": "Smart & Optimized Promotions",
+    "feature1Description": "Creates smart offers that boost conversions and increase your sales without wasting time",
+    "feature2Title": "Smart Inventory Monitor",
+    "feature2Description": "Alerts you before products run out and automates reordering so you never miss a sale",
+    "feature3Title": "Daily Smart Insights",
+    "feature3Description": "Summarizes your store's performance daily in simple language and tells you what to do today",
+    "feature4Title": "Profit & Pricing Optimization",
+    "feature4Description": "Analyzes your prices and shows you how to increase profit margins without affecting sales",
+    "feature5Title": "AI Chat Assistant",
+    "feature5Description": "Chat with your data anytime to get instant answers about your store's performance",
+    "registerNowFree": "Register Now for Free",
+    "limitedTimeOffer": "Limited time - join now before closing",
+    "benefitsTitle": "Why do store owners choose WOW AI?",
+    "benefitsSubtitle": "Because it's not just data analysis — WOW AI becomes your right hand in growing your store",
+    "benefit1Title": "Increase Revenue",
+    "benefit1Description": "Smart strategies that boost conversions and increase sales",
+    "benefit1Stat": "23% increase in smart offer conversions",
+    "benefit2Title": "Save Time",
+    "benefit2Description": "Eliminates repetitive tasks and gives you instant insights in minutes",
+    "benefit3Title": "Make Better Decisions",
+    "benefit3Description": "Accurate recommendations based on your store's real data",
+    "testimonialQuote": "It helped me understand my store daily — the difference was clear from the first week",
+    "testimonialAttribution": "Saudi Merchant",
+    "finalCtaTitle": "Gift for the first 25 merchants only (instead of 150 SAR/month)",
+    "footer": "© 2025 WOW AI. All rights reserved"
+  },
+  "webinar": {
+    "hero": {
+      "title": "Discover How to Double Your Store Sales Using AI Without Extra Costs!",
+      "subtitle": "Learn 4 smart strategies to design offers that earn more and lose less, with practical steps tested from WOW AI tool",
+      "liveNotice": "Live Broadcast - No Recordings"
+    },
+    "content": {
+      "dontWaste": "Don't Waste Your Time...",
+      "startNow": "Start Now with a Smart and Profitable Plan",
+      "description": "Competition and offers are doubling... But the problem is many stores lose profits due to unstudied discounts and random pricing. In this free webinar, in just one hour... you'll learn secrets nobody tells you:",
+      "benefits": {
+        "strategy": "4 smart strategies to design profitable offers without burning your budget",
+        "sequencing": "The offer sequence plan that automatically increases your sales",
+        "timing": "The timing of discounts that increases purchase rate without sacrificing profits",
+        "aiTool": "How to benefit from WOW AI tool to choose the best offer and timing based on data not predictions"
+      }
+    },
+    "registration": {
+      "title": "Reserve Your Free Seat Now",
+      "dateTime": "December 2, 2025, 3:00 PM EST",
+      "day": "Day",
+      "hour": "Hour",
+      "minute": "Minute",
+      "noScheduled": "No webinar scheduled now, but register and we'll keep you informed"
+    },
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "phone": "Phone Number (with WhatsApp)",
+      "storeName": "Store Name",
+      "platform": "Choose Platform",
+      "avgOrders": "Average Daily Orders",
+      "avgOrdersOptions": {
+        "less10": "Less than 10",
+        "between10_50": "From 10 to 50",
+        "more50": "More than 50"
+      },
+      "submit": "Register Now",
+      "submitting": "Registering..."
+    },
+    "experts": {
+      "title": "Learn from Elite Digital Marketing Experts",
+      "sherif": {
+        "name": "Sherif Makhlouf",
+        "title": "Marketing Strategy Expert",
+        "description": "Serial entrepreneur in e-commerce specialized in transforming offers into compelling stories that achieve sustainable sales"
+      }
+    }
+  },
+  "webinarSuccess": {
+    "title": "Successfully Registered!",
+    "subtitle": "Thank you for registering for the webinar",
+    "calendarMessage": "We'll send you the attendance link and a reminder before the webinar",
+    "check": "Check your email for more details"
   }
 }

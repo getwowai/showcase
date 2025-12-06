@@ -11,7 +11,8 @@ export type LandingVariant =
   | "minimal"
   | "minimal-plus"
   | "control"
-  | "social-proof";
+  | "social-proof"
+  | "waiting-list";
 
 export interface VariantConfig {
   /** The variant to show on the main landing page */
@@ -52,9 +53,13 @@ export function getVariantConfig(
   if (
     mixpanelVariant &&
     typeof mixpanelVariant === "string" &&
-    ["minimal", "minimal-plus", "control", "social-proof"].includes(
-      mixpanelVariant,
-    )
+    [
+      "minimal",
+      "minimal-plus",
+      "control",
+      "social-proof",
+      "waiting-list",
+    ].includes(mixpanelVariant)
   ) {
     return {
       variant: mixpanelVariant as LandingVariant,
@@ -84,7 +89,7 @@ export function getVariantConfig(
  * Get available variants for validation
  */
 export function getAvailableVariants(): LandingVariant[] {
-  return ["minimal", "minimal-plus", "control", "social-proof"];
+  return ["minimal", "minimal-plus", "control", "social-proof", "waiting-list"];
 }
 
 /**

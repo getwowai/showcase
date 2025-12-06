@@ -30,6 +30,7 @@ import { useExperiment } from "@/experiments/hooks/useExperiment";
 import { getVariantConfig, getVariantDebugInfo } from "@/lib/variant-config";
 import SignupMinimalPage from "./(landing-variants)/signup-minimal/page";
 import SignupMinimalPlusPage from "./(landing-variants)/signup-minimal-plus/page";
+import SignupWaitingListPage from "./(landing-variants)/signup-waiting-list/page";
 
 export default function HomePage() {
   const [currentFeature, setCurrentFeature] = useState(0);
@@ -356,6 +357,12 @@ export default function HomePage() {
   if (variantConfig.variant === "minimal-plus") {
     console.log("Rendering minimal-plus signup page");
     return <SignupMinimalPlusPage />;
+  }
+
+  // If variant is 'waiting-list', render the waiting-list signup page
+  if (variantConfig.variant === "waiting-list") {
+    console.log("Rendering waiting-list signup page");
+    return <SignupWaitingListPage />;
   }
 
   // For 'control' or any other variant, show the original landing page
