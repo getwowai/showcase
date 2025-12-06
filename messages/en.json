@@ -778,5 +778,60 @@
     "testimonialAttribution": "Saudi Merchant",
     "finalCtaTitle": "Gift for the first 25 merchants only (instead of 150 SAR/month)",
     "footer": "© 2025 WOW AI. All rights reserved"
+  },
+  "webinar": {
+    "hero": {
+      "title": "Discover How to Double Your Store Sales Using AI Without Extra Costs!",
+      "subtitle": "Learn 4 smart strategies to design offers that earn more and lose less, with practical steps tested from WOW AI tool",
+      "liveNotice": "Live Broadcast - No Recordings"
+    },
+    "content": {
+      "dontWaste": "Don't Waste Your Time...",
+      "startNow": "Start Now with a Smart and Profitable Plan",
+      "description": "Competition and offers are doubling... But the problem is many stores lose profits due to unstudied discounts and random pricing. In this free webinar, in just one hour... you'll learn secrets nobody tells you:",
+      "benefits": {
+        "strategy": "4 smart strategies to design profitable offers without burning your budget",
+        "sequencing": "The offer sequence plan that automatically increases your sales",
+        "timing": "The timing of discounts that increases purchase rate without sacrificing profits",
+        "aiTool": "How to benefit from WOW AI tool to choose the best offer and timing based on data not predictions"
+      }
+    },
+    "registration": {
+      "title": "Reserve Your Free Seat Now",
+      "dateTime": "December 2, 2025, 3:00 PM EST",
+      "day": "Day",
+      "hour": "Hour",
+      "minute": "Minute",
+      "noScheduled": "No webinar scheduled now, but register and we'll keep you informed"
+    },
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "phone": "Phone Number (with WhatsApp)",
+      "storeName": "Store Name",
+      "platform": "Choose Platform",
+      "avgOrders": "Average Daily Orders",
+      "avgOrdersOptions": {
+        "less10": "Less than 10",
+        "between10_50": "From 10 to 50",
+        "more50": "More than 50"
+      },
+      "submit": "Register Now",
+      "submitting": "Registering..."
+    },
+    "experts": {
+      "title": "Learn from Elite Digital Marketing Experts",
+      "sherif": {
+        "name": "Sherif Makhlouf",
+        "title": "Marketing Strategy Expert",
+        "description": "Serial entrepreneur in e-commerce specialized in transforming offers into compelling stories that achieve sustainable sales"
+      }
+    }
+  },
+  "webinarSuccess": {
+    "title": "Successfully Registered!",
+    "subtitle": "Thank you for registering for the webinar",
+    "calendarMessage": "We'll send you the attendance link and a reminder before the webinar",
+    "check": "Check your email for more details"
   }
 }
