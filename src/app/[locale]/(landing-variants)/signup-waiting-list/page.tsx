@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import Footer from "@/components/Footer";
 
 /**
  * Signup Landing - Waiting List Variant
@@ -63,7 +64,7 @@ export default function SignupWaitingListPage() {
             alt="WOW AI"
             width={150}
             height={50}
-            className="h-auto"
+            className="h-auto w-[150px] md:w-[180px]"
             priority
           />
         </div>
@@ -120,26 +121,15 @@ export default function SignupWaitingListPage() {
                     className="p-6 md:p-8 shadow-2xl bg-transparent backdrop-blur-md border-white/30"
                   >
                     <div className="mb-6">
-                      <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                      <h2 className="text-2xl font-bold text-white mb-2">
                         {t("formTitle")}
                       </h2>
-                      <p className="text-green-600 font-medium text-lg">
+                      <p className="text-white font-bold text-lg">
                         {t("limitedOffer")}
                       </p>
                     </div>
 
                     <SignUp />
-
-                    {/* Download Buttons */}
-                    <div className="mt-6 pt-6 border-t">
-                      <Image
-                        src="/waiting-landing/btns.png"
-                        alt={t("downloadAppsAlt")}
-                        width={300}
-                        height={80}
-                        className="w-full max-w-sm mx-auto h-auto"
-                      />
-                    </div>
                   </Card>
                 </motion.div>
               </div>
@@ -189,26 +179,15 @@ export default function SignupWaitingListPage() {
                     className="p-6 md:p-8 shadow-2xl bg-transparent backdrop-blur-md border-white/30"
                   >
                     <div className="mb-6">
-                      <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                      <h2 className="text-2xl font-bold text-white mb-2">
                         {t("formTitle")}
                       </h2>
-                      <p className="text-green-600 font-medium text-lg">
+                      <p className="text-white font-bold text-lg">
                         {t("limitedOffer")}
                       </p>
                     </div>
 
                     <SignUp />
-
-                    {/* Download Buttons */}
-                    <div className="mt-6 pt-6 border-t">
-                      <Image
-                        src="/waiting-landing/btns.png"
-                        alt={t("downloadAppsAlt")}
-                        width={300}
-                        height={80}
-                        className="w-full max-w-sm mx-auto h-auto"
-                      />
-                    </div>
                   </Card>
                 </motion.div>
               </div>
@@ -489,11 +468,7 @@ export default function SignupWaitingListPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#041E42] py-4">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-white text-sm">{t("footer")}</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

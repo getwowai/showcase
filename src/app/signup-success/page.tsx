@@ -6,7 +6,7 @@ import { WowLogo } from "@/components/ui/logo";
 import { getMixpanel } from "@/lib/mixpanel";
 
 export default function SignupSuccessPage() {
-  const [locale, setLocale] = useState<"en" | "ar">("en");
+  const [locale, setLocale] = useState<"en" | "ar">("ar");
   const isRTL = locale === "ar";
 
   // Translations
@@ -35,7 +35,7 @@ export default function SignupSuccessPage() {
   useEffect(() => {
     // Detect locale from URL query param or localStorage (client-side only)
     const detectLocale = () => {
-      if (typeof window === "undefined") return "en";
+      if (typeof window === "undefined") return "ar";
       const params = new URLSearchParams(window.location.search);
       const localeParam = params.get("locale");
       if (localeParam === "ar" || localeParam === "en") {
@@ -43,7 +43,7 @@ export default function SignupSuccessPage() {
       }
       // Fallback to localStorage or browser language
       const savedLocale = localStorage.getItem("preferredLocale");
-      return savedLocale === "ar" ? "ar" : "en";
+      return savedLocale === "en" ? "en" : "ar";
     };
 
     const detectedLocale = detectLocale();
