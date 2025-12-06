@@ -108,13 +108,17 @@ export default function SignupWaitingListPage() {
                         alt={t("platformLogosAlt")}
                         width={500}
                         height={100}
-                        className="w-full max-w-md h-auto"
+                        className="h-auto ml-auto"
+                        style={{ maxWidth: "28rem" }}
                       />
                     </div>
                   </div>
 
                   {/* Signup Form Card */}
-                  <Card className="p-6 md:p-8 shadow-2xl bg-transparent backdrop-blur-md border-white/30">
+                  <Card
+                    id="signup-form"
+                    className="p-6 md:p-8 shadow-2xl bg-transparent backdrop-blur-md border-white/30"
+                  >
                     <div className="mb-6">
                       <h2 className="text-2xl font-bold text-gray-900 mb-2">
                         {t("formTitle")}
@@ -180,7 +184,10 @@ export default function SignupWaitingListPage() {
                   className="w-full lg:w-7/12"
                 >
                   {/* Signup Form Card */}
-                  <Card className="p-6 md:p-8 shadow-2xl bg-transparent backdrop-blur-md border-white/30">
+                  <Card
+                    id="signup-form"
+                    className="p-6 md:p-8 shadow-2xl bg-transparent backdrop-blur-md border-white/30"
+                  >
                     <div className="mb-6">
                       <h2 className="text-2xl font-bold text-gray-900 mb-2">
                         {t("formTitle")}
@@ -326,7 +333,13 @@ export default function SignupWaitingListPage() {
             {/* CTA Button */}
             <div className="text-center">
               <a
-                href={`#signup-form`}
+                href="#signup-form"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document
+                    .getElementById("signup-form")
+                    ?.scrollIntoView({ behavior: "smooth", block: "center" });
+                }}
                 className="inline-block bg-[#AEDF1A] hover:bg-[#9bc917] text-[#303C0A] font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
               >
                 {t("registerNowFree")}
