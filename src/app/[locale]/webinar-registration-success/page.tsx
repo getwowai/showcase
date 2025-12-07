@@ -120,28 +120,30 @@ export default function WebinarRegistrationSuccessPage() {
       dir={isRTL ? "rtl" : "ltr"}
     >
       <div className="max-w-lg w-full">
-        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 space-y-8 relative overflow-hidden">
+        <div className="bg-white rounded-3xl shadow-2xl px-8 md:px-12 pt-6 md:pt-8 pb-8 md:pb-12 space-y-4 relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#aedf1a]/10 rounded-full blur-3xl -z-0" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#86c9e5]/10 rounded-full blur-3xl -z-0" />
 
           {/* Content */}
-          <div className="relative z-10 space-y-6">
+          <div className="relative z-10 space-y-3">
             {/* Logo */}
-            <div className="flex justify-center">
-              <WowLogo size="hero" />
+            <div className="flex justify-center mb-2">
+              <div className="scale-75">
+                <WowLogo size="hero" />
+              </div>
             </div>
 
             {/* Success Icon */}
             <div className="flex justify-center">
               <div className="relative">
-                <div className="absolute inset-0 bg-[#aedf1a] rounded-full blur-xl opacity-30 animate-pulse" />
-                <CheckCircle className="h-24 w-24 text-[#aedf1a] relative" />
+                <div className="absolute inset-0 bg-green-500 rounded-full blur-lg opacity-20 animate-pulse" />
+                <CheckCircle className="h-16 w-16 text-green-500 relative" />
               </div>
             </div>
 
             {/* Text Content */}
-            <div className="space-y-4 text-center">
+            <div className="space-y-3 text-center">
               <h1 className="text-3xl md:text-4xl font-bold text-zinc-900 flex items-center justify-center gap-2">
                 <Sparkles className="h-8 w-8 text-[#aedf1a]" />
                 {t("title")}
