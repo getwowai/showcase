@@ -149,7 +149,7 @@ export default function SignupWaitingListPage() {
                       </p>
                     </div>
 
-                    <SignUp />
+                    <SignUp showPromoText={true} />
                   </Card>
                 </motion.div>
               </div>
@@ -207,7 +207,7 @@ export default function SignupWaitingListPage() {
                       </p>
                     </div>
 
-                    <SignUp />
+                    <SignUp showPromoText={true} />
                   </Card>
                 </motion.div>
               </div>
@@ -469,7 +469,7 @@ export default function SignupWaitingListPage() {
 
             {/* Offer Headline */}
             <h2
-              className="text-3xl md:text-4xl font-bold text-white mb-8"
+              className="text-3xl md:text-4xl font-bold text-white mb-8 [&_del]:opacity-80 [&_del]:text-white [&_del]:decoration-2"
               dangerouslySetInnerHTML={{ __html: t.raw("finalCtaTitle") }}
             />
 

@@ -24,9 +24,14 @@ const isPhoneNumberValid = (value: string) => {
   return /^\d{9,15}$/.test(digits);
 };
 
-export const SignUp = () => {
+export const SignUp = ({
+  showPromoText = false,
+}: {
+  showPromoText?: boolean;
+}) => {
   const t = useTranslations("signupMinimal");
   const tHome = useTranslations("homepage");
+  const tWaiting = useTranslations("waitingList");
   const locale = useLocale();
   const isRTL = locale === "ar";
   const { trackEvent } = useMixpanelTracking();
@@ -462,6 +467,18 @@ export const SignUp = () => {
           </div>
         )}
       </div>
+
+      {/* Promo text under button */}
+      {showPromoText && (
+        <div className="mt-3 text-center">
+          <p
+            className="text-base md:text-lg font-bold text-white [&_del]:opacity-80 [&_del]:text-white [&_del]:decoration-2"
+            dangerouslySetInnerHTML={{
+              __html: tWaiting.raw("finalCtaTitle"),
+            }}
+          />
+        </div>
+      )}
 
       {error && (
         <Toast title={error} open={open} setOpen={setOpen} variant="error" />

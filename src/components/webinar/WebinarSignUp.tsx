@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import { Loader2, CheckCircle } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { useSignUp } from "@clerk/clerk-react";
 import * as Sentry from "@sentry/nextjs";
@@ -29,7 +29,6 @@ const isPhoneNumberValid = (value: string) => {
 export const WebinarSignUp = () => {
   const t = useTranslations("signupMinimal");
   const tWebinar = useTranslations("webinar.form");
-  const tHome = useTranslations("homepage");
   const locale = useLocale();
   const isRTL = locale === "ar";
   const { trackEvent } = useMixpanelTracking();
@@ -533,46 +532,6 @@ export const WebinarSignUp = () => {
       {error && (
         <Toast title={error} open={open} setOpen={setOpen} variant="error" />
       )}
-
-      {/* Benefits badges */}
-      <div className="mt-4 flex flex-wrap gap-2 justify-center">
-        {[
-          tHome("freeTrialBadge"),
-          tHome("noCreditCardBadge"),
-          tHome("setupInMinutesBadge"),
-        ].map((benefit, idx) => (
-          <div
-            key={idx}
-            className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-sm"
-          >
-            <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
-            <span className="text-white font-medium">{benefit}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* Social proof banner */}
-      <div className="mt-4 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg px-4 py-3">
-        <div className="flex items-center gap-2 text-sm">
-          <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
-          <span className="text-gray-800 font-medium">
-            {tHome("socialProofTagline")}
-          </span>
-        </div>
-      </div>
-
-      <div
-        className="text-sm text-center text-gray-600 font-bold mt-4"
-        dir={isRTL ? "rtl" : "ltr"}
-      >
-        {t("alreadyCustomer")}{" "}
-        <a
-          href="https://app.getwow.ai/sign-in"
-          className="font-bold text-gray-800 hover:underline"
-        >
-          {t("signInLink")}
-        </a>
-      </div>
     </form>
   );
 };

@@ -45,14 +45,18 @@ export default function WebinarPage() {
           <div
             className={`grid md:grid-cols-2 gap-8 ${isRTL ? "md:grid-flow-dense" : ""}`}
           >
-            {/* Content Column */}
-            <section className={isRTL ? "md:order-2" : ""}>
-              <WebinarContent />
+            {/* Registration Form Column - Shows first on mobile */}
+            <section
+              className={`order-1 ${isRTL ? "md:order-1" : "md:order-2"}`}
+            >
+              <WebinarRegistration locale={locale} />
             </section>
 
-            {/* Registration Form Column */}
-            <section className={isRTL ? "md:order-1" : ""}>
-              <WebinarRegistration locale={locale} />
+            {/* Content Column - Shows second on mobile */}
+            <section
+              className={`order-2 ${isRTL ? "md:order-2" : "md:order-1"}`}
+            >
+              <WebinarContent />
             </section>
           </div>
 
