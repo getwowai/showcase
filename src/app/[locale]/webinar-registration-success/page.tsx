@@ -2,9 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { CheckCircle, Sparkles, Calendar, Clock } from "lucide-react";
+import {
+  CheckCircle,
+  Sparkles,
+  Calendar,
+  Clock,
+  ArrowRight,
+} from "lucide-react";
 import { WowLogo } from "@/components/ui/logo";
 import { useMixpanelTracking } from "@/lib/mixpanel-tracking";
+import { Button } from "@/components/ui/button";
 
 export default function WebinarRegistrationSuccessPage() {
   const t = useTranslations("webinarSuccess");
@@ -89,29 +96,49 @@ export default function WebinarRegistrationSuccessPage() {
     }
   }, [isRTL]);
 
+  const handleProceed = () => {
+    // Track proceed button click
+    trackEvent("webinar_registration_proceed_clicked", {
+      locale,
+      redirect_destination: "app",
+    });
+
+    // Redirect to WOW app with UTM parameters
+    const baseUrl =
+      process.env.NEXT_PUBLIC_WOW_APP_URL ?? "https://app.getwow.ai";
+    const redirectUrl = new URL(baseUrl);
+    redirectUrl.searchParams.set("utm_source", "webinar");
+    redirectUrl.searchParams.set("utm_medium", "signup");
+    redirectUrl.searchParams.set("utm_campaign", "webinar-signup");
+
+    window.location.href = redirectUrl.toString();
+  };
+
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 px-4 py-12"
       dir={isRTL ? "rtl" : "ltr"}
     >
       <div className="max-w-lg w-full">
-        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 space-y-8 relative overflow-hidden">
+        <div className="bg-white rounded-3xl shadow-2xl px-8 md:px-12 pt-6 md:pt-8 pb-8 md:pb-12 space-y-4 relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#aedf1a]/10 rounded-full blur-3xl -z-0" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#86c9e5]/10 rounded-full blur-3xl -z-0" />
 
           {/* Content */}
-          <div className="relative z-10 space-y-6">
+          <div className="relative z-10 space-y-3">
             {/* Logo */}
-            <div className="flex justify-center">
-              <WowLogo size="hero" />
+            <div className="flex justify-center mb-2">
+              <div className="scale-75">
+                <WowLogo size="hero" />
+              </div>
             </div>
 
             {/* Success Icon */}
             <div className="flex justify-center">
               <div className="relative">
-                <div className="absolute inset-0 bg-[#aedf1a] rounded-full blur-xl opacity-30 animate-pulse" />
-                <CheckCircle className="h-24 w-24 text-[#aedf1a] relative" />
+                <div className="absolute inset-0 bg-green-500 rounded-full blur-lg opacity-20 animate-pulse" />
+                <CheckCircle className="h-16 w-16 text-green-500 relative" />
               </div>
             </div>
 
@@ -122,8 +149,9 @@ export default function WebinarRegistrationSuccessPage() {
                 {t("title")}
                 <Sparkles className="h-8 w-8 text-[#aedf1a]" />
               </h1>
-              <p className="text-zinc-600 text-lg md:text-xl">
-                {t("subtitle")}
+              <p className="text-zinc-600 text-lg">{t("subtitle")}</p>
+              <p className="text-zinc-500 text-base">
+                {t("emailConfirmation")}
               </p>
             </div>
 
@@ -145,9 +173,38 @@ export default function WebinarRegistrationSuccessPage() {
               </div>
             )}
 
-            {/* Additional Info */}
-            <div className="pt-2">
-              <p className="text-center text-sm text-zinc-500">{t("check")}</p>
+            {/* Account Ready Section */}
+            <div className="pt-4 space-y-3">
+              <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 text-center flex items-center justify-center gap-2">
+                {t("accountReadyTitle")}
+              </h2>
+              <p className="text-zinc-600 text-base text-center">
+                {t("accountReadyMessage")}
+              </p>
+              <p className="text-zinc-700 text-base text-center font-medium">
+                {t("activateMessage")}
+              </p>
+            </div>
+
+            {/* Proceed Button */}
+            <div className="pt-4">
+              <Button
+                onClick={handleProceed}
+                size="lg"
+                className="w-full h-14 bg-[#aedf1a] text-black font-bold text-lg border-2 border-[#aedf1a] hover:bg-[#9bc917] hover:border-[#9bc917] shadow-lg hover:shadow-xl transform hover:scale-105 transition-all rounded-[12px] flex items-center justify-center gap-2 cursor-pointer"
+              >
+                {isRTL ? (
+                  <>
+                    <ArrowRight className="h-5 w-5 rotate-180" />
+                    {t("proceed") || "أطلق WOW AI"}
+                  </>
+                ) : (
+                  <>
+                    {t("proceed") || "Launch WOW AI"}
+                    <ArrowRight className="h-5 w-5" />
+                  </>
+                )}
+              </Button>
             </div>
           </div>
         </div>
