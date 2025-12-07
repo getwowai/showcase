@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useMemo } from "react";
 import { Loader2, CheckCircle } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
@@ -24,8 +26,9 @@ const isPhoneNumberValid = (value: string) => {
   return /^\d{9,15}$/.test(digits);
 };
 
-export const SignUp = () => {
+export const WebinarSignUp = () => {
   const t = useTranslations("signupMinimal");
+  const tWebinar = useTranslations("webinar.form");
   const tHome = useTranslations("homepage");
   const locale = useLocale();
   const isRTL = locale === "ar";
@@ -44,6 +47,7 @@ export const SignUp = () => {
     phoneNumber: "",
     password: "",
     platform: "",
+    avgOrders: "", // Additional field for webinar
   });
   const [touched, setTouched] = useState({
     email: false,
@@ -52,6 +56,7 @@ export const SignUp = () => {
     phoneNumber: false,
     password: false,
     platform: false,
+    avgOrders: false,
   });
   const [fieldErrors, setFieldErrors] = useState({
     email: "",
@@ -64,17 +69,23 @@ export const SignUp = () => {
   // Memoize button text to prevent flickering
   const buttonText = useMemo(() => {
     if (loading) return t("creatingAccount");
-    return t("signUp");
-  }, [loading, t]);
+    return tWebinar("submit");
+  }, [loading, t, tWebinar]);
 
   useEffect(() => {
-    const { email, name, storeName, phoneNumber, password, platform } =
-      signUpParams;
+    const {
+      email,
+      name,
+      storeName,
+      phoneNumber,
+      password,
+      platform,
+      avgOrders,
+    } = signUpParams;
 
     const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     const isValidPassword = password.length >= 8;
     const hasCountryCode = phoneNumber.trim().startsWith("+");
-    // Validate phone number: must include country code (+) and 9-15 digits
     const isValidPhone = isPhoneNumberValid(phoneNumber);
 
     // Update field errors
@@ -108,6 +119,7 @@ export const SignUp = () => {
     if (!password) missing.push(t("password"));
     else if (!isValidPassword) missing.push(t("password") + " (8+ chars)");
     if (!platform) missing.push(t("choosePlatform"));
+    if (!avgOrders) missing.push(tWebinar("avgOrders"));
     setMissingFields(missing);
 
     if (
@@ -116,13 +128,14 @@ export const SignUp = () => {
       name.trim() &&
       storeName.trim() &&
       isValidPhone &&
-      platform
+      platform &&
+      avgOrders
     ) {
       setIsSignUpDisabled(false);
     } else {
       setIsSignUpDisabled(true);
     }
-  }, [signUpParams, touched, t]);
+  }, [signUpParams, touched, t, tWebinar]);
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -143,6 +156,36 @@ export const SignUp = () => {
     }));
   };
 
+  // Submit to webinar endpoint in the background
+  const submitToWebinarEndpoint = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("name", signUpParams.name);
+      formData.append("email", signUpParams.email);
+      formData.append("phone", normalizePhoneNumber(signUpParams.phoneNumber));
+      formData.append("store_name", signUpParams.storeName);
+      formData.append("platform", signUpParams.platform);
+      formData.append("avg_orders", signUpParams.avgOrders);
+
+      await fetch(
+        "https://signup.getwow.ai/december-webinar-registration44578761",
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
+    } catch (error) {
+      // Log error but don't block the signup flow
+      console.error("Error submitting to webinar endpoint:", error);
+      Sentry.captureException(error, {
+        tags: {
+          component: "WebinarSignUp",
+          action: "webinar_endpoint_submission",
+        },
+      });
+    }
+  };
+
   const handleSignUpClick = async () => {
     if (isLoaded && !signUp) return;
     setLoading(true);
@@ -157,15 +200,13 @@ export const SignUp = () => {
     const countryCodeForTracking = extractCountryCode(normalizedPhoneNumber);
 
     // Track signup attempt
-    // Note: This event is tracked with Mixpanel's auto-generated anonymous distinct_id
-    // The main app will call mixpanel.alias(userId) and mixpanel.identify(userId) after signup
-    // to connect this anonymous profile to the authenticated user
-    trackEvent("signup_landing_attempted", {
+    trackEvent("webinar_signup_attempted", {
       platform: signUpParams.platform,
       locale,
       has_store_name: !!signUpParams.storeName,
       has_phone_number: !!signUpParams.phoneNumber,
       country_code: countryCodeForTracking || undefined,
+      avg_orders: signUpParams.avgOrders,
     });
 
     try {
@@ -177,25 +218,27 @@ export const SignUp = () => {
           storeName: signUpParams.storeName,
           phoneNumber: normalizedPhoneNumber,
           platform: signUpParams.platform,
+          avgOrders: signUpParams.avgOrders,
+          webinarRegistration: true,
         },
       });
 
       if (response?.status === "complete" && response.createdSessionId) {
         // Track successful signup
-        // Note: This event is tracked with Mixpanel's auto-generated anonymous distinct_id
-        // The main app will call mixpanel.alias(userId) and mixpanel.identify(userId) after signup
-        // to connect this anonymous profile to the authenticated user
-        trackEvent("signup_landing_success", {
+        trackEvent("webinar_signup_success", {
           platform: signUpParams.platform,
           locale,
           has_store_name: !!signUpParams.storeName,
           has_phone_number: !!signUpParams.phoneNumber,
           country_code: countryCodeForTracking || undefined,
+          avg_orders: signUpParams.avgOrders,
         });
 
-        // Redirect to signup success page for conversion tracking
-        // Pass locale as query param so the page can detect user's language
-        window.location.href = `/signup-success?locale=${locale}`;
+        // Submit to webinar endpoint in the background (don't await)
+        submitToWebinarEndpoint();
+
+        // Redirect to webinar success page
+        window.location.href = `/${locale}/webinar-registration-success`;
       }
     } catch (err: unknown) {
       // Determine error type
@@ -206,7 +249,7 @@ export const SignUp = () => {
         if (err.message.includes("already signed")) {
           errorType = "user_already_exists";
           // Track failed signup due to existing user
-          trackEvent("signup_landing_failed", {
+          trackEvent("webinar_signup_failed", {
             error_type: errorType,
             error_message: "User already exists",
             platform: signUpParams.platform,
@@ -214,13 +257,17 @@ export const SignUp = () => {
             has_store_name: !!signUpParams.storeName,
             has_phone_number: !!signUpParams.phoneNumber,
             country_code: countryCodeForTracking || undefined,
+            avg_orders: signUpParams.avgOrders,
           });
+
+          // Submit to webinar endpoint even for existing users
+          await submitToWebinarEndpoint();
 
           // User already exists, send to sign-in page with UTM parameters
           const signInUrl = new URL(`${baseUrl}/sign-in`);
-          signInUrl.searchParams.set("utm_source", "showcase");
+          signInUrl.searchParams.set("utm_source", "webinar");
           signInUrl.searchParams.set("utm_medium", "signup");
-          signInUrl.searchParams.set("utm_campaign", "showcase-signup");
+          signInUrl.searchParams.set("utm_campaign", "webinar-signup");
           window.location.href = signInUrl.toString();
           return;
         } else if (err.message.includes("password")) {
@@ -235,7 +282,7 @@ export const SignUp = () => {
       }
 
       // Track failed signup
-      trackEvent("signup_landing_failed", {
+      trackEvent("webinar_signup_failed", {
         error_type: errorType,
         error_message: err instanceof Error ? err.message : "Unknown error",
         platform: signUpParams.platform,
@@ -243,12 +290,13 @@ export const SignUp = () => {
         has_store_name: !!signUpParams.storeName,
         has_phone_number: !!signUpParams.phoneNumber,
         country_code: countryCodeForTracking || undefined,
+        avg_orders: signUpParams.avgOrders,
       });
 
       // Capture error in Sentry with context
       Sentry.captureException(err, {
         tags: {
-          component: "SignUp",
+          component: "WebinarSignUp",
           locale: locale,
         },
         contexts: {
@@ -257,6 +305,7 @@ export const SignUp = () => {
             platform: signUpParams.platform,
             hasStoreName: !!signUpParams.storeName,
             hasPhoneNumber: !!signUpParams.phoneNumber,
+            avgOrders: signUpParams.avgOrders,
           },
         },
       });
@@ -277,7 +326,7 @@ export const SignUp = () => {
         }
       }}
       className="flex flex-col gap-3"
-      aria-label={t("signUp")}
+      aria-label={tWebinar("submit")}
       dir={isRTL ? "rtl" : "ltr"}
     >
       <div className="flex flex-col md:flex-row gap-3">
@@ -402,6 +451,24 @@ export const SignUp = () => {
         </div>
       </div>
 
+      {/* Additional webinar-specific field */}
+      <div className="flex-1">
+        <Select
+          onChange={handleInputChange}
+          name="avgOrders"
+          className="w-full h-14 text-lg"
+          required
+          aria-label={tWebinar("avgOrders")}
+        >
+          <option value="">{tWebinar("avgOrders")} *</option>
+          <option value="less-10">{tWebinar("avgOrdersOptions.less10")}</option>
+          <option value="10-50">
+            {tWebinar("avgOrdersOptions.between10_50")}
+          </option>
+          <option value="more-50">{tWebinar("avgOrdersOptions.more50")}</option>
+        </Select>
+      </div>
+
       <div className="relative">
         <Button
           type="button"
@@ -495,13 +562,13 @@ export const SignUp = () => {
       </div>
 
       <div
-        className="text-sm text-center text-white font-bold mt-4"
+        className="text-sm text-center text-gray-600 font-bold mt-4"
         dir={isRTL ? "rtl" : "ltr"}
       >
         {t("alreadyCustomer")}{" "}
         <a
           href="https://app.getwow.ai/sign-in"
-          className="font-bold text-white hover:underline"
+          className="font-bold text-gray-800 hover:underline"
         >
           {t("signInLink")}
         </a>

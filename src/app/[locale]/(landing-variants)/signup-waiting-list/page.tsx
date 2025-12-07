@@ -70,14 +70,34 @@ export default function SignupWaitingListPage() {
         </div>
       </header>
 
+      {/* Banner Image - Smaller image between header and content on Arabic mobile only */}
+      {isRTL && (
+        <div className="md:hidden bg-white overflow-hidden">
+          <div
+            className="w-full"
+            style={{ height: "auto", maxHeight: "165px" }}
+          >
+            <Image
+              src="/waiting-landing/waiting-banner.jpg"
+              alt=""
+              width={800}
+              height={400}
+              className="w-full h-full object-cover"
+              priority
+              style={{ objectPosition: "center" }}
+            />
+          </div>
+        </div>
+      )}
+
       {/* Hero Section with Signup Form */}
       <section
-        className="py-12 md:py-16 bg-cover bg-center bg-no-repeat relative"
+        className={`py-12 md:py-16 bg-cover bg-center bg-no-repeat relative ${isRTL ? "md:bg-[url(/waiting-landing/waiting-banner.jpg)]" : ""}`}
         style={{
-          backgroundImage: isRTL
-            ? "url(/waiting-landing/waiting-banner.jpg)"
-            : "linear-gradient(to right, rgba(91, 183, 221, 0.95), rgba(91, 183, 221, 0.7))",
-          backgroundColor: isRTL ? "transparent" : "#5BB7DD",
+          backgroundImage: !isRTL
+            ? "linear-gradient(to right, rgba(91, 183, 221, 0.95), rgba(91, 183, 221, 0.7))"
+            : undefined,
+          backgroundColor: "#5BB7DD",
         }}
       >
         {/* Inner wrapper */}
@@ -448,9 +468,10 @@ export default function SignupWaitingListPage() {
             </div>
 
             {/* Offer Headline */}
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
-              {t("finalCtaTitle")}
-            </h2>
+            <h2
+              className="text-3xl md:text-4xl font-bold text-white mb-8"
+              dangerouslySetInnerHTML={{ __html: t.raw("finalCtaTitle") }}
+            />
 
             {/* CTA Button */}
             <a

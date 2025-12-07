@@ -354,7 +354,7 @@
     "enterYourEmail": "Enter your email",
     "name": "Name",
     "storeName": "Store Name",
-    "phoneNumberWithWtsup": "Phone number (with WhatsApp)",
+    "phoneNumberWithWtsup": "Phone number (with WhatsApp on it)",
     "password": "Password",
     "choosePlatform": "Choose the platform",
     "platform_1": "Salla",
@@ -776,7 +776,7 @@
     "benefit3Description": "Accurate recommendations based on your store's real data",
     "testimonialQuote": "It helped me understand my store daily — the difference was clear from the first week",
     "testimonialAttribution": "Saudi Merchant",
-    "finalCtaTitle": "Gift for the first 25 merchants only (instead of 150 SAR/month)",
+    "finalCtaTitle": "Gift for the first 25 merchants only (<del>instead of 150 SAR/month</del>)",
     "footer": "© 2025 WOW AI. All rights reserved"
   },
   "webinar": {
@@ -829,9 +829,12 @@
     }
   },
   "webinarSuccess": {
-    "title": "Successfully Registered!",
-    "subtitle": "Thank you for registering for the webinar",
-    "calendarMessage": "We'll send you the attendance link and a reminder before the webinar",
-    "check": "Check your email for more details"
+    "title": "Thank You for Registering!",
+    "subtitle": "Your webinar registration has been successfully confirmed.",
+    "emailConfirmation": "You'll receive an email with joining details and the webinar schedule.",
+    "accountReadyTitle": "Your WOW AI Account is Ready!",
+    "accountReadyMessage": "Since you registered through the WOW webinar page, your account has been automatically created on the platform.",
+    "activateMessage": "To activate your account and start using the WOW AI assistant in your store",
+    "proceed": "Launch WOW AI"
   }
 }

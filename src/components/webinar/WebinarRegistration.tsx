@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Calendar, Clock } from "lucide-react";
-import { WebinarForm } from "./WebinarForm";
+import { WebinarSignUp } from "./WebinarSignUp";
 
 interface WebinarRegistrationProps {
   locale: string;
@@ -122,7 +122,7 @@ export function WebinarRegistration({ locale }: WebinarRegistrationProps) {
         </div>
       )}
 
-      <WebinarForm locale={locale} />
+      <WebinarSignUp />
 
       {/* Countdown Timer - Only show if webinar is scheduled */}
       {webinarDate && webinarTime && (

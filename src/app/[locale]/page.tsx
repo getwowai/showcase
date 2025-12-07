@@ -703,7 +703,9 @@ export default function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20 pb-8">
+      <section
+        className={`relative overflow-hidden pt-20 pb-8 ${!isRTL ? "bg-gradient-to-br from-gray-50 to-white" : ""}`}
+      >
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -717,73 +719,111 @@ export default function HomePage() {
               </div>
             </div>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-8 md:mb-8 leading-tight px-4"
-            >
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: t("homepage.subtitle").includes("Co-Pilot")
-                    ? t("homepage.subtitle").replace(
-                        /Co-Pilot/g,
-                        '<span class="whitespace-nowrap">Co-Pilot</span>',
-                      )
-                    : t("homepage.subtitle"),
-                }}
-              />
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-xl sm:text-2xl md:text-2xl lg:text-3xl text-gray-600 mb-16 md:mb-16 max-w-4xl mx-auto font-medium leading-relaxed px-4"
-            >
-              {t("homepage.description")}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="w-full px-6 sm:px-8 mb-12"
-            >
-              <div className="mx-auto max-w-3xl">
-                <Image
-                  src="/platforms.png"
-                  width={800}
-                  height={147}
-                  alt={t("homepage.platformsAlt")}
-                  className="w-full h-auto object-contain"
-                  priority
-                  sizes="(min-width: 1024px) 40vw, 85vw"
-                />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.9, duration: 0.5 }}
-              className="mt-10 px-4 w-full"
-            >
-              <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 sm:p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <SparklesIcon className="h-6 w-6 text-[#86c9e5]" />
-                  <h3 className="text-2xl md:text-3xl font-semibold text-gray-800">
-                    {t("homepage.signUpForWowAi")}
-                  </h3>
+            {/* Background image - small between logo and title on Arabic mobile only */}
+            {isRTL && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="w-full px-6 sm:px-8 mb-8 md:hidden"
+              >
+                <div className="mx-auto max-w-sm">
+                  <Image
+                    src="/waiting-landing/waiting-banner.jpg"
+                    width={800}
+                    height={400}
+                    alt=""
+                    className="w-full h-auto object-contain rounded-lg"
+                    priority
+                    sizes="50vw"
+                  />
                 </div>
-                <SignUp />
-                {renderSignupBadges()}
-                <div className="mt-6 -mx-6 sm:-mx-8 flex items-center justify-center gap-3 px-6 py-4 bg-[#86c9e5] text-white font-bold text-base sm:text-lg tracking-tight">
-                  <UsersIcon className="h-6 w-6 sm:h-7 sm:w-7" />
-                  <span>{t("homepage.socialProofTagline")}</span>
-                </div>
+              </motion.div>
+            )}
+
+            {/* Blue background wrapper for title and form on Arabic mobile */}
+            <div className={isRTL ? "md:contents" : "contents"}>
+              <div
+                className={
+                  isRTL
+                    ? "bg-[#86c9e5] -mx-4 px-4 py-8 md:bg-transparent md:p-0"
+                    : ""
+                }
+              >
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                  className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 md:mb-8 leading-tight px-4 ${isRTL ? "text-white md:text-gray-800" : "text-gray-800"}`}
+                >
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: t("homepage.subtitle").includes("Co-Pilot")
+                        ? t("homepage.subtitle").replace(
+                            /Co-Pilot/g,
+                            '<span class="whitespace-nowrap">Co-Pilot</span>',
+                          )
+                        : t("homepage.subtitle"),
+                    }}
+                  />
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.6 }}
+                  className={`text-xl sm:text-2xl md:text-2xl lg:text-3xl mb-8 md:mb-16 max-w-4xl mx-auto font-medium leading-relaxed px-4 ${isRTL ? "text-white md:text-gray-600" : "text-gray-600"}`}
+                >
+                  {t("homepage.description")}
+                </motion.p>
+
+                {/* Platforms image - only shown for English */}
+                {!isRTL && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6, duration: 0.5 }}
+                    className="w-full px-6 sm:px-8 mb-12"
+                  >
+                    <div className="mx-auto max-w-3xl">
+                      <Image
+                        src="/platforms.png"
+                        width={800}
+                        height={147}
+                        alt={t("homepage.platformsAlt")}
+                        className="w-full h-auto object-contain"
+                        priority
+                        sizes="(min-width: 1024px) 40vw, 85vw"
+                      />
+                    </div>
+                  </motion.div>
+                )}
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.9, duration: 0.5 }}
+                  className="mt-10 px-4 w-full"
+                >
+                  <div
+                    className={`max-w-4xl mx-auto backdrop-blur-sm rounded-3xl shadow-2xl p-6 sm:p-8 ${isRTL ? "bg-white md:bg-white/90" : "bg-white/90"}`}
+                  >
+                    <div className="flex items-center gap-3 mb-6">
+                      <SparklesIcon className="h-6 w-6 text-[#86c9e5]" />
+                      <h3 className="text-2xl md:text-3xl font-semibold text-gray-800">
+                        {t("homepage.signUpForWowAi")}
+                      </h3>
+                    </div>
+                    <SignUp />
+                    {renderSignupBadges()}
+                    <div className="mt-6 -mx-6 sm:-mx-8 flex items-center justify-center gap-3 px-6 py-4 bg-[#86c9e5] text-white font-bold text-base sm:text-lg tracking-tight">
+                      <UsersIcon className="h-6 w-6 sm:h-7 sm:w-7" />
+                      <span>{t("homepage.socialProofTagline")}</span>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
 

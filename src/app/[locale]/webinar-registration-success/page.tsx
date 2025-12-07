@@ -2,9 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { CheckCircle, Sparkles, Calendar, Clock } from "lucide-react";
+import {
+  CheckCircle,
+  Sparkles,
+  Calendar,
+  Clock,
+  ArrowRight,
+} from "lucide-react";
 import { WowLogo } from "@/components/ui/logo";
 import { useMixpanelTracking } from "@/lib/mixpanel-tracking";
+import { Button } from "@/components/ui/button";
 
 export default function WebinarRegistrationSuccessPage() {
   const t = useTranslations("webinarSuccess");
@@ -89,6 +96,24 @@ export default function WebinarRegistrationSuccessPage() {
     }
   }, [isRTL]);
 
+  const handleProceed = () => {
+    // Track proceed button click
+    trackEvent("webinar_registration_proceed_clicked", {
+      locale,
+      redirect_destination: "app",
+    });
+
+    // Redirect to WOW app with UTM parameters
+    const baseUrl =
+      process.env.NEXT_PUBLIC_WOW_APP_URL ?? "https://app.getwow.ai";
+    const redirectUrl = new URL(baseUrl);
+    redirectUrl.searchParams.set("utm_source", "webinar");
+    redirectUrl.searchParams.set("utm_medium", "signup");
+    redirectUrl.searchParams.set("utm_campaign", "webinar-signup");
+
+    window.location.href = redirectUrl.toString();
+  };
+
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 px-4 py-12"
@@ -116,14 +141,15 @@ export default function WebinarRegistrationSuccessPage() {
             </div>
 
             {/* Text Content */}
-            <div className="space-y-3 text-center">
+            <div className="space-y-4 text-center">
               <h1 className="text-3xl md:text-4xl font-bold text-zinc-900 flex items-center justify-center gap-2">
                 <Sparkles className="h-8 w-8 text-[#aedf1a]" />
                 {t("title")}
                 <Sparkles className="h-8 w-8 text-[#aedf1a]" />
               </h1>
-              <p className="text-zinc-600 text-lg md:text-xl">
-                {t("subtitle")}
+              <p className="text-zinc-600 text-lg">{t("subtitle")}</p>
+              <p className="text-zinc-500 text-base">
+                {t("emailConfirmation")}
               </p>
             </div>
 
@@ -145,9 +171,38 @@ export default function WebinarRegistrationSuccessPage() {
               </div>
             )}
 
-            {/* Additional Info */}
-            <div className="pt-2">
-              <p className="text-center text-sm text-zinc-500">{t("check")}</p>
+            {/* Account Ready Section */}
+            <div className="pt-4 space-y-3">
+              <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 text-center flex items-center justify-center gap-2">
+                {t("accountReadyTitle")}
+              </h2>
+              <p className="text-zinc-600 text-base text-center">
+                {t("accountReadyMessage")}
+              </p>
+              <p className="text-zinc-700 text-base text-center font-medium">
+                {t("activateMessage")}
+              </p>
+            </div>
+
+            {/* Proceed Button */}
+            <div className="pt-4">
+              <Button
+                onClick={handleProceed}
+                size="lg"
+                className="w-full h-14 bg-[#aedf1a] text-black font-bold text-lg border-2 border-[#aedf1a] hover:bg-[#9bc917] hover:border-[#9bc917] shadow-lg hover:shadow-xl transform hover:scale-105 transition-all rounded-[12px] flex items-center justify-center gap-2 cursor-pointer"
+              >
+                {isRTL ? (
+                  <>
+                    <ArrowRight className="h-5 w-5 rotate-180" />
+                    {t("proceed") || "أطلق WOW AI"}
+                  </>
+                ) : (
+                  <>
+                    {t("proceed") || "Launch WOW AI"}
+                    <ArrowRight className="h-5 w-5" />
+                  </>
+                )}
+              </Button>
             </div>
           </div>
         </div>
