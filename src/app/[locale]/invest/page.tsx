@@ -8,8 +8,10 @@ import { Card } from "@/components/ui/card";
 import {
   PlayCircleIcon,
   MailIcon,
-  GlobeIcon,
-  SmartphoneIcon,
+  UsersIcon,
+  BrainCircuitIcon,
+  TrendingUpIcon,
+  BuildingIcon,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -158,26 +160,26 @@ export default function InvestPage() {
           className="mb-6 max-w-4xl mx-auto space-y-4"
         >
           {/* Company Stats */}
-          <Card className="p-8 bg-white/90 backdrop-blur-sm border-2 border-gray-200/50 shadow-xl">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <Card className="p-6 bg-white/90 backdrop-blur-sm border-2 border-gray-200/50 shadow-xl">
+            <div className="flex flex-col divide-y divide-[#86c9e5]/30">
               {[
-                { label: t("founded"), value: "4 weeks ago" },
-                { label: t("market"), value: t("marketValue") },
-                { label: t("team"), value: t("teamValue") },
-                { label: t("stage"), value: t("stageValue") },
-              ].map((stat, idx) => (
+                { icon: UsersIcon, value: t("foundersValue") },
+                { icon: BrainCircuitIcon, value: t("technologyValue") },
+                { icon: TrendingUpIcon, value: t("marketValue") },
+                { icon: BuildingIcon, value: t("customersValue") },
+              ].map((item, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 1.5 + idx * 0.1, duration: 0.4 }}
-                  className="text-center"
+                  className="py-4 first:pt-0 last:pb-0"
                 >
-                  <div className="text-base sm:text-lg font-bold text-gray-700 mb-2">
-                    {stat.label}
-                  </div>
-                  <div className="text-2xl sm:text-3xl font-black text-[#86c9e5]">
-                    {stat.value}
+                  <div className="flex items-center gap-3">
+                    <item.icon className="h-5 w-5 text-[#86c9e5] flex-shrink-0" />
+                    <p className="text-sm sm:text-base font-medium text-gray-700 leading-relaxed">
+                      {item.value}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -265,44 +267,6 @@ export default function InvestPage() {
               ))}
             </div>
           </Card> */}
-        </motion.div>
-
-        {/* Quick Links Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.7, duration: 0.6 }}
-          className="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto mb-8"
-        >
-          {[
-            {
-              label: t("website"),
-              href: "https://getwow.ai",
-              icon: GlobeIcon,
-              external: true,
-            },
-            {
-              label: t("app"),
-              href: "https://app.getwow.ai",
-              icon: SmartphoneIcon,
-              external: true,
-            },
-          ].map((quickLink, idx) => (
-            <motion.a
-              key={idx}
-              href={quickLink.href}
-              target={quickLink.external ? "_blank" : undefined}
-              rel={quickLink.external ? "noopener noreferrer" : undefined}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-5 py-3 bg-white/80 backdrop-blur-sm rounded-full shadow-md hover:shadow-xl border border-gray-200/50 hover:border-[#86c9e5] transition-all duration-300"
-            >
-              <quickLink.icon className="h-4 w-4 text-[#86c9e5]" />
-              <span className="text-sm font-semibold text-gray-700">
-                {quickLink.label}
-              </span>
-            </motion.a>
-          ))}
         </motion.div>
 
         {/* Footer */}
