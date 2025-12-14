@@ -54,7 +54,7 @@ export default function InvestPage() {
       icon: MailIcon,
       titleKey: "bookCall",
       descKey: "contactDesc",
-      href: "https://calendly.com",
+      href: "https://calendly.com/sherif-getwow/investor-meeting",
       bgColor: "bg-[#86c9e5]",
       badge: "direct",
       external: true,
