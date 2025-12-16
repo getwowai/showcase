@@ -882,7 +882,12 @@
     "retention": "Retention Rate",
     "ordersProcessed": "Monthly Orders",
     "avgGrowth": "Avg Growth",
-    "footer": "© 2025 WOW AI. All rights reserved"
+    "footer": "© 2025 WOW AI. All rights reserved",
+    "connectWithFounders": "Connect with Founders",
+    "sherifMakhlouf": "Sherif Makhlouf",
+    "sherifTitle": "Co-Founder & CEO",
+    "ahmedShadi": "Ahmed Shadi",
+    "ahmedTitle": "Co-Founder & CTO"
   },
   "investMetrics": {
     "title": "Live Performance Metrics",

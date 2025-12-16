@@ -883,7 +883,12 @@
     "retention": "معدل الاحتفاظ",
     "ordersProcessed": "الطلبات الشهرية",
     "avgGrowth": "متوسط النمو",
-    "footer": "© 2025 WOW AI. جميع الحقوق محفوظة"
+    "footer": "© 2025 WOW AI. جميع الحقوق محفوظة",
+    "connectWithFounders": "تواصل مع المؤسسين",
+    "sherifMakhlouf": "شريف مخلوف",
+    "sherifTitle": "المؤسس المشارك والرئيس التنفيذي",
+    "ahmedShadi": "أحمد شادي",
+    "ahmedTitle": "المؤسس المشارك والرئيس التقني"
   },
   "investMetrics": {
     "title": "مؤشرات الأداء المباشرة",

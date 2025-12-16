@@ -13,6 +13,7 @@ import {
   TrendingUpIcon,
   BuildingIcon,
 } from "lucide-react";
+import { Linkedin, MessageCircle } from "lucide-react";
 import Image from "next/image";
 
 export default function InvestPage() {
@@ -240,6 +241,80 @@ export default function InvestPage() {
               </motion.a>
             ))}
           </div>
+
+          {/* Connect with Founders */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.1, duration: 0.6 }}
+          >
+            <Card className="p-6 bg-white/90 backdrop-blur-sm border-2 border-gray-200/50 shadow-xl">
+              <h3 className="text-lg font-bold text-gray-900 mb-4 text-center">
+                {t("connectWithFounders")}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Sherif Makhlouf */}
+                <div className="flex flex-col items-center space-y-3">
+                  <div className="text-center space-y-1">
+                    <p className="font-bold text-gray-900 text-lg">
+                      {t("sherifMakhlouf")}
+                    </p>
+                    <p className="text-sm text-gray-600">{t("sherifTitle")}</p>
+                  </div>
+                  <div className="flex gap-3">
+                    <a
+                      href="https://www.linkedin.com/in/sherifmakhlouf/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 bg-[#0077b5] hover:bg-[#006399] text-white rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+                    >
+                      <Linkedin className="h-4 w-4" />
+                      <span className="text-sm font-medium">LinkedIn</span>
+                    </a>
+                    <a
+                      href="https://wa.me/201000780302"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+                    >
+                      <MessageCircle className="h-4 w-4" />
+                      <span className="text-sm font-medium">WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Ahmed Shadi */}
+                <div className="flex flex-col items-center space-y-3">
+                  <div className="text-center space-y-1">
+                    <p className="font-bold text-gray-900 text-lg">
+                      {t("ahmedShadi")}
+                    </p>
+                    <p className="text-sm text-gray-600">{t("ahmedTitle")}</p>
+                  </div>
+                  <div className="flex gap-3">
+                    <a
+                      href="https://www.linkedin.com/in/edshadi/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 bg-[#0077b5] hover:bg-[#006399] text-white rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+                    >
+                      <Linkedin className="h-4 w-4" />
+                      <span className="text-sm font-medium">LinkedIn</span>
+                    </a>
+                    <a
+                      href="https://wa.me/201098037226"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+                    >
+                      <MessageCircle className="h-4 w-4" />
+                      <span className="text-sm font-medium">WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
 
           {/* Market Impact Stats */}
           {/* <Card className="p-8 bg-white/90 backdrop-blur-sm border-2 border-gray-200/50 shadow-xl">
