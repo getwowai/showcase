@@ -124,7 +124,9 @@
     "previous": "Previous",
     "pause": "Pause",
     "play": "Play",
-    "step": "Step {current} of {total}",
+    "step": {
+      "of": "of"
+    },
     "connectStore": {
       "title": "Connect Your Store",
       "description": "Simply connect your Salla store in seconds",
@@ -205,9 +207,6 @@
       "startFreeTrial": "Start Free Trial",
       "login": "Login",
       "exitDemo": "Exit Demo"
-    },
-    "step": {
-      "of": "of"
     }
   },
   "demo": {
@@ -293,7 +292,7 @@
       "winterFlashSale": "Winter Flash Sale",
       "live": "live",
       "conversion": "+23% conversion",
-      "revenue": "$3,240",
+      "revenue": "Revenue",
       "remaining": "2d 14h",
       "bundleBoost": "Bundle Boost",
       "scheduled": "scheduled",
@@ -301,7 +300,6 @@
       "target": "$2,100",
       "starts": "Tomorrow 9AM",
       "performance": "Performance",
-      "revenue": "Revenue",
       "aiGenerated": "3 campaigns created automatically this week"
     }
   },
@@ -917,5 +915,44 @@
     "highlight4": "Proven Scalability",
     "highlight4Value": "Processing 45K+ orders monthly across 250+ stores",
     "lastUpdated": "Last updated: December 2025"
+  },
+  "aiNative": {
+    "metaTitle": "WOW AI — AI-Native Technology Company",
+    "heroBadge": "AI-Native Technology Company",
+    "heroTitle": "We build AI-Native apps & solutions",
+    "heroSubtitle": "WOW AI is a technology company that designs and ships AI-native products — from our flagship WOW Webinar to custom AI systems that turn complex data into clear decisions for businesses.",
+    "heroCtaPrimary": "Explore WOW Webinar",
+    "heroCtaSecondary": "Talk to the founders",
+    "capabilitiesTitle": "What we build",
+    "capabilitiesSubtitle": "AI at the core of every product — designed AI-native, not bolted on.",
+    "cap1Title": "AI-Native Applications",
+    "cap1Desc": "Products designed around AI from day one — agentic, autonomous, and built to get smarter with every interaction.",
+    "cap2Title": "Big Data & Enterprise AI",
+    "cap2Desc": "AI systems that work across massive and enterprise datasets — surfacing insights, powering analytics, and driving automated decisions at scale.",
+    "cap3Title": "Agentic Automation",
+    "cap3Desc": "Orchestrated AI agents that plan, reason, and act across complex business workflows — automating the work, not just assisting it.",
+    "cap4Title": "Custom AI Solutions",
+    "cap4Desc": "We partner with companies to build and deploy production AI across their most important problems.",
+    "flagshipLabel": "Flagship Product",
+    "flagshipName": "WOW Webinar",
+    "flagshipTagline": "AI-powered webinars that run themselves",
+    "flagshipDesc": "Our flagship product — an AI-native platform that plans, produces, and scales webinars end to end. It's where our technology meets a real, fast-growing market.",
+    "flagshipCta": "Visit wow-webinar.com",
+    "productsTitle": "Products & technology",
+    "productsSubtitle": "A growing portfolio of AI-native products and the platform that powers them.",
+    "prod1Name": "WOW Query",
+    "prod1Desc": "AI-driven analytics over massive and enterprise datasets — turning raw data into insights and automated decisions in seconds.",
+    "prod2Name": "WOW Commerce AI",
+    "prod2Desc": "Our multi-agent co-pilot for Salla & Shopify merchants — insights, automation, and growth on autopilot.",
+    "foundersTitle": "Meet the founders",
+    "backedBy": "Backed by",
+    "ctaTitle": "Let's build the AI-native future together",
+    "ctaSubtitle": "Whether you're an investor or a partner, we'd love to show you what we're building.",
+    "ctaButton": "Book a call with the founders",
+    "footer": "© 2025 WOW AI. All rights reserved",
+    "sherifName": "Sherif Makhlouf",
+    "sherifTitle": "Co-Founder & CEO",
+    "ahmedName": "Ahmed Shadi",
+    "ahmedTitle": "Co-Founder & CTO"
   }
 }

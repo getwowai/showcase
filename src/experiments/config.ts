@@ -38,6 +38,7 @@ export const EXPERIMENTS: Record<string, ExperimentConfig> = {
       "minimal-plus", // /en/signup-minimal-plus - Minimal with additional features
       "control", // Main landing page (/en or /ar) - original full landing
       "social-proof", // /en/signup-social-proof - Heavy trust signals
+      "ai-native-products", // /en/ai-native-products - Company positioning: AI-native tech co, WOW Webinar flagship
     ],
     primaryMetric: "app_installed",
     secondaryMetrics: [

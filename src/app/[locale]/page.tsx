@@ -31,6 +31,7 @@ import { getVariantConfig, getVariantDebugInfo } from "@/lib/variant-config";
 import SignupMinimalPage from "./(landing-variants)/signup-minimal/page";
 import SignupMinimalPlusPage from "./(landing-variants)/signup-minimal-plus/page";
 import SignupWaitingListPage from "./(landing-variants)/signup-waiting-list/page";
+import AiNativeProductsPage from "./(landing-variants)/ai-native-products/page";
 
 export default function HomePage() {
   const [currentFeature, setCurrentFeature] = useState(0);
@@ -363,6 +364,12 @@ export default function HomePage() {
   if (variantConfig.variant === "waiting-list") {
     console.log("Rendering waiting-list signup page");
     return <SignupWaitingListPage />;
+  }
+
+  // If variant is 'ai-native-products', render the AI-native company page
+  if (variantConfig.variant === "ai-native-products") {
+    console.log("Rendering ai-native-products page");
+    return <AiNativeProductsPage />;
   }
 
   // For 'control' or any other variant, show the original landing page
