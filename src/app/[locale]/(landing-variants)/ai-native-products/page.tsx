@@ -12,6 +12,7 @@ import {
   LayersIcon,
   ArrowRightIcon,
   PlayCircleIcon,
+  Code2Icon,
   Linkedin,
   MessageCircle,
 } from "lucide-react";
@@ -25,6 +26,7 @@ import { useTracking } from "@/experiments/tracking";
 import { getMixpanel } from "@/lib/mixpanel";
 
 const WEBINAR_URL = "https://wow-webinar.com";
+const RUNSTREAM_URL = "https://runstream.ai";
 const INVESTOR_CALL_URL = "https://calendly.com/sherif-getwow/investor-meeting";
 
 /**
@@ -82,6 +84,25 @@ export default function AiNativeProductsPage() {
       title: t("cap4Title"),
       desc: t("cap4Desc"),
       color: "bg-[#86c9e5]",
+    },
+  ];
+
+  const flagships = [
+    {
+      icon: PlayCircleIcon,
+      name: t("flagshipName"),
+      tagline: t("flagshipTagline"),
+      desc: t("flagshipDesc"),
+      cta: t("flagshipCta"),
+      href: WEBINAR_URL,
+    },
+    {
+      icon: Code2Icon,
+      name: t("runstreamName"),
+      tagline: t("runstreamTagline"),
+      desc: t("runstreamDesc"),
+      cta: t("runstreamCta"),
+      href: RUNSTREAM_URL,
     },
   ];
 
@@ -192,9 +213,7 @@ export default function AiNativeProductsPage() {
             className="flex flex-col sm:flex-row items-center gap-4"
           >
             <a
-              href={WEBINAR_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#flagships"
               onClick={() => trackCTAClick(t("heroCtaPrimary"), "hero")}
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#86c9e5] hover:bg-[#6fb9da] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
             >
@@ -281,52 +300,66 @@ export default function AiNativeProductsPage() {
           </div>
         </section>
 
-        {/* Flagship: WOW Webinar */}
-        <section className="py-12">
+        {/* Flagship products: WOW Webinar + Runstream */}
+        <section id="flagships" className="py-12 scroll-mt-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="text-center mb-12"
           >
-            <Card className="overflow-hidden border-2 border-[#86c9e5]/40 shadow-2xl bg-gradient-to-br from-[#4a5568] via-[#3c4656] to-[#2d3543] text-white">
-              <div className="p-8 sm:p-12">
-                <Badge className="mb-5 bg-[#aedf1a] text-[#2d3543] hover:bg-[#aedf1a] px-4 py-1.5 text-sm font-semibold">
-                  {t("flagshipLabel")}
-                </Badge>
-                <div className="flex flex-col lg:flex-row lg:items-center gap-8">
-                  <div className="flex-1">
-                    <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-                      {t("flagshipName")}
-                    </h2>
-                    <p className="text-xl text-[#86c9e5] font-medium mb-4">
-                      {t("flagshipTagline")}
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              {t("flagshipsTitle")}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              {t("flagshipsSubtitle")}
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {flagships.map((flagship, idx) => (
+              <motion.div
+                key={flagship.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.6 }}
+              >
+                <Card className="h-full overflow-hidden border-2 border-[#86c9e5]/40 shadow-2xl bg-gradient-to-br from-[#4a5568] via-[#3c4656] to-[#2d3543] text-white">
+                  <div className="p-8 sm:p-10 flex flex-col h-full">
+                    <div className="flex items-center justify-between mb-5">
+                      <Badge className="bg-[#aedf1a] text-[#2d3543] hover:bg-[#aedf1a] px-4 py-1.5 text-sm font-semibold">
+                        {t("flagshipLabel")}
+                      </Badge>
+                      <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/15 p-3">
+                        <flagship.icon className="h-7 w-7 text-[#86c9e5]" />
+                      </div>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-bold mb-3">
+                      {flagship.name}
+                    </h3>
+                    <p className="text-lg text-[#86c9e5] font-medium mb-4">
+                      {flagship.tagline}
                     </p>
-                    <p className="text-gray-200 leading-relaxed mb-7 max-w-xl">
-                      {t("flagshipDesc")}
+                    <p className="text-gray-200 leading-relaxed mb-7">
+                      {flagship.desc}
                     </p>
                     <a
-                      href={WEBINAR_URL}
+                      href={flagship.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() =>
-                        trackCTAClick(t("flagshipCta"), "flagship")
-                      }
-                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#86c9e5] hover:bg-[#6fb9da] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                      onClick={() => trackCTAClick(flagship.cta, "flagship")}
+                      className="mt-auto inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#86c9e5] hover:bg-[#6fb9da] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 self-start"
                     >
-                      <PlayCircleIcon className="h-5 w-5" />
-                      {t("flagshipCta")}
+                      {flagship.cta}
+                      <ArrowRightIcon className="h-4 w-4 rtl:rotate-180" />
                     </a>
                   </div>
-                  <div className="lg:w-72 flex-shrink-0">
-                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/15 p-8 flex items-center justify-center">
-                      <PlayCircleIcon className="h-24 w-24 text-[#86c9e5]" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Card>
-          </motion.div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </section>
 
         {/* Products & technology */}

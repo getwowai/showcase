@@ -920,8 +920,8 @@
     "metaTitle": "WOW AI — AI-Native Technology Company",
     "heroBadge": "AI-Native Technology Company",
     "heroTitle": "We build AI-Native apps & solutions",
-    "heroSubtitle": "WOW AI is a technology company that designs and ships AI-native products — from our flagship WOW Webinar to custom AI systems that turn complex data into clear decisions for businesses.",
-    "heroCtaPrimary": "Explore WOW Webinar",
+    "heroSubtitle": "WOW AI is a technology company that designs and ships AI-native products — from flagship products like WOW Webinar and Runstream to custom AI systems that turn complex data into clear decisions for businesses.",
+    "heroCtaPrimary": "Explore our products",
     "heroCtaSecondary": "Talk to the founders",
     "capabilitiesTitle": "What we build",
     "capabilitiesSubtitle": "AI at the core of every product — designed AI-native, not bolted on.",
@@ -953,6 +953,12 @@
     "sherifName": "Sherif Makhlouf",
     "sherifTitle": "Co-Founder & CEO",
     "ahmedName": "Ahmed Shadi",
-    "ahmedTitle": "Co-Founder & CTO"
+    "ahmedTitle": "Co-Founder & CTO",
+    "flagshipsTitle": "Our flagship products",
+    "flagshipsSubtitle": "Two AI-native products, built and owned by WOW AI — proof of what we ship.",
+    "runstreamName": "Runstream",
+    "runstreamTagline": "We build your software. You watch it ship.",
+    "runstreamDesc": "Our AI-native software platform — AI agents build in parallel streams under senior CTO oversight, shipping production software in days, not months. Agency quality, AI speed, software economics.",
+    "runstreamCta": "Visit runstream.ai"
   }
 }
