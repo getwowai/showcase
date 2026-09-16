@@ -960,5 +960,15 @@
     "runstreamTagline": "We build your software. You watch it ship.",
     "runstreamDesc": "Our AI-native software platform — AI agents build in parallel streams under senior CTO oversight, shipping production software in days, not months. Agency quality, AI speed, software economics.",
     "runstreamCta": "Visit runstream.ai"
+  },
+  "brandHandoff": {
+    "metaTitle": "WOW — Lead generation systems for B2B",
+    "metaDescription": "WOW builds lead generation systems for B2B companies. Our flagship product is WOW Webinar — done-for-you webinars that produce qualified leads.",
+    "statement": "We build lead generation systems for B2B companies.",
+    "flagshipLead": "Our flagship is",
+    "flagshipName": "WOW Webinar",
+    "flagshipDesc": "Done-for-you webinars that produce qualified leads.",
+    "cta": "Visit WOW Webinar",
+    "backedBy": "Backed by"
   }
 }
