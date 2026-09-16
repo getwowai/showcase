@@ -18,7 +18,6 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useTracking } from "@/experiments/tracking";
 
 const WEBINAR_URL = "https://wow-webinar.com";
-const RUNSTREAM_URL = "https://runstream.ai";
 const FUND_URL = "https://500.co/";
 const CONTACT_EMAIL = "hello@getwow.ai";
 
@@ -144,14 +143,58 @@ export default function BrandHandoffPage() {
           </motion.p>
         </section>
 
-        {/* Backing — deliberately a block of its own, not a footer line. */}
+        {/* Flagship + its proof, deliberately one card: the numbers belong to
+            WOW Webinar, so splitting them into a separate band made the reader
+            join them up themselves. */}
         <motion.section
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
+          className="pb-10"
+        >
+          <div className="rounded-3xl bg-gray-900 p-8 sm:p-12 shadow-2xl">
+            <div className="text-center">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#aedf1a]">
+                {t("flagshipLabel")}
+              </span>
+              <h2 className="mt-3 text-4xl sm:text-5xl font-bold text-white">
+                {t("flagshipName")}
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-gray-300">
+                {t("flagshipDesc")}
+              </p>
+              <a
+                href={WEBINAR_URL}
+                onClick={() => track("hero_cta_clicked", WEBINAR_URL)}
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-gray-900 transition-colors hover:bg-gray-100"
+              >
+                {t("flagshipCta")}
+                <Arrow className="h-5 w-5" aria-hidden="true" />
+              </a>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-8 border-t border-white/10 pt-8 sm:grid-cols-3 sm:gap-4">
+              {stats.map((s) => (
+                <div key={s.label} className="text-center">
+                  <div className="text-3xl sm:text-4xl font-bold text-white">
+                    {s.value}
+                  </div>
+                  <div className="mt-1.5 text-sm text-gray-400">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Backing — under the flagship, and smaller: it supports the proof
+            rather than competing with it. */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.55, duration: 0.6 }}
           className="pb-12 flex flex-col items-center"
         >
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
             {t("backedBy")}
           </p>
           <a
@@ -159,88 +202,16 @@ export default function BrandHandoffPage() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => track("backer_clicked", FUND_URL)}
-            className="rounded-3xl border border-gray-200/60 bg-white/85 px-10 py-7 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-2xl sm:px-16 sm:py-9"
+            className="rounded-2xl border border-gray-200/60 bg-white/85 px-7 py-4 shadow-sm backdrop-blur-sm transition-shadow duration-300 hover:shadow-md"
           >
             <Image
               src="/500_Global_Logo.svg"
               alt="500 Global"
-              width={320}
-              height={110}
-              priority
-              className="h-14 w-auto sm:h-20"
+              width={200}
+              height={68}
+              className="h-8 w-auto sm:h-10"
             />
           </a>
-        </motion.section>
-
-        {/* Proof — the flagship's numbers, which are the company's credibility. */}
-        <motion.section
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="pb-14"
-        >
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                className="rounded-2xl border border-gray-200/60 bg-white/70 px-6 py-7 text-center backdrop-blur-sm"
-              >
-                <div className="text-3xl sm:text-4xl font-bold text-gray-900">
-                  {s.value}
-                </div>
-                <div className="mt-2 text-sm text-gray-600">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* Products */}
-        <motion.section
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="pb-14 grid grid-cols-1 gap-5 md:grid-cols-5"
-        >
-          {/* Flagship gets the weight: dark card, three of five columns. */}
-          <div className="md:col-span-3 rounded-3xl bg-gray-900 p-8 sm:p-10 text-start shadow-xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#aedf1a]">
-              {t("flagshipLabel")}
-            </span>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white">
-              {t("flagshipName")}
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-gray-300">
-              {t("flagshipDesc")}
-            </p>
-            <a
-              href={WEBINAR_URL}
-              onClick={() => track("hero_cta_clicked", WEBINAR_URL)}
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-base font-semibold text-gray-900 transition-colors hover:bg-gray-100"
-            >
-              {t("flagshipCta")}
-              <Arrow className="h-5 w-5" aria-hidden="true" />
-            </a>
-          </div>
-
-          <div className="md:col-span-2 rounded-3xl border border-gray-200/60 bg-white/80 p-8 text-start shadow-sm backdrop-blur-sm">
-            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
-              {t("secondLabel")}
-            </span>
-            <h2 className="mt-3 text-2xl font-bold text-gray-900">
-              {t("secondName")}
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-gray-600">
-              {t("secondDesc")}
-            </p>
-            <a
-              href={RUNSTREAM_URL}
-              onClick={() => track("secondary_product_clicked", RUNSTREAM_URL)}
-              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-gray-900 transition-colors hover:text-gray-600"
-            >
-              {t("secondCta")}
-              <Arrow className="h-4 w-4" aria-hidden="true" />
-            </a>
-          </div>
         </motion.section>
 
         {/* Footer row */}
