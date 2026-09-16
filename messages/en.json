@@ -962,13 +962,27 @@
     "runstreamCta": "Visit runstream.ai"
   },
   "brandHandoff": {
-    "metaTitle": "WOW — Lead generation systems for B2B",
-    "metaDescription": "WOW builds lead generation systems for B2B companies. Our flagship product is WOW Webinar — done-for-you webinars that produce qualified leads.",
-    "statement": "We build lead generation systems for B2B companies.",
-    "flagshipLead": "Our flagship is",
+    "metaTitle": "WOW — AI-native lead generation for B2B",
+    "metaDescription": "WOW is an AI-native technology company building lead generation systems for B2B. Our flagship, WOW Webinar, has run 1,500+ webinars and captured 89k+ qualified leads.",
+    "badge": "AI-Native Technology Company",
+    "statement": "We build the systems that fill B2B pipelines.",
+    "subtitle": "WOW is an AI-native technology company. We design products where AI does the work — not a chatbot bolted onto something older.",
+    "backedBy": "Backed by",
+    "stat1Value": "1,500+",
+    "stat1Label": "Webinars run",
+    "stat2Value": "89k+",
+    "stat2Label": "Qualified leads captured",
+    "stat3Value": "78%",
+    "stat3Label": "Lower cost per attendee",
+    "flagshipLabel": "Flagship",
     "flagshipName": "WOW Webinar",
-    "flagshipDesc": "Done-for-you webinars that produce qualified leads.",
-    "cta": "Visit WOW Webinar",
-    "backedBy": "Backed by"
+    "flagshipDesc": "Done-for-you webinars that produce qualified leads — built, filled and followed up end to end.",
+    "flagshipCta": "Visit WOW Webinar",
+    "secondLabel": "Also ours",
+    "secondName": "Runstream",
+    "secondDesc": "AI-narrated project delivery — the system our own team ships on.",
+    "secondCta": "Visit Runstream",
+    "investCta": "For investors",
+    "contactCta": "Talk to us"
   }
 }
