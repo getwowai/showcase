@@ -13,7 +13,8 @@ export type LandingVariant =
   | "control"
   | "social-proof"
   | "waiting-list"
-  | "ai-native-products";
+  | "ai-native-products"
+  | "brand-handoff";
 
 export interface VariantConfig {
   /** The variant to show on the main landing page */

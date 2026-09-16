@@ -1,0 +1,232 @@
+"use client";
+
+import { useEffect } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { useTranslations, useLocale } from "next-intl";
+import { ArrowRightIcon, ArrowLeftIcon, SparklesIcon } from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
+import { WowLogo } from "@/components/ui/logo";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useTracking } from "@/experiments/tracking";
+
+const WEBINAR_URL = "https://wow-webinar.com";
+const FUND_URL = "https://500.co/";
+const CONTACT_EMAIL = "hello@getwow.ai";
+
+/**
+ * Brand Handoff Variant
+ *
+ * Answers "what is getwow.ai?" for anyone arriving from a business card, an
+ * @getwow.ai email, or a search for the company name — while the business
+ * itself runs on wow-webinar.com.
+ *
+ * It exists because getwow.ai is primarily an identity domain rather than a
+ * website: it carries the company's Google Workspace mail and is the SendGrid
+ * sending domain for hello@getwow.ai. A redirect would retire the name and
+ * leave that mismatch permanently unexplained, so the page states the
+ * relationship instead.
+ *
+ * Positioned as a company with proof rather than a holding page: the flagship
+ * and its three headline numbers are one card, because those numbers are WOW
+ * Webinar's and reading them apart from it made the visitor do the joining up.
+ * The 500 Global backing sits under that card and smaller — it supports the
+ * proof rather than outranking the product.
+ *
+ * Distinct from the ai-native-products variant, which is a full investor
+ * narrative with capabilities, founders and a closing CTA. This one is a single
+ * scroll: who we are, the proof, where to go next.
+ *
+ * Bilingual via next-intl and RTL-aware — directional arrows swap with the
+ * locale rather than pointing backwards in Arabic, and logical properties
+ * (`start`/`end`) are used over left/right throughout.
+ *
+ * Registered in src/lib/variant-config.ts and rendered from
+ * src/app/[locale]/page.tsx when the resolved variant is "brand-handoff".
+ * Route-scoped metadata lives in ./layout.tsx.
+ */
+export default function BrandHandoffPage() {
+  const t = useTranslations("brandHandoff");
+  const locale = useLocale();
+  const isRTL = locale === "ar";
+  const { trackEvent } = useTracking();
+
+  useEffect(() => {
+    trackEvent("variant_viewed", { variant: "brand-handoff", locale });
+  }, [trackEvent, locale]);
+
+  // Directional: has to follow reading order, not sit at a fixed side.
+  const Arrow = isRTL ? ArrowLeftIcon : ArrowRightIcon;
+
+  const stats = [
+    { value: t("stat1Value"), label: t("stat1Label") },
+    { value: t("stat2Value"), label: t("stat2Label") },
+    { value: t("stat3Value"), label: t("stat3Label") },
+  ];
+
+  const track = (event: string, destination: string) =>
+    trackEvent(event, { variant: "brand-handoff", destination });
+
+  return (
+    <div
+      dir={isRTL ? "rtl" : "ltr"}
+      className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 relative overflow-hidden"
+    >
+      {/* Ambient accents, matching the ai-native variant's treatment. */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.25, 0.45, 0.25] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-40 -start-40 w-96 h-96 bg-[#86c9e5]/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 2,
+          }}
+          className="absolute -bottom-40 -end-40 w-[28rem] h-[28rem] bg-[#aedf1a]/20 rounded-full blur-3xl"
+        />
+      </div>
+
+      <div className="fixed top-4 end-4 z-50">
+        <LanguageSwitcher />
+      </div>
+
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-5 sm:px-8">
+        {/* Hero */}
+        <section className="pt-16 pb-10 flex flex-col items-center text-center">
+          <motion.div
+            initial={{ opacity: 0, y: -14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-8 scale-[1.5] sm:scale-[1.9] drop-shadow-xl"
+          >
+            <WowLogo size="header" />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+          >
+            <Badge className="mb-6 bg-white/80 text-[#4a5568] border border-[#86c9e5]/40 hover:bg-white px-5 py-2 text-sm font-semibold shadow-sm">
+              <SparklesIcon className="h-4 w-4 me-2 text-[#86c9e5]" />
+              {t("badge")}
+            </Badge>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="max-w-3xl text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-gray-900"
+          >
+            {t("statement")}
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="mt-6 max-w-2xl text-lg sm:text-xl leading-relaxed text-gray-600"
+          >
+            {t("subtitle")}
+          </motion.p>
+        </section>
+
+        {/* Flagship + its proof, deliberately one card: the numbers belong to
+            WOW Webinar, so splitting them into a separate band made the reader
+            join them up themselves. */}
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="pb-10"
+        >
+          <div className="rounded-3xl bg-gray-900 p-8 sm:p-12 shadow-2xl">
+            <div className="text-center">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#aedf1a]">
+                {t("flagshipLabel")}
+              </span>
+              <h2 className="mt-3 text-4xl sm:text-5xl font-bold text-white">
+                {t("flagshipName")}
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-gray-300">
+                {t("flagshipDesc")}
+              </p>
+              <a
+                href={WEBINAR_URL}
+                onClick={() => track("hero_cta_clicked", WEBINAR_URL)}
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-gray-900 transition-colors hover:bg-gray-100"
+              >
+                {t("flagshipCta")}
+                <Arrow className="h-5 w-5" aria-hidden="true" />
+              </a>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-8 border-t border-white/10 pt-8 sm:grid-cols-3 sm:gap-4">
+              {stats.map((s) => (
+                <div key={s.label} className="text-center">
+                  <div className="text-3xl sm:text-4xl font-bold text-white">
+                    {s.value}
+                  </div>
+                  <div className="mt-1.5 text-sm text-gray-400">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Backing — under the flagship, and smaller: it supports the proof
+            rather than competing with it. */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.55, duration: 0.6 }}
+          className="pb-12 flex flex-col items-center"
+        >
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
+            {t("backedBy")}
+          </p>
+          <a
+            href={FUND_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => track("backer_clicked", FUND_URL)}
+            className="rounded-2xl border border-gray-200/60 bg-white/85 px-7 py-4 shadow-sm backdrop-blur-sm transition-shadow duration-300 hover:shadow-md"
+          >
+            <Image
+              src="/500_Global_Logo.svg"
+              alt="500 Global"
+              width={200}
+              height={68}
+              className="h-8 w-auto sm:h-10"
+            />
+          </a>
+        </motion.section>
+
+        {/* Footer row */}
+        <motion.footer
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.6 }}
+          className="pb-12"
+        >
+          <div className="flex items-center justify-center border-t border-gray-200 pt-7 text-sm">
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              onClick={() => track("contact_clicked", CONTACT_EMAIL)}
+              className="text-gray-500 transition-colors hover:text-gray-900"
+            >
+              {CONTACT_EMAIL}
+            </a>
+          </div>
+        </motion.footer>
+      </div>
+    </div>
+  );
+}

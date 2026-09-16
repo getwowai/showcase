@@ -32,6 +32,7 @@ import SignupMinimalPage from "./(landing-variants)/signup-minimal/page";
 import SignupMinimalPlusPage from "./(landing-variants)/signup-minimal-plus/page";
 import SignupWaitingListPage from "./(landing-variants)/signup-waiting-list/page";
 import AiNativeProductsPage from "./(landing-variants)/ai-native-products/page";
+import BrandHandoffPage from "./(landing-variants)/brand-handoff/page";
 
 export default function HomePage() {
   const [currentFeature, setCurrentFeature] = useState(0);
@@ -370,6 +371,12 @@ export default function HomePage() {
   if (variantConfig.variant === "ai-native-products") {
     console.log("Rendering ai-native-products page");
     return <AiNativeProductsPage />;
+  }
+
+  // If variant is 'brand-handoff', render the one-screen company statement
+  if (variantConfig.variant === "brand-handoff") {
+    console.log("Rendering brand-handoff page");
+    return <BrandHandoffPage />;
   }
 
   // For 'control' or any other variant, show the original landing page
