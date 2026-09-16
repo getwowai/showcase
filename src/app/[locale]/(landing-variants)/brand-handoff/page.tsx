@@ -2,15 +2,9 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
-import {
-  ArrowRightIcon,
-  ArrowLeftIcon,
-  SparklesIcon,
-  TrendingUpIcon,
-} from "lucide-react";
+import { ArrowRightIcon, ArrowLeftIcon, SparklesIcon } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { WowLogo } from "@/components/ui/logo";
@@ -34,10 +28,11 @@ const CONTACT_EMAIL = "hello@getwow.ai";
  * leave that mismatch permanently unexplained, so the page states the
  * relationship instead.
  *
- * Positioned as a company with proof rather than a holding page: the 500 Global
- * backing is given its own block rather than a footer line, the three headline
- * numbers come from WOW Webinar (the flagship earns the company's credibility),
- * and both shipped products are named. Investors get their own route.
+ * Positioned as a company with proof rather than a holding page: the flagship
+ * and its three headline numbers are one card, because those numbers are WOW
+ * Webinar's and reading them apart from it made the visitor do the joining up.
+ * The 500 Global backing sits under that card and smaller — it supports the
+ * proof rather than outranking the product.
  *
  * Distinct from the ai-native-products variant, which is a full investor
  * narrative with capabilities, founders and a closing CTA. This one is a single
@@ -221,18 +216,7 @@ export default function BrandHandoffPage() {
           transition={{ delay: 0.7, duration: 0.6 }}
           className="pb-12"
         >
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 border-t border-gray-200 pt-7 text-sm">
-            <Link
-              href={`/${locale}/invest`}
-              onClick={() => track("invest_clicked", `/${locale}/invest`)}
-              className="inline-flex items-center gap-1.5 font-semibold text-gray-900 transition-colors hover:text-gray-600"
-            >
-              <TrendingUpIcon className="h-4 w-4" aria-hidden="true" />
-              {t("investCta")}
-            </Link>
-            <span className="text-gray-300" aria-hidden="true">
-              |
-            </span>
+          <div className="flex items-center justify-center border-t border-gray-200 pt-7 text-sm">
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               onClick={() => track("contact_clicked", CONTACT_EMAIL)}
