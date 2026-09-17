@@ -4,7 +4,13 @@
  * This utility handles variant selection with fallback priority:
  * 1. Environment variable override (for testing/development)
  * 2. Mixpanel feature flag (for production experiments)
- * 3. Default fallback
+ * 3. Default fallback ('brand-handoff')
+ *
+ * The default is 'brand-handoff': getwow.ai is the company's identity domain —
+ * it carries Google Workspace mail and is the SendGrid sending domain for
+ * hello@getwow.ai — so the page a cold visitor should land on is the one that
+ * says what WOW AI is and where WOW Webinar lives. 'control' is the older
+ * e-commerce Co-Pilot pitch and no longer describes the business.
  */
 
 export type LandingVariant =
@@ -15,6 +21,9 @@ export type LandingVariant =
   | "waiting-list"
   | "ai-native-products"
   | "brand-handoff";
+
+/** Variant served when neither an env override nor a Mixpanel flag applies. */
+export const DEFAULT_VARIANT: LandingVariant = "brand-handoff";
 
 export interface VariantConfig {
   /** The variant to show on the main landing page */
@@ -31,7 +40,7 @@ export interface VariantConfig {
  * Priority order:
  * 1. NEXT_PUBLIC_DEFAULT_LANDING_VARIANT (if NEXT_PUBLIC_FORCE_VARIANT_OVERRIDE is true)
  * 2. Mixpanel feature flag result
- * 3. Default fallback ('control')
+ * 3. Default fallback (DEFAULT_VARIANT)
  */
 export function getVariantConfig(
   mixpanelVariant?: string | boolean | null,
@@ -55,14 +64,7 @@ export function getVariantConfig(
   if (
     mixpanelVariant &&
     typeof mixpanelVariant === "string" &&
-    [
-      "minimal",
-      "minimal-plus",
-      "control",
-      "social-proof",
-      "waiting-list",
-      "ai-native-products",
-    ].includes(mixpanelVariant)
+    getAvailableVariants().includes(mixpanelVariant as LandingVariant)
   ) {
     return {
       variant: mixpanelVariant as LandingVariant,
@@ -82,14 +84,19 @@ export function getVariantConfig(
 
   // Default fallback
   return {
-    variant: "control",
+    variant: DEFAULT_VARIANT,
     isOverridden: false,
     source: "fallback",
   };
 }
 
 /**
- * Get available variants for validation
+ * Get available variants for validation.
+ *
+ * This is the one list: the Mixpanel allowlist in getVariantConfig reads it
+ * too. Previously the two were separate literals, which is how 'brand-handoff'
+ * came to be a valid LandingVariant that a Mixpanel flag could never actually
+ * select.
  */
 export function getAvailableVariants(): LandingVariant[] {
   return [
@@ -99,6 +106,7 @@ export function getAvailableVariants(): LandingVariant[] {
     "social-proof",
     "waiting-list",
     "ai-native-products",
+    "brand-handoff",
   ];
 }
 

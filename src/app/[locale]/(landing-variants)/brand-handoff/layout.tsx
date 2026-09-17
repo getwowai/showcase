@@ -10,19 +10,15 @@ interface BrandHandoffLayoutProps {
  * Route-scoped metadata for the brand-handoff variant.
  *
  * The variant page itself is a client component, so it cannot export metadata.
- * Without this layout the route inherits `generateMetadata` from
- * app/[locale]/layout.tsx, which builds the title from the `homepage`
- * namespace — still the old e-commerce copy ("Boost your store's sales…").
- * A tab title and link preview that contradict the page defeat the point of
- * the variant, since search results and shared links are exactly how people
- * arrive at getwow.ai.
+ * A tab title and link preview that contradict the page defeat the point of the
+ * variant, since search results and shared links are exactly how people arrive
+ * at getwow.ai.
  *
- * NOTE this only covers direct visits to /{locale}/brand-handoff. When the
- * variant is served at / through the variant system, metadata still comes from
- * the layout above, because variant selection happens client-side (Mixpanel)
- * while metadata is generated on the server — the two cannot see each other.
- * Promoting this variant to the default therefore also means updating
- * `homepage.title` / `homepage.subtitle` in messages/{en,ar}.json.
+ * This currently produces the same output as the parent layout, which reads the
+ * same `brandHandoff` namespace now that this variant is DEFAULT_VARIANT. It is
+ * kept rather than deleted so that /{locale}/brand-handoff stays correctly
+ * described on its own terms — the direct route should not silently inherit
+ * whatever the default variant happens to be next.
  */
 export async function generateMetadata({
   params,

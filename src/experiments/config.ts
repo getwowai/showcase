@@ -39,7 +39,7 @@ export const EXPERIMENTS: Record<string, ExperimentConfig> = {
       "control", // Main landing page (/en or /ar) - original full landing
       "social-proof", // /en/signup-social-proof - Heavy trust signals
       "ai-native-products", // /en/ai-native-products - Company positioning: AI-native tech co, WOW Webinar flagship
-      "brand-handoff", // /en/brand-handoff - One screen: WOW is the company, WOW Webinar is the flagship, here is the link
+      "brand-handoff", // /en/brand-handoff - Company page in the WOW Webinar brand: WOW AI is the company, WOW Webinar is the flagship
     ],
     primaryMetric: "app_installed",
     secondaryMetrics: [

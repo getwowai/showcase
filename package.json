@@ -12,6 +12,7 @@
     "format:check": "prettier --check .",
     "generate:logo-png": "node scripts/generate-logo-png.js",
     "generate:icon-png": "node scripts/generate-icon-png.js",
+    "generate:favicon": "node scripts/generate-favicon.js",
     "docs:dev": "vitepress dev .vitepress",
     "docs:build": "vitepress build .vitepress",
     "docs:preview": "vitepress preview .vitepress"
