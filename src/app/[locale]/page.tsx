@@ -42,8 +42,15 @@ export default function HomePage() {
   const locale = useLocale();
   const isRTL = locale === "ar";
 
-  // Use Mixpanel experiment to determine which landing page to show
-  const mixpanelVariant = useExperiment("signup-landing-variant", "control");
+  // Use Mixpanel experiment to determine which landing page to show.
+  //
+  // The hook's fallback is "" rather than a variant name on purpose:
+  // getVariantConfig treats whatever it receives as Mixpanel's answer, so
+  // passing "control" here made "Mixpanel is not configured" indistinguishable
+  // from "Mixpanel assigned control" — and DEFAULT_VARIANT could never be
+  // reached. An empty string is falsy, so resolution falls through to the env
+  // override and then to the default, and `source` reports which one it was.
+  const mixpanelVariant = useExperiment("signup-landing-variant", "");
   const variantConfig = getVariantConfig(mixpanelVariant);
 
   // Debug logging
